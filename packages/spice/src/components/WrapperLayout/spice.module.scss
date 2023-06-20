@@ -1,0 +1,12 @@
+._wrapper {
+   flex-direction: column;
+   display: flex;
+   min-height: 100vh;
+   & > main:first-of-type {
+      flex: 1;
+   }
+}
+
+._wrapper_hidden {
+   overflow: hidden;
+}

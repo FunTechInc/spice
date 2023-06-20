@@ -1,0 +1,58 @@
+.wrapper {
+   background-color: #fff;
+}
+
+.title {
+   font-size: 40px;
+}
+
+.block {
+   margin-top: 32px;
+   background-color: #f7f7f7;
+   padding: 40px;
+   position: relative;
+}
+
+.blockTitle {
+   font-size: 14px;
+   font-weight: bold;
+   position: absolute;
+   top: 12px;
+   right: 16px;
+   opacity: 0.5;
+}
+
+/*===============================================
+description
+===============================================*/
+.desc {
+   h1,
+   h2,
+   h3 {
+      font-size: 24px;
+      line-height: 1.5;
+   }
+   p {
+      font-size: 16px;
+      line-height: 2;
+   }
+}
+
+/*===============================================
+code
+===============================================*/
+.code {
+   pre {
+      margin: 16px 0;
+   }
+   h1,
+   h2 {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 1.5;
+   }
+   p {
+      font-size: 14px;
+      line-height: 1.6;
+   }
+}
