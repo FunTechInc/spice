@@ -1,0 +1,12 @@
+.wrapper {
+   width: min(100% - 40px, 1200px);
+   margin: 40px auto;
+   @media screen and (max-width: 560px) {
+      display: block;
+   }
+}
+
+.nav {
+   position: sticky;
+   top: 0;
+}
