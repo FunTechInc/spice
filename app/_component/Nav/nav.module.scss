@@ -4,7 +4,7 @@
    h3 {
       font-size: 20px;
       font-weight: bold;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
    }
    a {
       font-size: 14px;
@@ -16,5 +16,13 @@
       &:hover {
          opacity: 0.8;
       }
+   }
+}
+
+.block {
+   &:not(:first-child) {
+      border-top: 1px solid #808080;
+      padding-top: 40px;
+      margin-top: 40px;
    }
 }

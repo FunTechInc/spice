@@ -9,17 +9,17 @@
 .block {
    margin-top: 32px;
    background-color: #f7f7f7;
-   padding: 40px;
+   padding: 40px 56px;
    position: relative;
 }
 
 .blockTitle {
-   font-size: 14px;
+   font-size: 13px;
    font-weight: bold;
    position: absolute;
-   top: 12px;
-   right: 16px;
-   opacity: 0.5;
+   top: 8px;
+   right: 12px;
+   opacity: 0.4;
 }
 
 /*===============================================
@@ -43,7 +43,14 @@ code
 ===============================================*/
 .code {
    pre {
-      margin: 16px 0;
+      margin: 0;
+      &:not(:first-of-type) {
+         margin-top: 16px;
+      }
+      code {
+         white-space: pre-wrap;
+         font-size: 13px;
+      }
    }
    h1,
    h2 {

@@ -1,4 +1,11 @@
 .footer {
-   height: 40px;
-   background-color: grey;
+   height: 64px;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   a {
+      color: #333;
+      font-size: 13px;
+      text-decoration: underline;
+   }
 }
