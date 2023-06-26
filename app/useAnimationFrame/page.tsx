@@ -14,7 +14,7 @@ const Description = () => {
    );
 };
 const Demo = () => {
-   const rAF = useAnimationFrame(10);
+   const rAF = useAnimationFrame(30);
    const playHandler = () => {
       rAF("play", () => {
          console.log("tick");
@@ -24,10 +24,13 @@ const Demo = () => {
       rAF("pause");
    };
    return (
-      <div className={s.btnWrapper}>
-         <button onClick={playHandler}>play</button>
-         <button onClick={pauseHandler}>pause</button>
-      </div>
+      <>
+         <div className={s.btnWrapper}>
+            <button onClick={playHandler}>play</button>
+            <button onClick={pauseHandler}>pause</button>
+         </div>
+         <p className={s.note}>ボタンを押すとconsole.logが呼び出されます</p>
+      </>
    );
 };
 
@@ -35,7 +38,7 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`const rAF = useAnimationFrame(10);
+            code={`const rAF = useAnimationFrame(30);
 const playHandler = () => {
 	rAF("play", () => {
 		console.log("tick");

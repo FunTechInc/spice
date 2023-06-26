@@ -1,3 +1,3 @@
-.btnWrapper{display:flex}
+.accordion:not(:first-child){margin-top:16px}.button{cursor:pointer;width:100%}.button:hover{opacity:.6}.buttonContent{font-size:20px;height:80px;text-align:center;display:flex;align-items:center;justify-content:space-between;background-color:#333;padding:0 32px;color:#fff}.icon{width:24px;height:24px;display:flex;align-items:center;position:relative}.icon span{display:block;width:100%;height:2px;background-color:#fff}.icon span:nth-child(2){transition:.6s;transform:rotate(90deg);position:absolute}[aria-expanded=true] .icon span:nth-child(2){transform:rotate(0deg)}.content{padding:24px;background-color:#fff}.content p{font-size:18px;line-height:2}.content button{font-size:14px;background-color:#333;margin-top:24px;padding:8px;color:#fff;cursor:pointer}
 
 /*# sourceMappingURL=style.module.min.css.map */

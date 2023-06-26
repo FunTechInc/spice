@@ -1,5 +1,9 @@
 .header {
    height: 64px;
-   background-color: grey;
-   width: 100%;
+   border-bottom: 1px solid #808080;
+   width: min(100% - 40px, 1200px); //todo：これちゃんとinnerLayoutつくるか〜
+   margin: 0 auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
