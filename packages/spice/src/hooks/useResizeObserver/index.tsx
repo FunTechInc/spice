@@ -4,14 +4,14 @@ import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 interface IUseResizeObserver {
    targetRef: React.RefObject<HTMLElement>;
    callback: (entry: Element) => void;
-   dependencies: any[];
    debounce: number;
+   dependencies?: any[];
 }
 export const useResizeObserver = ({
    targetRef,
    callback,
-   dependencies,
    debounce,
+   dependencies = [],
 }: IUseResizeObserver) => {
    const timeoutID = useRef<NodeJS.Timeout | number>(0);
    useIsomorphicLayoutEffect(() => {
@@ -34,5 +34,5 @@ export const useResizeObserver = ({
       return () => {
          resizeObserver.unobserve(targetElm);
       };
-   }, [...dependencies]);
+   }, dependencies);
 };

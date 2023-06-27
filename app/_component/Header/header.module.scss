@@ -1,8 +1,13 @@
+@use "../../helpers.scss" as *;
+
 .header {
-   height: 64px;
    border-bottom: 1px solid #808080;
-   width: min(100% - 40px, 1200px); //todo：これちゃんとinnerLayoutつくるか〜
    margin: 0 auto;
+   width: 100%;
+}
+
+.inner {
+   height: 64px;
    display: flex;
    align-items: center;
    justify-content: space-between;

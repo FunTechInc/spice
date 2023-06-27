@@ -1,0 +1,130 @@
+@use "../helpers.scss" as *;
+
+.field {
+   &:not(:first-child) {
+      margin-top: 48px;
+   }
+   //label
+   label {
+      font-size: 22px;
+      margin-bottom: 12px;
+      font-weight: bold;
+      display: block;
+   }
+   //input
+   input[type="text"],
+   select {
+      width: 100%;
+      background-color: #fff;
+      padding: 16px;
+      border: 2px solid transparent;
+      @include placeholder(#808080);
+   }
+   //focus
+   input,
+   select {
+      &:focus-visible {
+         border: 2px solid #333;
+      }
+   }
+}
+
+.flex {
+   ul {
+      display: flex;
+      justify-content: space-between;
+      li {
+         width: calc(50% - 8px);
+      }
+   }
+}
+
+@mixin radio-check($radius) {
+   ul {
+      display: flex;
+      justify-content: flex-start;
+      li {
+         &:not(:first-child) {
+            margin-left: 32px;
+         }
+      }
+   }
+   input[type="radio"]:checked + label:before,
+   input[type="checkbox"]:checked + label:before {
+      opacity: 1;
+   }
+   //focus
+   input[type="radio"],
+   input[type="checkbox"] {
+      &:focus-visible {
+         & + label:after {
+            background-color: rgba(#333, 0.16);
+         }
+      }
+   }
+
+   ul label {
+      font-size: 18px;
+      display: block;
+      position: relative;
+      padding-left: 40px;
+      cursor: pointer;
+      &::after,
+      &::before {
+         display: block;
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         content: "";
+      }
+      &:before {
+         opacity: 0;
+         left: 8px;
+         z-index: 1;
+         width: 16px;
+         height: 16px;
+         margin-top: 0;
+         border-radius: $radius;
+         background-color: #333;
+      }
+
+      &:after {
+         left: 0;
+         z-index: 0;
+         width: 32px;
+         height: 32px;
+         margin-top: 0;
+         border: 1px solid #333;
+         border-radius: $radius;
+         background-color: #fff;
+      }
+   }
+}
+
+.radio {
+   @include radio-check(50%);
+}
+.check {
+   @include radio-check(0);
+}
+
+.select {
+   select {
+      font-size: 18px;
+      font-weight: bold;
+      background-image: url("/select.svg");
+      background-position: calc(100% - 24px) center;
+      background-size: 14px;
+      background-repeat: no-repeat;
+   }
+}
+
+/*===============================================
+description
+===============================================*/
+.description {
+   li {
+      font-size: 16px;
+      list-style-type: disc;
+   }
+}

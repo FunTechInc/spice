@@ -1,0 +1,17 @@
+.sample {
+   width: 100%;
+   li {
+      height: 80px;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      opacity: 0;
+      &:not(:first-child) {
+         margin-top: 24px;
+      }
+   }
+}
