@@ -147,7 +147,7 @@ const Demo = () => {
    );
 };
 
-const AccordionPage = () => {
+const Page = () => {
    return (
       <MainView
          title="Accordion"
@@ -158,4 +158,4 @@ const AccordionPage = () => {
    );
 };
 
-export default AccordionPage;
+export default Page;

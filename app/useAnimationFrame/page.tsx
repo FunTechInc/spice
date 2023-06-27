@@ -9,7 +9,7 @@ import s from "./style.module.scss";
 const Description = () => {
    return (
       <>
-         <p>useAnimationFrame</p>
+         <p>引数にFPSを受け取るとそのFPSで制限がかかる</p>
       </>
    );
 };
@@ -58,7 +58,7 @@ return (
    );
 };
 
-const UseAnimationFrame = () => {
+const Page = () => {
    return (
       <MainView
          title="useAnimationFrame(fps)"
@@ -69,4 +69,4 @@ const UseAnimationFrame = () => {
    );
 };
 
-export default UseAnimationFrame;
+export default Page;

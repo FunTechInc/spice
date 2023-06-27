@@ -27,7 +27,7 @@ const Code = () => {
    );
 };
 
-const UseResizeObserver = () => {
+const Page = () => {
    return (
       <MainView
          title="useResizeObserver()"
@@ -37,4 +37,4 @@ const UseResizeObserver = () => {
    );
 };
 
-export default UseResizeObserver;
+export default Page;
