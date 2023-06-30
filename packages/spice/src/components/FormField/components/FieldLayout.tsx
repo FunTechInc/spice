@@ -6,7 +6,7 @@ export type TFormItem = React.FC<{ formProps: IFormProps; className?: string }>;
 interface IFieldLayout {
    layoutType: "block" | "flex" | "radio-check";
    formPropsArr: IFormProps[];
-   label: string;
+   label?: string;
    FormItem: TFormItem;
 }
 
@@ -19,7 +19,7 @@ export const FieldLayout = ({
    if (layoutType === "block") {
       return (
          <>
-            <label htmlFor={formPropsArr[0].id}>{label}</label>
+            {label && <label htmlFor={formPropsArr[0].id}>{label}</label>}
             <FormItem formProps={formPropsArr[0]} />
          </>
       );
@@ -28,7 +28,7 @@ export const FieldLayout = ({
    if (layoutType === "flex") {
       return (
          <>
-            <label htmlFor={formPropsArr[0].id}>{label}</label>
+            {label && <label htmlFor={formPropsArr[0].id}>{label}</label>}
             <ul>
                <li>
                   <FormItem formProps={formPropsArr[0]} />
@@ -55,7 +55,7 @@ export const FieldLayout = ({
       });
       return (
          <>
-            <label>{label}</label>
+            {label && <label>{label}</label>}
             <ul>{Options}</ul>
          </>
       );

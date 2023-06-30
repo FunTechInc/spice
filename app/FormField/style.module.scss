@@ -13,7 +13,8 @@
    }
    //input
    input[type="text"],
-   select {
+   select,
+   textarea {
       width: 100%;
       background-color: #fff;
       padding: 16px;
@@ -22,7 +23,8 @@
    }
    //focus
    input,
-   select {
+   select,
+   textarea {
       &:focus-visible {
          border: 2px solid #333;
       }
@@ -117,6 +119,30 @@
       background-size: 14px;
       background-repeat: no-repeat;
    }
+}
+
+.submit {
+   input[type="submit"] {
+      width: 100%;
+      line-height: 64px;
+      background-color: #333;
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      &:hover {
+         opacity: 0.7;
+      }
+   }
+}
+
+/*===============================================
+validation
+===============================================*/
+.watchExample {
+   margin-top: 12px;
+   font-size: 14px;
+   font-weight: bold;
+   color: #808080;
 }
 
 /*===============================================

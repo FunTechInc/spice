@@ -46,7 +46,7 @@ export const Accordion = ({
          }
       },
       dependencies: [isOpen],
-      debounce: 10,
+      debounce: 100,
    });
 
    return (

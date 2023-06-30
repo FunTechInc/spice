@@ -1,30 +1,38 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { useIsTouchDevice } from "@/packages/spice/src";
+import { useMediaQuery } from "@/packages/spice/src";
 
 const Description = () => {
    return (
       <>
-         <p>touchデバイスの判定</p>
+         <p>useMediaQuery</p>
       </>
    );
 };
 
 const Code = () => {
-   const isTouch = useIsTouchDevice();
+   const isMatch = useMediaQuery({
+      type: "max",
+      width: 960,
+   });
+
    const match = () => {
-      if (isTouch === null) {
+      if (isMatch === null) {
          return;
       }
-      return isTouch ? "true" : "false";
+      return isMatch ? "true" : "false";
    };
+
    return (
       <>
          <CodeBlock
-            code={`const isTouch = useIsTouchDevice(); //return boolean`}
+            code={`const isMatch = useMediaQuery({
+	type: "max",
+	width: 960,
+});`}
          />
-         <p>return: {match()}</p>
+         <p>return:{match()}</p>
       </>
    );
 };
@@ -32,7 +40,7 @@ const Code = () => {
 const Page = () => {
    return (
       <MainView
-         title="useIsTouchDevice()"
+         title="useMediaQuery()"
          description={<Description />}
          code={<Code />}
       />

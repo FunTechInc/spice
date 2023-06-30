@@ -1,0 +1,41 @@
+@use "../helpers.scss" as *;
+
+.wrapper {
+   display: flex;
+   justify-content: center;
+}
+.button {
+   background-color: #333;
+   font-size: 16px;
+   width: 20%;
+   text-align: center;
+   line-height: 40px;
+   font-weight: bold;
+   @include transition(0.6s);
+   @include my-cubic-bezier01;
+   span {
+      color: #fff;
+   }
+   &:hover {
+      opacity: 0.7;
+   }
+}
+
+.isView {
+   background-color: #808080;
+   pointer-events: none;
+}
+
+.content {
+   width: 100%;
+   height: 48vh;
+   background-color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 40px;
+   font-weight: bold;
+   flex-direction: column;
+   overflow: hidden;
+   border: 2px solid #333;
+}

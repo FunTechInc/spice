@@ -37,6 +37,7 @@ export const useWindowResizeObserver = ({
       window.addEventListener("resize", callbackEvent);
       return () => {
          window.removeEventListener("resize", callbackEvent);
+         clearTimeout(timeoutID.current);
       };
    }, dependencies);
 };

@@ -8,5 +8,10 @@ export const Input = ({
    formProps: IFormProps;
    className?: string;
 }) => {
-   return <input {...formProps} className={`${s._form_input} ${className}`} />;
+   return (
+      <input
+         {...formProps}
+         className={`${s._form_input} ${className ? className : ""}`}
+      />
+   );
 };
