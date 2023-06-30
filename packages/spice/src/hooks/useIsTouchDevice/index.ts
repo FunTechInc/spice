@@ -1,21 +1,27 @@
-import { useEffect, useReducer } from "react";
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useWindowResizeObserver } from "../useWindowResizeObserver";
 
-export function useIsTouchDevice() {
-   const [isTouchDevice, setIsTouchDevice] = useReducer(() => {
+export const useIsTouchDevice = () => {
+   const [isTouchDevice, setIsTouchDevice] = useState<boolean | null>(null);
+   const updateState = () => {
       const touchEvent = window.ontouchstart;
       const touchPoints = navigator.maxTouchPoints;
       if (touchEvent !== undefined && 0 < touchPoints) {
-         return true;
+         setIsTouchDevice(true);
       } else {
-         return false;
+         setIsTouchDevice(false);
       }
-   }, false);
-   useEffect(() => {
-      window.addEventListener("resize", setIsTouchDevice, false);
-      setIsTouchDevice();
-      return () => {
-         window.removeEventListener("resize", setIsTouchDevice, false);
-      };
+   };
+   useWindowResizeObserver({
+      callback() {
+         updateState();
+      },
+      debounce: 100,
+      dependencies: [],
+   });
+   useIsomorphicLayoutEffect(() => {
+      updateState();
    }, []);
    return isTouchDevice;
-}
+};

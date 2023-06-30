@@ -15,6 +15,11 @@ export const useStarter = ({
    isFixViewportForSmall = true,
    areYouFun = false,
 }: IUseStarter) => {
+   const fixViewportForSmallContoller = (winW: number) => {
+      if (isFixViewportForSmall) {
+         fixViewportForSmall(winW);
+      }
+   };
    useWindowResizeObserver({
       callback({ initWinW, winW }) {
          /*===============================================
@@ -32,18 +37,20 @@ export const useStarter = ({
          /*===============================================
 			fixViewportForSmall
 			===============================================*/
-         if (isFixViewportForSmall) {
-            fixViewportForSmall(winW);
-         }
+         fixViewportForSmallContoller(winW);
       },
-      debounce: 10,
+      debounce: 100,
       dependencies: [],
    });
 
-   /*===============================================
-	FunTech console log
-	===============================================*/
    useIsomorphicLayoutEffect(() => {
+      /*===============================================
+		fixViewportForSmall
+		===============================================*/
+      fixViewportForSmallContoller(window.innerWidth);
+      /*===============================================
+		FunTech console log
+		===============================================*/
       if (areYouFun) {
          funtechConsole();
       }

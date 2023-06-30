@@ -1,4 +1,6 @@
 "use client";
+import { useForm, SubmitHandler, useWatch, Control } from "react-hook-form";
+
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { FormField } from "@/packages/spice/src";
@@ -7,37 +9,62 @@ import s from "./style.module.scss";
 const Description = () => {
    return (
       <ul className={s.description}>
-         <li>props配列のlengthを2以上にするとリストになる</li>
+         <li>
+            You can use validation library. this sample use &quot;React Hook
+            Form&quot;
+         </li>
       </ul>
    );
 };
 
+type TInputs = {
+   watchExample: string;
+};
+
+const WatchTest = ({ control }: { control: Control<TInputs> }) => {
+   const txt = useWatch({
+      control,
+      name: "watchExample",
+      defaultValue: "",
+   });
+   return <p className={s.watchExample}>Watch Example: {txt}</p>;
+};
+
 const Demo = () => {
+   const {
+      register,
+      control,
+      handleSubmit,
+      formState: { errors },
+   } = useForm<TInputs>();
+   const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
    return (
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
          <FormField
             className={s.field}
-            label="One Column"
+            label="Block"
             formProps={[
                {
                   type: "text",
-                  id: "form1",
+                  id: "block-1",
                   placeholder: "hoge",
+                  ...register("watchExample"),
                },
             ]}
          />
+         <WatchTest control={control} />
          <FormField
             className={`${s.field} ${s.flex}`}
-            label="Two Column"
+            label="Flex"
             formProps={[
                {
                   type: "text",
-                  id: "form2-1",
+                  id: "flex-1",
                   placeholder: "piyo",
                },
                {
                   type: "text",
-                  id: "form2-2",
+                  id: "flex-2",
                   placeholder: "piyo",
                },
             ]}
@@ -96,6 +123,7 @@ const Demo = () => {
             formProps={[
                {
                   isSelect: {
+                     defaultValue: "--Please choose an option--",
                      options: ["option1", "option2", "option3"],
                   },
                   name: "select block",
@@ -108,7 +136,8 @@ const Demo = () => {
             formProps={[
                {
                   isSelect: {
-                     options: ["option1", "option2", "option3"],
+                     options: ["option1", "初期値にする", "option3"],
+                     defaultSelectedIndex: 1,
                   },
                   name: "select flex 1",
                },
@@ -117,6 +146,31 @@ const Demo = () => {
                      options: ["option1", "option2", "option3"],
                   },
                   name: "select flex 2",
+               },
+            ]}
+         />
+         <FormField
+            className={s.field}
+            label="Textarea"
+            formProps={[
+               {
+                  isTextarea: {
+                     rows: 10,
+                     cols: 33,
+                     defaultValue: "It was a dark and stormy night...",
+                  },
+                  placeholder: "Your text here",
+                  name: "textarea-sample",
+                  id: "textarea-sample",
+               },
+            ]}
+         />
+         <FormField
+            className={`${s.field} ${s.submit}`}
+            formProps={[
+               {
+                  type: "submit",
+                  value: "Send Request",
                },
             ]}
          />
@@ -135,7 +189,7 @@ const Code = () => {
 const Page = () => {
    return (
       <MainView
-         title="Form"
+         title="FormField"
          description={<Description />}
          demo={<Demo />}
          code={<Code />}

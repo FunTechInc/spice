@@ -1,0 +1,15 @@
+._tab_button {
+   cursor: pointer;
+}
+
+._tab_contentWrapper {
+   position: relative;
+}
+
+._tab_hidden {
+   pointer-events: none;
+   position: absolute;
+   visibility: hidden;
+   opacity: 0;
+   display: none;
+}
