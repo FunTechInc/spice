@@ -8,21 +8,14 @@ const Description = () => {
       </>
    );
 };
-const Demo = () => {
-   return <h1>Demo</h1>;
-};
 
 const Code = () => {
    return (
       <>
-         <h2>install</h2>
          <CodeBlock code="npm i @funtech-inc/spice" />
-         <CodeBlock code={`<CodeBlock code="hogehoge" />`} />
-         <p>
-            コメントコメントコメントコメントコメントコメントコメントコメントコメント
-            コメント コメント コメント コメント コメント コメント
-         </p>
-         <CodeBlock code="hogehoge" />
+         <p>install</p>
+         <CodeBlock code={`import "@funtech-inc/spice/css";`} />
+         <p>import css</p>
       </>
    );
 };
@@ -32,7 +25,6 @@ export const HomeContent = () => {
       <MainView
          title="(hidden)spice"
          description={<Description />}
-         demo={<Demo />}
          code={<Code />}
       />
    );

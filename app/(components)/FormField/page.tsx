@@ -8,7 +8,7 @@ import s from "./style.module.scss";
 
 const Description = () => {
    return (
-      <ul className={s.description}>
+      <ul>
          <li>
             You can use validation library. this sample use &quot;React Hook
             Form&quot;
@@ -19,6 +19,10 @@ const Description = () => {
 
 type TInputs = {
    watchExample: string;
+   firstName: string;
+   lastName: string;
+   email: string;
+   radio: string;
 };
 
 const WatchTest = ({ control }: { control: Control<TInputs> }) => {
@@ -30,14 +34,20 @@ const WatchTest = ({ control }: { control: Control<TInputs> }) => {
    return <p className={s.watchExample}>Watch Example: {txt}</p>;
 };
 
+const Error = ({ error }: { error: string }) => {
+   return <p className={s.error}>{error}</p>;
+};
+
 const Demo = () => {
    const {
       register,
       control,
       handleSubmit,
       formState: { errors },
-   } = useForm<TInputs>();
+   } = useForm<TInputs>({ mode: "onBlur" });
+
    const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
+
    return (
       <form onSubmit={handleSubmit(onSubmit)}>
          <FormField
@@ -54,19 +64,64 @@ const Demo = () => {
          />
          <WatchTest control={control} />
          <FormField
+            className={s.field}
+            label="Mail"
+            formProps={[
+               {
+                  type: "email",
+                  id: "e-mail",
+                  placeholder: "t.hashimoto@funtech.inc",
+                  ...register("email", { required: true }),
+               },
+            ]}
+            error={[
+               <>
+                  {errors?.email?.type === "required" ? (
+                     <Error error="This field is required" />
+                  ) : null}
+               </>,
+            ]}
+         />
+         <FormField
             className={`${s.field} ${s.flex}`}
             label="Flex"
             formProps={[
                {
                   type: "text",
-                  id: "flex-1",
-                  placeholder: "piyo",
+                  id: "firstName",
+                  placeholder: "firstName",
+                  ...register("firstName", {
+                     required: true,
+                     maxLength: 20,
+                  }),
                },
                {
                   type: "text",
-                  id: "flex-2",
-                  placeholder: "piyo",
+                  id: "lastName",
+                  placeholder: "lastName",
+                  ...register("lastName", {
+                     required: true,
+                     maxLength: 20,
+                  }),
                },
+            ]}
+            error={[
+               <>
+                  {errors?.firstName?.type === "required" ? (
+                     <Error error="This field is required" />
+                  ) : null}
+                  {errors?.firstName?.type === "maxLength" ? (
+                     <Error error="First name cannot exceed 20 characters" />
+                  ) : null}
+               </>,
+               <>
+                  {errors?.lastName?.type === "required" ? (
+                     <Error error="This field is required" />
+                  ) : null}
+                  {errors?.lastName?.type === "maxLength" ? (
+                     <Error error="First name cannot exceed 20 characters" />
+                  ) : null}
+               </>,
             ]}
          />
          <FormField
@@ -77,20 +132,33 @@ const Demo = () => {
                   type: "radio",
                   id: "radio-1",
                   value: "option1",
-                  name: "radio-sample",
+                  ...register("radio", {
+                     required: true,
+                  }),
                },
                {
                   type: "radio",
                   id: "radio-2",
                   value: "option2",
-                  name: "radio-sample",
+                  ...register("radio", {
+                     required: true,
+                  }),
                },
                {
                   type: "radio",
                   id: "radio-3",
                   value: "option3",
-                  name: "radio-sample",
+                  ...register("radio", {
+                     required: true,
+                  }),
                },
+            ]}
+            error={[
+               <>
+                  {errors?.radio?.type === "required" ? (
+                     <Error error="This field is required" />
+                  ) : null}
+               </>,
             ]}
          />
          <FormField
@@ -181,7 +249,27 @@ const Demo = () => {
 const Code = () => {
    return (
       <>
-         <CodeBlock code={``} />
+         <CodeBlock
+            code={`<FormField
+	className={s.field}
+	label="Mail"
+	formProps={[
+		{
+			type: "email",
+			id: "e-mail",
+			placeholder: "t.hashimoto@funtech.inc",
+			...register("email", { required: true }),
+		},
+	]}
+	error={[
+		<>
+			{errors?.email?.type === "required" ? (
+				<Error error="This field is required" />
+			) : null}
+		</>,
+	]}
+/>`}
+         />
       </>
    );
 };

@@ -1,0 +1,56 @@
+.wrapper {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 120px 0;
+   background-color: #fff;
+}
+
+.magnetBall {
+   width: 240px;
+   height: 240px;
+   background-color: #333;
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.button_wrapper {
+   margin: 80px 0;
+   display: inline-block;
+}
+.magnet_button {
+   width: 240px;
+   line-height: 80px;
+   background-color: #333;
+   color: #fff;
+   font-size: 18px;
+   text-align: center;
+   cursor: pointer;
+   &:link,
+   &:visited,
+   &:active {
+      color: #fff;
+   }
+}
+
+.balls_wrapper {
+   width: 100%;
+   height: 400px;
+   background-color: #333;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.balls {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   span {
+      width: 80px;
+      height: 80px;
+      margin: 0 16px;
+      background-color: #fff;
+      border-radius: 50%;
+   }
+}

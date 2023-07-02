@@ -8,6 +8,7 @@ interface IFieldLayout {
    formPropsArr: IFormProps[];
    label?: string;
    FormItem: TFormItem;
+   error?: React.ReactNode[];
 }
 
 export const FieldLayout = ({
@@ -15,12 +16,21 @@ export const FieldLayout = ({
    formPropsArr,
    label,
    FormItem,
+   error,
 }: IFieldLayout) => {
+   const createErrorMessage = (index: number) => {
+      if (!error || !error[index]) {
+         return null;
+      }
+      return error[index];
+   };
+
    if (layoutType === "block") {
       return (
          <>
             {label && <label htmlFor={formPropsArr[0].id}>{label}</label>}
             <FormItem formProps={formPropsArr[0]} />
+            {createErrorMessage(0)}
          </>
       );
    }
@@ -32,9 +42,11 @@ export const FieldLayout = ({
             <ul>
                <li>
                   <FormItem formProps={formPropsArr[0]} />
+                  {createErrorMessage(0)}
                </li>
                <li>
                   <FormItem formProps={formPropsArr[1]} />
+                  {createErrorMessage(1)}
                </li>
             </ul>
          </>
@@ -57,6 +69,7 @@ export const FieldLayout = ({
          <>
             {label && <label>{label}</label>}
             <ul>{Options}</ul>
+            {createErrorMessage(0)}
          </>
       );
    }
