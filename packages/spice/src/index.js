@@ -7,6 +7,7 @@ export { Accordion } from "./components/Accordion";
 export { FormField } from "./components/FormField";
 export { Tab } from "./components/Tab";
 export { Dropdown } from "./components/Dropdown";
+export { Magnet } from "./components/Magnet";
 /*===============================================
 hooks
 ===============================================*/

@@ -1,4 +1,4 @@
-import { HomeContent } from "@/app/_home";
+import { HomeContent } from "@/app/(home)/_home";
 
 const Home = () => {
    return <HomeContent></HomeContent>;

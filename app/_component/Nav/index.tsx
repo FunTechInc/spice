@@ -69,6 +69,10 @@ const componentList = [
       href: "/Dropdown",
       title: "Dropdown",
    },
+   {
+      href: "/Magnet",
+      title: "Magnet",
+   },
 ];
 
 export const AsideNav = ({ className }: TAsideNav) => {

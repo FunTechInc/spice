@@ -18,12 +18,14 @@ interface IFormFieldsProps {
    className: string;
    label?: string;
    formProps: IFormProps[];
+   error?: React.ReactNode[];
 }
 
 export const FormField = ({
    className,
    label,
    formProps,
+   error,
 }: IFormFieldsProps) => {
    const formPropsArr = formProps;
    const type = formPropsArr[0].type;
@@ -43,6 +45,7 @@ export const FormField = ({
          formPropsArr,
          label,
          FormItem,
+         error,
       });
    };
 
@@ -69,6 +72,7 @@ export const FormField = ({
             formPropsArr,
             label,
             FormItem: Input,
+            error,
          });
       }
       /*===============================================

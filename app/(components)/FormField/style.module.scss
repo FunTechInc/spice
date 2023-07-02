@@ -1,4 +1,4 @@
-@use "../helpers.scss" as *;
+@use "../../helpers.scss" as *;
 
 .field {
    &:not(:first-child) {
@@ -13,6 +13,7 @@
    }
    //input
    input[type="text"],
+   input[type="email"],
    select,
    textarea {
       width: 100%;
@@ -145,12 +146,9 @@ validation
    color: #808080;
 }
 
-/*===============================================
-description
-===============================================*/
-.description {
-   li {
-      font-size: 16px;
-      list-style-type: disc;
-   }
+.error {
+   font-size: 14px;
+   font-weight: bold;
+   margin-top: 12px;
+   color: red;
 }
