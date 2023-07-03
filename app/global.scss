@@ -1,161 +1,76 @@
-/*===============================================
-html body
-===============================================*/
+@use "./helpers.scss" as *;
+
+:root {
+   /*===============================================
+	①liquid design
+	===============================================*/
+   --liquid-lgDesignRatio: calc(#{$lg-design-width} / 10);
+   --liquid-mdDesignRatio: calc(#{$md-design-width} / 10);
+   --liquid-smDesignRatio: calc(#{$sm-design-width} / 10);
+   --liquid-htmlroot: calc(
+      calc(var(--vw, 1vw) * 100) / var(--liquid-lgDesignRatio)
+   );
+   --liquid-bodyroot: 1.6rem;
+
+   @include mq(md) {
+      --liquid-htmlroot: calc(
+         calc(var(--vw, 1vw) * 100) / var(--liquid-mdDesignRatio)
+      );
+   }
+
+   @include mq(sm) {
+      --liquid-htmlroot: calc(
+         calc(var(--vw, 1vw) * 100) / var(--liquid-smDesignRatio)
+      );
+   }
+
+   /*===============================================
+	②solid design
+	===============================================*/
+   --solid-root: 16px;
+
+   /*===============================================
+	③mobilefirst design
+	===============================================*/
+   --mobile-DesignWidth: #{$mobile-design-width};
+   --mobile-ContentsWidth: #{$mobile-design-width};
+   --mobile-ContentsRatio: var(--mobile-ContentsWidth) /
+      var(--mobile-DesignWidth);
+   --mobile-root: min(
+      16px * var(--mobile-ContentsRatio),
+      16 * 100 / var(--mobile-DesignWidth) * 1vw
+   );
+}
+
 body {
-   background: {
-      color: #fff;
-   }
-
-   color: #333;
-
-   font: {
-      style: normal;
-      weight: normal;
-   }
-
-   letter-spacing: 0.03em;
-   line-height: 1.5;
-   //改行
-   overflow-wrap: break-word;
-   //kerning
-   font-feature-settings: "palt";
-   text-size-adjust: 100%;
+   background-color: $color-bg;
+   color: $color-txt;
+   letter-spacing: $letter-spacing-base;
+   line-height: $leading-none;
 }
 
 html {
-   font-size: 16px;
-   //scroll behavior
-   scroll-behavior: initial;
-   //スクロールバーによるレイアウトシフトを回避する
-   // scrollbar-gutter: stable;
+   //liquid
+   @if $designRoot==1 {
+      font-size: var(--liquid-htmlroot);
+
+      body {
+         font-size: var(--liquid-bodyroot);
+      }
+   }
+
+   //solid
+   @else if $designRoot==2 {
+      font-size: var(--solid-root);
+   }
+
+   //mobile
+   @else if $designRoot==3 {
+      font-size: var(--mobile-root);
+   }
 }
 
-html,
-body {
-   width: 100%;
-   min-height: 100%;
-}
-
-/*===============================================
-ボタン周り
-===============================================*/
 a,
 button {
-   border: none;
-   color: #fff;
-   cursor: pointer;
-   outline: none;
-   text-decoration: none;
-   pointer-events: auto;
-   z-index: 100;
-   transition: 0s;
-   display: block;
-   background: none;
-   > * {
-      // 要素の子要素のpointereventを無効にする
-      pointer-events: none;
-   }
-
-   //prevent
-   &.__prevent {
-      pointer-events: none;
-   }
-
-   &:link,
-   &:visited,
-   &:hover,
-   &:active {
-      color: inherit;
-   }
-
-   /* タブ移動時 */
-   &:focus-visible {
-      outline: -webkit-focus-ring-color auto 1px;
-
-      @media screen and (max-width: 960px) {
-         outline: none;
-      }
-   }
-
-   /* マウスクリック時 */
-   &:focus:not(:fous-visible) {
-      outline: none;
-   }
-
-   //スマホのとき一瞬うつるタッチハイライトを消す
-   @media (hover: none) {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-   }
-
-   img {
-      border: none;
-   }
-}
-
-/*===============================================
-reset
-===============================================*/
-
-* {
-   //Safari clamp関数対策
-   min-height: 0vw;
-}
-
-html {
-   -webkit-tap-highlight-color: transparent;
-}
-
-body {
-   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
-      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
-}
-
-img {
-   border: 0;
-   height: auto;
-   pointer-events: none;
-   vertical-align: middle;
-   width: 100%;
-   image-rendering: -webkit-optimize-contrast;
-   image-rendering: crisp-edges;
-   backface-visibility: hidden;
-}
-
-picture {
-   display: block;
-}
-
-iframe {
-   width: 100%;
-}
-
-ul,
-ol,
-li {
-   font-size: 0;
-   list-style: none;
-}
-
-form {
-   label,
-   span,
-   input {
-      //スマホのとき一瞬うつるタッチハイライトを消す
-      @media (hover: none) {
-         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
-   }
-}
-
-svg {
-   overflow: visible;
-}
-
-/*===============================================
-reCAPTCHAのバッジを非表示にする
-===============================================*/
-.grecaptcha-badge {
-   opacity: 0;
-   pointer-events: none;
-   visibility: hidden;
+   color: #333;
 }

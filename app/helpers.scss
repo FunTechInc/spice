@@ -96,6 +96,10 @@ $color-twitter: #1da1f2;
 $color-facebook: #3b5998;
 $color-insta: #e1306c;
 $FunTech: #c34e00;
+//colorRegulation
+$color-txt: #333;
+$color-key: #333;
+$color-bg: #fff;
 
 /*===============================================
 Media Query
@@ -109,6 +113,24 @@ $breakpoints: (
 @mixin mq($breakpoint) {
    @media #{map-get($breakpoints, $breakpoint)} {
       @content;
+   }
+}
+
+/*===============================================
+Disable hover effects when on mobile
+===============================================*/
+@mixin hover {
+   @media (hover: none) {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   }
+
+   @media (-ms-high-contrast: none),
+      (-ms-high-contrast: active),
+      (-moz-touch-enabled: 0),
+      (hover: hover) {
+      &:hover {
+         @content;
+      }
    }
 }
 
@@ -350,8 +372,8 @@ gradation
 }
 
 /*===============================================
-webp対応
-例）@include webpBg(test, j, layout);
+webp
+ex）@include webpBg(test, j, layout);
 ===============================================*/
 @mixin webpBg($img, $kaku: j, $page: "/") {
    @if $kaku==j {
@@ -380,7 +402,7 @@ webp対応
 }
 
 /*===============================================
-単位を取り除く関数
+remove unit
 ===============================================*/
 @function su($number) {
    @if type-of($number) == "number" and not unitless($number) {
@@ -388,23 +410,4 @@ webp対応
    }
 
    @return $number;
-}
-
-/*===============================================
-タッチデバイスでhoverを無効にするやつ
-===============================================*/
-
-@mixin hover {
-   @media (hover: none) {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-   }
-
-   @media (-ms-high-contrast: none),
-      (-ms-high-contrast: active),
-      (-moz-touch-enabled: 0),
-      (hover: hover) {
-      &:hover {
-         @content;
-      }
-   }
 }

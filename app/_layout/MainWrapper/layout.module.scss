@@ -1,5 +1,6 @@
 .wrapper {
    margin: 120px auto 40px;
+   display: flex;
    @media screen and (max-width: 560px) {
       display: block;
    }

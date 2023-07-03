@@ -8,20 +8,25 @@ import s from "./spice.module.scss";
 interface IAccordion {
    isView?: boolean;
    value: string;
-   wrapperClass: string;
-   buttonClass: string;
+   className: string;
    clickEvent: TClickEvent;
-   buttonComponent: React.ReactNode;
-   contentComponent: React.ReactNode;
+   button: {
+      children: React.ReactNode;
+      className?: string;
+   };
+   content: {
+      children: React.ReactNode;
+      className?: string;
+   };
 }
+
 export const Accordion = ({
    isView = false,
    value,
-   wrapperClass,
-   buttonClass,
+   className,
+   button,
    clickEvent,
-   buttonComponent,
-   contentComponent,
+   content,
 }: IAccordion) => {
    const wrapperRef = useRef<HTMLDivElement>(null);
    const innerRef = useRef<HTMLDivElement>(null);
@@ -50,9 +55,9 @@ export const Accordion = ({
    });
 
    return (
-      <div className={wrapperClass}>
+      <div className={className}>
          <button
-            className={buttonClass}
+            className={button.className ? button.className : ""}
             onClick={() => {
                /*===============================================
 					callback
@@ -71,7 +76,7 @@ export const Accordion = ({
             aria-controls={`content-${value}`}
             id={`button-${value}`}
             aria-expanded={isOpen}>
-            {buttonComponent}
+            {button.children}
          </button>
          <div
             ref={wrapperRef}
@@ -81,7 +86,11 @@ export const Accordion = ({
             id={`content-${value}`}
             aria-labelledby={`button-${value}`}
             aria-hidden={!isOpen}>
-            <div ref={innerRef}>{contentComponent}</div>
+            <div
+               ref={innerRef}
+               className={content.className ? content.className : ""}>
+               {content.children}
+            </div>
          </div>
       </div>
    );

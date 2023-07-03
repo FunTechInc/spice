@@ -1,0 +1,88 @@
+@use "../../helpers.scss" as *;
+
+.wrapper {
+   display: flex;
+   justify-content: center;
+   @include mq(sm) {
+      display: block;
+   }
+}
+.button {
+   display: block;
+   width: min(100%, 240px);
+   margin: 0 16px;
+   line-height: 64px;
+   font-size: 18px;
+   font-weight: bold;
+   text-align: center;
+   background-color: #333;
+   border: 2px solid #333;
+   cursor: pointer;
+   @include mq(sm) {
+      margin: 8px auto;
+   }
+
+   @include hover {
+      color: #333;
+      background-color: #fff;
+   }
+}
+
+/*===============================================
+modal
+===============================================*/
+@mixin modalOpen {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.dialog[open] {
+   @include modalOpen;
+   &::backdrop {
+      background-color: rgba(0, 0, 0, 0.8);
+   }
+}
+/*===============================================
+content
+===============================================*/
+.modal_content {
+   width: min(100% - 32px, 800px);
+   height: min(100% - 32px, 400px);
+   background-color: #fff;
+   padding: 40px;
+   pointer-events: auto;
+   overflow-y: auto;
+   overscroll-behavior: contain;
+   p {
+      font-size: 20px;
+      &:not(:first-child) {
+         margin-top: 24px;
+      }
+   }
+}
+.modal_content_wrapper {
+   width: 100%;
+   height: 100%;
+   @include modalOpen;
+   background-color: rgba(0, 0, 0, 0.8);
+   pointer-events: none;
+}
+
+/*===============================================
+close
+===============================================*/
+.close {
+   width: min(100%, 320px);
+   line-height: 48px;
+   font-size: 16px;
+   background-color: #333;
+   border: 2px solid #333;
+   color: #fff;
+   margin-top: 24px;
+   text-align: center;
+   cursor: pointer;
+   @include hover {
+      color: #333;
+      background-color: #fff;
+   }
+}

@@ -1,3 +1,4 @@
+import "./scss/global.scss";
 /*===============================================
 components
 ===============================================*/
@@ -8,6 +9,8 @@ export { FormField } from "./components/FormField";
 export { Tab } from "./components/Tab";
 export { Dropdown } from "./components/Dropdown";
 export { Magnet } from "./components/Magnet";
+export { BackgroundImage } from "./components/BackgroundImage";
+export { Modal } from "./components/Modal";
 /*===============================================
 hooks
 ===============================================*/

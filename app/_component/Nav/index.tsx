@@ -54,6 +54,10 @@ const componentList = [
       title: "AsideLayout",
    },
    {
+      href: "/BackgroundImage",
+      title: "BackgroundImage",
+   },
+   {
       href: "/Accordion",
       title: "Accordion",
    },
@@ -72,6 +76,10 @@ const componentList = [
    {
       href: "/Magnet",
       title: "Magnet",
+   },
+   {
+      href: "/Modal",
+      title: "Modal",
    },
 ];
 

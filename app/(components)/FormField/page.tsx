@@ -13,6 +13,9 @@ const Description = () => {
             You can use validation library. this sample use &quot;React Hook
             Form&quot;
          </li>
+         <li>
+            お好きなヘッドレスフォームサービスと連携してください。このサンプルは「HyperForm」を使っています。
+         </li>
       </ul>
    );
 };
@@ -46,13 +49,16 @@ const Demo = () => {
       formState: { errors },
    } = useForm<TInputs>({ mode: "onBlur" });
 
-   const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
+   // const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
 
    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+         // onSubmit={handleSubmit(onSubmit)}
+         action="https://hyperform.jp/api/bcSznryS"
+         method="post">
          <FormField
             className={s.field}
-            label="Block"
+            label="Watch input"
             formProps={[
                {
                   type: "text",
@@ -84,7 +90,7 @@ const Demo = () => {
          />
          <FormField
             className={`${s.field} ${s.flex}`}
-            label="Flex"
+            label="Name"
             formProps={[
                {
                   type: "text",
