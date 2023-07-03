@@ -113,7 +113,7 @@ const Code = () => {
       <>
          <CodeBlock code={`overscroll-behavior: contain;`} />
          <p>
-            Inside the dialog, don't forget to apply this style to the content
+            Inside the dialog, dont forget to apply this style to the content
             you want to scroll.
          </p>
          <CodeBlock
