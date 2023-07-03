@@ -18,18 +18,17 @@ export const useResizeObserver = ({
 	===============================================*/
    const timeoutID = useRef<NodeJS.Timeout | number>(0);
    const isFirst = useRef(true);
-   const resizeObserver = new ResizeObserver((entries) => {
-      clearTimeout(timeoutID.current);
-      timeoutID.current = setTimeout(() => {
-         if (isFirst.current) {
-            isFirst.current = false;
-            return;
-         }
-         callback(entries[0].target);
-      }, debounce);
-   });
-
    useIsomorphicLayoutEffect(() => {
+      const resizeObserver = new ResizeObserver((entries) => {
+         clearTimeout(timeoutID.current);
+         timeoutID.current = setTimeout(() => {
+            if (isFirst.current) {
+               isFirst.current = false;
+               return;
+            }
+            callback(entries[0].target);
+         }, debounce);
+      });
       const targetElm = targetRef.current;
       if (!targetElm) {
          return;
