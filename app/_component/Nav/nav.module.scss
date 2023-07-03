@@ -1,3 +1,5 @@
+@use "../../helpers.scss" as *;
+
 .nav {
    width: 240px;
    padding-right: 40px;
@@ -9,11 +11,12 @@
    a {
       font-size: 14px;
       text-decoration: underline;
+      color: #333;
       &:not(:first-child) {
          margin-top: 12px;
       }
 
-      &:hover {
+      @include hover {
          opacity: 0.8;
       }
    }

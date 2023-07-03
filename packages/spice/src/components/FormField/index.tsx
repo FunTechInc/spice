@@ -34,12 +34,21 @@ export const FormField = ({
    const isSelect = formPropsArr[0].isSelect ? true : false;
    const isTextarea = formPropsArr[0].isTextarea ? true : false;
 
+   /*===============================================
+	error handling
+	===============================================*/
+   if (!(type === "radio" || type === "checkbox") && propsLength > 2) {
+      throw new Error("The length of formProps is up to 2.");
+   }
+   if (error && error.length > 2) {
+      throw new Error("The length of error is up to 2.");
+   }
+
+   /*===============================================
+	switch flex or block
+	===============================================*/
    const switchLayout = (FormItem: TFormItem) => {
       const layoutType = propsLength === 1 ? "block" : "flex";
-      if (propsLength > 2) {
-         console.error("The length of formProps is up to 2.");
-         return;
-      }
       return FieldLayout({
          layoutType,
          formPropsArr,

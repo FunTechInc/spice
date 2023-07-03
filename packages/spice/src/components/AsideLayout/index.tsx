@@ -23,7 +23,7 @@ export const AsideLayout = ({
       };
    }, []);
    return (
-      <div className={`${s._aside_wrapper} ${className}`}>
+      <div className={className ? className : ""}>
          <aside className={s._aside_aside}>{asideChildren}</aside>
          <div className={s._aside_main}>{children}</div>
       </div>

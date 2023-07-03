@@ -1,9 +1,12 @@
 import "./global.scss";
 import "the-new-css-reset/css/reset.css";
+//style from spice
+import "@/packages/spice/src/scss/global.scss";
 // import "@funtech-inc/spice/css";
 import { Lato } from "next/font/google";
 import { MainWrapper } from "@/app/_layout/MainWrapper";
 import { AppHooks } from "./app-hooks";
+import { MyLenis } from "./_layout/MyLenis";
 const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata = {
@@ -15,7 +18,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <html lang="ja">
          <body className={lato.className}>
-            <MainWrapper>{children}</MainWrapper>
+            <MyLenis>
+               <MainWrapper>{children}</MainWrapper>
+            </MyLenis>
          </body>
          <AppHooks />
       </html>

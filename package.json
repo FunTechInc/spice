@@ -22,13 +22,17 @@
    },
    "devDependencies": {
       "@funtech-inc/spice": "^1.0.1",
+      "@studio-freight/react-lenis": "^0.0.21",
       "@types/prismjs": "^1.26.0",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
       "gsap": "^3.12.1",
+      "i": "^0.3.7",
+      "npm": "^9.7.2",
       "postcss-sort-media-queries": "^5.2.0",
       "prismjs": "^1.29.0",
       "sass": "^1.63.4",
-      "the-new-css-reset": "^1.8.6"
+      "the-new-css-reset": "^1.8.6",
+      "zustand": "^4.3.8"
    }
 }

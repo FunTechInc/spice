@@ -11,6 +11,7 @@ const Description = () => {
          <ul>
             <li>magnet</li>
             <li>you can set FPS</li>
+            <li>you can stopPropagation</li>
          </ul>
       </>
    );
@@ -66,7 +67,10 @@ const Demo = () => {
                   });
                },
             }}>
-            <a href="#" className={s.magnet_button}>
+            <a
+               href="https://github.com/FunTechInc/spice"
+               target="_blank"
+               className={s.magnet_button}>
                Button
             </a>
          </Magnet>
@@ -104,6 +108,30 @@ const Demo = () => {
                <span></span>
             </div>
          </Magnet>
+         <Magnet
+            fps={60}
+            className={s.stalkerWrapper}
+            callback={{
+               move: ({ children, x, y }) => {
+                  const animProps = { duration: 0.2, ease: "power1.out" };
+                  let xTo = gsap.quickTo(children, "x", animProps),
+                     yTo = gsap.quickTo(children, "y", animProps);
+                  xTo(x * 1);
+                  yTo(y * 1);
+               },
+               leave: ({ target, children }) => {
+                  gsap.to([target, children], {
+                     x: 0,
+                     y: 0,
+                     duration: 0.6,
+                     ease: "back.out(4)",
+                     overwrite: true,
+                  });
+               },
+            }}
+            stopPropagation={true}>
+            <div className={s.stalker}></div>
+         </Magnet>
       </>
    );
 };
@@ -111,6 +139,18 @@ const Demo = () => {
 const Code = () => {
    return (
       <>
+         <CodeBlock
+            code={`interface IMagnet {
+   fps?: number;
+   className?: string;
+   children: React.ReactNode;
+   callback: {
+      move: (props: TCallbackProps) => void;
+      leave?: (props: TCallbackProps) => void;
+   };
+   stopPropagation?: boolean;
+}`}
+         />
          <CodeBlock
             code={`<Magnet
 	fps={30}
@@ -136,40 +176,6 @@ const Code = () => {
 	<a href="#" className={s.magnet_button}>
 		Button
 	</a>
-</Magnet>
-<Magnet
-	className={s.balls_wrapper}
-	callback={{
-		move: ({ children, x, y }) => {
-			gsap.context(() => {
-				gsap.to("span", {
-					x: x * 0.6,
-					y: y * 0.6,
-					stagger: {
-						each: 0.02,
-					},
-				});
-			}, children);
-		},
-		leave: ({ children }) => {
-			gsap.context(() => {
-				gsap.to("span", {
-					x: 0,
-					y: 0,
-					duration: 0.6,
-					ease: "back.out(4)",
-					stagger: {
-						each: 0.02,
-					},
-				});
-			}, children);
-		},
-	}}>
-	<div className={s.balls}>
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
 </Magnet>`}
          />
       </>

@@ -10,6 +10,9 @@
    background-color: #fff;
    @include transition(0.8s);
    @include my-cubic-bezier01;
+   a {
+      color: #333;
+   }
 }
 
 .scorll_down {

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useAnimationFrame } from "../../hooks/useAnimationFrame";
+import s from "./spice.module.scss";
 
 type TCallbackProps = {
    target: Element;
@@ -16,6 +17,7 @@ interface IMagnet {
       move: (props: TCallbackProps) => void;
       leave?: (props: TCallbackProps) => void;
    };
+   stopPropagation?: boolean;
 }
 
 export const Magnet = ({
@@ -23,6 +25,7 @@ export const Magnet = ({
    children,
    callback,
    fps = 60,
+   stopPropagation = false,
 }: IMagnet) => {
    const ref = useRef<HTMLDivElement>(null);
    const childrenRef = useRef<HTMLDivElement>(null);
@@ -35,14 +38,11 @@ export const Magnet = ({
       y: 0,
    };
    const setUpPayload = (e: TMouseEvent) => {
-      wrapperRect.current = e.currentTarget.getBoundingClientRect();
       payload.target = ref.current!;
       payload.children = childrenRef.current!;
    };
    const updatePayload = (e: TMouseEvent) => {
-      if (!wrapperRect.current) {
-         return;
-      }
+      wrapperRect.current = e.currentTarget.getBoundingClientRect();
       payload.x =
          e.clientX - wrapperRect.current.left - wrapperRect.current.width / 2;
       payload.y =
@@ -72,7 +72,11 @@ export const Magnet = ({
          onMouseLeave={mouseLeaveHandler}
          className={className ? className : ""}
          ref={ref}>
-         <div ref={childrenRef}>{children}</div>
+         <div
+            ref={childrenRef}
+            className={stopPropagation ? s._magnet_stopPropagation : ""}>
+            {children}
+         </div>
       </div>
    );
 };
