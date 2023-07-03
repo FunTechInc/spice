@@ -1,3 +1,5 @@
+"use client";
+
 import gsap from "gsap";
 import s from "./style.module.scss";
 import { Accordion } from "@/packages/spice/src";
