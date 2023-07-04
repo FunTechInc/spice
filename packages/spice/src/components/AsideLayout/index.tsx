@@ -30,14 +30,18 @@ export const AsideLayout = ({
    }, []);
    return (
       <div className={className ? className : ""}>
-         {aside.index === 1 && <div className={s._aside_main}>{children}</div>}
+         {aside.index === 1 && (
+            <div className={s.spice_aside_main}>{children}</div>
+         )}
          <aside
-            className={`${s._aside_aside} ${
+            className={`${s.spice_aside_aside} ${
                aside.className ? aside.className : ""
             }`}>
             {aside.chidren}
          </aside>
-         {aside.index === 0 && <div className={s._aside_main}>{children}</div>}
+         {aside.index === 0 && (
+            <div className={s.spice_aside_main}>{children}</div>
+         )}
       </div>
    );
 };

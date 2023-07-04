@@ -1,4 +1,4 @@
-._wrapper {
+.spice_wrapper {
    flex-direction: column;
    display: flex;
    min-height: 100vh;
@@ -7,6 +7,6 @@
    }
 }
 
-._wrapper_hidden {
+.spice_wrapper_hidden {
    overflow: hidden;
 }

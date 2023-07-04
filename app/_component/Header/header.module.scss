@@ -9,9 +9,14 @@
    top: 0;
    background-color: #fff;
    @include transition(0.8s);
+   transition-property: transform;
    @include my-cubic-bezier01;
    a {
       color: #333;
+      @include transition();
+      @include hover {
+         opacity: 0.8;
+      }
    }
 }
 

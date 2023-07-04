@@ -59,7 +59,7 @@ export const FieldLayout = ({
             <li key={props.id}>
                <FormItem
                   formProps={props}
-                  className={s._form_radioCheckInput}
+                  className={s.spice_form_radioCheckInput}
                />
                <label htmlFor={props.id}>{props.value}</label>
             </li>

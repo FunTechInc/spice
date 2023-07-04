@@ -44,10 +44,10 @@ export const BackgroundImage = ({
    }
 
    return (
-      <div className={`${s._bgImg_wrapper} ${className ? className : ""}`}>
+      <div className={`${s.spice_bgImg_wrapper} ${className ? className : ""}`}>
          <div
-            className={`${s._bgImg_view} ${
-               isRatio ? s["_bgImg_" + ratio] : ""
+            className={`${s.spice_bgImg_view} ${
+               isRatio ? s["spice_bgImg_" + ratio] : ""
             }`}
             style={isNumber ? { paddingTop: `${ratio}%` } : {}}>
             {children}

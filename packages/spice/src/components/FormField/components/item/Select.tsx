@@ -41,7 +41,7 @@ export const Select = ({ formProps }: { formProps: IFormProps }) => {
       <select
          name={formProps.name}
          id={formProps.id}
-         className={s._form_select}
+         className={s.spice_form_select}
          defaultValue={getSelectedIndex()}>
          <DefaultValue />
          {Options}
