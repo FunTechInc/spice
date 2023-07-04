@@ -4,11 +4,12 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>
-            WrapperLayoutでwrapしてる場合、isStickyをtrueにするとwrapperのoverflowが外れる。
-         </p>
-      </>
+      <ul>
+         <li>
+            When wrapping with WrapperLayout, setting isSticky to true will
+            remove the overflow from the wrapper.
+         </li>
+      </ul>
    );
 };
 
@@ -16,12 +17,16 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`<AsideLayout
-	className={s.wrapper}
-	asideChildren={<AsideNav className={s.nav} />}
-	isSticky={false}>
-	{children}
-</AsideLayout>`}
+            code={`interface IAsideLayout {
+   className?: string;
+   children: React.ReactNode;
+   aside: {
+      chidren: React.ReactNode;
+      className?: string;
+      index: 0 | 1;
+   };
+   isSticky: boolean;
+}`}
          />
       </>
    );

@@ -34,6 +34,7 @@ dropdown
    height: 48px;
    padding: 0 8px;
    color: #333;
+   cursor: initial;
 }
 
 .dropdown_content {
@@ -45,7 +46,10 @@ dropdown
       font-size: 14px;
       text-decoration: underline;
       &:not(:first-child) {
-         margin-top: 8px;
+         margin-top: 12px;
+      }
+      @include hover {
+         opacity: 0.8;
       }
    }
 }

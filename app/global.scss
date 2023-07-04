@@ -42,6 +42,9 @@
    );
 }
 
+/*===============================================
+html body
+===============================================*/
 body {
    background-color: $color-bg;
    color: $color-txt;
@@ -70,7 +73,44 @@ html {
    }
 }
 
+/*===============================================
+UI
+===============================================*/
 a,
 button {
-   color: #333;
+   display: block;
+}
+
+a,
+button,
+input,
+label,
+textarea,
+select {
+   &:focus-visible {
+      outline: $color-key solid 2px;
+
+      @media (hover: none) {
+         outline: none;
+      }
+   }
+}
+
+/*===============================================
+lenis scroll
+===============================================*/
+html.lenis {
+   height: auto;
+}
+.lenis.lenis-smooth {
+   scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+   overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+   overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+   pointer-events: none;
 }

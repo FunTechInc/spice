@@ -8,9 +8,10 @@ import s from "./style.module.scss";
 
 const Description = () => {
    return (
-      <>
-         <p>引数にFPSを受け取るとそのFPSで制限がかかる</p>
-      </>
+      <ul>
+         <li>It internally calls requestAnimationFrame.</li>
+         <li>If you pass FTP, it will limit the frame rate.</li>
+      </ul>
    );
 };
 const Demo = () => {
@@ -29,7 +30,6 @@ const Demo = () => {
             <button onClick={playHandler}>play</button>
             <button onClick={pauseHandler}>pause</button>
          </div>
-         <p className={s.note}>ボタンを押すとconsole.logが呼び出されます</p>
       </>
    );
 };

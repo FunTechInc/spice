@@ -5,9 +5,10 @@ import { useIsTouchDevice } from "@/packages/spice/src";
 
 const Description = () => {
    return (
-      <>
-         <p>touchデバイスの判定</p>
-      </>
+      <ul>
+         <li>It determines whether the device is a touch device or not.</li>
+         <li>When the determination switches, the state is updated.</li>
+      </ul>
    );
 };
 

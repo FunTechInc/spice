@@ -9,9 +9,11 @@ const Description = () => {
    return (
       <>
          <ul>
-            <li>magnet</li>
-            <li>you can set FPS</li>
-            <li>you can stopPropagation</li>
+            <li>You can pass FPS.</li>
+            <li>
+               If you set stopPropagation to true, pointer-event:none; will be
+               applied to children.
+            </li>
          </ul>
       </>
    );
@@ -153,18 +155,18 @@ const Code = () => {
          />
          <CodeBlock
             code={`<Magnet
-	fps={30}
-	className={s.button_wrapper}
+	fps={60}
+	className={s.stalkerWrapper}
 	callback={{
-		move: ({ target, x, y }) => {
-			const animProps = { duration: 0.6, ease: "power1.out" };
-			let xTo = gsap.quickTo(target, "x", animProps),
-				yTo = gsap.quickTo(target, "y", animProps);
-			xTo(x * 0.3);
-			yTo(y * 0.3);
+		move: ({ children, x, y }) => {
+			const animProps = { duration: 0.2, ease: "power1.out" };
+			let xTo = gsap.quickTo(children, "x", animProps),
+				yTo = gsap.quickTo(children, "y", animProps);
+			xTo(x * 1);
+			yTo(y * 1);
 		},
-		leave: ({ target }) => {
-			gsap.to(target, {
+		leave: ({ target, children }) => {
+			gsap.to([target, children], {
 				x: 0,
 				y: 0,
 				duration: 0.6,
@@ -172,10 +174,9 @@ const Code = () => {
 				overwrite: true,
 			});
 		},
-	}}>
-	<a href="#" className={s.magnet_button}>
-		Button
-	</a>
+	}}
+	stopPropagation={true}>
+	<div className={s.stalker}></div>
 </Magnet>`}
          />
       </>

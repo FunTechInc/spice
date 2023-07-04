@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../../packages/spice/src/components/Modal/spice.module.scss"],"names":[],"mappings":"AAAA,eACG,WAAA,CACA,eAAA,CACA,cAAA,CACA,eAAA,CACA,UAAA,CACA,WAAA,CACA,SAAA,CACA,iCACG,eAAA,CADH,yBACG,eAAA","file":"spice.module.min.css"}
+{"version":3,"sources":["../../../packages/spice/src/components/AsideLayout/spice.module.scss"],"names":[],"mappings":"AAAA,cACG,aAAA,CAGH,aACG,UAAA","file":"spice.module.min.css"}

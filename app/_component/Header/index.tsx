@@ -18,19 +18,27 @@ export const Header = () => {
             <Link href="/">(hidden)spice</Link>
             <Dropdown
                position="bottom-center"
-               buttonComponent={
-                  <button className={s.dropdown_button}>View Source</button>
-               }
-               contentComponent={
-                  <div className={s.dropdown_content}>
-                     <a href="https://twitter.com/tkm_hmng8" target="_blank">
-                        GitHub
-                     </a>
-                     <a href="https://twitter.com/tkm_hmng8" target="_blank">
-                        npm
-                     </a>
-                  </div>
-               }
+               parent={{
+                  children: (
+                     <button className={s.dropdown_button}>View Source</button>
+                  ),
+               }}
+               content={{
+                  children: (
+                     <div className={s.dropdown_content}>
+                        <a
+                           href="https://github.com/FunTechInc/spice"
+                           target="_blank">
+                           GitHub
+                        </a>
+                        <a
+                           href="https://github.com/FunTechInc/spice"
+                           target="_blank">
+                           npm
+                        </a>
+                     </div>
+                  ),
+               }}
                callback={{
                   enter: (target) => {
                      gsap.fromTo(

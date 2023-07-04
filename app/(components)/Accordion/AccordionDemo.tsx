@@ -34,7 +34,7 @@ export const AccordionDemo = ({
          isView={isView}
          value={value}
          className={s.accordion}
-         clickEvent={{
+         callback={{
             open: (props) => {
                accordionEvent(props, true);
             },

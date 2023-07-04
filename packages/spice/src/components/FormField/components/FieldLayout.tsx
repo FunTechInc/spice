@@ -8,7 +8,7 @@ interface IFieldLayout {
    formPropsArr: IFormProps[];
    label?: string;
    FormItem: TFormItem;
-   error?: React.ReactNode[];
+   errors?: React.ReactNode[];
 }
 
 export const FieldLayout = ({
@@ -16,13 +16,13 @@ export const FieldLayout = ({
    formPropsArr,
    label,
    FormItem,
-   error,
+   errors,
 }: IFieldLayout) => {
    const createErrorMessage = (index: number) => {
-      if (!error || !error[index]) {
+      if (!errors || !errors[index]) {
          return null;
       }
-      return error[index];
+      return errors[index];
    };
 
    if (layoutType === "block") {

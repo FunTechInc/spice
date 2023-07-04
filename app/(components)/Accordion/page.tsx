@@ -6,9 +6,13 @@ import { AccordionDemo } from "./AccordionDemo";
 
 const Description = () => {
    return (
-      <>
-         <p>Accordion component</p>
-      </>
+      <ul>
+         <li>
+            Since the callback returns a target, you can freely animate it with
+            GSAP or similar.
+         </li>
+         <li>If you set isView to true, it will be in an open state.</li>
+      </ul>
    );
 };
 
@@ -50,7 +54,7 @@ const Code = () => {
    isView?: boolean;
    value: string;
    className: string;
-   clickEvent: TClickEvent;
+   callback: TCallback;
    button: {
       children: React.ReactNode;
       className?: string;
@@ -66,7 +70,7 @@ const Code = () => {
 	isView={isView}
 	value={value}
 	className={s.accordion}
-	clickEvent={{
+	callback={{
 		open: (props) => {
 			accordionEvent(props, true);
 		},

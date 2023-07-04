@@ -10,12 +10,22 @@ const Description = () => {
    return (
       <ul>
          <li>
-            You can use validation library. this sample use &quot;React Hook
-            Form&quot;
+            Please integrate with your favorite validation library. This sample
+            uses{" "}
+            <a href="https://www.react-hook-form.com/" target="_blank">
+               React Hook Form
+            </a>
+            .
          </li>
          <li>
-            お好きなヘッドレスフォームサービスと連携してください。このサンプルは「HyperForm」を使っています。
+            Please integrate with your favorite headless form service. This
+            sample uses{" "}
+            <a href="https://hyperform.jp/" target="_blank">
+               HyperForm
+            </a>
+            .
          </li>
+         <li>Radio and checkbox inputs are set to be hidden by default.</li>
       </ul>
    );
 };
@@ -80,7 +90,7 @@ const Demo = () => {
                   ...register("email", { required: true }),
                },
             ]}
-            error={[
+            errors={[
                <>
                   {errors?.email?.type === "required" ? (
                      <Error error="This field is required" />
@@ -111,7 +121,7 @@ const Demo = () => {
                   }),
                },
             ]}
-            error={[
+            errors={[
                <>
                   {errors?.firstName?.type === "required" ? (
                      <Error error="This field is required" />
@@ -159,7 +169,7 @@ const Demo = () => {
                   }),
                },
             ]}
-            error={[
+            errors={[
                <>
                   {errors?.radio?.type === "required" ? (
                      <Error error="This field is required" />
@@ -256,6 +266,25 @@ const Code = () => {
    return (
       <>
          <CodeBlock
+            code={`interface ISelectOptions {
+   defaultValue?: string;
+   defaultSelectedIndex?: number;
+   options: string[];
+}
+export interface IFormProps
+   extends React.InputHTMLAttributes<HTMLInputElement> {
+   isSelect?: ISelectOptions;
+   isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+}
+
+interface IFormFieldsProps {
+   className: string;
+   label?: string;
+   formProps: IFormProps[];
+   errors?: React.ReactNode[];
+}`}
+         />
+         <CodeBlock
             code={`<FormField
 	className={s.field}
 	label="Mail"
@@ -267,7 +296,7 @@ const Code = () => {
 			...register("email", { required: true }),
 		},
 	]}
-	error={[
+	errors={[
 		<>
 			{errors?.email?.type === "required" ? (
 				<Error error="This field is required" />

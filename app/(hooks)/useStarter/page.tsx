@@ -4,9 +4,12 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>layout.tsxとかで呼び出す。</p>
-      </>
+      <ul>
+         <li>
+            It loads settings to fix the ratio when a resize reload is executed
+            and the screen width is 360px or less.
+         </li>
+      </ul>
    );
 };
 

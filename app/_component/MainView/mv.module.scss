@@ -1,3 +1,5 @@
+@use "../../helpers.scss" as *;
+
 .wrapper {
    background-color: #fff;
 }
@@ -11,6 +13,9 @@
    background-color: #f7f7f7;
    padding: 40px 56px;
    position: relative;
+   @include mq(sm) {
+      padding: 40px 16px;
+   }
 }
 
 .blockTitle {
@@ -39,6 +44,7 @@ description
    li {
       font-size: 16px;
       list-style-type: disc;
+      line-height: 1.5;
       &:not(:first-child) {
          margin-top: 8px;
       }
@@ -46,6 +52,9 @@ description
          color: #333;
          text-decoration: underline;
          display: inline;
+         @include hover {
+            opacity: 0.8;
+         }
       }
    }
 }

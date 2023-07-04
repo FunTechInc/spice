@@ -1,3 +1,10 @@
+html,
+body {
+   width: 100%;
+   min-height: 100%;
+   height: auto;
+}
+
 body {
    font: {
       style: normal;
@@ -6,47 +13,42 @@ body {
    overflow-wrap: break-word;
    font-feature-settings: "palt";
    text-size-adjust: 100%;
+   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
+      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
 }
 
 html {
-   scroll-behavior: initial;
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   scroll-behavior: auto;
    scrollbar-gutter: stable;
 }
 
-html,
-body {
-   width: 100%;
-   min-height: 100%;
+a,
+button,
+input,
+label,
+textarea,
+select {
+   color: inherit;
+   cursor: pointer;
+   @media (hover: none) {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   }
 }
-
 a,
 button {
    border: none;
-   cursor: pointer;
    outline: none;
    text-decoration: none;
    pointer-events: auto;
    transition: 0s;
-   display: block;
    background: none;
    > * {
       pointer-events: none;
    }
 
-   &:focus-visible {
-      outline: -webkit-focus-ring-color auto 1px;
-
-      @media screen and (max-width: 960px) {
-         outline: none;
-      }
-   }
-
    &:focus:not(:fous-visible) {
       outline: none;
-   }
-
-   @media (hover: none) {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
    }
 
    img {
@@ -56,15 +58,6 @@ button {
 
 * {
    min-height: 0vw;
-}
-
-html {
-   -webkit-tap-highlight-color: transparent;
-}
-
-body {
-   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
-      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
 }
 
 img {
@@ -91,16 +84,6 @@ ol,
 li {
    font-size: 0;
    list-style: none;
-}
-
-form {
-   label,
-   span,
-   input {
-      @media (hover: none) {
-         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
-   }
 }
 
 svg {
