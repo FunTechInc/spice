@@ -20,6 +20,11 @@
          opacity: 0.8;
       }
    }
+   @include mq(sm) {
+      width: 100%;
+      padding-right: 0;
+      margin: 80px 0;
+   }
 }
 
 .block {

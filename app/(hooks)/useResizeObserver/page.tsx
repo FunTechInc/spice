@@ -4,9 +4,9 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>useResizeObserver</p>
-      </>
+      <ul>
+         <li>watch the resize of the target.</li>
+      </ul>
    );
 };
 

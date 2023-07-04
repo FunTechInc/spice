@@ -4,9 +4,12 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>よくあるやつ</p>
-      </>
+      <ul>
+         <li>
+            It switches between useEffect and useLayoutEffect depending on the
+            execution environment.
+         </li>
+      </ul>
    );
 };
 

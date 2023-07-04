@@ -3,9 +3,16 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>one aim, one spice</p>
-      </>
+      <ul>
+         <li>
+            one purpose, one spice. You can use it by loading a single component
+            or hook for a single purpose.
+         </li>
+         <li>
+            spice components do not operate by default. It is assumed that you
+            will customize the animation in the callback.
+         </li>
+      </ul>
    );
 };
 

@@ -11,9 +11,9 @@ import { useRef } from "react";
 
 const Description = () => {
    return (
-      <>
-         <p>useScrollDirection</p>
-      </>
+      <ul>
+         <li>watch the scroll direction up or down.</li>
+      </ul>
    );
 };
 

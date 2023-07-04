@@ -4,11 +4,15 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>
-            callbackはリサイズ後の画面サイズと、読み込み時点での初期の画面幅を受け取る。読み込み時点より広がったかどうかの分岐を作りたい場合などに。
-         </p>
-      </>
+      <ul>
+         <li>It monitors screen resizing.</li>
+         <li>
+            The callback receives the screen size after resizing and the initial
+            screen width at the time of loading. This can be used when you want
+            to create a branch to determine whether the screen has expanded
+            compared to the loading point.
+         </li>
+      </ul>
    );
 };
 

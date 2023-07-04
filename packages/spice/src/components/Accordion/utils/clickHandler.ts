@@ -2,7 +2,7 @@ type TClickHandler = {
    height: number;
    target: HTMLDivElement;
 };
-export type TClickEvent = {
+export type TCallback = {
    open: (props: TClickHandler) => void;
    close: (props: TClickHandler) => void;
 };
@@ -10,7 +10,7 @@ interface IClickHandler {
    wrapper: HTMLDivElement;
    inner: HTMLDivElement;
    isOpen: boolean;
-   clickEvent: TClickEvent;
+   callback: TCallback;
 }
 /*===============================================
 callback event
@@ -19,7 +19,7 @@ export const clickHandler = ({
    wrapper,
    inner,
    isOpen,
-   clickEvent,
+   callback,
 }: IClickHandler) => {
    const height = inner.getBoundingClientRect().height;
    const callbackProps = {
@@ -27,8 +27,8 @@ export const clickHandler = ({
       target: wrapper,
    };
    if (isOpen) {
-      clickEvent.close(callbackProps);
+      callback.close(callbackProps);
    } else {
-      clickEvent.open(callbackProps);
+      callback.open(callbackProps);
    }
 };

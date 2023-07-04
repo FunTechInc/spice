@@ -13,9 +13,16 @@ import { useRef } from "react";
 
 const Description = () => {
    return (
-      <>
-         <p>BackgroundImage</p>
-      </>
+      <ul>
+         <li>
+            When you wrap an image with BackgroundImage, it will always be fixed
+            in the center.
+         </li>
+         <li>
+            You can set the ratio. If you enter a number, it will be set as
+            padding-top.
+         </li>
+      </ul>
    );
 };
 

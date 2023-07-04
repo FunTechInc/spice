@@ -13,23 +13,30 @@ const Description = () => {
       <>
          <ul>
             <li>
-               callbackのclose()にpromiseを返すと、dialogのcloseを待たせることができます
+               If you return a promise to the close() in the callback, you can
+               make it wait for the dialog to close.
             </li>
             <li>
-               content内にいれるcloseボタンには、spice__modal_closeクラスをつけてください
+               Please apply the spice__modal_close class to the close button
+               within the content.
             </li>
             <li>
-               dialogを使って実装してるので、overscroll-behaviorを使えば、スマホ時も背景のスクロールを禁止できるのですが、navバーがずれる時などで、スクロールが有効になってしまいます。これを回避するには、open時にbodyを100svhにして、スクロール位置の保存と復元を開閉時にする、みたいなことをすればいいと思います。このデモではzustandでグローバルで管理したstateに応じて、lenisを操作しています。
-               <br />
+               Since it is implemented using a dialog, you can use
+               overscroll-behavior to prevent the background from scrolling even
+               on smartphones. However, scrolling becomes enabled when the nav
+               bar shifts, etc. To avoid this, you should do something like
+               setting the body to 100svh when opening and save and restore the
+               scroll position when opening and closing. In this demo,{" "}
                <a
                   href="https://github.com/studio-freight/react-lenis"
                   target="_blank">
-                  https://github.com/studio-freight/react-lenis
-               </a>
-               <br />
+                  Lenis
+               </a>{" "}
+               is operated according to the state managed globally with{" "}
                <a href="https://github.com/pmndrs/zustand" target="_blank">
-                  https://github.com/pmndrs/zustand
+                  zustand
                </a>
+               .
             </li>
          </ul>
       </>

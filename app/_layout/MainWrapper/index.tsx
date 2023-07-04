@@ -14,8 +14,11 @@ export const MainWrapper = ({ children }: { children: React.ReactNode }) => {
             <MainInner>
                <AsideLayout
                   className={s.wrapper}
-                  asideChildren={<AsideNav className={s.nav} />}
-                  isSticky={false}>
+                  aside={{
+                     chidren: <AsideNav className={s.nav} />,
+                     index: 1,
+                  }}
+                  isSticky={true}>
                   {children}
                </AsideLayout>
             </MainInner>

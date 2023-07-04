@@ -1,12 +1,21 @@
+@use "../../helpers.scss" as *;
+
 .wrapper {
-   margin: 120px auto 40px;
+   margin: 120px auto 0;
    display: flex;
-   @media screen and (max-width: 560px) {
+   flex-direction: row-reverse;
+   min-height: 100vh;
+
+   @include mq(sm) {
       display: block;
    }
 }
 
 .nav {
    position: sticky;
-   top: 0;
+   top: 80px;
+   @include mq(sm) {
+      position: static;
+      top: auto;
+   }
 }

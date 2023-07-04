@@ -16,8 +16,12 @@ interface IDropdown {
       | "top-left"
       | "top-center"
       | "top-right";
-   buttonComponent: React.ReactNode;
-   contentComponent: React.ReactNode;
+   parent: {
+      children: React.ReactNode;
+   };
+   content: {
+      children: React.ReactNode;
+   };
    callback?: {
       enter?: (target: Element) => void;
       leave?: (target: Element) => void;
@@ -27,8 +31,8 @@ interface IDropdown {
 
 export const Dropdown = ({
    position,
-   buttonComponent,
-   contentComponent,
+   parent,
+   content,
    callback,
    className,
 }: IDropdown) => {
@@ -57,7 +61,7 @@ export const Dropdown = ({
             }
          }}
          className={`${s._dropdown_wrapper} ${className ? className : ""}`}>
-         {buttonComponent}
+         {parent.children}
          <div
             ref={ref}
             className={`${s._dropdown_content} ${
@@ -65,7 +69,7 @@ export const Dropdown = ({
             } ${isPointerPrevent ? s._dropdown_content_pointerPrevent : ""} ${
                s[`_dropdown_` + position]
             }`}>
-            {contentComponent}
+            {content.children}
          </div>
       </div>
    );

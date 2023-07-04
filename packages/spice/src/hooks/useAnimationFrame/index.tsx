@@ -9,14 +9,11 @@ type TPlay = "play" | "pause";
 
 export const useAnimationFrame = (fps: number) => {
    /*===============================================
-	FPSは60以下でハンドリングする
+	handling FPS
 	===============================================*/
    if (fps > 60) {
       fps = 60;
    }
-   /*===============================================
-	FPSで制限する
-	===============================================*/
    const interval = Math.floor(1000 / fps);
    let previousTime = performance.now();
    const isWithOutFrames = (timestamp: number) => {

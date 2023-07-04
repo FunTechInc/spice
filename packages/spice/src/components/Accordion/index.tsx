@@ -2,14 +2,14 @@ import { useRef, useState } from "react";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { setTabIndex } from "./utils/setTabIndex";
-import { clickHandler, TClickEvent } from "./utils/clickHandler";
+import { clickHandler, TCallback } from "./utils/clickHandler";
 import s from "./spice.module.scss";
 
 interface IAccordion {
    isView?: boolean;
    value: string;
    className: string;
-   clickEvent: TClickEvent;
+   callback: TCallback;
    button: {
       children: React.ReactNode;
       className?: string;
@@ -25,7 +25,7 @@ export const Accordion = ({
    value,
    className,
    button,
-   clickEvent,
+   callback,
    content,
 }: IAccordion) => {
    const wrapperRef = useRef<HTMLDivElement>(null);
@@ -66,7 +66,7 @@ export const Accordion = ({
                   wrapper: wrapperRef.current!,
                   inner: innerRef.current!,
                   isOpen,
-                  clickEvent,
+                  callback,
                });
                /*===============================================
 					toggle state

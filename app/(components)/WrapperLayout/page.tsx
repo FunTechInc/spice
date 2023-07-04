@@ -4,12 +4,17 @@ import { MainView } from "@/app/_component/MainView";
 
 const Description = () => {
    return (
-      <>
-         <p>
-            WrapperLayout内の子要素の最初のmainタグに対してflex:
-            1;が適用される。それによってfooterが常に画面下に固定される。あと、AsideLayoutのisStickyをtrueにすると、overflowが外れるようになってるので、stickyも簡単。
-         </p>
-      </>
+      <ul>
+         <li>
+            The first main tag of the child elements within WrapperLayout has
+            flex: 1; applied, allowing the footer to always be fixed at the
+            bottom of the screen.
+         </li>
+         <li>
+            If you set isSticky to true in AsideLayout, overflow is disabled,
+            making sticky positioning simple.
+         </li>
+      </ul>
    );
 };
 

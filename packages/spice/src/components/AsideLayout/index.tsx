@@ -2,17 +2,23 @@ import { useOverflowDispatch } from "../WrapperLayout";
 import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import s from "./spice.module.scss";
 
+interface IAsideLayout {
+   className?: string;
+   children: React.ReactNode;
+   aside: {
+      chidren: React.ReactNode;
+      className?: string;
+      index: 0 | 1;
+   };
+   isSticky: boolean;
+}
+
 export const AsideLayout = ({
    className,
    children,
-   asideChildren,
+   aside,
    isSticky = false,
-}: {
-   className?: string;
-   children: React.ReactNode;
-   asideChildren: React.ReactNode;
-   isSticky: boolean;
-}) => {
+}: IAsideLayout) => {
    const setOverflow = useOverflowDispatch();
    useIsomorphicLayoutEffect(() => {
       if (isSticky) {
@@ -24,8 +30,14 @@ export const AsideLayout = ({
    }, []);
    return (
       <div className={className ? className : ""}>
-         <aside className={s._aside_aside}>{asideChildren}</aside>
-         <div className={s._aside_main}>{children}</div>
+         {aside.index === 1 && <div className={s._aside_main}>{children}</div>}
+         <aside
+            className={`${s._aside_aside} ${
+               aside.className ? aside.className : ""
+            }`}>
+            {aside.chidren}
+         </aside>
+         {aside.index === 0 && <div className={s._aside_main}>{children}</div>}
       </div>
    );
 };

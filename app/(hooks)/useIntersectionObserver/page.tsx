@@ -8,9 +8,9 @@ import { gsap } from "gsap";
 
 const Description = () => {
    return (
-      <>
-         <p>useIntersectionObserver</p>
-      </>
+      <ul>
+         <li>watch the intersection of the target.</li>
+      </ul>
    );
 };
 

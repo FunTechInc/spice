@@ -18,14 +18,14 @@ interface IFormFieldsProps {
    className: string;
    label?: string;
    formProps: IFormProps[];
-   error?: React.ReactNode[];
+   errors?: React.ReactNode[];
 }
 
 export const FormField = ({
    className,
    label,
    formProps,
-   error,
+   errors,
 }: IFormFieldsProps) => {
    const formPropsArr = formProps;
    const type = formPropsArr[0].type;
@@ -40,7 +40,7 @@ export const FormField = ({
    if (!(type === "radio" || type === "checkbox") && propsLength > 2) {
       throw new Error("The length of formProps is up to 2.");
    }
-   if (error && error.length > 2) {
+   if (errors && errors.length > 2) {
       throw new Error("The length of error is up to 2.");
    }
 
@@ -54,7 +54,7 @@ export const FormField = ({
          formPropsArr,
          label,
          FormItem,
-         error,
+         errors,
       });
    };
 
@@ -81,7 +81,7 @@ export const FormField = ({
             formPropsArr,
             label,
             FormItem: Input,
-            error,
+            errors,
          });
       }
       /*===============================================

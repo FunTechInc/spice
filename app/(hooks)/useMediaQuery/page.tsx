@@ -5,9 +5,12 @@ import { useMediaQuery } from "@/packages/spice/src";
 
 const Description = () => {
    return (
-      <>
-         <p>useMediaQuery</p>
-      </>
+      <ul>
+         <li>
+            It monitors the screen width and returns whether it fits or not.
+         </li>
+         <li>When the determination switches, the state is updated.</li>
+      </ul>
    );
 };
 
