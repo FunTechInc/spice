@@ -65,7 +65,7 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
                   closeModal();
                }
             }}
-            className={`${s._modal_dialog} ${
+            className={`${s.spice_modal_dialog} ${
                dialog.className ? dialog.className : ""
             }`}>
             {dialog.children}

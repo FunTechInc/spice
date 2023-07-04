@@ -74,7 +74,7 @@ export const Magnet = ({
          ref={ref}>
          <div
             ref={childrenRef}
-            className={stopPropagation ? s._magnet_stopPropagation : ""}>
+            className={stopPropagation ? s.spice_magnet_stopPropagation : ""}>
             {children}
          </div>
       </div>

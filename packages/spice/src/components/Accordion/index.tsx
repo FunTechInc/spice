@@ -80,8 +80,8 @@ export const Accordion = ({
          </button>
          <div
             ref={wrapperRef}
-            className={`${s._accordion_contentWrapper} ${
-               isView ? "" : s._accordion_hidden
+            className={`${s.spice_accordion_contentWrapper} ${
+               isView ? "" : s.spice_accordion_hidden
             }`}
             id={`content-${value}`}
             aria-labelledby={`button-${value}`}

@@ -27,7 +27,10 @@ const WrapperContext = ({ children }: { children: React.ReactNode }) => {
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
    const isOverflow = useContext(OverflowContext);
    return (
-      <div className={`${s._wrapper} ${isOverflow ? s._wrapper_hidden : ""}`}>
+      <div
+         className={`${s.spice_wrapper} ${
+            isOverflow ? s.spice_wrapper_hidden : ""
+         }`}>
          {children}
       </div>
    );

@@ -1,9 +1,10 @@
 # (hidden)spice
 
-(hidden)mekuri is a package for page transition animation in Next.js. It supports both 'wait' and 'sync' modes, as well as popstate (scroll position preservation during popstate). Since animations can be set on a per-component basis, you can implement them flexibly using animation libraries such as GSAP.
+one purpose, one spice.
+You can use it by loading a single component or hook for a single purpose.
 
 ```bash
 $ npm i @funtech-inc/spice
 ```
 
-[Docs is Here!](https://funtech-inc.notion.site/hidden-mekuri-13ccf68e709d48429ceb2854bf42d7ed?pvs=4)
+[Docs is Here!](https://spice-beryl.vercel.app/)

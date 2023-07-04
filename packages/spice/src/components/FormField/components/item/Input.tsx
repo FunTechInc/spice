@@ -11,7 +11,7 @@ export const Input = ({
    return (
       <input
          {...formProps}
-         className={`${s._form_input} ${className ? className : ""}`}
+         className={`${s.spice_form_input} ${className ? className : ""}`}
       />
    );
 };

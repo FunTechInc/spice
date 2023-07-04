@@ -60,15 +60,17 @@ export const Dropdown = ({
                setIsView(false);
             }
          }}
-         className={`${s._dropdown_wrapper} ${className ? className : ""}`}>
+         className={`${s.spice_dropdown_wrapper} ${
+            className ? className : ""
+         }`}>
          {parent.children}
          <div
             ref={ref}
-            className={`${s._dropdown_content} ${
-               isView ? "" : s._dropdown_content_hidden
-            } ${isPointerPrevent ? s._dropdown_content_pointerPrevent : ""} ${
-               s[`_dropdown_` + position]
-            }`}>
+            className={`${s.spice_dropdown_content} ${
+               isView ? "" : s.spice_dropdown_content_hidden
+            } ${
+               isPointerPrevent ? s.spice_dropdown_content_pointerPrevent : ""
+            } ${s[`spice_dropdown_` + position]}`}>
             {content.children}
          </div>
       </div>

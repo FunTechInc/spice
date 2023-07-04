@@ -1,12 +1,12 @@
-._tab_button {
+.spice_tab_button {
    cursor: pointer;
 }
 
-._tab_contentWrapper {
+.spice_tab_contentWrapper {
    position: relative;
 }
 
-._tab_hidden {
+.spice_tab_hidden {
    pointer-events: none;
    position: absolute;
    visibility: hidden;

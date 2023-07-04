@@ -54,7 +54,7 @@ export const Tab = ({ lists, contents, callback }: ITab) => {
                clickHandler(i);
             }}
             key={i}
-            className={`${lists.buttonClassName} ${s._tab_button} ${
+            className={`${lists.buttonClassName} ${s.spice_tab_button} ${
                isView === i ? lists.isViewClassName : ""
             }`}>
             {child}
@@ -74,7 +74,7 @@ export const Tab = ({ lists, contents, callback }: ITab) => {
       const ref = useRef(null);
       contentRefArr.push(ref);
       return (
-         <li ref={ref} className={isView === index ? "" : s._tab_hidden}>
+         <li ref={ref} className={isView === index ? "" : s.spice_tab_hidden}>
             {children}
          </li>
       );
@@ -90,7 +90,7 @@ export const Tab = ({ lists, contents, callback }: ITab) => {
    return (
       <div>
          <div className={lists.wrapperClassName}>{listArr}</div>
-         <ul className={s._tab_contentWrapper}>{contentArr}</ul>
+         <ul className={s.spice_tab_contentWrapper}>{contentArr}</ul>
       </div>
    );
 };
