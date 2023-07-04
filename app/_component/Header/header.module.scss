@@ -10,6 +10,7 @@
    background-color: #fff;
    @include transition(0.8s);
    transition-property: transform;
+   scrollbar-gutter: stable;
    @include my-cubic-bezier01;
    a {
       color: #333;
