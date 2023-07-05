@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { setTabIndex } from "./utils/setTabIndex";
 import { clickHandler, TCallback } from "./utils/clickHandler";
 import s from "./spice.module.scss";
@@ -8,7 +7,7 @@ import s from "./spice.module.scss";
 interface IAccordion {
    isView?: boolean;
    value: string;
-   className: string;
+   className?: string;
    callback: TCallback;
    button: {
       children: React.ReactNode;
@@ -35,7 +34,7 @@ export const Accordion = ({
    /*===============================================
 	Set tabindex to click element in content
 	===============================================*/
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       setTabIndex({ content: wrapperRef.current!, isOpen });
    }, [isOpen]);
 
@@ -55,7 +54,7 @@ export const Accordion = ({
    });
 
    return (
-      <div className={className}>
+      <div className={className ? className : ""}>
          <button
             className={button.className ? button.className : ""}
             onClick={() => {

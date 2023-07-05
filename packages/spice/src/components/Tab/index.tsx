@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
+import { useRef, useState, useEffect } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import s from "./spice.module.scss";
 
@@ -35,7 +34,7 @@ export const Tab = ({ lists, contents, callback }: ITab) => {
       await promiseMaker(callback.leave(contentRefArr[isView].current!));
       setIsView(i);
    };
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       if (!isFirst.current) {
          isFirst.current = true;
          return;

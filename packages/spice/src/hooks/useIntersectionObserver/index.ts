@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useEffect } from "react";
 
 interface IUseIntersectionObserver {
    targetRef: React.RefObject<HTMLElement>;
@@ -24,7 +24,8 @@ export const useIntersectionObserver = ({
       rootMargin: rootMargin,
       threshold: threshold,
    };
-   useIsomorphicLayoutEffect(() => {
+
+   useEffect(() => {
       //return false if target is undifined
       const target = targetRef.current;
       if (!target) {
@@ -53,5 +54,6 @@ export const useIntersectionObserver = ({
       return () => {
          observer.unobserve(target);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 };

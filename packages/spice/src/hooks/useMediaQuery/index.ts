@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 interface IUseMediaQuery {
    type: "max" | "min";
@@ -28,8 +27,10 @@ export const useMediaQuery = ({ type, width }: IUseMediaQuery) => {
       debounce: 100,
       dependencies: [],
    });
-   useIsomorphicLayoutEffect(() => {
+
+   useEffect(() => {
       updateState(window.innerWidth);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    return isQuery;

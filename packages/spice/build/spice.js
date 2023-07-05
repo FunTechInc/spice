@@ -1,4 +1,4 @@
-import Ve, { createContext as Ye, useState as D, useContext as Ue, useLayoutEffect as Pr, useEffect as Cr, useRef as R, useReducer as Sr } from "react";
+import Ve, { createContext as Ye, useState as k, useContext as Ue, useEffect as O, useRef as R, useLayoutEffect as Pr, useReducer as Cr } from "react";
 var ae = { exports: {} }, M = {};
 /**
  * @license React
@@ -9,23 +9,23 @@ var ae = { exports: {} }, M = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var De;
+var ke;
 function Or() {
-  if (De)
+  if (ke)
     return M;
-  De = 1;
-  var n = Ve, t = Symbol.for("react.element"), c = Symbol.for("react.fragment"), o = Object.prototype.hasOwnProperty, i = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, s = { key: !0, ref: !0, __self: !0, __source: !0 };
+  ke = 1;
+  var n = Ve, t = Symbol.for("react.element"), s = Symbol.for("react.fragment"), o = Object.prototype.hasOwnProperty, i = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, a = { key: !0, ref: !0, __self: !0, __source: !0 };
   function d(l, _, g) {
     var v, b = {}, y = null, j = null;
     g !== void 0 && (y = "" + g), _.key !== void 0 && (y = "" + _.key), _.ref !== void 0 && (j = _.ref);
     for (v in _)
-      o.call(_, v) && !s.hasOwnProperty(v) && (b[v] = _[v]);
+      o.call(_, v) && !a.hasOwnProperty(v) && (b[v] = _[v]);
     if (l && l.defaultProps)
       for (v in _ = l.defaultProps, _)
         b[v] === void 0 && (b[v] = _[v]);
     return { $$typeof: t, type: l, key: y, ref: j, props: b, _owner: i.current };
   }
-  return M.Fragment = c, M.jsx = d, M.jsxs = d, M;
+  return M.Fragment = s, M.jsx = d, M.jsxs = d, M;
 }
 var V = {};
 /**
@@ -37,29 +37,29 @@ var V = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var Ne;
-function Ir() {
-  return Ne || (Ne = 1, process.env.NODE_ENV !== "production" && function() {
-    var n = Ve, t = Symbol.for("react.element"), c = Symbol.for("react.portal"), o = Symbol.for("react.fragment"), i = Symbol.for("react.strict_mode"), s = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), l = Symbol.for("react.context"), _ = Symbol.for("react.forward_ref"), g = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), b = Symbol.for("react.memo"), y = Symbol.for("react.lazy"), j = Symbol.for("react.offscreen"), F = Symbol.iterator, C = "@@iterator";
+var De;
+function Sr() {
+  return De || (De = 1, process.env.NODE_ENV !== "production" && function() {
+    var n = Ve, t = Symbol.for("react.element"), s = Symbol.for("react.portal"), o = Symbol.for("react.fragment"), i = Symbol.for("react.strict_mode"), a = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), l = Symbol.for("react.context"), _ = Symbol.for("react.forward_ref"), g = Symbol.for("react.suspense"), v = Symbol.for("react.suspense_list"), b = Symbol.for("react.memo"), y = Symbol.for("react.lazy"), j = Symbol.for("react.offscreen"), F = Symbol.iterator, C = "@@iterator";
     function He(e) {
       if (e === null || typeof e != "object")
         return null;
       var r = F && e[F] || e[C];
       return typeof r == "function" ? r : null;
     }
-    var N = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    var D = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function T(e) {
       {
-        for (var r = arguments.length, a = new Array(r > 1 ? r - 1 : 0), f = 1; f < r; f++)
-          a[f - 1] = arguments[f];
-        Ge("error", e, a);
+        for (var r = arguments.length, c = new Array(r > 1 ? r - 1 : 0), f = 1; f < r; f++)
+          c[f - 1] = arguments[f];
+        Ge("error", e, c);
       }
     }
-    function Ge(e, r, a) {
+    function Ge(e, r, c) {
       {
-        var f = N.ReactDebugCurrentFrame, h = f.getStackAddendum();
-        h !== "" && (r += "%s", a = a.concat([h]));
-        var w = a.map(function(m) {
+        var f = D.ReactDebugCurrentFrame, h = f.getStackAddendum();
+        h !== "" && (r += "%s", c = c.concat([h]));
+        var w = c.map(function(m) {
           return String(m);
         });
         w.unshift("Warning: " + r), Function.prototype.apply.call(console[e], console, w);
@@ -68,18 +68,18 @@ function Ir() {
     var Je = !1, Ke = !1, Xe = !1, Qe = !1, Ze = !1, de;
     de = Symbol.for("react.module.reference");
     function er(e) {
-      return !!(typeof e == "string" || typeof e == "function" || e === o || e === s || Ze || e === i || e === g || e === v || Qe || e === j || Je || Ke || Xe || typeof e == "object" && e !== null && (e.$$typeof === y || e.$$typeof === b || e.$$typeof === d || e.$$typeof === l || e.$$typeof === _ || // This needs to include all possible module reference object
+      return !!(typeof e == "string" || typeof e == "function" || e === o || e === a || Ze || e === i || e === g || e === v || Qe || e === j || Je || Ke || Xe || typeof e == "object" && e !== null && (e.$$typeof === y || e.$$typeof === b || e.$$typeof === d || e.$$typeof === l || e.$$typeof === _ || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
       e.$$typeof === de || e.getModuleId !== void 0));
     }
-    function rr(e, r, a) {
+    function rr(e, r, c) {
       var f = e.displayName;
       if (f)
         return f;
       var h = r.displayName || r.name || "";
-      return h !== "" ? a + "(" + h + ")" : a;
+      return h !== "" ? c + "(" + h + ")" : c;
     }
     function fe(e) {
       return e.displayName || "Context";
@@ -94,9 +94,9 @@ function Ir() {
       switch (e) {
         case o:
           return "Fragment";
-        case c:
-          return "Portal";
         case s:
+          return "Portal";
+        case a:
           return "Profiler";
         case i:
           return "StrictMode";
@@ -111,8 +111,8 @@ function Ir() {
             var r = e;
             return fe(r) + ".Consumer";
           case d:
-            var a = e;
-            return fe(a._context) + ".Provider";
+            var c = e;
+            return fe(c._context) + ".Provider";
           case _:
             return rr(e, e.render, "ForwardRef");
           case b:
@@ -129,7 +129,7 @@ function Ir() {
         }
       return null;
     }
-    var k = Object.assign, W = 0, _e, pe, ve, me, he, ge, we;
+    var N = Object.assign, W = 0, _e, pe, ve, me, he, ge, we;
     function be() {
     }
     be.__reactDisabledLog = !0;
@@ -165,25 +165,25 @@ function Ir() {
             writable: !0
           };
           Object.defineProperties(console, {
-            log: k({}, e, {
+            log: N({}, e, {
               value: _e
             }),
-            info: k({}, e, {
+            info: N({}, e, {
               value: pe
             }),
-            warn: k({}, e, {
+            warn: N({}, e, {
               value: ve
             }),
-            error: k({}, e, {
+            error: N({}, e, {
               value: me
             }),
-            group: k({}, e, {
+            group: N({}, e, {
               value: he
             }),
-            groupCollapsed: k({}, e, {
+            groupCollapsed: N({}, e, {
               value: ge
             }),
-            groupEnd: k({}, e, {
+            groupEnd: N({}, e, {
               value: we
             })
           });
@@ -191,8 +191,8 @@ function Ir() {
         W < 0 && T("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
-    var J = N.ReactCurrentDispatcher, K;
-    function U(e, r, a) {
+    var J = D.ReactCurrentDispatcher, K;
+    function U(e, r, c) {
       {
         if (K === void 0)
           try {
@@ -214,9 +214,9 @@ function Ir() {
       if (!e || X)
         return "";
       {
-        var a = B.get(e);
-        if (a !== void 0)
-          return a;
+        var c = B.get(e);
+        if (c !== void 0)
+          return c;
       }
       var f;
       X = !0;
@@ -278,17 +278,17 @@ function Ir() {
       } finally {
         X = !1, J.current = w, nr(), Error.prepareStackTrace = h;
       }
-      var A = e ? e.displayName || e.name : "", ke = A ? U(A) : "";
-      return typeof e == "function" && B.set(e, ke), ke;
+      var A = e ? e.displayName || e.name : "", Ne = A ? U(A) : "";
+      return typeof e == "function" && B.set(e, Ne), Ne;
     }
-    function ir(e, r, a) {
+    function ir(e, r, c) {
       return ye(e, !1);
     }
     function sr(e) {
       var r = e.prototype;
       return !!(r && r.isReactComponent);
     }
-    function z(e, r, a) {
+    function z(e, r, c) {
       if (e == null)
         return "";
       if (typeof e == "function")
@@ -306,26 +306,26 @@ function Ir() {
           case _:
             return ir(e.render);
           case b:
-            return z(e.type, r, a);
+            return z(e.type, r, c);
           case y: {
             var f = e, h = f._payload, w = f._init;
             try {
-              return z(w(h), r, a);
+              return z(w(h), r, c);
             } catch {
             }
           }
         }
       return "";
     }
-    var H = Object.prototype.hasOwnProperty, xe = {}, Ee = N.ReactDebugCurrentFrame;
+    var H = Object.prototype.hasOwnProperty, xe = {}, Ee = D.ReactDebugCurrentFrame;
     function G(e) {
       if (e) {
-        var r = e._owner, a = z(e.type, e._source, r ? r.type : null);
-        Ee.setExtraStackFrame(a);
+        var r = e._owner, c = z(e.type, e._source, r ? r.type : null);
+        Ee.setExtraStackFrame(c);
       } else
         Ee.setExtraStackFrame(null);
     }
-    function ar(e, r, a, f, h) {
+    function ar(e, r, c, f, h) {
       {
         var w = Function.call.bind(H);
         for (var m in e)
@@ -333,14 +333,14 @@ function Ir() {
             var p = void 0;
             try {
               if (typeof e[m] != "function") {
-                var P = Error((f || "React class") + ": " + a + " type `" + m + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof e[m] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                var P = Error((f || "React class") + ": " + c + " type `" + m + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof e[m] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw P.name = "Invariant Violation", P;
               }
-              p = e[m](r, m, f, a, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              p = e[m](r, m, f, c, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (x) {
               p = x;
             }
-            p && !(p instanceof Error) && (G(h), T("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", f || "React class", a, m, typeof p), G(null)), p instanceof Error && !(p.message in xe) && (xe[p.message] = !0, G(h), T("Failed %s type: %s", a, p.message), G(null));
+            p && !(p instanceof Error) && (G(h), T("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", f || "React class", c, m, typeof p), G(null)), p instanceof Error && !(p.message in xe) && (xe[p.message] = !0, G(h), T("Failed %s type: %s", c, p.message), G(null));
           }
       }
     }
@@ -350,8 +350,8 @@ function Ir() {
     }
     function ur(e) {
       {
-        var r = typeof Symbol == "function" && Symbol.toStringTag, a = r && e[Symbol.toStringTag] || e.constructor.name || "Object";
-        return a;
+        var r = typeof Symbol == "function" && Symbol.toStringTag, c = r && e[Symbol.toStringTag] || e.constructor.name || "Object";
+        return c;
       }
     }
     function lr(e) {
@@ -368,7 +368,7 @@ function Ir() {
       if (lr(e))
         return T("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", ur(e)), Re(e);
     }
-    var L = N.ReactCurrentOwner, dr = {
+    var L = D.ReactCurrentOwner, dr = {
       key: !0,
       ref: !0,
       __self: !0,
@@ -393,40 +393,40 @@ function Ir() {
     }
     function pr(e, r) {
       if (typeof e.ref == "string" && L.current && r && L.current.stateNode !== r) {
-        var a = I(L.current.type);
-        Z[a] || (T('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', I(L.current.type), e.ref), Z[a] = !0);
+        var c = I(L.current.type);
+        Z[c] || (T('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', I(L.current.type), e.ref), Z[c] = !0);
       }
     }
     function vr(e, r) {
       {
-        var a = function() {
+        var c = function() {
           Te || (Te = !0, T("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
         };
-        a.isReactWarning = !0, Object.defineProperty(e, "key", {
-          get: a,
+        c.isReactWarning = !0, Object.defineProperty(e, "key", {
+          get: c,
           configurable: !0
         });
       }
     }
     function mr(e, r) {
       {
-        var a = function() {
+        var c = function() {
           Pe || (Pe = !0, T("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
         };
-        a.isReactWarning = !0, Object.defineProperty(e, "ref", {
-          get: a,
+        c.isReactWarning = !0, Object.defineProperty(e, "ref", {
+          get: c,
           configurable: !0
         });
       }
     }
-    var hr = function(e, r, a, f, h, w, m) {
+    var hr = function(e, r, c, f, h, w, m) {
       var p = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: t,
         // Built-in properties that belong on the element
         type: e,
         key: r,
-        ref: a,
+        ref: c,
         props: m,
         // Record the component responsible for creating this element.
         _owner: w
@@ -448,10 +448,10 @@ function Ir() {
         value: h
       }), Object.freeze && (Object.freeze(p.props), Object.freeze(p)), p;
     };
-    function gr(e, r, a, f, h) {
+    function gr(e, r, c, f, h) {
       {
         var w, m = {}, p = null, P = null;
-        a !== void 0 && (je(a), p = "" + a), _r(r) && (je(r.key), p = "" + r.key), fr(r) && (P = r.ref, pr(r, h));
+        c !== void 0 && (je(c), p = "" + c), _r(r) && (je(r.key), p = "" + r.key), fr(r) && (P = r.ref, pr(r, h));
         for (w in r)
           H.call(r, w) && !dr.hasOwnProperty(w) && (m[w] = r[w]);
         if (e && e.defaultProps) {
@@ -466,11 +466,11 @@ function Ir() {
         return hr(e, p, P, h, f, L.current, m);
       }
     }
-    var ee = N.ReactCurrentOwner, Ce = N.ReactDebugCurrentFrame;
+    var ee = D.ReactCurrentOwner, Ce = D.ReactDebugCurrentFrame;
     function q(e) {
       if (e) {
-        var r = e._owner, a = z(e.type, e._source, r ? r.type : null);
-        Ce.setExtraStackFrame(a);
+        var r = e._owner, c = z(e.type, e._source, r ? r.type : null);
+        Ce.setExtraStackFrame(c);
       } else
         Ce.setExtraStackFrame(null);
     }
@@ -479,7 +479,7 @@ function Ir() {
     function te(e) {
       return typeof e == "object" && e !== null && e.$$typeof === t;
     }
-    function Se() {
+    function Oe() {
       {
         if (ee.current) {
           var e = I(ee.current.type);
@@ -494,23 +494,23 @@ Check the render method of \`` + e + "`.";
     function wr(e) {
       {
         if (e !== void 0) {
-          var r = e.fileName.replace(/^.*[\\\/]/, ""), a = e.lineNumber;
+          var r = e.fileName.replace(/^.*[\\\/]/, ""), c = e.lineNumber;
           return `
 
-Check your code at ` + r + ":" + a + ".";
+Check your code at ` + r + ":" + c + ".";
         }
         return "";
       }
     }
-    var Oe = {};
+    var Se = {};
     function br(e) {
       {
-        var r = Se();
+        var r = Oe();
         if (!r) {
-          var a = typeof e == "string" ? e : e.displayName || e.name;
-          a && (r = `
+          var c = typeof e == "string" ? e : e.displayName || e.name;
+          c && (r = `
 
-Check the top-level render call using <` + a + ">.");
+Check the top-level render call using <` + c + ">.");
         }
         return r;
       }
@@ -520,12 +520,12 @@ Check the top-level render call using <` + a + ">.");
         if (!e._store || e._store.validated || e.key != null)
           return;
         e._store.validated = !0;
-        var a = br(r);
-        if (Oe[a])
+        var c = br(r);
+        if (Se[c])
           return;
-        Oe[a] = !0;
+        Se[c] = !0;
         var f = "";
-        e && e._owner && e._owner !== ee.current && (f = " It was passed a child from " + I(e._owner.type) + "."), q(e), T('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', a, f), q(null);
+        e && e._owner && e._owner !== ee.current && (f = " It was passed a child from " + I(e._owner.type) + "."), q(e), T('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', c, f), q(null);
       }
     }
     function $e(e, r) {
@@ -533,8 +533,8 @@ Check the top-level render call using <` + a + ">.");
         if (typeof e != "object")
           return;
         if (Q(e))
-          for (var a = 0; a < e.length; a++) {
-            var f = e[a];
+          for (var c = 0; c < e.length; c++) {
+            var f = e[c];
             te(f) && Ie(f, r);
           }
         else if (te(e))
@@ -552,18 +552,18 @@ Check the top-level render call using <` + a + ">.");
         var r = e.type;
         if (r == null || typeof r == "string")
           return;
-        var a;
+        var c;
         if (typeof r == "function")
-          a = r.propTypes;
+          c = r.propTypes;
         else if (typeof r == "object" && (r.$$typeof === _ || // Note: Memo only checks outer props here.
         // Inner props are checked in the reconciler.
         r.$$typeof === b))
-          a = r.propTypes;
+          c = r.propTypes;
         else
           return;
-        if (a) {
+        if (c) {
           var f = I(r);
-          ar(a, e.props, "prop", f, e);
+          ar(c, e.props, "prop", f, e);
         } else if (r.PropTypes !== void 0 && !re) {
           re = !0;
           var h = I(r);
@@ -574,8 +574,8 @@ Check the top-level render call using <` + a + ">.");
     }
     function xr(e) {
       {
-        for (var r = Object.keys(e.props), a = 0; a < r.length; a++) {
-          var f = r[a];
+        for (var r = Object.keys(e.props), c = 0; c < r.length; c++) {
+          var f = r[c];
           if (f !== "children" && f !== "key") {
             q(e), T("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", f), q(null);
             break;
@@ -584,18 +584,18 @@ Check the top-level render call using <` + a + ">.");
         e.ref !== null && (q(e), T("Invalid attribute `ref` supplied to `React.Fragment`."), q(null));
       }
     }
-    function Fe(e, r, a, f, h, w) {
+    function Fe(e, r, c, f, h, w) {
       {
         var m = er(e);
         if (!m) {
           var p = "";
           (e === void 0 || typeof e == "object" && e !== null && Object.keys(e).length === 0) && (p += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
           var P = wr(h);
-          P ? p += P : p += Se();
+          P ? p += P : p += Oe();
           var x;
           e === null ? x = "null" : Q(e) ? x = "array" : e !== void 0 && e.$$typeof === t ? (x = "<" + (I(e.type) || "Unknown") + " />", p = " Did you accidentally export a JSX literal instead of a component?") : x = typeof e, T("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", x, p);
         }
-        var E = gr(e, r, a, h, w);
+        var E = gr(e, r, c, h, w);
         if (E == null)
           return E;
         if (m) {
@@ -614,25 +614,25 @@ Check the top-level render call using <` + a + ">.");
         return e === o ? xr(E) : yr(E), E;
       }
     }
-    function Er(e, r, a) {
-      return Fe(e, r, a, !0);
+    function Er(e, r, c) {
+      return Fe(e, r, c, !0);
     }
-    function Rr(e, r, a) {
-      return Fe(e, r, a, !1);
+    function Rr(e, r, c) {
+      return Fe(e, r, c, !1);
     }
     var jr = Rr, Tr = Er;
     V.Fragment = o, V.jsx = jr, V.jsxs = Tr;
   }()), V;
 }
-process.env.NODE_ENV === "production" ? ae.exports = Or() : ae.exports = Ir();
+process.env.NODE_ENV === "production" ? ae.exports = Or() : ae.exports = Sr();
 var u = ae.exports;
-const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe = {
-  spice_wrapper: $r,
-  spice_wrapper_hidden: Fr
-}, Be = Ye(!0), ze = Ye((n) => !n), kr = ({ children: n }) => {
-  const [t, c] = D(!0);
-  return /* @__PURE__ */ u.jsx(Be.Provider, { value: t, children: /* @__PURE__ */ u.jsx(ze.Provider, { value: c, children: n }) });
-}, Dr = ({ children: n }) => {
+const Ir = "_spice_wrapper_1b9je_1", $r = "_spice_wrapper_hidden_1b9je_10", qe = {
+  spice_wrapper: Ir,
+  spice_wrapper_hidden: $r
+}, Be = Ye(!0), ze = Ye((n) => !n), Fr = ({ children: n }) => {
+  const [t, s] = k(!0);
+  return /* @__PURE__ */ u.jsx(Be.Provider, { value: t, children: /* @__PURE__ */ u.jsx(ze.Provider, { value: s, children: n }) });
+}, Nr = ({ children: n }) => {
   const t = Ue(Be);
   return /* @__PURE__ */ u.jsx(
     "div",
@@ -641,85 +641,85 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       children: n
     }
   );
-}, gt = ({ children: n }) => /* @__PURE__ */ u.jsx(kr, { children: /* @__PURE__ */ u.jsx(Dr, { children: n }) }), Nr = () => Ue(ze), O = typeof document < "u" ? Pr : Cr, qr = "_spice_aside_aside_4cj7n_1", Ar = "_spice_aside_main_4cj7n_5", ne = {
-  spice_aside_aside: qr,
-  spice_aside_main: Ar
-}, wt = ({
+}, ht = ({ children: n }) => /* @__PURE__ */ u.jsx(Fr, { children: /* @__PURE__ */ u.jsx(Nr, { children: n }) }), kr = () => Ue(ze), Dr = "_spice_aside_aside_4cj7n_1", qr = "_spice_aside_main_4cj7n_5", ne = {
+  spice_aside_aside: Dr,
+  spice_aside_main: qr
+}, gt = ({
   className: n,
   children: t,
-  aside: c,
+  aside: s,
   isSticky: o = !1
 }) => {
-  const i = Nr();
+  const i = kr();
   return O(() => (o && i(() => !1), () => {
     i(() => !0);
   }), []), /* @__PURE__ */ u.jsxs("div", { className: n || "", children: [
-    c.index === 1 && /* @__PURE__ */ u.jsx("div", { className: ne.spice_aside_main, children: t }),
+    s.index === 1 && /* @__PURE__ */ u.jsx("div", { className: ne.spice_aside_main, children: t }),
     /* @__PURE__ */ u.jsx(
       "aside",
       {
-        className: `${ne.spice_aside_aside} ${c.className ? c.className : ""}`,
-        children: c.chidren
+        className: `${ne.spice_aside_aside} ${s.className ? s.className : ""}`,
+        children: s.chidren
       }
     ),
-    c.index === 0 && /* @__PURE__ */ u.jsx("div", { className: ne.spice_aside_main, children: t })
+    s.index === 0 && /* @__PURE__ */ u.jsx("div", { className: ne.spice_aside_main, children: t })
   ] });
-}, Wr = ({
+}, Ar = ({
   targetRef: n,
   callback: t,
-  debounce: c,
+  debounce: s,
   dependencies: o = []
 }) => {
-  const i = R(0), s = R(!0);
+  const i = R(0), a = R(!0);
   O(() => {
     const d = new ResizeObserver((_) => {
       clearTimeout(i.current), i.current = setTimeout(() => {
-        if (s.current) {
-          s.current = !1;
+        if (a.current) {
+          a.current = !1;
           return;
         }
         t(_[0].target);
-      }, c);
+      }, s);
     }), l = n.current;
     if (l)
       return d.observe(l), () => {
         d.unobserve(l), clearTimeout(i.current);
       };
   }, o);
-}, Lr = ({ content: n, isOpen: t }) => {
-  const c = n.querySelectorAll("a,button");
-  if (!c)
+}, Wr = ({ content: n, isOpen: t }) => {
+  const s = n.querySelectorAll("a,button");
+  if (!s)
     return;
   const o = t ? "0" : "-1";
-  c.forEach((i) => {
+  s.forEach((i) => {
     i.setAttribute("tabindex", o);
   });
-}, Mr = ({
+}, Lr = ({
   wrapper: n,
   inner: t,
-  isOpen: c,
+  isOpen: s,
   callback: o
 }) => {
-  const s = {
+  const a = {
     height: t.getBoundingClientRect().height,
     target: n
   };
-  c ? o.close(s) : o.open(s);
-}, Vr = "_spice_accordion_contentWrapper_twt7j_1", Yr = "_spice_accordion_hidden_twt7j_5", Ae = {
-  spice_accordion_contentWrapper: Vr,
-  spice_accordion_hidden: Yr
-}, bt = ({
+  s ? o.close(a) : o.open(a);
+}, Mr = "_spice_accordion_contentWrapper_twt7j_1", Vr = "_spice_accordion_hidden_twt7j_5", Ae = {
+  spice_accordion_contentWrapper: Mr,
+  spice_accordion_hidden: Vr
+}, wt = ({
   isView: n = !1,
   value: t,
-  className: c,
+  className: s,
   button: o,
   callback: i,
-  content: s
+  content: a
 }) => {
-  const d = R(null), l = R(null), [_, g] = D(n);
+  const d = R(null), l = R(null), [_, g] = k(n);
   return O(() => {
-    Lr({ content: d.current, isOpen: _ });
-  }, [_]), Wr({
+    Wr({ content: d.current, isOpen: _ });
+  }, [_]), Ar({
     targetRef: l,
     callback: (v) => {
       const b = v.getBoundingClientRect().height;
@@ -727,13 +727,13 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     },
     dependencies: [_],
     debounce: 100
-  }), /* @__PURE__ */ u.jsxs("div", { className: c, children: [
+  }), /* @__PURE__ */ u.jsxs("div", { className: s || "", children: [
     /* @__PURE__ */ u.jsx(
       "button",
       {
         className: o.className ? o.className : "",
         onClick: () => {
-          Mr({
+          Lr({
             wrapper: d.current,
             inner: l.current,
             isOpen: _,
@@ -758,17 +758,17 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
           "div",
           {
             ref: l,
-            className: s.className ? s.className : "",
-            children: s.children
+            className: a.className ? a.className : "",
+            children: a.children
           }
         )
       }
     )
   ] });
-}, Ur = "_spice_form_input_yxowj_1", Br = "_spice_form_select_yxowj_2", zr = "_spice_form_radioCheckInput_yxowj_8", ce = {
-  spice_form_input: Ur,
-  spice_form_select: Br,
-  spice_form_radioCheckInput: zr
+}, Yr = "_spice_form_input_yxowj_1", Ur = "_spice_form_select_yxowj_2", Br = "_spice_form_radioCheckInput_yxowj_8", ce = {
+  spice_form_input: Yr,
+  spice_form_select: Ur,
+  spice_form_radioCheckInput: Br
 }, We = ({
   formProps: n,
   className: t
@@ -778,17 +778,17 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     ...n,
     className: `${ce.spice_form_input} ${t || ""}`
   }
-), Hr = ({ formProps: n }) => {
+), zr = ({ formProps: n }) => {
   const t = n.isSelect;
   if (!t)
     return;
-  const c = t.options.map((s) => /* @__PURE__ */ u.jsx("option", { value: s, children: s }, s)), o = () => {
-    const s = t.defaultValue;
-    return s ? /* @__PURE__ */ u.jsx("option", { hidden: !0, children: s }) : null;
+  const s = t.options.map((a) => /* @__PURE__ */ u.jsx("option", { value: a, children: a }, a)), o = () => {
+    const a = t.defaultValue;
+    return a ? /* @__PURE__ */ u.jsx("option", { hidden: !0, children: a }) : null;
   }, i = () => {
-    const s = t.defaultSelectedIndex;
-    if (s)
-      return t.options[s];
+    const a = t.defaultSelectedIndex;
+    if (a)
+      return t.options[a];
   };
   return /* @__PURE__ */ u.jsxs(
     "select",
@@ -799,35 +799,35 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       defaultValue: i(),
       children: [
         /* @__PURE__ */ u.jsx(o, {}),
-        c
+        s
       ]
     }
   );
 }, Le = ({
   layoutType: n,
   formPropsArr: t,
-  label: c,
+  label: s,
   FormItem: o,
   errors: i
 }) => {
-  const s = (d) => !i || !i[d] ? null : i[d];
+  const a = (d) => !i || !i[d] ? null : i[d];
   if (n === "block")
     return /* @__PURE__ */ u.jsxs(u.Fragment, { children: [
-      c && /* @__PURE__ */ u.jsx("label", { htmlFor: t[0].id, children: c }),
+      s && /* @__PURE__ */ u.jsx("label", { htmlFor: t[0].id, children: s }),
       /* @__PURE__ */ u.jsx(o, { formProps: t[0] }),
-      s(0)
+      a(0)
     ] });
   if (n === "flex")
     return /* @__PURE__ */ u.jsxs(u.Fragment, { children: [
-      c && /* @__PURE__ */ u.jsx("label", { htmlFor: t[0].id, children: c }),
+      s && /* @__PURE__ */ u.jsx("label", { htmlFor: t[0].id, children: s }),
       /* @__PURE__ */ u.jsxs("ul", { children: [
         /* @__PURE__ */ u.jsxs("li", { children: [
           /* @__PURE__ */ u.jsx(o, { formProps: t[0] }),
-          s(0)
+          a(0)
         ] }),
         /* @__PURE__ */ u.jsxs("li", { children: [
           /* @__PURE__ */ u.jsx(o, { formProps: t[1] }),
-          s(1)
+          a(1)
         ] })
       ] })
     ] });
@@ -843,12 +843,12 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       /* @__PURE__ */ u.jsx("label", { htmlFor: l.id, children: l.value })
     ] }, l.id));
     return /* @__PURE__ */ u.jsxs(u.Fragment, { children: [
-      c && /* @__PURE__ */ u.jsx("label", { children: c }),
+      s && /* @__PURE__ */ u.jsx("label", { children: s }),
       /* @__PURE__ */ u.jsx("ul", { children: d }),
-      s(0)
+      a(0)
     ] });
   }
-}, Gr = ({ formProps: n }) => {
+}, Hr = ({ formProps: n }) => {
   const t = n.isTextarea;
   if (t)
     return /* @__PURE__ */ u.jsx(
@@ -862,14 +862,14 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
         defaultValue: t.defaultValue
       }
     );
-}, yt = ({
+}, bt = ({
   className: n,
   label: t,
-  formProps: c,
+  formProps: s,
   errors: o
 }) => {
-  const i = c, s = i[0].type, d = i.length, l = !!i[0].isSelect, _ = !!i[0].isTextarea;
-  if (!(s === "radio" || s === "checkbox") && d > 2)
+  const i = s, a = i[0].type, d = i.length, l = !!i[0].isSelect, _ = !!i[0].isTextarea;
+  if (!(a === "radio" || a === "checkbox") && d > 2)
     throw new Error("The length of formProps is up to 2.");
   if (o && o.length > 2)
     throw new Error("The length of error is up to 2.");
@@ -879,7 +879,7 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     label: t,
     FormItem: b,
     errors: o
-  }), v = () => l ? g(Hr) : _ ? g(Gr) : s === "radio" || s === "checkbox" ? Le({
+  }), v = () => l ? g(zr) : _ ? g(Hr) : a === "radio" || a === "checkbox" ? Le({
     layoutType: "radio-check",
     formPropsArr: i,
     label: t,
@@ -891,28 +891,28 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
   n instanceof Promise ? n.then(() => {
     t(null);
   }) : t(null);
-}), Jr = "_spice_tab_button_12kqm_1", Kr = "_spice_tab_contentWrapper_12kqm_5", Xr = "_spice_tab_hidden_12kqm_9", oe = {
-  spice_tab_button: Jr,
-  spice_tab_contentWrapper: Kr,
-  spice_tab_hidden: Xr
-}, xt = ({ lists: n, contents: t, callback: c }) => {
-  const o = R(!1), i = R(!1), [s, d] = D(0), l = [], _ = async (y) => {
-    s === y || i.current || (i.current = !0, await ue(c.leave(l[s].current)), d(y));
+}), Gr = "_spice_tab_button_12kqm_1", Jr = "_spice_tab_contentWrapper_12kqm_5", Kr = "_spice_tab_hidden_12kqm_9", oe = {
+  spice_tab_button: Gr,
+  spice_tab_contentWrapper: Jr,
+  spice_tab_hidden: Kr
+}, yt = ({ lists: n, contents: t, callback: s }) => {
+  const o = R(!1), i = R(!1), [a, d] = k(0), l = [], _ = async (y) => {
+    a === y || i.current || (i.current = !0, await ue(s.leave(l[a].current)), d(y));
   };
   O(() => {
     if (!o.current) {
       o.current = !0;
       return;
     }
-    i.current = !1, c.enter(l[s].current);
-  }, [s]);
+    i.current = !1, s.enter(l[a].current);
+  }, [a]);
   const g = n.children.map((y, j) => /* @__PURE__ */ u.jsx(
     "button",
     {
       onClick: () => {
         _(j);
       },
-      className: `${n.buttonClassName} ${oe.spice_tab_button} ${s === j ? n.isViewClassName : ""}`,
+      className: `${n.buttonClassName} ${oe.spice_tab_button} ${a === j ? n.isViewClassName : ""}`,
       children: y
     },
     j
@@ -921,17 +921,17 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     index: j
   }) => {
     const F = R(null);
-    return l.push(F), /* @__PURE__ */ u.jsx("li", { ref: F, className: s === j ? "" : oe.spice_tab_hidden, children: y });
+    return l.push(F), /* @__PURE__ */ u.jsx("li", { ref: F, className: a === j ? "" : oe.spice_tab_hidden, children: y });
   }, b = t.children.map((y, j) => /* @__PURE__ */ u.jsx(v, { index: j, children: y }, j));
   return /* @__PURE__ */ u.jsxs("div", { children: [
     /* @__PURE__ */ u.jsx("div", { className: n.wrapperClassName, children: g }),
     /* @__PURE__ */ u.jsx("ul", { className: oe.spice_tab_contentWrapper, children: b })
   ] });
-}, Qr = "_spice_dropdown_wrapper_1nq94_1", Zr = "_spice_dropdown_content_1nq94_5", et = "_spice_dropdown_content_hidden_1nq94_10", rt = "_spice_dropdown_content_pointerPrevent_1nq94_15", Y = {
-  spice_dropdown_wrapper: Qr,
-  spice_dropdown_content: Zr,
-  spice_dropdown_content_hidden: et,
-  spice_dropdown_content_pointerPrevent: rt,
+}, Xr = "_spice_dropdown_wrapper_1nq94_1", Qr = "_spice_dropdown_content_1nq94_5", Zr = "_spice_dropdown_content_hidden_1nq94_10", et = "_spice_dropdown_content_pointerPrevent_1nq94_15", Y = {
+  spice_dropdown_wrapper: Xr,
+  spice_dropdown_content: Qr,
+  spice_dropdown_content_hidden: Zr,
+  spice_dropdown_content_pointerPrevent: et,
   "spice_dropdown_top-center": "_spice_dropdown_top-center_1nq94_22",
   "spice_dropdown_top-left": "_spice_dropdown_top-left_1nq94_28",
   "spice_dropdown_top-right": "_spice_dropdown_top-right_1nq94_33",
@@ -944,22 +944,22 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
   "spice_dropdown_right-top": "_spice_dropdown_right-top_1nq94_79",
   "spice_dropdown_right-center": "_spice_dropdown_right-center_1nq94_84",
   "spice_dropdown_right-bottom": "_spice_dropdown_right-bottom_1nq94_90"
-}, Et = ({
+}, xt = ({
   position: n,
   parent: t,
-  content: c,
+  content: s,
   callback: o,
   className: i
 }) => {
-  const s = R(null), d = R(!1), [l, _] = D(!1), [g, v] = D(!0);
+  const a = R(null), d = R(!1), [l, _] = k(!1), [g, v] = k(!0);
   return /* @__PURE__ */ u.jsxs(
     "div",
     {
       onMouseEnter: () => {
-        d.current = !0, v(!1), _(!0), o != null && o.enter && o.enter(s.current);
+        d.current = !0, v(!1), _(!0), o != null && o.enter && o.enter(a.current);
       },
       onMouseLeave: async () => {
-        d.current = !1, v(!0), o != null && o.leave && await ue(o.leave(s.current)), d.current || _(!1);
+        d.current = !1, v(!0), o != null && o.leave && await ue(o.leave(a.current)), d.current || _(!1);
       },
       className: `${Y.spice_dropdown_wrapper} ${i || ""}`,
       children: [
@@ -967,29 +967,29 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
         /* @__PURE__ */ u.jsx(
           "div",
           {
-            ref: s,
+            ref: a,
             className: `${Y.spice_dropdown_content} ${l ? "" : Y.spice_dropdown_content_hidden} ${g ? Y.spice_dropdown_content_pointerPrevent : ""} ${Y["spice_dropdown_" + n]}`,
-            children: c.children
+            children: s.children
           }
         )
       ]
     }
   );
-}, tt = (n) => {
+}, rt = (n) => {
   n > 60 && (n = 60);
   const t = Math.floor(1e3 / n);
-  let c = performance.now();
+  let s = performance.now();
   const o = (d) => {
-    const l = d - c, _ = l <= t;
-    return _ || (c = d - l % t), _;
+    const l = d - s, _ = l <= t;
+    return _ || (s = d - l % t), _;
   }, i = {
     callback: null,
     isPlay: !1,
     id: 0
-  }, s = (d) => {
-    i.id = requestAnimationFrame(s), !o(d) && i.callback && i.isPlay && i.callback();
+  }, a = (d) => {
+    i.id = requestAnimationFrame(a), !o(d) && i.callback && i.isPlay && i.callback();
   };
-  return O(() => (i.id = requestAnimationFrame(s), () => {
+  return O(() => (i.id = requestAnimationFrame(a), () => {
     cancelAnimationFrame(i.id);
   }), []), (d, l) => {
     if (d === "play") {
@@ -1001,32 +1001,32 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     } else
       d === "pause" && (i.isPlay = !1);
   };
-}, nt = "_spice_magnet_stopPropagation_99wvn_1", ot = {
-  spice_magnet_stopPropagation: nt
-}, Rt = ({
+}, tt = "_spice_magnet_stopPropagation_99wvn_1", nt = {
+  spice_magnet_stopPropagation: tt
+}, Et = ({
   className: n,
   children: t,
-  callback: c,
+  callback: s,
   fps: o = 60,
   stopPropagation: i = !1
 }) => {
-  const s = R(null), d = R(null), l = R(), _ = tt(o), g = {
-    target: s.current,
+  const a = R(null), d = R(null), l = R(), _ = rt(o), g = {
+    target: a.current,
     children: d.current,
     x: 0,
     y: 0
   }, v = (C) => {
-    g.target = s.current, g.children = d.current;
+    g.target = a.current, g.children = d.current;
   }, b = (C) => {
     l.current = C.currentTarget.getBoundingClientRect(), g.x = C.clientX - l.current.left - l.current.width / 2, g.y = C.clientY - l.current.top - l.current.height / 2;
   }, y = (C) => {
     C.stopPropagation(), v(), b(C), _("play", () => {
-      c.move(g);
+      s.move(g);
     });
   }, j = (C) => {
     C.stopPropagation(), b(C);
   }, F = (C) => {
-    C.stopPropagation(), _("pause"), c.leave && c.leave(g);
+    C.stopPropagation(), _("pause"), s.leave && s.leave(g);
   };
   return /* @__PURE__ */ u.jsx(
     "div",
@@ -1035,31 +1035,31 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       onMouseMove: j,
       onMouseLeave: F,
       className: n || "",
-      ref: s,
+      ref: a,
       children: /* @__PURE__ */ u.jsx(
         "div",
         {
           ref: d,
-          className: i ? ot.spice_magnet_stopPropagation : "",
+          className: i ? nt.spice_magnet_stopPropagation : "",
           children: t
         }
       )
     }
   );
-}, it = "_spice_bgImg_wrapper_12iq7_1", st = "_spice_bgImg_view_12iq7_6", at = "_spice_bgImg_golden_12iq7_20", ct = "_spice_bgImg_silver_12iq7_24", ut = "_spice_bgImg_platinum_12iq7_28", lt = "_spice_bgImg_square_12iq7_36", ie = {
-  spice_bgImg_wrapper: it,
-  spice_bgImg_view: st,
-  spice_bgImg_golden: at,
-  spice_bgImg_silver: ct,
-  spice_bgImg_platinum: ut,
+}, ot = "_spice_bgImg_wrapper_12iq7_1", it = "_spice_bgImg_view_12iq7_6", st = "_spice_bgImg_golden_12iq7_20", at = "_spice_bgImg_silver_12iq7_24", ct = "_spice_bgImg_platinum_12iq7_28", ut = "_spice_bgImg_square_12iq7_36", ie = {
+  spice_bgImg_wrapper: ot,
+  spice_bgImg_view: it,
+  spice_bgImg_golden: st,
+  spice_bgImg_silver: at,
+  spice_bgImg_platinum: ct,
   "spice_bgImg_16-9": "_spice_bgImg_16-9_12iq7_32",
-  spice_bgImg_square: lt,
+  spice_bgImg_square: ut,
   "spice_bgImg_3-2": "_spice_bgImg_3-2_12iq7_40",
   "spice_bgImg_4-3": "_spice_bgImg_4-3_12iq7_44"
-}, jt = ({
+}, Rt = ({
   ratio: n,
   children: t,
-  className: c
+  className: s
 }) => {
   const o = [
     "golden",
@@ -1070,28 +1070,28 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     "3-2",
     "4-3"
   ];
-  let i = o.includes(n), s = typeof n == "number" && n > 0;
-  if (!i && !s)
+  let i = o.includes(n), a = typeof n == "number" && n > 0;
+  if (!i && !a)
     throw new Error(
       `Invalid ratio value. The 'ratio' argument should be either ${o.join(
         " | "
       )} or a number greater than 0.`
     );
-  return /* @__PURE__ */ u.jsx("div", { className: `${ie.spice_bgImg_wrapper} ${c || ""}`, children: /* @__PURE__ */ u.jsx(
+  return /* @__PURE__ */ u.jsx("div", { className: `${ie.spice_bgImg_wrapper} ${s || ""}`, children: /* @__PURE__ */ u.jsx(
     "div",
     {
       className: `${ie.spice_bgImg_view} ${i ? ie["spice_bgImg_" + n] : ""}`,
-      style: s ? { paddingTop: `${n}%` } : {},
+      style: a ? { paddingTop: `${n}%` } : {},
       children: t
     }
   ) });
 }, Me = (n) => {
-  const t = document.documentElement.style, c = document.body.style;
-  n === "add" ? (t.scrollbarGutter = "stable", t.overflow = "hidden", c.overflow = "hidden") : (t.scrollbarGutter = "", t.overflow = "", c.overflow = "");
-}, dt = "_spice_modal_dialog_1t31c_1", ft = {
-  spice_modal_dialog: dt
-}, Tt = ({ children: n, className: t, dialog: c, callback: o }) => {
-  const i = R(null), s = () => {
+  const t = document.documentElement.style, s = document.body.style;
+  n === "add" ? (t.scrollbarGutter = "stable", t.overflow = "hidden", s.overflow = "hidden") : (t.scrollbarGutter = "", t.overflow = "", s.overflow = "");
+}, lt = "_spice_modal_dialog_1t31c_1", dt = {
+  spice_modal_dialog: lt
+}, jt = ({ children: n, className: t, dialog: s, callback: o }) => {
+  const i = R(null), a = () => {
     Me("add"), i.current.showModal(), o != null && o.open && o.open(i.current);
   }, d = async () => {
     o != null && o.close && await ue(o.close(i.current)), Me("remove"), i.current.close();
@@ -1109,7 +1109,7 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       {
         className: t || "",
         onClick: () => {
-          s();
+          a();
         },
         children: n
       }
@@ -1121,22 +1121,22 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
         onClick: (l) => {
           l.target === i.current && d();
         },
-        className: `${ft.spice_modal_dialog} ${c.className ? c.className : ""}`,
-        children: c.children
+        className: `${dt.spice_modal_dialog} ${s.className ? s.className : ""}`,
+        children: s.children
       }
     )
   ] });
-}, Pt = ({
+}, Tt = typeof document < "u" ? Pr : O, Pt = ({
   targetRef: n,
   rootMargin: t = "0px",
-  threshold: c = 0,
+  threshold: s = 0,
   once: o,
   callback: i,
-  dependencies: s = []
+  dependencies: a = []
 }) => {
   const d = {
     rootMargin: t,
-    threshold: c
+    threshold: s
   };
   O(() => {
     const l = n.current;
@@ -1150,13 +1150,13 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
     return g.observe(l), () => {
       g.unobserve(l);
     };
-  }, s);
+  }, a);
 }, le = ({
   callback: n,
   debounce: t,
-  dependencies: c = []
+  dependencies: s = []
 }) => {
-  const o = R(0), i = R(0), s = () => {
+  const o = R(0), i = R(0), a = () => {
     clearTimeout(i.current), i.current = setTimeout(() => {
       n({
         winW: window.innerWidth,
@@ -1165,13 +1165,13 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
       });
     }, t);
   };
-  O(() => (o.current = window.innerWidth, window.addEventListener("resize", s), () => {
-    window.removeEventListener("resize", s), clearTimeout(i.current);
-  }), c);
-}, _t = ({ initWinW: n, winW: t, threshold: c }) => {
-  let o = !(n <= c);
-  t <= c ? o && window.location.reload() : !o && window.location.reload();
-}, pt = `
+  O(() => (o.current = window.innerWidth, window.addEventListener("resize", a), () => {
+    window.removeEventListener("resize", a), clearTimeout(i.current);
+  }), s);
+}, ft = ({ initWinW: n, winW: t, threshold: s }) => {
+  let o = !(n <= s);
+  t <= s ? o && window.location.reload() : !o && window.location.reload();
+}, _t = `
 ███████╗██╗   ██╗███╗   ██╗████████╗███████╗ ██████╗██╗  ██╗
 ██╔════╝██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔════╝██║  ██║
 █████╗  ██║   ██║██╔██╗ ██║   ██║   █████╗  ██║     ███████║
@@ -1181,57 +1181,57 @@ const $r = "_spice_wrapper_1b9je_1", Fr = "_spice_wrapper_hidden_1b9je_10", qe =
                                                             
 https://funtech.inc/
 
-`, vt = () => {
-  console.log(pt);
-}, mt = (n) => {
+`, pt = () => {
+  console.log(_t);
+}, vt = (n) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
-  const c = n > 360 ? "width=device-width,initial-scale=1" : "width=360";
-  t.getAttribute("content") !== c && t.setAttribute("content", c);
+  const s = n > 360 ? "width=device-width,initial-scale=1" : "width=360";
+  t.getAttribute("content") !== s && t.setAttribute("content", s);
 }, Ct = ({
   reloadThresholds: n,
   isFixViewportForSmall: t = !0,
-  areYouFun: c = !1
+  areYouFun: s = !1
 }) => {
   const o = (i) => {
-    t && mt(i);
+    t && vt(i);
   };
   le({
-    callback({ initWinW: i, winW: s }) {
+    callback({ initWinW: i, winW: a }) {
       n && n.forEach((d) => {
-        _t({
+        ft({
           initWinW: i,
-          winW: s,
+          winW: a,
           threshold: d
         });
-      }), o(s);
+      }), o(a);
     },
     debounce: 100,
     dependencies: []
   }), O(() => {
-    o(window.innerWidth), c && vt();
+    document.body.dataset.spiceRendered = "true", o(window.innerWidth), s && process.env.NODE_ENV !== "development" && pt();
   }, []);
-}, St = () => {
-  const [n, t] = D(null), c = () => {
+}, Ot = () => {
+  const [n, t] = k(null), s = () => {
     const o = window.ontouchstart, i = navigator.maxTouchPoints;
     o !== void 0 && 0 < i ? t(!0) : t(!1);
   };
   return le({
     callback() {
-      c();
+      s();
     },
     debounce: 100,
     dependencies: []
   }), O(() => {
-    c();
+    s();
   }, []), n;
-}, se = "scroll", Ot = ({
+}, se = "scroll", St = ({
   threshold: n = 0,
   debounce: t,
-  dependencies: c = []
+  dependencies: s = []
 }) => {
-  const o = R(null), [i, s] = Sr(
+  const o = R(null), [i, a] = Cr(
     (v, b) => {
       switch (b.type) {
         case se:
@@ -1244,50 +1244,50 @@ https://funtech.inc/
   ), d = R(0), l = R(0), _ = () => window.scrollY || document.documentElement.scrollTop, g = () => {
     clearTimeout(l.current), l.current = setTimeout(() => {
       const v = _();
-      v > d.current + n && o.current !== "down" ? s({ type: se, payload: "down" }) : v < d.current - n && o.current !== "up" && s({ type: se, payload: "up" }), d.current = v;
+      v > d.current + n && o.current !== "down" ? a({ type: se, payload: "down" }) : v < d.current - n && o.current !== "up" && a({ type: se, payload: "up" }), d.current = v;
     }, t);
   };
   return O(() => (d.current = _(), window.addEventListener("scroll", g, { passive: !0 }), () => {
     window.removeEventListener("scroll", g), clearTimeout(l.current);
-  }), c), i;
+  }), s), i;
 }, It = ({ type: n, width: t }) => {
-  const [c, o] = D(null), i = (s) => {
+  const [s, o] = k(null), i = (a) => {
     switch (n) {
       case "max":
-        o(t <= s);
+        o(t <= a);
         break;
       case "min":
-        o(t >= s);
+        o(t >= a);
         break;
     }
   };
   return le({
-    callback: ({ winW: s }) => {
-      i(s);
+    callback: ({ winW: a }) => {
+      i(a);
     },
     debounce: 100,
     dependencies: []
   }), O(() => {
     i(window.innerWidth);
-  }, []), c;
+  }, []), s;
 };
 export {
-  bt as Accordion,
-  wt as AsideLayout,
-  jt as BackgroundImage,
-  Et as Dropdown,
-  yt as FormField,
-  Rt as Magnet,
-  Tt as Modal,
-  xt as Tab,
-  gt as WrapperLayout,
-  tt as useAnimationFrame,
+  wt as Accordion,
+  gt as AsideLayout,
+  Rt as BackgroundImage,
+  xt as Dropdown,
+  bt as FormField,
+  Et as Magnet,
+  jt as Modal,
+  yt as Tab,
+  ht as WrapperLayout,
+  rt as useAnimationFrame,
   Pt as useIntersectionObserver,
-  St as useIsTouchDevice,
-  O as useIsomorphicLayoutEffect,
+  Ot as useIsTouchDevice,
+  Tt as useIsomorphicLayoutEffect,
   It as useMediaQuery,
-  Wr as useResizeObserver,
-  Ot as useScrollDirection,
+  Ar as useResizeObserver,
+  St as useScrollDirection,
   Ct as useStarter,
   le as useWindowResizeObserver
 };

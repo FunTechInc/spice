@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useEffect, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 
 export const useIsTouchDevice = () => {
@@ -20,7 +19,7 @@ export const useIsTouchDevice = () => {
       debounce: 100,
       dependencies: [],
    });
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       updateState();
    }, []);
    return isTouchDevice;

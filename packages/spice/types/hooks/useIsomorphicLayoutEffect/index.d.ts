@@ -1,2 +1,2 @@
-import { useLayoutEffect } from "react";
-export declare const useIsomorphicLayoutEffect: typeof useLayoutEffect;
+import { useEffect } from "react";
+export declare const useIsomorphicLayoutEffect: typeof useEffect;

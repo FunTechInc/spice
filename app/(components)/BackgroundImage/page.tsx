@@ -4,12 +4,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import {
-   BackgroundImage,
-   useIsomorphicLayoutEffect,
-} from "@/packages/spice/src";
+import { BackgroundImage } from "@/packages/spice/src";
 import s from "./style.module.scss";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const Description = () => {
    return (
@@ -28,7 +25,7 @@ const Description = () => {
 
 const Demo = () => {
    const ref = useRef(null);
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       gsap.registerPlugin(ScrollTrigger);
       const parallax = gsap.to(ref.current, {
          y: "-8%",
@@ -90,7 +87,7 @@ const Code = () => {
          <CodeBlock
             code={`const Demo = () => {
    const ref = useRef(null);
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       gsap.registerPlugin(ScrollTrigger);
       const parallax = gsap.to(ref.current, {
          y: "-8%",

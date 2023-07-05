@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useRef, useEffect } from "react";
 
 interface IUseResizeObserver {
    targetRef: React.RefObject<HTMLElement>;
@@ -18,7 +17,7 @@ export const useResizeObserver = ({
 	===============================================*/
    const timeoutID = useRef<NodeJS.Timeout | number>(0);
    const isFirst = useRef(true);
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       const resizeObserver = new ResizeObserver((entries) => {
          clearTimeout(timeoutID.current);
          timeoutID.current = setTimeout(() => {
@@ -38,5 +37,6 @@ export const useResizeObserver = ({
          resizeObserver.unobserve(targetElm);
          clearTimeout(timeoutID.current);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 };

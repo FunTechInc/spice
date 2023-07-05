@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useRef, useEffect } from "react";
 
 interface IUseWindowResizeObserver {
    callback: ({
@@ -32,12 +31,13 @@ export const useWindowResizeObserver = ({
          });
       }, debounce);
    };
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       initialWidth.current = window.innerWidth;
       window.addEventListener("resize", callbackEvent);
       return () => {
          window.removeEventListener("resize", callbackEvent);
          clearTimeout(timeoutID.current);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 };
