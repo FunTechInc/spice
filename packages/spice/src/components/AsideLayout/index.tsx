@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
+import { useEffect } from "react";
 import { useOverflowDispatch } from "../WrapperLayout";
 import s from "./spice.module.scss";
 
@@ -20,13 +20,15 @@ export const AsideLayout = ({
    isSticky = false,
 }: IAsideLayout) => {
    const setOverflow = useOverflowDispatch();
-   useIsomorphicLayoutEffect(() => {
+
+   useEffect(() => {
       if (isSticky) {
          setOverflow(() => false);
       }
       return () => {
          setOverflow(() => true);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
    return (
       <div className={className ? className : ""}>
