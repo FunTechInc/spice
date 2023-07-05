@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useEffect } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 import { resizeReload } from "./utils/resizeReload";
 import { funtechConsole } from "./utils/funtech";
@@ -43,7 +43,11 @@ export const useStarter = ({
       dependencies: [],
    });
 
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
+      /*===============================================
+		rendering is completed, set the data
+		===============================================*/
+      document.body.dataset.spiceRendered = "true";
       /*===============================================
 		fixViewportForSmall
 		===============================================*/
@@ -51,8 +55,9 @@ export const useStarter = ({
       /*===============================================
 		FunTech console log
 		===============================================*/
-      if (areYouFun) {
+      if (areYouFun && process.env.NODE_ENV !== "development") {
          funtechConsole();
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 };

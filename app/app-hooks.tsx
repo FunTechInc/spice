@@ -6,7 +6,7 @@ export const AppHooks = () => {
    useStarter({
       // reloadThresholds: [960, 560],
       isFixViewportForSmall: true,
-      areYouFun: false,
+      areYouFun: true,
    });
    return null;
 };

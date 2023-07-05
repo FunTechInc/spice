@@ -3,7 +3,7 @@ import { TCallback } from "./utils/clickHandler";
 interface IAccordion {
     isView?: boolean;
     value: string;
-    className: string;
+    className?: string;
     callback: TCallback;
     button: {
         children: React.ReactNode;

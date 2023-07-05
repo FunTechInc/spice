@@ -1,5 +1,4 @@
-import { useReducer, useRef } from "react";
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
+import { useReducer, useRef, useEffect } from "react";
 
 const SCROLL_ACTION = "scroll";
 type TState = "down" | "up" | null;
@@ -61,13 +60,14 @@ export const useScrollDirection = ({
          lastScrollY.current = currentScrollY;
       }, debounce);
    };
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       lastScrollY.current = getScrollPos();
       window.addEventListener("scroll", scrollHandler, { passive: true });
       return () => {
          window.removeEventListener("scroll", scrollHandler);
          clearTimeout(timeoutID.current);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
    return direction;
 };

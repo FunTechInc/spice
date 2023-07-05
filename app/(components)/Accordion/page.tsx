@@ -53,7 +53,7 @@ const Code = () => {
             code={`interface IAccordion {
    isView?: boolean;
    value: string;
-   className: string;
+   className?: string;
    callback: TCallback;
    button: {
       children: React.ReactNode;

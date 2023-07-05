@@ -9,6 +9,9 @@ const Description = () => {
             It loads settings to fix the ratio when a resize reload is executed
             and the screen width is 360px or less.
          </li>
+         <li>
+            Once the rendering is completed, dataset spiceRendered to the body.
+         </li>
       </ul>
    );
 };

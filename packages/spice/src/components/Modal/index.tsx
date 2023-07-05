@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
+import { useRef, useEffect } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
@@ -37,7 +36,7 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
    /*===============================================
 	click close button(.spice__modal_close)
 	===============================================*/
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       const closeBtn = ref.current!.querySelectorAll(".spice__modal_close");
       if (!closeBtn) {
          return;
@@ -47,6 +46,7 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
             closeModal();
          });
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    return (

@@ -12,7 +12,7 @@ import "@/packages/spice/src/scss/global.scss";
 
 const lato = Lato({ weight: ["400", "700"], subsets: ["latin"] });
 
-export const metadata = {
+const metadata = {
    title: "(hidden)spice",
    description: "one aim, one spice.",
    twitter: {
@@ -33,4 +33,5 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
    );
 };
 
+export { metadata };
 export default RootLayout;

@@ -1,13 +1,10 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import {
-   useIsomorphicLayoutEffect,
-   useScrollDirection,
-} from "@/packages/spice/src";
+import { useScrollDirection } from "@/packages/spice/src";
 import s from "./style.module.scss";
 import { gsap } from "gsap";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const Description = () => {
    return (
@@ -23,7 +20,7 @@ const Demo = () => {
       threshold: 10,
    });
    const ref = useRef(null);
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       if (!direction) {
          return;
       }
@@ -58,7 +55,7 @@ const Code = () => {
       threshold: 10,
    });
    const ref = useRef(null);
-   useIsomorphicLayoutEffect(() => {
+   useEffect(() => {
       if (!direction) {
          return;
       }
