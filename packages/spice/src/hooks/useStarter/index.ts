@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 import { resizeReload } from "./utils/resizeReload";
 import { funtechConsole } from "./utils/funtech";
 import { fixViewportForSmall } from "./utils/fixViewportForSmall";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 interface IUseStarter {
    reloadThresholds?: number[];
@@ -20,6 +20,7 @@ export const useStarter = ({
          fixViewportForSmall(winW);
       }
    };
+
    useWindowResizeObserver({
       callback({ initWinW, winW }) {
          /*===============================================
@@ -43,7 +44,7 @@ export const useStarter = ({
       dependencies: [],
    });
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       /*===============================================
 		rendering is completed, set the data
 		===============================================*/

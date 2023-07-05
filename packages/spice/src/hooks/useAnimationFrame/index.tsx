@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 interface IRaf {
    callback: null | (() => void);
@@ -42,14 +42,12 @@ export const useAnimationFrame = (fps: number) => {
          rAF.callback();
       }
    };
-
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       rAF.id = requestAnimationFrame(animationFrameEvent);
       return () => {
          //pause frame when compoentn clean up
          cancelAnimationFrame(rAF.id);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
    return (isPlay: TPlay, callback?: () => void) => {
       if (isPlay === "play") {
