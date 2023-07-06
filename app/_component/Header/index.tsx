@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import s from "./header.module.scss";
 import { MainInner } from "@/app/_layout/MainInner/MainInner";

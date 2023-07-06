@@ -1,7 +1,7 @@
 import "./global.scss";
 import "the-new-css-reset/css/reset.css";
 import { Lato } from "next/font/google";
-import { MainWrapper } from "@/app/_layout/MainWrapper";
+import { MainLayout } from "@/app/_layout/MainLayout";
 import { AppHooks } from "./app-hooks";
 import { MyLenis } from "./_layout/MyLenis";
 /*===============================================
@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <html lang="ja">
          <MyLenis>
             <body className={lato.className}>
-               <MainWrapper>{children}</MainWrapper>
+               <MainLayout>{children}</MainLayout>
             </body>
          </MyLenis>
          <AppHooks />
