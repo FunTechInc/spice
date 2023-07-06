@@ -1,5 +1,3 @@
-"use client";
-
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { AccordionDemo } from "./AccordionDemo";
