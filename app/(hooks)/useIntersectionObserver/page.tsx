@@ -77,6 +77,19 @@ const Code = () => {
    return (
       <>
          <CodeBlock
+            code={`interface IUseIntersectionObserver {
+   targetRef: React.RefObject<HTMLElement>;
+   rootMargin?: string;
+   threshold?: number;
+   once: boolean;
+   callback: {
+      enter?: (target: Element) => void;
+      leave?: (target: Element) => void;
+   };
+   dependencies?: any[];
+}`}
+         />
+         <CodeBlock
             code={`const List = ({ index }: { index: number }) => {
    const ref = useRef(null);
    const pos = 120;
