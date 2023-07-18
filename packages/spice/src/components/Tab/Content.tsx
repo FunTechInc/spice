@@ -9,12 +9,17 @@ interface IContent {
    value: string;
    className?: string;
    callback?: {
-      close?: (target: Element) => void;
       open?: (target: Element) => void;
+      close?: (target: Element) => void;
    };
 }
 
 export const Content = ({ children, value, className, callback }: IContent) => {
+   if (value === "") {
+      throw new Error(
+         "Please set the value to something other than an empty string."
+      );
+   }
    const isFirst = useRef(true);
    const ref = useRef<HTMLDivElement>(null);
    const setTabState = useSetTabState();

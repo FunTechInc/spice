@@ -37,6 +37,11 @@ interface IContext {
 }
 
 export const Context = ({ children, defaultValue }: IContext) => {
+   if (defaultValue === "") {
+      throw new Error(
+         "Please set the value to something other than an empty string."
+      );
+   }
    const [tabState, setTabState] = useState({
       isLeaving: false,
       prev: "",

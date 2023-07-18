@@ -8,6 +8,11 @@ interface IButton {
 }
 
 export const Button = ({ children, value, className }: IButton) => {
+   if (value === "") {
+      throw new Error(
+         "Please set the value to something other than an empty string."
+      );
+   }
    const accordionState = useAccordionState();
    const setAccordionState = useSetAccordionState();
    const isDefaultOpen = accordionState.defaultValue.find(

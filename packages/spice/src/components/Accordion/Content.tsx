@@ -23,6 +23,11 @@ interface IContent {
 }
 
 export const Content = ({ value, callback, children, className }: IContent) => {
+   if (value === "") {
+      throw new Error(
+         "Please set the value to something other than an empty string."
+      );
+   }
    const isFirst = useRef(true);
    const wrapperRef = useRef<HTMLDivElement>(null);
    const innerRef = useRef<HTMLDivElement>(null);
