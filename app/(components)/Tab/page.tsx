@@ -87,8 +87,8 @@ interface IContent {
    value: string;
    className?: string;
    callback?: {
-      close?: (target: Element) => void;
       open?: (target: Element) => void;
+      close?: (target: Element) => void;
    };
 }
 			`}></CodeBlock>
