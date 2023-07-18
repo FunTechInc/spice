@@ -65,7 +65,7 @@ const Demo = () => {
       },
       dependencies: [],
    });
-   const ListArr = [...Array(10)].map((_, i) => <List key={i} index={i} />);
+   const ListArr = [...Array(3)].map((_, i) => <List key={i} index={i} />);
    return (
       <ul ref={ref} className={s.sample}>
          {ListArr}

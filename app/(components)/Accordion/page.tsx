@@ -1,6 +1,10 @@
+"use client";
+
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { AccordionDemo } from "./AccordionDemo";
+import { Accordion } from "@/packages/spice/src";
+import s from "./style.module.scss";
+import { gsap } from "gsap";
 
 const Description = () => {
    return (
@@ -29,77 +33,114 @@ const accordionList = [
    },
 ];
 
-const Demo = () => {
-   const AccordionList = accordionList.map((list, index) => {
-      return (
-         <AccordionDemo
-            isView={index === 0 ? true : false}
-            value={list.value}
-            key={list.value}
-            buttonTxt={list.buttonTxt}
-            contentTxt={list.contentTxt}
-         />
-      );
+const accordionEvent = (
+   props: {
+      target: HTMLElement;
+      height: number;
+   },
+   isOpen: boolean
+) => {
+   gsap.to(props.target, {
+      height: isOpen ? props.height : 0,
+      duration: 0.6,
+      ease: "power3.out",
    });
-   return <div>{AccordionList}</div>;
+};
+
+const Demo = () => {
+   return (
+      <Accordion.Context defaultValue={["accordion-1"]}>
+         {accordionList.map((list) => (
+            <div key={list.value} className={s.accordion}>
+               <Accordion.Button value={list.value} className={s.button}>
+                  <div className={s.buttonContent}>
+                     <p>{list.buttonTxt}</p>
+                     <div className={s.icon}>
+                        <span></span>
+                        <span></span>
+                     </div>
+                  </div>
+               </Accordion.Button>
+               <Accordion.Content
+                  value={list.value}
+                  callback={{
+                     open: (props) => {
+                        accordionEvent(props, true);
+                     },
+                     close: (props) => {
+                        accordionEvent(props, false);
+                     },
+                  }}>
+                  <div className={s.content}>
+                     <p>{list.contentTxt}</p>
+                     <button>
+                        コンテンツ内のクリック要素のtabIndexはclose時は自動的に-1になります。
+                     </button>
+                  </div>
+               </Accordion.Content>
+            </div>
+         ))}
+      </Accordion.Context>
+   );
 };
 
 const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`interface IAccordion {
-   isView?: boolean;
+            code={`interface IContext {
+   children: React.ReactNode;
+   defaultValue: string[];
+}
+interface IButton {
+   children: React.ReactNode;
    value: string;
    className?: string;
-   callback: TCallback;
-   button: {
-      children: React.ReactNode;
-      className?: string;
+}
+interface IContent {
+   children: React.ReactNode;
+   value: string;
+   className?: string;
+   callback: {
+      open: (props: TClickHandler) => void;
+      close: (props: TClickHandler) => void;
    };
-   content: {
-      children: React.ReactNode;
-      className?: string;
-   };
-}`}
+}
+`}
          />
          <CodeBlock
-            code={`<Accordion
-	isView={isView}
-	value={value}
-	className={s.accordion}
-	callback={{
-		open: (props) => {
-			accordionEvent(props, true);
-		},
-		close: (props) => {
-			accordionEvent(props, false);
-		},
-	}}
-	button={{
-		children: (
-			<div className={s.buttonContent}>
-				<p>{buttonTxt}</p>
-				<div className={s.icon}>
-					<span></span>
-					<span></span>
+            code={`<Accordion.Context defaultValue={["accordion-1"]}>
+	{accordionList.map((list) => (
+		<div key={list.value} className={s.accordion}>
+			<Accordion.Button value={list.value} className={s.button}>
+				<div className={s.buttonContent}>
+					<p>{list.buttonTxt}</p>
+					<div className={s.icon}>
+						<span></span>
+						<span></span>
+					</div>
 				</div>
-			</div>
-		),
-		className: s.button,
-	}}
-	content={{
-		children: (
-			<div className={s.content}>
-				<p>{contentTxt}</p>
-				<button>
-					コンテンツ内のクリック要素のtabIndexはclose時は自動的に-1になります。
-				</button>
-			</div>
-		),
-	}}
-/>`}
-         />
+			</Accordion.Button>
+			<Accordion.Content
+				value={list.value}
+				callback={{
+					open: (props) => {
+						accordionEvent(props);
+					},
+					close: (props) => {
+						accordionEvent(props);
+					},
+				}}>
+				<div className={s.content}>
+					<p>{list.contentTxt}</p>
+					<button>
+						コンテンツ内のクリック要素のtabIndexはclose時は自動的に-1になります。
+					</button>
+				</div>
+			</Accordion.Content>
+		</div>
+	))}
+</Accordion.Context>`}></CodeBlock>
       </>
    );
 };
