@@ -17,58 +17,23 @@ const Description = () => {
 };
 
 const Demo = () => {
-   /*===============================================
-	list
-	===============================================*/
-   const listArr = ["list1", "list2", "list3", "list4", "list5"];
-   const List = ({ title }: { title: string }) => {
-      return <span>{title}</span>;
-   };
-   const listChildren = listArr.map((title) => (
-      <List title={title} key={title} />
+   const Buttons = [...Array(5)].map((_, i) => (
+      <Tab.Button className={s.button} value={`tab_${i}`} key={`tab_${i}`}>
+         ボタン
+      </Tab.Button>
    ));
-
-   /*===============================================
-	content
-	===============================================*/
-   const contentArr = [
-      "content1content1content1",
-      "content2content2content2",
-      "content3content3content3",
-      "content4content4content4",
-      "content5content5content5",
-   ];
-   const Content = ({ title }: { title: string }) => {
-      const titles = [...Array(10)].map((_, i) => <p key={i}>{title}</p>);
-      return <div className={s.content}>{titles}</div>;
-   };
-   const contentChildren = contentArr.map((title) => (
-      <Content title={title} key={title} />
-   ));
-
-   return (
-      <Tab
-         lists={{
-            wrapperClassName: s.wrapper,
-            buttonClassName: s.button,
-            isViewClassName: s.isView,
-            children: listChildren,
-         }}
-         contents={{
-            children: contentChildren,
-         }}
+   const Contents = [...Array(5)].map((_, i) => (
+      <Tab.Content
+         className={s.content}
+         value={`tab_${i}`}
+         key={`tab_${i}`}
          callback={{
-            leave: (target) => {
+            close: (target) => {
                return new Promise((resolve) => {
                   gsap.context(() => {
-                     gsap.to("p", {
-                        y: 80,
+                     gsap.to("p,button", {
                         opacity: 0,
-                        duration: 0.6,
-                        ease: "power3.out",
-                        stagger: {
-                           each: 0.03,
-                        },
+                        y: -16,
                         onComplete: () => {
                            resolve(null);
                         },
@@ -76,28 +41,31 @@ const Demo = () => {
                   }, target);
                });
             },
-            enter: (target) => {
+            open: (target) => {
                gsap.context(() => {
                   gsap.fromTo(
-                     "p",
+                     "p,button",
                      {
-                        y: 80,
                         opacity: 0,
+                        y: 16,
                      },
                      {
-                        y: 0,
                         opacity: 1,
-                        duration: 0.6,
-                        ease: "power3.out",
-                        stagger: {
-                           each: 0.03,
-                        },
+                        y: 0,
                      }
                   );
                }, target);
             },
-         }}
-      />
+         }}>
+         <p>{`tab_${i}`}</p>
+         <button>ボタン</button>
+      </Tab.Content>
+   ));
+   return (
+      <Tab.Context defaultValue="tab_0">
+         <div className={s.buttonWrapper}>{Buttons}</div>
+         <div className={s.contentWrapper}>{Contents}</div>
+      </Tab.Context>
    );
 };
 
@@ -105,75 +73,78 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`interface ITab {
-   lists: {
-      wrapperClassName?: string;
-      buttonClassName?: string;
-      isViewClassName?: string;
-      children: React.ReactNode[];
+            code={`interface IContext {
+   children: React.ReactNode;
+   defaultValue: string;
+}
+interface IButton {
+   children: React.ReactNode;
+   value: string;
+   className?: string;
+}
+interface IContent {
+   children: React.ReactNode;
+   value: string;
+   className?: string;
+   callback?: {
+      close?: (target: Element) => void;
+      open?: (target: Element) => void;
    };
-   contents: {
-      children: React.ReactNode[];
-   };
-   callback: {
-      leave: (target: Element) => void;
-      enter: (target: Element) => void;
-   };
-}`}
-         />
+}
+			`}></CodeBlock>
          <CodeBlock
-            code={`<Tab
-	lists={{
-		wrapperClassName: s.wrapper,
-		buttonClassName: s.button,
-		isViewClassName: s.isView,
-		children: listChildren,
-	}}
-	contents={{
-		children: contentChildren,
-	}}
-	callback={{
-		leave: (target) => {
-			return new Promise((resolve) => {
-				gsap.context(() => {
-					gsap.to("p", {
-						y: 80,
-						opacity: 0,
-						duration: 0.6,
-						ease: "power3.out",
-						stagger: {
-							each: 0.03,
-						},
-						onComplete: () => {
-							resolve(null);
-						},
-					});
-				}, target);
-			});
-		},
-		enter: (target) => {
-			gsap.context(() => {
-				gsap.fromTo(
-					"p",
-					{
-						y: 80,
-						opacity: 0,
-					},
-					{
-						y: 0,
-						opacity: 1,
-						duration: 0.6,
-						ease: "power3.out",
-						stagger: {
-							each: 0.03,
-						},
-					}
-				);
-			}, target);
-		},
-	}}
-/>`}
-         />
+            code={`const Demo = () => {
+   const Buttons = [...Array(5)].map((_, i) => (
+      <Tab.Button className={s.button} value={\`tab_\${i}\`} key={\`tab_\${i}\`}>
+         ボタン
+      </Tab.Button>
+   ));
+   const Contents = [...Array(5)].map((_, i) => (
+      <Tab.Content
+         className={s.content}
+         value={\`tab_\${i}\`}
+         key={\`tab_\${i}\`}
+         callback={{
+            close: (target) => {
+               return new Promise((resolve) => {
+                  gsap.context(() => {
+                     gsap.to("p", {
+                        opacity: 0,
+                        y: -16,
+                        onComplete: () => {
+                           resolve(null);
+                        },
+                     });
+                  }, target);
+               });
+            },
+            open: (target) => {
+               gsap.context(() => {
+                  gsap.fromTo(
+                     "p",
+                     {
+                        opacity: 0,
+                        y: 16,
+                     },
+                     {
+                        opacity: 1,
+                        y: 0,
+                     }
+                  );
+               }, target);
+            },
+         }}>
+         <p>{\`tab_\${i}\`}</p>
+      </Tab.Content>
+   ));
+   return (
+      <Tab.Context defaultValue="tab_0">
+         <div className={s.buttonWrapper}>{Buttons}</div>
+         <div className={s.contentWrapper}>{Contents}</div>
+      </Tab.Context>
+   );
+};
+`}></CodeBlock>
       </>
    );
 };

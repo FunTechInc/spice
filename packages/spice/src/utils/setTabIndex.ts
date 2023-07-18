@@ -1,5 +1,5 @@
 /*===============================================
-Set tabindex to click element in content
+control tab Index in content 
 ===============================================*/
 interface ISetTabIndex {
    content: HTMLDivElement;

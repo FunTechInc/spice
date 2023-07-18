@@ -4,13 +4,13 @@ components
 ===============================================*/
 export { AsideLayout } from "./components/AsideLayout";
 export { WrapperLayout } from "./components/WrapperLayout";
-export { Accordion } from "./components/Accordion";
 export { FormField } from "./components/FormField";
-export { Tab } from "./components/Tab";
 export { Dropdown } from "./components/Dropdown";
 export { Magnet } from "./components/Magnet";
 export { BackgroundImage } from "./components/BackgroundImage";
 export { Modal } from "./components/Modal";
+export * as Tab from "./components/Tab";
+export * as Accordion from "./components/Accordion";
 /*===============================================
 hooks
 ===============================================*/

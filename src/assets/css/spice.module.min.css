@@ -1,3 +1,3 @@
-.spice_wrapper{flex-direction:column;display:flex;min-height:100vh}.spice_wrapper>main:first-of-type{flex:1}.spice_wrapper_hidden{overflow:hidden}
+.spice_accordion_content{overflow:hidden}.spice_accordion_hidden{height:0}
 
 /*# sourceMappingURL=spice.module.min.css.map */
