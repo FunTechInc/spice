@@ -1202,7 +1202,7 @@ const Nt = "_spice_wrapper_1b9je_1", kt = "_spice_wrapper_hidden_1b9je_10", Ne =
     threshold: s
   };
   j(() => {
-    const u = n.current;
+    const u = n == null ? void 0 : n.current;
     if (!u)
       return;
     const p = (m, w) => {

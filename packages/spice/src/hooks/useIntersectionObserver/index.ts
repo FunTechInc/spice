@@ -27,7 +27,7 @@ export const useIntersectionObserver = ({
 
    useEffect(() => {
       //return false if target is undifined
-      const target = targetRef.current;
+      const target = targetRef?.current;
       if (!target) {
          return;
       }
