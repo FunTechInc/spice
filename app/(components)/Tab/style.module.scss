@@ -42,3 +42,15 @@ content
    overflow: hidden;
    border: 2px solid #333;
 }
+
+/*===============================================
+switch button
+===============================================*/
+.switchButtonWrapper {
+   display: flex;
+   margin-bottom: $spacing-2;
+   button {
+      font-size: 2rem;
+      margin: 0 $spacing-1;
+   }
+}

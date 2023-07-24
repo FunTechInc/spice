@@ -11,6 +11,7 @@ create context
 ===============================================*/
 type TTabState = {
    isLeaving: boolean;
+   isAnimation: boolean;
    prev: string;
    current: string;
    next: string;
@@ -18,6 +19,7 @@ type TTabState = {
 
 const defaultState: TTabState = {
    isLeaving: false,
+   isAnimation: true,
    prev: "",
    current: "",
    next: "",
@@ -36,6 +38,9 @@ interface IContext {
    defaultValue: string;
 }
 
+/**
+ * @param defaultValue string
+ */
 export const Context = ({ children, defaultValue }: IContext) => {
    if (defaultValue === "") {
       throw new Error(
@@ -44,6 +49,7 @@ export const Context = ({ children, defaultValue }: IContext) => {
    }
    const [tabState, setTabState] = useState({
       isLeaving: false,
+      isAnimation: true,
       prev: "",
       current: defaultValue,
       next: "",
