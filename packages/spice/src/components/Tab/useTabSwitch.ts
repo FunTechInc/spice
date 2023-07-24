@@ -12,8 +12,8 @@ export const useTabSwitch = () => {
             isAnimation: isAnimation,
             isLeaving: isAnimation,
             prev: isAnimation ? state.current : "",
-            next: isAnimation ? value : "",
             current: isAnimation ? state.current : value,
+            next: isAnimation ? value : "",
          };
       });
    };

@@ -28,6 +28,7 @@ export const Content = ({ children, value, className, callback }: IContent) => {
    const ref = useRef<HTMLDivElement>(null);
    const setTabState = useSetTabState();
    const tabState = useTabState();
+   const isCurrent = tabState.current === value && !tabState.isLeaving;
    useEffect(() => {
       if (isFirst.current) {
          isFirst.current = false;
@@ -38,7 +39,7 @@ export const Content = ({ children, value, className, callback }: IContent) => {
 		********************/
       if (!tabState.isAnimation) {
          //callback reset event
-         if (tabState.current === value && !tabState.isLeaving) {
+         if (isCurrent) {
             callback?.reset && callback.reset(ref.current!);
          }
          return;
@@ -52,8 +53,8 @@ export const Content = ({ children, value, className, callback }: IContent) => {
                (await promiseMaker(callback.close(ref.current!)));
             setTabState((state) => {
                return {
+                  ...state,
                   isLeaving: false,
-                  isAnimation: true,
                   prev: "",
                   current: state.next,
                   next: "",
@@ -64,10 +65,10 @@ export const Content = ({ children, value, className, callback }: IContent) => {
       /********************
 		open
 		********************/
-      if (tabState.current === value && !tabState.isLeaving) {
+      if (isCurrent) {
          callback?.open && callback.open(ref.current!);
       }
-   }, [tabState, setTabState, callback, value]);
+   }, [tabState, setTabState, callback, value, isCurrent]);
 
    /*===============================================
 	control tabIndex
