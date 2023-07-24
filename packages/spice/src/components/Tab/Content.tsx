@@ -11,9 +11,13 @@ interface IContent {
    callback?: {
       open?: (target: Element) => void;
       close?: (target: Element) => void;
+      reset?: (target: Element) => void;
    };
 }
 
+/**
+ * @param callback open,close,reset(callback if isAnimation is false when use useTabSwitch)
+ */
 export const Content = ({ children, value, className, callback }: IContent) => {
    if (value === "") {
       throw new Error(
@@ -30,6 +34,16 @@ export const Content = ({ children, value, className, callback }: IContent) => {
          return;
       }
       /********************
+		return if isAnimation is false
+		********************/
+      if (!tabState.isAnimation) {
+         //callback reset event
+         if (tabState.current === value && !tabState.isLeaving) {
+            callback?.reset && callback.reset(ref.current!);
+         }
+         return;
+      }
+      /********************
 		close
 		********************/
       if (tabState.prev === value) {
@@ -39,6 +53,7 @@ export const Content = ({ children, value, className, callback }: IContent) => {
             setTabState((state) => {
                return {
                   isLeaving: false,
+                  isAnimation: true,
                   prev: "",
                   current: state.next,
                   next: "",

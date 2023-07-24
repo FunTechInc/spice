@@ -16,6 +16,26 @@ const Description = () => {
    );
 };
 
+const SwitchButton = () => {
+   const tabSwitch = Tab.useTabSwitch();
+   return (
+      <div className={s.switchButtonWrapper}>
+         <button
+            onClick={() => {
+               tabSwitch("tab_2", false);
+            }}>
+            tag_2
+         </button>
+         <button
+            onClick={() => {
+               tabSwitch("tab_3", true);
+            }}>
+            tag_3
+         </button>
+      </div>
+   );
+};
+
 const Demo = () => {
    const Buttons = [...Array(5)].map((_, i) => (
       <Tab.Button className={s.button} value={`tab_${i}`} key={`tab_${i}`}>
@@ -56,13 +76,23 @@ const Demo = () => {
                   );
                }, target);
             },
+            reset: (target) => {
+               gsap.context(() => {
+                  gsap.set("p,button", {
+                     opacity: 1,
+                     y: 0,
+                  });
+               }, target);
+            },
          }}>
          <p>{`tab_${i}`}</p>
          <button>ボタン</button>
       </Tab.Content>
    ));
+
    return (
       <Tab.Context defaultValue="tab_0">
+         <SwitchButton />
          <div className={s.buttonWrapper}>{Buttons}</div>
          <div className={s.contentWrapper}>{Contents}</div>
       </Tab.Context>

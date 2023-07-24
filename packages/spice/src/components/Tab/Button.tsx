@@ -22,6 +22,7 @@ export const Button = ({ children, value, className }: IButton) => {
          return {
             ...state,
             isLeaving: true,
+            isAnimation: true,
             prev: state.current,
             next: value,
          };
