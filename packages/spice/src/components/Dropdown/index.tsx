@@ -40,26 +40,29 @@ export const Dropdown = ({
    const isMouseOn = useRef(false);
    const [isView, setIsView] = useState(false);
    const [isPointerPrevent, setPointerPrevent] = useState(true);
+   const openHandler = () => {
+      isMouseOn.current = true;
+      setPointerPrevent(false);
+      setIsView(true);
+      if (callback?.enter) {
+         callback.enter(ref.current!);
+      }
+   };
+   const closeHandler = async () => {
+      isMouseOn.current = false;
+      setPointerPrevent(true);
+      if (callback?.leave) {
+         await promiseMaker(callback.leave(ref.current!));
+      }
+      if (!isMouseOn.current) {
+         setIsView(false);
+      }
+   };
    return (
       <div
-         onMouseEnter={() => {
-            isMouseOn.current = true;
-            setPointerPrevent(false);
-            setIsView(true);
-            if (callback?.enter) {
-               callback.enter(ref.current!);
-            }
-         }}
-         onMouseLeave={async () => {
-            isMouseOn.current = false;
-            setPointerPrevent(true);
-            if (callback?.leave) {
-               await promiseMaker(callback.leave(ref.current!));
-            }
-            if (!isMouseOn.current) {
-               setIsView(false);
-            }
-         }}
+         onMouseEnter={openHandler}
+         onMouseLeave={closeHandler}
+         onClick={closeHandler}
          className={`${s.spice_dropdown_wrapper} ${
             className ? className : ""
          }`}>
