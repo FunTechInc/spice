@@ -45,8 +45,9 @@ const Demo = () => {
          <BackgroundImage ratio={"16-9"} className={s.hover}>
             <Image
                src={"/logo-l.jpg"}
-               width={1200}
-               height={630}
+               fill
+               sizes="(max-width: 768px) 100vw, 50vw"
+               priority
                alt="FunTech Inc"
             />
             <div className={s.mask}></div>
@@ -56,8 +57,9 @@ const Demo = () => {
             <Image
                ref={ref}
                src={"/logo-l.jpg"}
-               width={1200}
-               height={630}
+               fill
+               sizes="(max-width: 768px) 100vw, 50vw"
+               priority
                alt="FunTech Inc"
             />
          </BackgroundImage>
