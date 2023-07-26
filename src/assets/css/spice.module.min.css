@@ -1,3 +1,3 @@
-.spice_accordion_content{overflow:hidden}.spice_accordion_hidden{height:0}
+.spice_bgImg_wrapper{overflow:hidden}.spice_bgImg_view{position:relative}.spice_bgImg_view img{position:absolute;top:0;left:0;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:initial;max-height:initial;min-width:100%;min-height:100%;max-block-size:initial;max-inline-size:initial}.spice_bgImg_golden{padding-top:62%}.spice_bgImg_silver{padding-top:71%}.spice_bgImg_platinum{padding-top:58%}.spice_bgImg_16-9{padding-top:56.25%}.spice_bgImg_square{padding-top:100%}.spice_bgImg_3-2{padding-top:66.66%}.spice_bgImg_4-3{padding-top:75%}
 
 /*# sourceMappingURL=spice.module.min.css.map */
