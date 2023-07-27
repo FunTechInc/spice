@@ -108,20 +108,22 @@ const Code = () => {
       <>
          <BackgroundImage ratio={"16-9"} className={s.hover}>
             <Image
-               src={"/ogp.jpg"}
-               width={1200}
-               height={630}
+               src={"/logo-l.jpg"}
+               fill
+               sizes="(max-width: 768px) 100vw, 50vw"
+               priority
                alt="FunTech Inc"
             />
             <div className={s.mask}></div>
          </BackgroundImage>
          <p>hover sample</p>
-         <BackgroundImage ratio={"16-9"} className={s.parallax}>
+         <BackgroundImage ratio={"silver"} className={s.parallax}>
             <Image
                ref={ref}
-               src={"/ogp.jpg"}
-               width={1200}
-               height={630}
+               src={"/logo-l.jpg"}
+               fill
+               sizes="(max-width: 768px) 100vw, 50vw"
+               priority
                alt="FunTech Inc"
             />
          </BackgroundImage>
