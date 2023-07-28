@@ -7,7 +7,11 @@ interface IRaf {
 }
 type TPlay = "play" | "pause";
 
-export const useAnimationFrame = (fps: number) => {
+/**
+ * @param fps fps >= 60
+ * @param dependencies  dependencies = []
+ */
+export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
    /*===============================================
 	handling FPS
 	===============================================*/
@@ -50,7 +54,7 @@ export const useAnimationFrame = (fps: number) => {
          cancelAnimationFrame(rAF.id);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+   }, dependencies);
    return (isPlay: TPlay, callback?: () => void) => {
       if (isPlay === "play") {
          if (!callback) {
