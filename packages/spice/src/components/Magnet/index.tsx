@@ -18,14 +18,21 @@ interface IMagnet {
       leave?: (props: TCallbackProps) => void;
    };
    stopPropagation?: boolean;
+   isOnClickReset?: boolean;
 }
 
+/**
+ * @param callback move,leave
+ * @param stopPropagation if true , set "pointer-events: none;" to children
+ * @param isOnClickReset if true , reset on click
+ */
 export const Magnet = ({
    className,
    children,
    callback,
    fps = 60,
    stopPropagation = false,
+   isOnClickReset = false,
 }: IMagnet) => {
    const ref = useRef<HTMLDivElement>(null);
    const childrenRef = useRef<HTMLDivElement>(null);
@@ -60,16 +67,29 @@ export const Magnet = ({
       e.stopPropagation();
       updatePayload(e);
    };
-   const mouseLeaveHandler = (e: TMouseEvent) => {
+   /********************
+	reset
+	********************/
+   const resetEvent = (e: TMouseEvent) => {
       e.stopPropagation();
       rAF("pause");
       callback.leave && callback.leave(payload);
+   };
+   const mouseLeaveHandler = (e: TMouseEvent) => {
+      resetEvent(e);
+   };
+   const onClickReset = (e: TMouseEvent) => {
+      if (!isOnClickReset) {
+         return;
+      }
+      resetEvent(e);
    };
    return (
       <div
          onMouseEnter={mouseEnterHandler}
          onMouseMove={mouseMoveHandler}
          onMouseLeave={mouseLeaveHandler}
+         onClick={onClickReset}
          className={className ? className : ""}
          ref={ref}>
          <div

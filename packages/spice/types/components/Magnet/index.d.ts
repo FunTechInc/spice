@@ -14,6 +14,12 @@ interface IMagnet {
         leave?: (props: TCallbackProps) => void;
     };
     stopPropagation?: boolean;
+    isOnClickReset?: boolean;
 }
-export declare const Magnet: ({ className, children, callback, fps, stopPropagation, }: IMagnet) => import("react/jsx-runtime").JSX.Element;
+/**
+ * @param callback move,leave
+ * @param stopPropagation if true , set "pointer-events: none;" to children
+ * @param isOnClickReset if true , reset on click
+ */
+export declare const Magnet: ({ className, children, callback, fps, stopPropagation, isOnClickReset, }: IMagnet) => import("react/jsx-runtime").JSX.Element;
 export {};
