@@ -14,6 +14,14 @@ export interface IFormProps
    isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 }
 
+export interface ISelectProps {
+   isSelect?: ISelectOptions;
+}
+
+export interface ITextareaProps {
+   isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+}
+
 interface IFormFieldsProps {
    className: string;
    label?: string;

@@ -1,17 +1,15 @@
-import { IFormProps } from "../..";
+import { ITextareaProps } from "../..";
 
-export const Textarea = ({ formProps }: { formProps: IFormProps }) => {
-   const textareaProp = formProps.isTextarea;
-   if (!textareaProp) {
+export const Textarea = ({ formProps }: { formProps: ITextareaProps }) => {
+   const { isTextarea, ...otherProp } = formProps;
+   if (!isTextarea) {
       return;
    }
    return (
       <textarea
-         name={formProps.name}
-         id={formProps.id}
-         cols={textareaProp.cols}
-         rows={textareaProp.rows}
-         placeholder={formProps.placeholder}
-         defaultValue={textareaProp.defaultValue}></textarea>
+         {...otherProp}
+         cols={isTextarea.cols}
+         rows={isTextarea.rows}
+         defaultValue={isTextarea.defaultValue}></textarea>
    );
 };
