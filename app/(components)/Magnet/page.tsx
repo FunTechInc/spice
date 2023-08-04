@@ -151,6 +151,7 @@ const Code = () => {
       leave?: (props: TCallbackProps) => void;
    };
    stopPropagation?: boolean;
+   isOnClickReset?: boolean;
 }`}
          />
          <CodeBlock

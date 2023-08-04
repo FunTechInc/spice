@@ -36,6 +36,8 @@ type TInputs = {
    lastName: string;
    email: string;
    radio: string;
+   selectBlock: string;
+   lengthWatch: string;
 };
 
 const WatchTest = ({ control }: { control: Control<TInputs> }) => {
@@ -45,6 +47,15 @@ const WatchTest = ({ control }: { control: Control<TInputs> }) => {
       defaultValue: "",
    });
    return <p className={s.watchExample}>Watch Example: {txt}</p>;
+};
+
+const LengthWatch = ({ control }: { control: Control<TInputs> }) => {
+   const txt = useWatch({
+      control,
+      name: "lengthWatch",
+      defaultValue: "",
+   });
+   return <p className={s.watchExample}>Watch Example: {txt.length}</p>;
 };
 
 const Error = ({ error }: { error: string }) => {
@@ -87,13 +98,22 @@ const Demo = () => {
                   type: "email",
                   id: "e-mail",
                   placeholder: "t.hashimoto@funtech.inc",
-                  ...register("email", { required: true }),
+                  ...register("email", {
+                     required: true,
+                     pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Entered value does not match email format",
+                     },
+                  }),
                },
             ]}
             errors={[
                <>
                   {errors?.email?.type === "required" ? (
                      <Error error="This field is required" />
+                  ) : null}
+                  {errors?.email?.type === "pattern" ? (
+                     <Error error="this is not valid main patter." />
                   ) : null}
                </>,
             ]}
@@ -210,8 +230,15 @@ const Demo = () => {
                      defaultValue: "--Please choose an option--",
                      options: ["option1", "option2", "option3"],
                   },
-                  name: "select block",
+                  ...register("selectBlock", { required: true }),
                },
+            ]}
+            errors={[
+               <>
+                  {errors?.selectBlock?.type === "required" ? (
+                     <Error error="This field is required" />
+                  ) : null}
+               </>,
             ]}
          />
          <FormField
@@ -244,11 +271,21 @@ const Demo = () => {
                      defaultValue: "It was a dark and stormy night...",
                   },
                   placeholder: "Your text here",
-                  name: "textarea-sample",
-                  id: "textarea-sample",
+                  id: "lengthWatch",
+                  ...register("lengthWatch", {
+                     maxLength: 20,
+                  }),
                },
             ]}
+            errors={[
+               <>
+                  {errors?.lengthWatch?.type === "maxLength" ? (
+                     <Error error="20文字以上です" />
+                  ) : null}
+               </>,
+            ]}
          />
+         <LengthWatch control={control} />
          <FormField
             className={`${s.field} ${s.submit}`}
             formProps={[
