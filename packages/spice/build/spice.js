@@ -749,15 +749,7 @@ const Wt = "_spice_wrapper_1b9je_1", Mt = "_spice_wrapper_hidden_1b9je_10", ke =
 }, Jt = ({ formProps: o }) => {
   const { isTextarea: t, ...i } = o;
   if (t)
-    return /* @__PURE__ */ d.jsx(
-      "textarea",
-      {
-        ...i,
-        cols: t.cols,
-        rows: t.rows,
-        defaultValue: t.defaultValue
-      }
-    );
+    return /* @__PURE__ */ d.jsx("textarea", { ...i, ...t });
 }, Fr = ({
   className: o,
   label: t,

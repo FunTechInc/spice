@@ -268,7 +268,7 @@ const Demo = () => {
                   isTextarea: {
                      rows: 10,
                      cols: 33,
-                     defaultValue: "It was a dark and stormy night...",
+                     defaultValue: "hogehogehogehoge",
                   },
                   placeholder: "Your text here",
                   id: "lengthWatch",
