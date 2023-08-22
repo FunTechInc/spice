@@ -1,4 +1,4 @@
-import { useRef, useEffect, KeyboardEvent } from "react";
+import { useRef, useEffect } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
