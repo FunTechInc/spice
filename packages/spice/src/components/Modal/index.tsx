@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, KeyboardEvent } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
@@ -46,6 +46,23 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
             closeModal();
          });
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
+
+   /*===============================================
+	esc key
+	===============================================*/
+   useEffect(() => {
+      const keyDownHandler = (event: globalThis.KeyboardEvent) => {
+         const isOpen = ref.current?.hasAttribute("open");
+         if (isOpen && event.key === "Escape") {
+            closeModal();
+         }
+      };
+      document.addEventListener("keydown", keyDownHandler);
+      return () => {
+         document.removeEventListener("keydown", keyDownHandler);
+      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 

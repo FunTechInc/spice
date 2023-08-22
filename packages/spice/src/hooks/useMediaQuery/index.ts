@@ -11,10 +11,10 @@ export const useMediaQuery = ({ type, width }: IUseMediaQuery) => {
    const updateState = (currentWidth: number) => {
       switch (type) {
          case "max":
-            setIsQuery(width <= currentWidth);
+            setIsQuery(width >= currentWidth);
             break;
          case "min":
-            setIsQuery(width >= currentWidth);
+            setIsQuery(width <= currentWidth);
             break;
          default:
             break;
