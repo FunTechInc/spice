@@ -10,6 +10,9 @@ interface IUseScrollDirection {
    dependencies?: any[];
 }
 
+/**
+ * @returns direction "up" | "down"
+ */
 export const useScrollDirection = ({
    threshold = 0,
    debounce,

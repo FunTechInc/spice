@@ -11,11 +11,14 @@ interface IModal {
       className?: string;
    };
    callback?: {
-      open?: (target: Element) => void;
-      close?: (target: Element) => void;
+      onOpen?: (target: Element) => void;
+      onClose?: (target: Element) => void;
    };
 }
 
+/**
+ * @param callback onOpen,onClose
+ */
 export const Modal = ({ children, className, dialog, callback }: IModal) => {
    const ref = useRef<HTMLDialogElement>(null);
    /*===============================================
@@ -25,10 +28,10 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
       toggleScroll("add");
       ref.current!.showModal();
       // Execute at the very end to get scrollTop
-      callback?.open && callback.open(ref.current!);
+      callback?.onOpen && callback.onOpen(ref.current!);
    };
    const closeModal = async () => {
-      callback?.close && (await promiseMaker(callback.close(ref.current!)));
+      callback?.onClose && (await promiseMaker(callback.onClose(ref.current!)));
       toggleScroll("remove");
       ref.current!.close();
    };

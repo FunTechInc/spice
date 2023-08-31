@@ -23,12 +23,27 @@ interface IDropdown {
       children: React.ReactNode;
    };
    callback?: {
-      enter?: (target: Element) => void;
-      leave?: (target: Element) => void;
+      onEnter?: (target: Element) => void;
+      onLeave?: (target: Element) => void;
    };
    className?: string;
 }
 
+/** 
+ * @param position | "bottom-left"
+      | "bottom-center"
+      | "bottom-right"
+      | "left-top"
+      | "left-center"
+      | "left-bottom"
+      | "right-top"
+      | "right-center"
+      | "right-bottom"
+      | "top-left"
+      | "top-center"
+      | "top-right"
+	@param callback onEnter,onLeave
+ */
 export const Dropdown = ({
    position,
    parent,
@@ -44,15 +59,15 @@ export const Dropdown = ({
       isMouseOn.current = true;
       setPointerPrevent(false);
       setIsView(true);
-      if (callback?.enter) {
-         callback.enter(ref.current!);
+      if (callback?.onEnter) {
+         callback.onEnter(ref.current!);
       }
    };
    const closeHandler = async () => {
       isMouseOn.current = false;
       setPointerPrevent(true);
-      if (callback?.leave) {
-         await promiseMaker(callback.leave(ref.current!));
+      if (callback?.onLeave) {
+         await promiseMaker(callback.onLeave(ref.current!));
       }
       if (!isMouseOn.current) {
          setIsView(false);

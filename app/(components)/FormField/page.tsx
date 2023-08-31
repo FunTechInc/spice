@@ -299,60 +299,12 @@ const Demo = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`interface ISelectOptions {
-   defaultValue?: string;
-   defaultSelectedIndex?: number;
-   options: string[];
-}
-export interface IFormProps
-   extends React.InputHTMLAttributes<HTMLInputElement> {
-   isSelect?: ISelectOptions;
-   isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-}
-
-interface IFormFieldsProps {
-   className: string;
-   label?: string;
-   formProps: IFormProps[];
-   errors?: React.ReactNode[];
-}`}
-         />
-         <CodeBlock
-            code={`<FormField
-	className={s.field}
-	label="Mail"
-	formProps={[
-		{
-			type: "email",
-			id: "e-mail",
-			placeholder: "t.hashimoto@funtech.inc",
-			...register("email", { required: true }),
-		},
-	]}
-	errors={[
-		<>
-			{errors?.email?.type === "required" ? (
-				<Error error="This field is required" />
-			) : null}
-		</>,
-	]}
-/>`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
    return (
       <MainView
          title="FormField"
          description={<Description />}
          demo={<Demo />}
-         code={<Code />}
       />
    );
 };

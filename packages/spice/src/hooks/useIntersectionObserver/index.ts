@@ -6,12 +6,15 @@ interface IUseIntersectionObserver {
    threshold?: number;
    once: boolean;
    callback: {
-      enter?: (target: Element) => void;
-      leave?: (target: Element) => void;
+      onEnter?: (target: Element) => void;
+      onLeave?: (target: Element) => void;
    };
    dependencies?: any[];
 }
 
+/**
+ * @param callback onEnter,onLeave
+ */
 export const useIntersectionObserver = ({
    targetRef,
    rootMargin = "0px",
@@ -37,13 +40,13 @@ export const useIntersectionObserver = ({
          observer: IntersectionObserver
       ) => {
          entries.forEach((entry) => {
-            if (entry.isIntersecting && callback.enter) {
-               callback.enter(entry.target);
+            if (entry.isIntersecting && callback.onEnter) {
+               callback.onEnter(entry.target);
                if (once) {
                   observer.unobserve(entry.target);
                }
-            } else if (!entry.isIntersecting && callback.leave) {
-               callback.leave(entry.target);
+            } else if (!entry.isIntersecting && callback.onLeave) {
+               callback.onLeave(entry.target);
             }
          });
       };

@@ -36,7 +36,7 @@ const DropdownBlock = ({
             ),
          }}
          callback={{
-            enter: (target) => {
+            onEnter: (target) => {
                gsap.context(() => {
                   gsap.fromTo(
                      "p",
@@ -67,7 +67,7 @@ const DropdownBlock = ({
                   }
                );
             },
-            leave: (target) => {
+            onLeave: (target) => {
                return new Promise((resolve) => {
                   gsap.to(target, {
                      y: 16,
@@ -106,121 +106,12 @@ const Demo = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`interface IDropdown {
-   position:
-      | "bottom-left"
-      | "bottom-center"
-      | "bottom-right"
-      | "left-top"
-      | "left-center"
-      | "left-bottom"
-      | "right-top"
-      | "right-center"
-      | "right-bottom"
-      | "top-left"
-      | "top-center"
-      | "top-right";
-   parent: {
-      children: React.ReactNode;
-   };
-   content: {
-      children: React.ReactNode;
-   };
-   callback?: {
-      enter?: (target: Element) => void;
-      leave?: (target: Element) => void;
-   };
-   className?: string;
-}`}
-         />
-         <p>options you can use.</p>
-         <CodeBlock
-            code={`<Dropdown
-	position={position}
-	parent={{
-		children: <button className={s.button}>{position}</button>,
-	}}
-	content={{
-		children: (
-			<div className={s.content}>
-				<p>content</p>
-				<p>content</p>
-			</div>
-		),
-	}}
-	callback={{
-		enter: (target) => {
-			gsap.context(() => {
-				gsap.fromTo(
-					"p",
-					{
-						x: 16,
-					},
-					{
-						x: 0,
-						duration: 0.6,
-						ease: "power3.out",
-						stagger: {
-							each: 0.05,
-						},
-					}
-				);
-			}, target);
-			gsap.fromTo(
-				target,
-				{
-					opacity: 0,
-					y: 16,
-				},
-				{
-					opacity: 1,
-					y: 0,
-					duration: 0.6,
-					ease: "power3.out",
-				}
-			);
-		},
-		leave: (target) => {
-			return new Promise((resolve) => {
-				gsap.to(target, {
-					y: 16,
-					opacity: 0,
-					duration: 0.6,
-					ease: "power3.out",
-					onComplete: () => {
-						resolve(null);
-					},
-				});
-				gsap.context(() => {
-					gsap.to("p", {
-						x: -16,
-						duration: 0.6,
-						ease: "power3.out",
-						stagger: {
-							each: 0.05,
-						},
-					});
-				}, target);
-			});
-		},
-	}}
-/>`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
    return (
       <MainView
          title="Dropdown"
          description={<Description />}
          demo={<Demo />}
-         code={<Code />}
       />
    );
 };

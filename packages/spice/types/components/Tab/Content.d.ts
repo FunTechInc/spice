@@ -4,13 +4,14 @@ interface IContent {
     value: string;
     className?: string;
     callback?: {
-        open?: (target: Element) => void;
-        close?: (target: Element) => void;
-        reset?: (target: Element) => void;
+        onOpen?: (target: Element) => void;
+        onClose?: (target: Element) => void;
+        onReset?: (target: Element) => void;
     };
 }
 /**
- * @param callback open,close,reset(callback if isAnimation is false when use useTabSwitch)
+ * @param value string Please make sure to set it with the value of the Button component.
+ * @param callback onOpen,onClose,onReset(callback if isAnimation is false when use useTabSwitch)
  */
 export declare const Content: ({ children, value, className, callback }: IContent) => import("react/jsx-runtime").JSX.Element;
 export {};

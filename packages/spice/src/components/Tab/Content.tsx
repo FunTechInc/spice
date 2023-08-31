@@ -9,14 +9,15 @@ interface IContent {
    value: string;
    className?: string;
    callback?: {
-      open?: (target: Element) => void;
-      close?: (target: Element) => void;
-      reset?: (target: Element) => void;
+      onOpen?: (target: Element) => void;
+      onClose?: (target: Element) => void;
+      onReset?: (target: Element) => void;
    };
 }
 
 /**
- * @param callback open,close,reset(callback if isAnimation is false when use useTabSwitch)
+ * @param value string Please make sure to set it with the value of the Button component.
+ * @param callback onOpen,onClose,onReset(callback if isAnimation is false when use useTabSwitch)
  */
 export const Content = ({ children, value, className, callback }: IContent) => {
    if (value === "") {
@@ -40,7 +41,7 @@ export const Content = ({ children, value, className, callback }: IContent) => {
       if (!tabState.isAnimation) {
          //callback reset event
          if (isCurrent) {
-            callback?.reset && callback.reset(ref.current!);
+            callback?.onReset && callback.onReset(ref.current!);
          }
          return;
       }
@@ -49,8 +50,8 @@ export const Content = ({ children, value, className, callback }: IContent) => {
 		********************/
       if (tabState.prev === value) {
          (async () => {
-            callback?.close &&
-               (await promiseMaker(callback.close(ref.current!)));
+            callback?.onClose &&
+               (await promiseMaker(callback.onClose(ref.current!)));
             setTabState((state) => {
                return {
                   ...state,
@@ -66,7 +67,7 @@ export const Content = ({ children, value, className, callback }: IContent) => {
 		open
 		********************/
       if (isCurrent) {
-         callback?.open && callback.open(ref.current!);
+         callback?.onOpen && callback.onOpen(ref.current!);
       }
    }, [tabState, setTabState, callback, value, isCurrent]);
 

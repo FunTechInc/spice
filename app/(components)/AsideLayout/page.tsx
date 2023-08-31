@@ -12,33 +12,8 @@ const Description = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`interface IAsideLayout {
-   className?: string;
-   children: React.ReactNode;
-   aside: {
-      chidren: React.ReactNode;
-      className?: string;
-      index: 0 | 1;
-   };
-   isSticky: boolean;
-}`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
-   return (
-      <MainView
-         title="WrapperLayout"
-         description={<Description />}
-         code={<Code />}
-      />
-   );
+   return <MainView title="AsideLayout" description={<Description />} />;
 };
 
 export default Page;

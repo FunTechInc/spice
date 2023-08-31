@@ -51,13 +51,13 @@ const Demo = () => {
             className={s.button}
             dialog={{ children: <ModalContent />, className: s.dialog }}
             callback={{
-               open: (dialog) => {
+               onOpen: (dialog) => {
                   setIsModal(true);
                   const content =
                      dialog.getElementsByClassName("js_modal_content")[0];
                   content.scrollTop = 0;
                },
-               close: () => {
+               onClose: () => {
                   setIsModal(false);
                },
             }}>
@@ -74,7 +74,7 @@ const Demo = () => {
                ),
             }}
             callback={{
-               open: (props) => {
+               onOpen: (props) => {
                   setIsModal(true);
                   const content =
                      props.getElementsByClassName("js_modal_content")[0];
@@ -93,7 +93,7 @@ const Demo = () => {
                      );
                   }, props);
                },
-               close: (props) => {
+               onClose: (props) => {
                   setIsModal(false);
                   return new Promise((resolve) => {
                      gsap.context(() => {
@@ -115,47 +115,9 @@ const Demo = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock code={`overscroll-behavior: contain;`} />
-         <p>
-            Inside the dialog, dont forget to apply this style to the content
-            you want to scroll.
-         </p>
-         <CodeBlock
-            code={`interface IModal {
-   className?: string;
-   children: React.ReactNode;
-   dialog: {
-      children: React.ReactNode;
-      className?: string;
-   };
-   callback?: {
-      open?: (target: Element) => void;
-      close?: (target: Element) => void;
-   };
-}`}
-         />
-         <CodeBlock
-            code={`<Modal
-	className={s.button}
-	dialog={{ children: <ModalContent />, className: s.dialog }}>
-	<span>Show Modal</span>
-</Modal>`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
    return (
-      <MainView
-         title="Modal"
-         description={<Description />}
-         demo={<Demo />}
-         code={<Code />}
-      />
+      <MainView title="Modal" description={<Description />} demo={<Demo />} />
    );
 };
 

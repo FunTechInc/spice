@@ -11,7 +11,7 @@ interface IContext {
     defaultValue: string;
 }
 /**
- * @param defaultValue string
+ * @param defaultValue string Please set the value that you want to open by default.
  */
 export declare const Context: ({ children, defaultValue }: IContext) => import("react/jsx-runtime").JSX.Element;
 export declare const useTabState: () => TTabState;

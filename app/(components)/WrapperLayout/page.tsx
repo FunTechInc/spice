@@ -17,42 +17,8 @@ const Description = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`export const MainWrapper = ({ children }: { children: React.ReactNode }) => {
-   return (
-      <WrapperLayout>
-         <Header></Header>
-         <main>
-            <MainInner>
-               <AsideLayout
-                  className={s.wrapper}
-                  asideChildren={<AsideNav className={s.nav} />}
-                  isSticky={false}>
-                  {children}
-               </AsideLayout>
-            </MainInner>
-         </main>
-         <Footer></Footer>
-      </WrapperLayout>
-   );
-};
-`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
-   return (
-      <MainView
-         title="WrapperLayout"
-         description={<Description />}
-         code={<Code />}
-      />
-   );
+   return <MainView title="WrapperLayout" description={<Description />} />;
 };
 
 export default Page;

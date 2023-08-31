@@ -17,11 +17,15 @@ interface IContent {
    value: string;
    className?: string;
    callback: {
-      open: (props: TClickHandler) => void;
-      close: (props: TClickHandler) => void;
+      onOpen: (props: TClickHandler) => void;
+      onClose: (props: TClickHandler) => void;
    };
 }
 
+/**
+ * @param value string Please make sure to set it with the value of the Button component.
+ * @param callback onOpen,onClose
+ */
 export const Content = ({ value, callback, children, className }: IContent) => {
    if (value === "") {
       throw new Error(
@@ -61,9 +65,9 @@ export const Content = ({ value, callback, children, className }: IContent) => {
          target: wrapperRef.current!,
       };
       if (isOpen) {
-         callback.open(callbackProps);
+         callback.onOpen(callbackProps);
       } else {
-         callback.close(callbackProps);
+         callback.onClose(callbackProps);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [isOpen]);

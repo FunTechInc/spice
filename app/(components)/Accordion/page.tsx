@@ -64,10 +64,10 @@ const Demo = () => {
                <Accordion.Content
                   value={list.value}
                   callback={{
-                     open: (props) => {
+                     onOpen: (props) => {
                         accordionEvent(props, true);
                      },
-                     close: (props) => {
+                     onClose: (props) => {
                         accordionEvent(props, false);
                      },
                   }}>
@@ -84,74 +84,12 @@ const Demo = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`interface IContext {
-   children: React.ReactNode;
-   defaultValue: string[];
-}
-interface IButton {
-   children: React.ReactNode;
-   value: string;
-   className?: string;
-}
-interface IContent {
-   children: React.ReactNode;
-   value: string;
-   className?: string;
-   callback: {
-      open: (props: TClickHandler) => void;
-      close: (props: TClickHandler) => void;
-   };
-}
-`}
-         />
-         <CodeBlock
-            code={`<Accordion.Context defaultValue={["accordion-1"]}>
-	{accordionList.map((list) => (
-		<div key={list.value} className={s.accordion}>
-			<Accordion.Button value={list.value} className={s.button}>
-				<div className={s.buttonContent}>
-					<p>{list.buttonTxt}</p>
-					<div className={s.icon}>
-						<span></span>
-						<span></span>
-					</div>
-				</div>
-			</Accordion.Button>
-			<Accordion.Content
-				value={list.value}
-				callback={{
-					open: (props) => {
-						accordionEvent(props);
-					},
-					close: (props) => {
-						accordionEvent(props);
-					},
-				}}>
-				<div className={s.content}>
-					<p>{list.contentTxt}</p>
-					<button>
-						コンテンツ内のクリック要素のtabIndexはclose時は自動的に-1になります。
-					</button>
-				</div>
-			</Accordion.Content>
-		</div>
-	))}
-</Accordion.Context>`}></CodeBlock>
-      </>
-   );
-};
-
 const Page = () => {
    return (
       <MainView
          title="Accordion"
          description={<Description />}
          demo={<Demo />}
-         code={<Code />}
       />
    );
 };

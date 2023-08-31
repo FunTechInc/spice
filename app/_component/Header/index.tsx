@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import s from "./header.module.scss";
 import { MainInner } from "@/app/_layout/MainInner/MainInner";
 import { useScrollDirection } from "@/packages/spice/src";
 import { Dropdown } from "@/packages/spice/src";
 import { gsap } from "gsap";
+import s from "./header.module.scss";
 
 export const Header = () => {
    const direction = useScrollDirection({
@@ -42,7 +42,7 @@ export const Header = () => {
                   ),
                }}
                callback={{
-                  enter: (target) => {
+                  onEnter: (target) => {
                      gsap.fromTo(
                         target,
                         {
@@ -57,7 +57,7 @@ export const Header = () => {
                         }
                      );
                   },
-                  leave: (target) => {
+                  onLeave: (target) => {
                      return new Promise((resolve) => {
                         gsap.to(target, {
                            y: 16,
