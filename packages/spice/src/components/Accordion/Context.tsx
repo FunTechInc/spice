@@ -34,6 +34,9 @@ interface IContext {
    defaultValue: string[];
 }
 
+/**
+ * @param defaultValue string[] Please set the value that you want to open by default.
+ */
 export const Context = ({ children, defaultValue }: IContext) => {
    const [AccordionState, setAccordionState] = useState({
       target: "",

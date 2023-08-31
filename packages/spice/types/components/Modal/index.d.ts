@@ -7,9 +7,12 @@ interface IModal {
         className?: string;
     };
     callback?: {
-        open?: (target: Element) => void;
-        close?: (target: Element) => void;
+        onOpen?: (target: Element) => void;
+        onClose?: (target: Element) => void;
     };
 }
+/**
+ * @param callback onOpen,onClose
+ */
 export declare const Modal: ({ children, className, dialog, callback }: IModal) => import("react/jsx-runtime").JSX.Element;
 export {};

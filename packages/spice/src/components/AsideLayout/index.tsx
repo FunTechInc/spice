@@ -13,6 +13,9 @@ interface IAsideLayout {
    isSticky: boolean;
 }
 
+/**
+ * @param isSticky If set to true, handles the overflow of the WrapperLayout
+ */
 export const AsideLayout = ({
    className,
    children,

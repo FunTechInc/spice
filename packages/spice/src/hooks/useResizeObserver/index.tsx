@@ -6,6 +6,10 @@ interface IUseResizeObserver {
    debounce: number;
    dependencies?: any[];
 }
+
+/**
+ * @param callback (entry: Element) => void;
+ */
 export const useResizeObserver = ({
    targetRef,
    callback,

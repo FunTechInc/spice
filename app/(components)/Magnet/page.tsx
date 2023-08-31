@@ -25,7 +25,7 @@ const Demo = () => {
          <Magnet
             className={s.wrapper}
             callback={{
-               move: (props) => {
+               onMove: (props) => {
                   const animProps = { duration: 0.6, ease: "power1.out" };
                   let xTo = gsap.quickTo(props.target, "x", animProps),
                      yTo = gsap.quickTo(props.target, "y", animProps);
@@ -36,7 +36,7 @@ const Demo = () => {
                   childXTo(props.x * 0.3);
                   childYTo(props.y * 0.3);
                },
-               leave: ({ target, children }) => {
+               onLeave: ({ target, children }) => {
                   gsap.to([target, children], {
                      x: 0,
                      y: 0,
@@ -52,14 +52,14 @@ const Demo = () => {
             fps={30}
             className={s.button_wrapper}
             callback={{
-               move: ({ target, x, y }) => {
+               onMove: ({ target, x, y }) => {
                   const animProps = { duration: 0.6, ease: "power1.out" };
                   let xTo = gsap.quickTo(target, "x", animProps),
                      yTo = gsap.quickTo(target, "y", animProps);
                   xTo(x * 0.3);
                   yTo(y * 0.3);
                },
-               leave: ({ target }) => {
+               onLeave: ({ target }) => {
                   gsap.to(target, {
                      x: 0,
                      y: 0,
@@ -79,7 +79,7 @@ const Demo = () => {
          <Magnet
             className={s.balls_wrapper}
             callback={{
-               move: ({ children, x, y }) => {
+               onMove: ({ children, x, y }) => {
                   gsap.context(() => {
                      gsap.to("span", {
                         x: x * 0.6,
@@ -90,7 +90,7 @@ const Demo = () => {
                      });
                   }, children);
                },
-               leave: ({ children }) => {
+               onLeave: ({ children }) => {
                   gsap.context(() => {
                      gsap.to("span", {
                         x: 0,
@@ -114,14 +114,14 @@ const Demo = () => {
             fps={60}
             className={s.stalkerWrapper}
             callback={{
-               move: ({ children, x, y }) => {
+               onMove: ({ children, x, y }) => {
                   const animProps = { duration: 0.2, ease: "power1.out" };
                   let xTo = gsap.quickTo(children, "x", animProps),
                      yTo = gsap.quickTo(children, "y", animProps);
                   xTo(x * 1);
                   yTo(y * 1);
                },
-               leave: ({ target, children }) => {
+               onLeave: ({ target, children }) => {
                   gsap.to([target, children], {
                      x: 0,
                      y: 0,
@@ -138,60 +138,9 @@ const Demo = () => {
    );
 };
 
-const Code = () => {
-   return (
-      <>
-         <CodeBlock
-            code={`interface IMagnet {
-   fps?: number;
-   className?: string;
-   children: React.ReactNode;
-   callback: {
-      move: (props: TCallbackProps) => void;
-      leave?: (props: TCallbackProps) => void;
-   };
-   stopPropagation?: boolean;
-   isOnClickReset?: boolean;
-}`}
-         />
-         <CodeBlock
-            code={`<Magnet
-	fps={60}
-	className={s.stalkerWrapper}
-	callback={{
-		move: ({ children, x, y }) => {
-			const animProps = { duration: 0.2, ease: "power1.out" };
-			let xTo = gsap.quickTo(children, "x", animProps),
-				yTo = gsap.quickTo(children, "y", animProps);
-			xTo(x * 1);
-			yTo(y * 1);
-		},
-		leave: ({ target, children }) => {
-			gsap.to([target, children], {
-				x: 0,
-				y: 0,
-				duration: 0.6,
-				ease: "back.out(4)",
-				overwrite: true,
-			});
-		},
-	}}
-	stopPropagation={true}>
-	<div className={s.stalker}></div>
-</Magnet>`}
-         />
-      </>
-   );
-};
-
 const Page = () => {
    return (
-      <MainView
-         title="Magnet"
-         description={<Description />}
-         demo={<Demo />}
-         code={<Code />}
-      />
+      <MainView title="Magnet" description={<Description />} demo={<Demo />} />
    );
 };
 

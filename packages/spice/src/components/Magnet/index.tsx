@@ -14,15 +14,15 @@ interface IMagnet {
    className?: string;
    children: React.ReactNode;
    callback: {
-      move: (props: TCallbackProps) => void;
-      leave?: (props: TCallbackProps) => void;
+      onMove: (props: TCallbackProps) => void;
+      onLeave?: (props: TCallbackProps) => void;
    };
    stopPropagation?: boolean;
    isOnClickReset?: boolean;
 }
 
 /**
- * @param callback move,leave
+ * @param callback onMove,onLeave
  * @param stopPropagation if true , set "pointer-events: none;" to children
  * @param isOnClickReset if true , reset on click
  */
@@ -60,7 +60,7 @@ export const Magnet = ({
       setUpPayload(e);
       updatePayload(e);
       rAF("play", () => {
-         callback.move(payload);
+         callback.onMove(payload);
       });
    };
    const mouseMoveHandler = (e: TMouseEvent) => {
@@ -73,7 +73,7 @@ export const Magnet = ({
    const resetEvent = (e: TMouseEvent) => {
       e.stopPropagation();
       rAF("pause");
-      callback.leave && callback.leave(payload);
+      callback.onLeave && callback.onLeave(payload);
    };
    const mouseLeaveHandler = (e: TMouseEvent) => {
       resetEvent(e);

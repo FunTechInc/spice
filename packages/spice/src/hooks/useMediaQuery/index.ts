@@ -6,6 +6,10 @@ interface IUseMediaQuery {
    width: number;
 }
 
+/**
+ * @param type "max" | "min"
+ * @param width number
+ */
 export const useMediaQuery = ({ type, width }: IUseMediaQuery) => {
    const [isQuery, setIsQuery] = useState<boolean | null>(null);
    const updateState = (currentWidth: number) => {

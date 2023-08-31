@@ -5,10 +5,13 @@ interface IUseIntersectionObserver {
     threshold?: number;
     once: boolean;
     callback: {
-        enter?: (target: Element) => void;
-        leave?: (target: Element) => void;
+        onEnter?: (target: Element) => void;
+        onLeave?: (target: Element) => void;
     };
     dependencies?: any[];
 }
+/**
+ * @param callback onEnter,onLeave
+ */
 export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, callback, dependencies, }: IUseIntersectionObserver) => void;
 export {};

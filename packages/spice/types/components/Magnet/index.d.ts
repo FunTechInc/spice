@@ -10,14 +10,14 @@ interface IMagnet {
     className?: string;
     children: React.ReactNode;
     callback: {
-        move: (props: TCallbackProps) => void;
-        leave?: (props: TCallbackProps) => void;
+        onMove: (props: TCallbackProps) => void;
+        onLeave?: (props: TCallbackProps) => void;
     };
     stopPropagation?: boolean;
     isOnClickReset?: boolean;
 }
 /**
- * @param callback move,leave
+ * @param callback onMove,onLeave
  * @param stopPropagation if true , set "pointer-events: none;" to children
  * @param isOnClickReset if true , reset on click
  */
