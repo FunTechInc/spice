@@ -8,6 +8,7 @@ export { FormField } from "./components/FormField";
 export { Dropdown } from "./components/Dropdown";
 export { Magnet } from "./components/Magnet";
 export { BackgroundImage } from "./components/BackgroundImage";
+export { Thumbnail } from "./components/Thumbnail";
 export { Modal } from "./components/Modal";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
