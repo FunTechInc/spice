@@ -54,10 +54,6 @@ const componentList = [
       title: "AsideLayout",
    },
    {
-      href: "/BackgroundImage",
-      title: "BackgroundImage",
-   },
-   {
       href: "/Thumbnail",
       title: "Thumbnail",
    },
