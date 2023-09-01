@@ -11,14 +11,7 @@ import s from "./style.module.scss";
 const Description = () => {
    return (
       <ul>
-         <li>
-            When you wrap an image with BackgroundImage, it will always be fixed
-            in the center.
-         </li>
-         <li>
-            You can set the ratio. If you enter a number, it will be set as
-            padding-top.
-         </li>
+         <li>please use Thumbnail instead.</li>
       </ul>
    );
 };

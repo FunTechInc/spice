@@ -58,6 +58,10 @@ const componentList = [
       title: "BackgroundImage",
    },
    {
+      href: "/Thumbnail",
+      title: "Thumbnail",
+   },
+   {
       href: "/Accordion",
       title: "Accordion",
    },
