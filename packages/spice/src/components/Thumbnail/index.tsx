@@ -1,15 +1,17 @@
 import s from "./spice.module.scss";
 
+export type TThumbnailRatio =
+   | "golden"
+   | "silver"
+   | "platinum"
+   | "16-9"
+   | "square"
+   | "3-2"
+   | "4-3"
+   | number;
+
 interface IThumbnail {
-   ratio:
-      | "golden"
-      | "silver"
-      | "platinum"
-      | "16-9"
-      | "square"
-      | "3-2"
-      | "4-3"
-      | number;
+   ratio: TThumbnailRatio;
    children: React.ReactNode;
    className?: string;
 }
