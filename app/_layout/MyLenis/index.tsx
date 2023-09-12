@@ -21,17 +21,20 @@ const option = {
 
 export const MyLenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
-	integrate GSAP & ScrollTrigger
+	integrate GSAP
 	===============================================*/
+   // GSAP ScrollTrigger
    const lenis = useLenis();
    useEffect(() => {
       if (!lenis) {
          return;
       }
       gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.refresh();
       lenis?.on("scroll", ScrollTrigger.update);
    }, [lenis]);
 
+   // GSAP
    const lenisRef = useRef<any>();
    useEffect(() => {
       function update(time: number) {
