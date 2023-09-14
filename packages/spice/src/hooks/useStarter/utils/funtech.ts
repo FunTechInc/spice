@@ -6,7 +6,7 @@ const funtechLog = `
 ██║     ╚██████╔╝██║ ╚████║   ██║   ███████╗╚██████╗██║  ██║
 ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
                                                             
-https://funtech.inc/
+Created by FunTech: https://funtech.inc/
 
 `;
 
