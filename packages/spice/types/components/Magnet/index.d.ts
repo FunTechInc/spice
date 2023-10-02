@@ -15,11 +15,14 @@ interface IMagnet {
     };
     stopPropagation?: boolean;
     isOnClickReset?: boolean;
+    dependencies?: any[];
 }
 /**
  * @param callback onMove,onLeave
  * @param stopPropagation if true , set "pointer-events: none;" to children
  * @param isOnClickReset if true , reset on click
+ * @param fps you can custom FPS
+ * @param dependencies dependencies = any[]
  */
-export declare const Magnet: ({ className, children, callback, fps, stopPropagation, isOnClickReset, }: IMagnet) => import("react/jsx-runtime").JSX.Element;
+export declare const Magnet: ({ className, children, callback, fps, stopPropagation, isOnClickReset, dependencies, }: IMagnet) => import("react/jsx-runtime").JSX.Element;
 export {};

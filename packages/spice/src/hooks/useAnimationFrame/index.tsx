@@ -10,7 +10,7 @@ type TPlay = "play" | "pause";
 /**
  * @returns ("play" | "pause", callback?: () => void)
  * @param fps fps >= 60
- * @param dependencies  dependencies = []
+ * @param dependencies  dependencies = any[]
  * 
  * ```jsx
  * const rAF = useAnimationFrame(30);
@@ -25,9 +25,7 @@ type TPlay = "play" | "pause";
 	```
  */
 export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
-   /*===============================================
-	handling FPS
-	===============================================*/
+   // handling FPS
    if (fps > 60) {
       fps = 60;
    }
@@ -42,9 +40,7 @@ export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
       return isWithOut;
    };
 
-   /*===============================================
-	rAF
-	===============================================*/
+   // rAF
    const rAF: IRaf = {
       callback: null,
       isPlay: false,
