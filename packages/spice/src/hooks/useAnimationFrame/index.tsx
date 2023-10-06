@@ -1,22 +1,23 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
+type TCallbackEvent = (timestamp: number) => void;
 interface IRaf {
-   callback: null | (() => void);
+   callback: null | TCallbackEvent;
    isPlay: boolean;
    id: number;
 }
 type TPlay = "play" | "pause";
 
 /**
- * @returns ("play" | "pause", callback?: () => void)
+ * @returns ("play" | "pause", callback?: (timestamp) => void)
  * @param fps fps >= 60
  * @param dependencies  dependencies = any[]
  * 
  * ```jsx
  * const rAF = useAnimationFrame(30);
    const playHandler = () => {
-      rAF("play", () => {
-         console.log("tick");
+      rAF("play", (timestamp) => {
+         console.log(timestamp);
       });
    };
    const pauseHandler = () => {
@@ -30,31 +31,38 @@ export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
       fps = 60;
    }
    const interval = Math.floor(1000 / fps);
-   let previousTime = performance.now();
-   const isWithOutFrames = (timestamp: number) => {
-      const deltaTime = timestamp - previousTime;
-      const isWithOut = deltaTime <= interval;
-      if (!isWithOut) {
-         previousTime = timestamp - (deltaTime % interval);
-      }
-      return isWithOut;
-   };
+   const previousTime = useRef(performance.now());
+   const isWithOutFrames = useCallback(
+      (timestamp: number) => {
+         const deltaTime = timestamp - previousTime.current;
+         const isWithOut = deltaTime <= interval;
+         if (!isWithOut) {
+            previousTime.current = timestamp - (deltaTime % interval);
+         }
+         return isWithOut;
+      },
+      [interval]
+   );
 
    // rAF
-   const rAF: IRaf = {
+   const rAF = useRef<IRaf>({
       callback: null,
       isPlay: false,
       id: 0,
-   };
-   const animationFrameEvent = (timestamp: number) => {
-      rAF.id = requestAnimationFrame(animationFrameEvent);
-      if (isWithOutFrames(timestamp)) {
-         return;
-      }
-      if (rAF.callback && rAF.isPlay) {
-         rAF.callback();
-      }
-   };
+   }).current;
+
+   const animationFrameEvent = useCallback(
+      (timestamp: number) => {
+         rAF.id = requestAnimationFrame(animationFrameEvent);
+         if (isWithOutFrames(timestamp)) {
+            return;
+         }
+         if (rAF.callback && rAF.isPlay) {
+            rAF.callback(timestamp);
+         }
+      },
+      [isWithOutFrames, rAF]
+   );
 
    useEffect(() => {
       rAF.id = requestAnimationFrame(animationFrameEvent);
@@ -64,7 +72,8 @@ export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
-   return (isPlay: TPlay, callback?: () => void) => {
+
+   return (isPlay: TPlay, callback?: TCallbackEvent) => {
       if (isPlay === "play") {
          if (!callback) {
             console.warn("Callback function is required when 'play'");

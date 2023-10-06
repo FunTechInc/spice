@@ -15,10 +15,10 @@ const Description = () => {
    );
 };
 const Demo = () => {
-   const rAF = useAnimationFrame(30);
+   const rAF = useAnimationFrame(10);
    const playHandler = () => {
-      rAF("play", () => {
-         console.log("tick");
+      rAF("play", (timestamp) => {
+         console.log(timestamp);
       });
    };
    const pauseHandler = () => {
