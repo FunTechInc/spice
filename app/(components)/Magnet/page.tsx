@@ -4,6 +4,7 @@ import { MainView } from "@/app/_component/MainView";
 import { Magnet } from "@/packages/spice/src";
 import s from "./style.module.scss";
 import { gsap } from "gsap";
+import { useEffect, useState } from "react";
 
 const Description = () => {
    return (
@@ -20,6 +21,11 @@ const Description = () => {
 };
 
 const Demo = () => {
+   //わざと再レンダリングをさせて動作確認
+   const [state, setState] = useState(false);
+   useEffect(() => {
+      setState(true);
+   }, []);
    return (
       <>
          <Magnet
@@ -111,6 +117,7 @@ const Demo = () => {
             </div>
          </Magnet>
          <Magnet
+            dependencies={[state]}
             fps={60}
             className={s.stalkerWrapper}
             callback={{
