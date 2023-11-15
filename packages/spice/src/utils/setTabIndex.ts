@@ -1,11 +1,8 @@
-/*===============================================
-control tab Index in content 
-===============================================*/
-interface ISetTabIndex {
+type SetTabIndexProps = {
    content: HTMLDivElement;
    isOpen: boolean;
-}
-export const setTabIndex = ({ content, isOpen }: ISetTabIndex) => {
+};
+export const setTabIndex = ({ content, isOpen }: SetTabIndexProps) => {
    const clickableElms = content.querySelectorAll("a,button");
    if (!clickableElms) {
       return;

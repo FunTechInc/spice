@@ -1,17 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
-type TAccordionState = {
+type AccordionState = {
     target: string;
     toggle: boolean;
     defaultValue: string[];
 };
-interface IContext {
+type ContextProps = {
     children: React.ReactNode;
+    /** Please set the value that you want to open by default. */
     defaultValue: string[];
-}
-/**
- * @param defaultValue string[] Please set the value that you want to open by default.
- */
-export declare const Context: ({ children, defaultValue }: IContext) => import("react/jsx-runtime").JSX.Element;
-export declare const useAccordionState: () => TAccordionState;
-export declare const useSetAccordionState: () => Dispatch<SetStateAction<TAccordionState>>;
+};
+export declare const Context: ({ children, defaultValue }: ContextProps) => import("react/jsx-runtime").JSX.Element;
+export declare const useAccordionState: () => AccordionState;
+export declare const useSetAccordionState: () => Dispatch<SetStateAction<AccordionState>>;
 export {};

@@ -4,50 +4,49 @@ import { promiseMaker } from "../../utils/promiseMaker";
 import s from "./spice.module.scss";
 import { setTabIndex } from "../../utils/setTabIndex";
 
-interface IContent {
+type ContentProps = {
    children: React.ReactNode;
+   /** Please make sure to set it with the value of the Button component. */
    value: string;
    className?: string;
+   /** onOpen,onClose,onReset(onReset is callback if isAnimation is false when use useTabSwitch) */
    callback?: {
       onOpen?: (target: Element) => void;
       onClose?: (target: Element) => void;
       onReset?: (target: Element) => void;
    };
-}
+};
 
-/**
- * @param value string Please make sure to set it with the value of the Button component.
- * @param callback onOpen,onClose,onReset(callback if isAnimation is false when use useTabSwitch)
- */
-export const Content = ({ children, value, className, callback }: IContent) => {
+export const Content = ({
+   children,
+   value,
+   className,
+   callback,
+}: ContentProps) => {
    if (value === "") {
       throw new Error(
          "Please set the value to something other than an empty string."
       );
    }
-   const isFirst = useRef(true);
+   const isInitialRender = useRef(true);
    const ref = useRef<HTMLDivElement>(null);
    const setTabState = useSetTabState();
    const tabState = useTabState();
    const isCurrent = tabState.current === value && !tabState.isLeaving;
+
    useEffect(() => {
-      if (isFirst.current) {
-         isFirst.current = false;
+      if (isInitialRender.current) {
+         isInitialRender.current = false;
          return;
       }
-      /********************
-		return if isAnimation is false
-		********************/
+
       if (!tabState.isAnimation) {
-         //callback reset event
          if (isCurrent) {
             callback?.onReset && callback.onReset(ref.current!);
          }
          return;
       }
-      /********************
-		close
-		********************/
+
       if (tabState.prev === value) {
          (async () => {
             callback?.onClose &&
@@ -63,17 +62,12 @@ export const Content = ({ children, value, className, callback }: IContent) => {
             });
          })();
       }
-      /********************
-		open
-		********************/
+
       if (isCurrent) {
          callback?.onOpen && callback.onOpen(ref.current!);
       }
    }, [tabState, setTabState, callback, value, isCurrent]);
 
-   /*===============================================
-	control tabIndex
-	===============================================*/
    useEffect(() => {
       setTabIndex({
          content: ref.current!,

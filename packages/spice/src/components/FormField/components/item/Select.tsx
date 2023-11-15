@@ -1,24 +1,12 @@
-import { ISelectProps } from "../..";
+import { SelectProps } from "../..";
 import s from "../../spice.module.scss";
 
-export const Select = ({ formProps }: { formProps: ISelectProps }) => {
+export const Select = ({ formProps }: { formProps: SelectProps }) => {
    const { isSelect, ...otherProp } = formProps;
    if (!isSelect) {
       return;
    }
-   /*===============================================
-	create options
-	===============================================*/
-   const Options = isSelect.options.map((option: any) => {
-      return (
-         <option key={option} value={option}>
-            {option}
-         </option>
-      );
-   });
-   /*===============================================
-	create default value option
-	===============================================*/
+
    const DefaultValue = () => {
       const defaultValue = isSelect.defaultValue;
       if (!defaultValue) {
@@ -26,9 +14,7 @@ export const Select = ({ formProps }: { formProps: ISelectProps }) => {
       }
       return <option hidden>{defaultValue}</option>;
    };
-   /*===============================================
-	set defalt selected option
-	===============================================*/
+
    const getSelectedIndex = () => {
       const i = isSelect.defaultSelectedIndex;
       if (!i) {
@@ -43,7 +29,13 @@ export const Select = ({ formProps }: { formProps: ISelectProps }) => {
          className={s.spice_form_select}
          defaultValue={getSelectedIndex()}>
          <DefaultValue />
-         {Options}
+         {isSelect.options.map((option: any) => {
+            return (
+               <option key={option} value={option}>
+                  {option}
+               </option>
+            );
+         })}
       </select>
    );
 };

@@ -1,32 +1,25 @@
-import { useReducer, useRef, useEffect } from "react";
+import { useReducer, useRef, useEffect, useCallback } from "react";
 
-const SCROLL_ACTION = "scroll";
-type TState = "down" | "up" | null;
-type TScrollType = { type: typeof SCROLL_ACTION; payload: TState };
+type ActionType = "down" | "up" | null;
+type ScrollType = { type: typeof SCROLL_ACTION; payload: ActionType };
 
-interface IUseScrollDirection {
+type UseScrollDirectionProps = {
    threshold: number;
    debounce: number;
    dependencies?: any[];
-}
+};
 
-/**
- * @returns direction "up" | "down"
- */
+const SCROLL_ACTION = "scroll";
+
 export const useScrollDirection = ({
    threshold = 0,
    debounce,
    dependencies = [],
-}: IUseScrollDirection) => {
-   /*===============================================
-	To avoid unnecessary rendering, retain the state value in the ref.
-	===============================================*/
-   const directionRef = useRef<TState>(null);
-   /*===============================================
-	set Reducer
-	===============================================*/
+}: UseScrollDirectionProps) => {
+   const directionRef = useRef<ActionType>(null);
+
    const [direction, setDirection] = useReducer(
-      (state: TState, action: TScrollType) => {
+      (state: ActionType, action: ScrollType) => {
          switch (action.type) {
             case SCROLL_ACTION:
                directionRef.current = action.payload;
@@ -37,15 +30,13 @@ export const useScrollDirection = ({
       },
       directionRef.current
    );
-   /*===============================================
-	Determine up and down by comparing the previous position and the current one.
-	===============================================*/
+
    const lastScrollY = useRef(0);
    const timeoutID = useRef<NodeJS.Timeout | number>(0);
-   const getScrollPos = () => {
-      return window.scrollY || document.documentElement.scrollTop;
-   };
-   const scrollHandler = () => {
+   const getScrollPos = () =>
+      window.scrollY || document.documentElement.scrollTop;
+
+   const scrollHandler = useCallback(() => {
       clearTimeout(timeoutID.current);
       timeoutID.current = setTimeout(() => {
          const currentScrollY = getScrollPos();
@@ -62,7 +53,8 @@ export const useScrollDirection = ({
          }
          lastScrollY.current = currentScrollY;
       }, debounce);
-   };
+   }, [debounce, threshold]);
+
    useEffect(() => {
       lastScrollY.current = getScrollPos();
       window.addEventListener("scroll", scrollHandler, { passive: true });
@@ -72,5 +64,6 @@ export const useScrollDirection = ({
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
+
    return direction;
 };

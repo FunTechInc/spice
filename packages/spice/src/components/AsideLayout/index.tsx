@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useOverflowDispatch } from "../WrapperLayout";
 import s from "./spice.module.scss";
 
-interface IAsideLayout {
+type AsideLayoutProps = {
    className?: string;
    children: React.ReactNode;
    aside: {
@@ -10,18 +10,16 @@ interface IAsideLayout {
       className?: string;
       index: 0 | 1;
    };
+   /** If set to true, handles the overflow of the WrapperLayout */
    isSticky: boolean;
-}
+};
 
-/**
- * @param isSticky If set to true, handles the overflow of the WrapperLayout
- */
 export const AsideLayout = ({
    className,
    children,
    aside,
    isSticky = false,
-}: IAsideLayout) => {
+}: AsideLayoutProps) => {
    const setOverflow = useOverflowDispatch();
 
    useEffect(() => {
@@ -31,8 +29,8 @@ export const AsideLayout = ({
       return () => {
          setOverflow(() => true);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+   }, [isSticky, setOverflow]);
+
    return (
       <div className={className ? className : ""}>
          {aside.index === 1 && (

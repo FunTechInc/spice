@@ -1,20 +1,18 @@
 /// <reference types="react" />
-type TClickHandler = {
+type ClickHandler = {
     height: number;
     target: HTMLDivElement;
 };
-interface IContent {
+type ContentProps = {
     children: React.ReactNode;
+    /** Please make sure to set it with the value of the Button component. */
     value: string;
     className?: string;
+    /** onOpen,onClose */
     callback: {
-        onOpen: (props: TClickHandler) => void;
-        onClose: (props: TClickHandler) => void;
+        onOpen: (props: ClickHandler) => void;
+        onClose: (props: ClickHandler) => void;
     };
-}
-/**
- * @param value string Please make sure to set it with the value of the Button component.
- * @param callback onOpen,onClose
- */
-export declare const Content: ({ value, callback, children, className }: IContent) => import("react/jsx-runtime").JSX.Element;
+};
+export declare const Content: ({ value, callback, children, className, }: ContentProps) => import("react/jsx-runtime").JSX.Element;
 export {};

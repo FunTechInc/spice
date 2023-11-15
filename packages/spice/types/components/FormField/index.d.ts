@@ -1,30 +1,28 @@
 /// <reference types="react" />
-interface ISelectOptions {
+type SelectOptions = {
     defaultValue?: string;
     defaultSelectedIndex?: number;
     options: string[];
-}
-export interface IFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    isSelect?: ISelectOptions;
+};
+export interface FormProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    isSelect?: SelectOptions;
     isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 }
-export interface ISelectProps {
-    isSelect?: ISelectOptions;
-}
-export interface ITextareaProps {
+export type SelectProps = {
+    isSelect?: SelectOptions;
+};
+export type TextareaProps = {
     isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-}
-interface IFormFieldsProps {
+};
+type FormFieldsProps = {
     className: string;
     label?: string;
-    formProps: IFormProps[];
+    /**  param formProps If you set two in an array, they will be arranged as flex. For select and textarea, set tag attributes to isSelect and isTextarea, respectively. */
+    formProps: FormProps[];
+    /** React.ReactNode[] for validation */
     errors?: React.ReactNode[];
-}
+};
 /**
- *
- * @param label string
- * @param formProps If you set two in an array, they will be arranged as flex. For select and textarea, set tag attributes to isSelect and isTextarea, respectively.
- * @param errors　React.ReactNode[] for validation
  *
  * ```jsx
  * <FormField
@@ -57,5 +55,5 @@ interface IFormFieldsProps {
          />
     ```
  */
-export declare const FormField: ({ className, label, formProps, errors, }: IFormFieldsProps) => import("react/jsx-runtime").JSX.Element;
+export declare const FormField: ({ className, label, formProps, errors, }: FormFieldsProps) => import("react/jsx-runtime").JSX.Element;
 export {};

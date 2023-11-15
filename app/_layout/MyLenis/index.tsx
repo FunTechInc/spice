@@ -62,7 +62,7 @@ export const MyLenis = ({ children }: { children: React.ReactNode }) => {
    /*===============================================
 	stop lenis
 	===============================================*/
-   const isModalOpen = useStore((state) => state);
+   const isModalOpen = useStore((state) => state.isModalOpen);
    useEffect(() => {
       if (isModalOpen) {
          lenisRef.current?.stop();

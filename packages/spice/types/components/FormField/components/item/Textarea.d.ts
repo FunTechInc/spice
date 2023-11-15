@@ -1,4 +1,4 @@
-import { ITextareaProps } from "../..";
+import { TextareaProps } from "../..";
 export declare const Textarea: ({ formProps }: {
-    formProps: ITextareaProps;
+    formProps: TextareaProps;
 }) => import("react/jsx-runtime").JSX.Element | undefined;

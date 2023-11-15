@@ -1,17 +1,15 @@
 /// <reference types="react" />
-interface IContent {
+type ContentProps = {
     children: React.ReactNode;
+    /** Please make sure to set it with the value of the Button component. */
     value: string;
     className?: string;
+    /** onOpen,onClose,onReset(onReset is callback if isAnimation is false when use useTabSwitch) */
     callback?: {
         onOpen?: (target: Element) => void;
         onClose?: (target: Element) => void;
         onReset?: (target: Element) => void;
     };
-}
-/**
- * @param value string Please make sure to set it with the value of the Button component.
- * @param callback onOpen,onClose,onReset(callback if isAnimation is false when use useTabSwitch)
- */
-export declare const Content: ({ children, value, className, callback }: IContent) => import("react/jsx-runtime").JSX.Element;
+};
+export declare const Content: ({ children, value, className, callback, }: ContentProps) => import("react/jsx-runtime").JSX.Element;
 export {};

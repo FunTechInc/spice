@@ -1,37 +1,26 @@
 import { useCallback, useEffect, useRef } from "react";
 
-type TCallbackEvent = (timestamp: number) => void;
-interface IRaf {
-   callback: null | TCallbackEvent;
+type CallbackEvent = (timestamp: number) => void;
+type RafProps = {
+   callback: null | CallbackEvent;
    isPlay: boolean;
    id: number;
-}
-type TPlay = "play" | "pause";
+};
+type Play = "play" | "pause";
 
 /**
  * @returns ("play" | "pause", callback?: (timestamp) => void)
- * @param fps fps >= 60
- * @param dependencies  dependencies = any[]
- * 
  * ```jsx
- * const rAF = useAnimationFrame(30);
-   const playHandler = () => {
-      rAF("play", (timestamp) => {
-         console.log(timestamp);
-      });
-   };
-   const pauseHandler = () => {
-      rAF("pause");
-   };
+ * const rAF = useAnimationFrame();
 	```
  */
-export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
-   // handling FPS
+export const useAnimationFrame = (fps = 60, dependencies: any[] = []) => {
    if (fps > 60) {
       fps = 60;
    }
    const interval = Math.floor(1000 / fps);
    const previousTime = useRef(performance.now());
+
    const isWithOutFrames = useCallback(
       (timestamp: number) => {
          const deltaTime = timestamp - previousTime.current;
@@ -44,8 +33,7 @@ export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
       [interval]
    );
 
-   // rAF
-   const rAF = useRef<IRaf>({
+   const rAF = useRef<RafProps>({
       callback: null,
       isPlay: false,
       id: 0,
@@ -67,13 +55,12 @@ export const useAnimationFrame = (fps: number, dependencies: any[] = []) => {
    useEffect(() => {
       rAF.id = requestAnimationFrame(animationFrameEvent);
       return () => {
-         //pause frame when compoentn clean up
          cancelAnimationFrame(rAF.id);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 
-   return (isPlay: TPlay, callback?: TCallbackEvent) => {
+   return (isPlay: Play, callback?: CallbackEvent) => {
       if (isPlay === "play") {
          if (!callback) {
             console.warn("Callback function is required when 'play'");

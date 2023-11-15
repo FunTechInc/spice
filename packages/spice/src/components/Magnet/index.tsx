@@ -2,33 +2,30 @@ import { useCallback, useMemo, useRef } from "react";
 import { useAnimationFrame } from "../../hooks/useAnimationFrame";
 import s from "./spice.module.scss";
 
-type TCallbackProps = {
+type CallbackProps = {
    target: Element;
    children: Element;
    x: number;
    y: number;
 };
-type TMouseEvent = React.MouseEvent<HTMLDivElement>;
-interface IMagnet {
+type MouseEvent = React.MouseEvent<HTMLDivElement>;
+type MagnetProps = {
+   /** you can custom FPS , default:60 */
    fps?: number;
    className?: string;
    children: React.ReactNode;
+   /** onMove,onLeave */
    callback: {
-      onMove: (props: TCallbackProps) => void;
-      onLeave?: (props: TCallbackProps) => void;
+      onMove: (props: CallbackProps) => void;
+      onLeave?: (props: CallbackProps) => void;
    };
+   /** if true , set "pointer-events: none;" to children , default:false */
    stopPropagation?: boolean;
+   /** if true , reset on click , default:false */
    isOnClickReset?: boolean;
    dependencies?: any[];
-}
+};
 
-/**
- * @param callback onMove,onLeave
- * @param stopPropagation if true , set "pointer-events: none;" to children
- * @param isOnClickReset if true , reset on click
- * @param fps you can custom FPS
- * @param dependencies dependencies = any[]
- */
 export const Magnet = ({
    className,
    children,
@@ -37,10 +34,14 @@ export const Magnet = ({
    stopPropagation = false,
    isOnClickReset = false,
    dependencies = [],
-}: IMagnet) => {
+}: MagnetProps) => {
    const ref = useRef<HTMLDivElement>(null);
    const childrenRef = useRef<HTMLDivElement>(null);
    const wrapperRect = useRef<DOMRect>();
+
+   if (fps > 60) {
+      fps = 60;
+   }
    const rAF = useAnimationFrame(fps, dependencies);
 
    const payload = useMemo(
@@ -54,7 +55,7 @@ export const Magnet = ({
    );
 
    const setUp = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          payload.target = ref.current!;
          payload.children = childrenRef.current!;
       },
@@ -62,7 +63,7 @@ export const Magnet = ({
    );
 
    const update = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          wrapperRect.current = e.currentTarget.getBoundingClientRect();
          payload.x =
             e.clientX -
@@ -77,7 +78,7 @@ export const Magnet = ({
    );
 
    const mouseEnterHandler = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          e.stopPropagation();
          setUp(e);
          update(e);
@@ -88,16 +89,15 @@ export const Magnet = ({
       [setUp, update, rAF, callback, payload]
    );
    const mouseMoveHandler = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          e.stopPropagation();
          update(e);
       },
       [update]
    );
 
-   // reset
    const reset = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          e.stopPropagation();
          rAF("pause");
          callback.onLeave && callback.onLeave(payload);
@@ -105,13 +105,13 @@ export const Magnet = ({
       [rAF, callback, payload]
    );
    const mouseLeaveHandler = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          reset(e);
       },
       [reset]
    );
    const onClickReset = useCallback(
-      (e: TMouseEvent) => {
+      (e: MouseEvent) => {
          if (!isOnClickReset) {
             return;
          }

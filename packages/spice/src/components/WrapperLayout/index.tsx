@@ -5,7 +5,6 @@ import {
    SetStateAction,
    useContext,
 } from "react";
-
 import s from "./spice.module.scss";
 
 const OverflowContext = createContext<boolean>(true);

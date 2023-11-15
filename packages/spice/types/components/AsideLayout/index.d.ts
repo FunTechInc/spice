@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface IAsideLayout {
+type AsideLayoutProps = {
     className?: string;
     children: React.ReactNode;
     aside: {
@@ -7,10 +7,8 @@ interface IAsideLayout {
         className?: string;
         index: 0 | 1;
     };
+    /** If set to true, handles the overflow of the WrapperLayout */
     isSticky: boolean;
-}
-/**
- * @param isSticky If set to true, handles the overflow of the WrapperLayout
- */
-export declare const AsideLayout: ({ className, children, aside, isSticky, }: IAsideLayout) => import("react/jsx-runtime").JSX.Element;
+};
+export declare const AsideLayout: ({ className, children, aside, isSticky, }: AsideLayoutProps) => import("react/jsx-runtime").JSX.Element;
 export {};

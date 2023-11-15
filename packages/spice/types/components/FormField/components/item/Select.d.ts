@@ -1,4 +1,4 @@
-import { ISelectProps } from "../..";
+import { SelectProps } from "../..";
 export declare const Select: ({ formProps }: {
-    formProps: ISelectProps;
+    formProps: SelectProps;
 }) => import("react/jsx-runtime").JSX.Element | undefined;
