@@ -1,11 +1,8 @@
-type TState = "down" | "up" | null;
-interface IUseScrollDirection {
+type ActionType = "down" | "up" | null;
+type UseScrollDirectionProps = {
     threshold: number;
     debounce: number;
     dependencies?: any[];
-}
-/**
- * @returns direction "up" | "down"
- */
-export declare const useScrollDirection: ({ threshold, debounce, dependencies, }: IUseScrollDirection) => TState;
+};
+export declare const useScrollDirection: ({ threshold, debounce, dependencies, }: UseScrollDirectionProps) => ActionType;
 export {};

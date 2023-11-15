@@ -1,50 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAccordionState } from "./Context";
-import s from "./spice.module.scss";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { setTabIndex } from "../../utils/setTabIndex";
+import s from "./spice.module.scss";
 
-/*===============================================
-content component
-===============================================*/
-type TClickHandler = {
+type ClickHandler = {
    height: number;
    target: HTMLDivElement;
 };
 
-interface IContent {
+type ContentProps = {
    children: React.ReactNode;
+   /** Please make sure to set it with the value of the Button component. */
    value: string;
    className?: string;
+   /** onOpen,onClose */
    callback: {
-      onOpen: (props: TClickHandler) => void;
-      onClose: (props: TClickHandler) => void;
+      onOpen: (props: ClickHandler) => void;
+      onClose: (props: ClickHandler) => void;
    };
-}
+};
 
-/**
- * @param value string Please make sure to set it with the value of the Button component.
- * @param callback onOpen,onClose
- */
-export const Content = ({ value, callback, children, className }: IContent) => {
+export const Content = ({
+   value,
+   callback,
+   children,
+   className,
+}: ContentProps) => {
    if (value === "") {
       throw new Error(
          "Please set the value to something other than an empty string."
       );
    }
-   const isFirst = useRef(true);
-   const wrapperRef = useRef<HTMLDivElement>(null);
-   const innerRef = useRef<HTMLDivElement>(null);
+
    const accordionState = useAccordionState();
-   const isDefaultOpen = accordionState.defaultValue.find(
-      (val) => val === value
-   )
-      ? true
-      : false;
+   const isDefaultOpen = useMemo(
+      () =>
+         accordionState.defaultValue.find((val) => val === value)
+            ? true
+            : false,
+      [accordionState, value]
+   );
    const [isOpen, setIsOpen] = useState<boolean>(isDefaultOpen);
-   /*===============================================
-	toggle isOpen
-	===============================================*/
+
    useEffect(() => {
       if (accordionState.target === value) {
          setIsOpen(!isOpen);
@@ -52,9 +50,10 @@ export const Content = ({ value, callback, children, className }: IContent) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [accordionState.target, accordionState.toggle]);
 
-   /*===============================================
-	callback
-	===============================================*/
+   const isFirst = useRef(true);
+   const wrapperRef = useRef<HTMLDivElement>(null);
+   const innerRef = useRef<HTMLDivElement>(null);
+
    useEffect(() => {
       if (isFirst.current) {
          isFirst.current = false;
@@ -64,24 +63,14 @@ export const Content = ({ value, callback, children, className }: IContent) => {
          height: innerRef.current!.getBoundingClientRect().height,
          target: wrapperRef.current!,
       };
-      if (isOpen) {
-         callback.onOpen(callbackProps);
-      } else {
-         callback.onClose(callbackProps);
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [isOpen]);
 
-   /*===============================================
-	control tabIndex
-	===============================================*/
+      isOpen ? callback.onOpen(callbackProps) : callback.onClose(callbackProps);
+   }, [isOpen, callback]);
+
    useEffect(() => {
       setTabIndex({ content: wrapperRef.current!, isOpen });
    }, [isOpen]);
 
-   /*===============================================
-	observe content area resize 
-	===============================================*/
    useResizeObserver({
       targetRef: innerRef,
       callback: (entry) => {

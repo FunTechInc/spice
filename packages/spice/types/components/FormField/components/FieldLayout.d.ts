@@ -1,15 +1,15 @@
 /// <reference types="react" />
-import { IFormProps } from "..";
-export type TFormItem = React.FC<{
-    formProps: IFormProps;
+import { FormProps } from "..";
+export type FormItem = React.FC<{
+    formProps: FormProps;
     className?: string;
 }>;
-interface IFieldLayout {
+type FieldLayoutProps = {
     layoutType: "block" | "flex" | "radio-check";
-    formPropsArr: IFormProps[];
+    formPropsArr: FormProps[];
     label?: string;
-    FormItem: TFormItem;
+    FormItem: FormItem;
     errors?: React.ReactNode[];
-}
-export declare const FieldLayout: ({ layoutType, formPropsArr, label, FormItem, errors, }: IFieldLayout) => import("react/jsx-runtime").JSX.Element | undefined;
+};
+export declare const FieldLayout: ({ layoutType, formPropsArr, label, FormItem, errors, }: FieldLayoutProps) => import("react/jsx-runtime").JSX.Element | undefined;
 export {};

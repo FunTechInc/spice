@@ -1,28 +1,25 @@
 /// <reference types="react" />
-type TCallbackProps = {
+type CallbackProps = {
     target: Element;
     children: Element;
     x: number;
     y: number;
 };
-interface IMagnet {
+type MagnetProps = {
+    /** you can custom FPS , default:60 */
     fps?: number;
     className?: string;
     children: React.ReactNode;
+    /** onMove,onLeave */
     callback: {
-        onMove: (props: TCallbackProps) => void;
-        onLeave?: (props: TCallbackProps) => void;
+        onMove: (props: CallbackProps) => void;
+        onLeave?: (props: CallbackProps) => void;
     };
+    /** if true , set "pointer-events: none;" to children , default:false */
     stopPropagation?: boolean;
+    /** if true , reset on click , default:false */
     isOnClickReset?: boolean;
     dependencies?: any[];
-}
-/**
- * @param callback onMove,onLeave
- * @param stopPropagation if true , set "pointer-events: none;" to children
- * @param isOnClickReset if true , reset on click
- * @param fps you can custom FPS
- * @param dependencies dependencies = any[]
- */
-export declare const Magnet: ({ className, children, callback, fps, stopPropagation, isOnClickReset, dependencies, }: IMagnet) => import("react/jsx-runtime").JSX.Element;
+};
+export declare const Magnet: ({ className, children, callback, fps, stopPropagation, isOnClickReset, dependencies, }: MagnetProps) => import("react/jsx-runtime").JSX.Element;
 export {};

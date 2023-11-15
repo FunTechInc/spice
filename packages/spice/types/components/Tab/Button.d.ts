@@ -1,11 +1,9 @@
 /// <reference types="react" />
-interface IButton {
+type ButtonProps = {
     children: React.ReactNode;
+    /** Please make sure to set it with the value of the Content component. */
     value: string;
     className?: string;
-}
-/**
- * @param value string Please make sure to set it with the value of the Content component.
- */
-export declare const Button: ({ children, value, className }: IButton) => import("react/jsx-runtime").JSX.Element;
+};
+export declare const Button: ({ children, value, className }: ButtonProps) => import("react/jsx-runtime").JSX.Element;
 export {};

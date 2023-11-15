@@ -1,6 +1,6 @@
 import s from "./spice.module.scss";
 
-export type TThumbnailRatio =
+export type ThumbnailRatio =
    | "golden"
    | "silver"
    | "platinum"
@@ -10,17 +10,15 @@ export type TThumbnailRatio =
    | "4-3"
    | number;
 
-interface IThumbnail {
-   ratio: TThumbnailRatio;
+type ThumbnailProps = {
+   ratio: ThumbnailRatio;
    children: React.ReactNode;
    className?: string;
-}
+};
 
 /**
- * @param ratio | "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | number;
- * 
  * ```jsx
- * <BackgroundImage ratio={"16-9"}>
+ * <Thumbnail ratio={"16-9"}>
 		<Image
 			src={"src"}
 			fill
@@ -28,11 +26,10 @@ interface IThumbnail {
 			priority
 			alt="FunTech Inc"
 		/>
-	</BackgroundImage>
+	</Thumbnail>
 	```
  */
-export const Thumbnail = ({ ratio, children, className }: IThumbnail) => {
-   // Define the valid ratio types for better reusability and readability
+export const Thumbnail = ({ ratio, children, className }: ThumbnailProps) => {
    const validRatios = [
       "golden",
       "silver",
@@ -43,11 +40,9 @@ export const Thumbnail = ({ ratio, children, className }: IThumbnail) => {
       "4-3",
    ];
 
-   // Check if the ratio is valid only once and store the result
    let isRatio: boolean = validRatios.includes(ratio as string);
    let isNumber: boolean = typeof ratio === "number" && ratio > 0;
 
-   // Throw an error and stop rendering if the ratio is not valid
    if (!isRatio && !isNumber) {
       throw new Error(
          `Invalid ratio value. The 'ratio' argument should be either ${validRatios.join(

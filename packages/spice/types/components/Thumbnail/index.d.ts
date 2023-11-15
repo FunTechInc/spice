@@ -1,15 +1,13 @@
 /// <reference types="react" />
-export type TThumbnailRatio = "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | number;
-interface IThumbnail {
-    ratio: TThumbnailRatio;
+export type ThumbnailRatio = "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | number;
+type ThumbnailProps = {
+    ratio: ThumbnailRatio;
     children: React.ReactNode;
     className?: string;
-}
+};
 /**
- * @param ratio | "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | number;
- *
  * ```jsx
- * <BackgroundImage ratio={"16-9"}>
+ * <Thumbnail ratio={"16-9"}>
         <Image
             src={"src"}
             fill
@@ -17,8 +15,8 @@ interface IThumbnail {
             priority
             alt="FunTech Inc"
         />
-    </BackgroundImage>
+    </Thumbnail>
     ```
  */
-export declare const Thumbnail: ({ ratio, children, className }: IThumbnail) => import("react/jsx-runtime").JSX.Element;
+export declare const Thumbnail: ({ ratio, children, className }: ThumbnailProps) => import("react/jsx-runtime").JSX.Element;
 export {};

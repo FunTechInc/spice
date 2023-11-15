@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-interface IUseIntersectionObserver {
+type UseIntersectionObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
    rootMargin?: string;
    threshold?: number;
@@ -10,11 +10,8 @@ interface IUseIntersectionObserver {
       onLeave?: (target: Element) => void;
    };
    dependencies?: any[];
-}
+};
 
-/**
- * @param callback onEnter,onLeave
- */
 export const useIntersectionObserver = ({
    targetRef,
    rootMargin = "0px",
@@ -22,19 +19,18 @@ export const useIntersectionObserver = ({
    once,
    callback,
    dependencies = [],
-}: IUseIntersectionObserver) => {
+}: UseIntersectionObserverProps) => {
    const options = {
       rootMargin: rootMargin,
       threshold: threshold,
    };
 
    useEffect(() => {
-      //return false if target is undifined
       const target = targetRef?.current;
       if (!target) {
          return;
       }
-      //set callback
+
       const callbackEvent = (
          entries: IntersectionObserverEntry[],
          observer: IntersectionObserver
@@ -50,10 +46,10 @@ export const useIntersectionObserver = ({
             }
          });
       };
-      //set observer
+
       const observer = new IntersectionObserver(callbackEvent, options);
       observer.observe(target);
-      //clean up
+
       return () => {
          observer.unobserve(target);
       };

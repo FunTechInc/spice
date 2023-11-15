@@ -6,10 +6,7 @@ import {
    useState,
 } from "react";
 
-/*===============================================
-create context
-===============================================*/
-type TTabState = {
+type TabState = {
    isLeaving: boolean;
    isAnimation: boolean;
    prev: string;
@@ -17,7 +14,7 @@ type TTabState = {
    next: string;
 };
 
-const defaultState: TTabState = {
+const defaultState: TabState = {
    isLeaving: false,
    isAnimation: true,
    prev: "",
@@ -25,23 +22,18 @@ const defaultState: TTabState = {
    next: "",
 };
 
-const tabStateContext = createContext<TTabState>(defaultState);
-const setTabStateContext = createContext<Dispatch<SetStateAction<TTabState>>>(
+const tabStateContext = createContext<TabState>(defaultState);
+const setTabStateContext = createContext<Dispatch<SetStateAction<TabState>>>(
    () => undefined
 );
 
-/*===============================================
-context component
-===============================================*/
-interface IContext {
+type ContextProps = {
    children: React.ReactNode;
+   /** Please set the value that you want to open by default. */
    defaultValue: string;
-}
+};
 
-/**
- * @param defaultValue string Please set the value that you want to open by default.
- */
-export const Context = ({ children, defaultValue }: IContext) => {
+export const Context = ({ children, defaultValue }: ContextProps) => {
    if (defaultValue === "") {
       throw new Error(
          "Please set the value to something other than an empty string."

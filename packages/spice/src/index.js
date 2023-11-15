@@ -1,7 +1,6 @@
 import "./scss/global.scss";
-/*===============================================
-components
-===============================================*/
+
+// components
 export { AsideLayout } from "./components/AsideLayout";
 export { WrapperLayout } from "./components/WrapperLayout";
 export { FormField } from "./components/FormField";
@@ -11,9 +10,8 @@ export { Thumbnail } from "./components/Thumbnail";
 export { Modal } from "./components/Modal";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
-/*===============================================
-hooks
-===============================================*/
+
+// hooks
 export { useIsomorphicLayoutEffect } from "./hooks/useIsomorphicLayoutEffect";
 export { useAnimationFrame } from "./hooks/useAnimationFrame";
 export { useResizeObserver } from "./hooks/useResizeObserver";

@@ -1,11 +1,11 @@
-import { IFormProps } from "../..";
+import { FormProps } from "../..";
 import s from "../../spice.module.scss";
 
 export const Input = ({
    formProps,
    className,
 }: {
-   formProps: IFormProps;
+   formProps: FormProps;
    className?: string;
 }) => {
    return (

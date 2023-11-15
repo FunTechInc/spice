@@ -1,10 +1,14 @@
-interface IResizeReload {
+type ResizeReloadProps = {
    initWinW: number;
    winW: number;
    threshold: number;
-}
+};
 
-export const resizeReload = ({ initWinW, winW, threshold }: IResizeReload) => {
+export const resizeReload = ({
+   initWinW,
+   winW,
+   threshold,
+}: ResizeReloadProps) => {
    let resizeFlag = initWinW <= threshold ? false : true;
    if (winW <= threshold) {
       resizeFlag && window.location.reload();

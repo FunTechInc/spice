@@ -1,15 +1,14 @@
+import { useCallback } from "react";
 import { useSetTabState, useTabState } from "./Context";
 
-interface IButton {
+type ButtonProps = {
    children: React.ReactNode;
+   /** Please make sure to set it with the value of the Content component. */
    value: string;
    className?: string;
-}
+};
 
-/**
- * @param value string Please make sure to set it with the value of the Content component.
- */
-export const Button = ({ children, value, className }: IButton) => {
+export const Button = ({ children, value, className }: ButtonProps) => {
    if (value === "") {
       throw new Error(
          "Please set the value to something other than an empty string."
@@ -17,7 +16,8 @@ export const Button = ({ children, value, className }: IButton) => {
    }
    const setTabState = useSetTabState();
    const tabState = useTabState();
-   const clickHandler = () => {
+
+   const clickHandler = useCallback(() => {
       if (tabState.current === value || tabState.isLeaving) {
          return;
       }
@@ -30,7 +30,8 @@ export const Button = ({ children, value, className }: IButton) => {
             next: value,
          };
       });
-   };
+   }, [setTabState, tabState, value]);
+
    return (
       <button
          onClick={clickHandler}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 
 /**
@@ -6,7 +6,8 @@ import { useWindowResizeObserver } from "../useWindowResizeObserver";
  */
 export const useIsTouchDevice = () => {
    const [isTouchDevice, setIsTouchDevice] = useState<boolean | null>(null);
-   const updateState = () => {
+
+   const updateState = useCallback(() => {
       const touchEvent = window.ontouchstart;
       const touchPoints = navigator.maxTouchPoints;
       if (touchEvent !== undefined && 0 < touchPoints) {
@@ -14,16 +15,15 @@ export const useIsTouchDevice = () => {
       } else {
          setIsTouchDevice(false);
       }
-   };
+   }, []);
+
    useWindowResizeObserver({
-      callback() {
-         updateState();
-      },
+      callback: () => updateState(),
       debounce: 100,
       dependencies: [],
    });
-   useEffect(() => {
-      updateState();
-   }, []);
+
+   useEffect(() => updateState(), [updateState]);
+
    return isTouchDevice;
 };

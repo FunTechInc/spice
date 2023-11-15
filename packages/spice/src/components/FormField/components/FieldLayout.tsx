@@ -1,15 +1,16 @@
-import { IFormProps } from "..";
+import { useCallback } from "react";
+import { FormProps } from "..";
 import s from "../spice.module.scss";
 
-export type TFormItem = React.FC<{ formProps: IFormProps; className?: string }>;
+export type FormItem = React.FC<{ formProps: FormProps; className?: string }>;
 
-interface IFieldLayout {
+type FieldLayoutProps = {
    layoutType: "block" | "flex" | "radio-check";
-   formPropsArr: IFormProps[];
+   formPropsArr: FormProps[];
    label?: string;
-   FormItem: TFormItem;
+   FormItem: FormItem;
    errors?: React.ReactNode[];
-}
+};
 
 export const FieldLayout = ({
    layoutType,
@@ -17,13 +18,16 @@ export const FieldLayout = ({
    label,
    FormItem,
    errors,
-}: IFieldLayout) => {
-   const createErrorMessage = (index: number) => {
-      if (!errors || !errors[index]) {
-         return null;
-      }
-      return errors[index];
-   };
+}: FieldLayoutProps) => {
+   const createErrorMessage = useCallback(
+      (index: number) => {
+         if (!errors || !errors[index]) {
+            return null;
+         }
+         return errors[index];
+      },
+      [errors]
+   );
 
    if (layoutType === "block") {
       return (

@@ -1,7 +1,7 @@
-interface IResizeReload {
+type ResizeReloadProps = {
     initWinW: number;
     winW: number;
     threshold: number;
-}
-export declare const resizeReload: ({ initWinW, winW, threshold }: IResizeReload) => void;
+};
+export declare const resizeReload: ({ initWinW, winW, threshold, }: ResizeReloadProps) => void;
 export {};

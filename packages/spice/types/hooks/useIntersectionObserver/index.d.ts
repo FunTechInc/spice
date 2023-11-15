@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface IUseIntersectionObserver {
+type UseIntersectionObserverProps = {
     targetRef: React.RefObject<HTMLElement>;
     rootMargin?: string;
     threshold?: number;
@@ -9,9 +9,6 @@ interface IUseIntersectionObserver {
         onLeave?: (target: Element) => void;
     };
     dependencies?: any[];
-}
-/**
- * @param callback onEnter,onLeave
- */
-export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, callback, dependencies, }: IUseIntersectionObserver) => void;
+};
+export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, callback, dependencies, }: UseIntersectionObserverProps) => void;
 export {};

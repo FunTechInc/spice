@@ -6,38 +6,30 @@ import {
    useState,
 } from "react";
 
-/*===============================================
-create context
-===============================================*/
-type TAccordionState = {
+type AccordionState = {
    target: string;
    toggle: boolean;
    defaultValue: string[];
 };
 
-const defaultState: TAccordionState = {
+const defaultState: AccordionState = {
    target: "",
    toggle: false,
    defaultValue: [],
 };
 
-const AccordionStateContext = createContext<TAccordionState>(defaultState);
+const AccordionStateContext = createContext<AccordionState>(defaultState);
 const setAccordionStateContext = createContext<
-   Dispatch<SetStateAction<TAccordionState>>
+   Dispatch<SetStateAction<AccordionState>>
 >(() => undefined);
 
-/*===============================================
-context component
-===============================================*/
-interface IContext {
+type ContextProps = {
    children: React.ReactNode;
+   /** Please set the value that you want to open by default. */
    defaultValue: string[];
-}
+};
 
-/**
- * @param defaultValue string[] Please set the value that you want to open by default.
- */
-export const Context = ({ children, defaultValue }: IContext) => {
+export const Context = ({ children, defaultValue }: ContextProps) => {
    const [AccordionState, setAccordionState] = useState({
       target: "",
       toggle: false,

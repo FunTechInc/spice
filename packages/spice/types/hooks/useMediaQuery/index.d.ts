@@ -1,10 +1,6 @@
-interface IUseMediaQuery {
+type UseMediaQueryProps = {
     type: "max" | "min";
     width: number;
-}
-/**
- * @param type "max" | "min"
- * @param width number
- */
-export declare const useMediaQuery: ({ type, width }: IUseMediaQuery) => boolean | null;
+};
+export declare const useMediaQuery: ({ type, width }: UseMediaQueryProps) => boolean | null;
 export {};

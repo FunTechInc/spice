@@ -1,60 +1,59 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
 
-interface IModal {
+type ModalProps = {
    className?: string;
    children: React.ReactNode;
    dialog: {
       children: React.ReactNode;
       className?: string;
    };
+   /** onOpen,onClose */
    callback?: {
       onOpen?: (target: Element) => void;
       onClose?: (target: Element) => void;
    };
-}
+};
 
-/**
- * @param callback onOpen,onClose
- */
-export const Modal = ({ children, className, dialog, callback }: IModal) => {
+const CLOSE_BUTTON = ".spice__modal_close";
+
+export const Modal = ({
+   children,
+   className,
+   dialog,
+   callback,
+}: ModalProps) => {
    const ref = useRef<HTMLDialogElement>(null);
-   /*===============================================
-	show & close
-	===============================================*/
-   const showModal = () => {
+
+   const showModal = useCallback(() => {
       toggleScroll("add");
       ref.current!.showModal();
-      // Execute at the very end to get scrollTop
       callback?.onOpen && callback.onOpen(ref.current!);
-   };
-   const closeModal = async () => {
+   }, [callback]);
+
+   const closeModal = useCallback(async () => {
       callback?.onClose && (await promiseMaker(callback.onClose(ref.current!)));
       toggleScroll("remove");
       ref.current!.close();
-   };
+   }, [callback]);
 
-   /*===============================================
-	click close button(.spice__modal_close)
-	===============================================*/
    useEffect(() => {
-      const closeBtn = ref.current!.querySelectorAll(".spice__modal_close");
+      const closeBtn = ref.current!.querySelectorAll(CLOSE_BUTTON);
       if (!closeBtn) {
          return;
       }
-      closeBtn.forEach((element) => {
-         element.addEventListener("click", () => {
-            closeModal();
-         });
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+      closeBtn.forEach((element) =>
+         element.addEventListener("click", closeModal)
+      );
+      return () => {
+         closeBtn.forEach((element) =>
+            element.removeEventListener("click", closeModal)
+         );
+      };
+   }, [closeModal]);
 
-   /*===============================================
-	esc key
-	===============================================*/
    useEffect(() => {
       const keyDownHandler = (event: globalThis.KeyboardEvent) => {
          const isOpen = ref.current?.hasAttribute("open");
@@ -66,8 +65,7 @@ export const Modal = ({ children, className, dialog, callback }: IModal) => {
       return () => {
          document.removeEventListener("keydown", keyDownHandler);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+   }, [closeModal]);
 
    return (
       <>

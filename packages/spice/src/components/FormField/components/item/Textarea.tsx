@@ -1,6 +1,6 @@
-import { ITextareaProps } from "../..";
+import { TextareaProps } from "../..";
 
-export const Textarea = ({ formProps }: { formProps: ITextareaProps }) => {
+export const Textarea = ({ formProps }: { formProps: TextareaProps }) => {
    const { isTextarea, ...otherProp } = formProps;
    if (!isTextarea) {
       return;
