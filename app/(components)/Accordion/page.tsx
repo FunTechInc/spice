@@ -84,12 +84,57 @@ const Demo = () => {
    );
 };
 
+const Code = () => {
+   return (
+      <CodeBlock
+         code={`const Demo = () => {
+   return (
+      <Accordion.Context defaultValue={["accordion-1"]}>
+         {accordionList.map((list) => (
+            <div key={list.value} className={s.accordion}>
+               <Accordion.Button value={list.value} className={s.button}>
+                  <div className={s.buttonContent}>
+                     <p>{list.buttonTxt}</p>
+                     <div className={s.icon}>
+                        <span></span>
+                        <span></span>
+                     </div>
+                  </div>
+               </Accordion.Button>
+               <Accordion.Content
+                  value={list.value}
+                  callback={{
+                     onOpen: (props) => {
+                        accordionEvent(props, true);
+                     },
+                     onClose: (props) => {
+                        accordionEvent(props, false);
+                     },
+                  }}>
+                  <div className={s.content}>
+                     <p>{list.contentTxt}</p>
+                     <button>
+                        コンテンツ内のクリック要素のtabIndexはclose時は自動的に-1になります。
+                     </button>
+                  </div>
+               </Accordion.Content>
+            </div>
+         ))}
+      </Accordion.Context>
+   );
+};
+`}
+      />
+   );
+};
+
 const Page = () => {
    return (
       <MainView
          title="Accordion"
          description={<Description />}
          demo={<Demo />}
+         code={<Code />}
       />
    );
 };

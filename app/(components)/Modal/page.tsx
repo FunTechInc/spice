@@ -115,9 +115,69 @@ const Demo = () => {
    );
 };
 
+const Code = () => {
+   return (
+      <CodeBlock
+         code={`<Modal
+	className={s.button}
+	dialog={{
+		children: (
+			<div
+				className={"js_modal_backdrop"}>
+				<ModalContent />
+			</div>
+		),
+	}}
+	callback={{
+		onOpen: (props) => {
+			setIsModal(true);
+			const content =
+				props.getElementsByClassName("js_modal_content")[0];
+			content.scrollTop = 0;
+			gsap.context(() => {
+				gsap.fromTo(
+					[".js_modal_backdrop", ".js_modal_content"],
+					{
+						opacity: 0,
+					},
+					{
+						opacity: 1,
+						duration: 0.6,
+						ease: "power3.out",
+					}
+				);
+			}, props);
+		},
+		onClose: (props) => {
+			setIsModal(false);
+			return new Promise((resolve) => {
+				gsap.context(() => {
+					gsap.to([".js_modal_backdrop", ".js_modal_content"], {
+						opacity: 0,
+						duration: 0.6,
+						ease: "power3.out",
+						onComplete: () => {
+							resolve(null);
+						},
+					});
+				}, props);
+			});
+		},
+	}}>
+	<span>with Animation</span>
+</Modal>`}
+      />
+   );
+};
+
 const Page = () => {
    return (
-      <MainView title="Modal" description={<Description />} demo={<Demo />} />
+      <MainView
+         title="Modal"
+         description={<Description />}
+         demo={<Demo />}
+         code={<Code />}
+      />
    );
 };
 

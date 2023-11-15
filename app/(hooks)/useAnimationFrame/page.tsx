@@ -38,21 +38,25 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`const rAF = useAnimationFrame(30);
-const playHandler = () => {
-	rAF("play", () => {
-		console.log("tick");
-	});
-};
-const pauseHandler = () => {
-	rAF("pause");
-};
-return (
-	<>
-		<button onClick={playHandler}>play</button>
-		<button onClick={pauseHandler}>pause</button>
-	</>
-);`}
+            code={`const Demo = () => {
+   const rAF = useAnimationFrame(10);
+   const playHandler = () => {
+      rAF("play", (timestamp) => {
+         console.log(timestamp);
+      });
+   };
+   const pauseHandler = () => {
+      rAF("pause");
+   };
+   return (
+      <>
+         <div className={s.btnWrapper}>
+            <button onClick={playHandler}>play</button>
+            <button onClick={pauseHandler}>pause</button>
+         </div>
+      </>
+   );
+};`}
          />
       </>
    );

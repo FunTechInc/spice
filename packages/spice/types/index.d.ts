@@ -5,6 +5,7 @@ export { Dropdown } from "./components/Dropdown";
 export { Magnet } from "./components/Magnet";
 export { Thumbnail } from "./components/Thumbnail";
 export { Modal } from "./components/Modal";
+export { StickyItem } from "./components/StickyItem";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export { useIsomorphicLayoutEffect } from "./hooks/useIsomorphicLayoutEffect";

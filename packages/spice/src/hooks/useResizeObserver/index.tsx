@@ -3,14 +3,15 @@ import { useRef, useEffect } from "react";
 type UseResizeObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
    callback: (entry: Element) => void;
-   debounce: number;
+   /** default:100 */
+   debounce?: number;
    dependencies?: any[];
 };
 
 export const useResizeObserver = ({
    targetRef,
    callback,
-   debounce,
+   debounce = 100,
    dependencies = [],
 }: UseResizeObserverProps) => {
    const timeoutID = useRef<NodeJS.Timeout | number>(0);

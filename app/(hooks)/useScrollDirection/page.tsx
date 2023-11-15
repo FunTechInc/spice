@@ -16,7 +16,6 @@ const Description = () => {
 
 const Demo = () => {
    const direction = useScrollDirection({
-      debounce: 10,
       threshold: 10,
    });
    const ref = useRef(null);
@@ -51,7 +50,6 @@ const Code = () => {
          <CodeBlock
             code={`const Demo = () => {
    const direction = useScrollDirection({
-      debounce: 10,
       threshold: 10,
    });
    const ref = useRef(null);
