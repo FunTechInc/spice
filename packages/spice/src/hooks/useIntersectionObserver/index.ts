@@ -2,13 +2,14 @@ import { useEffect } from "react";
 
 type UseIntersectionObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
-   rootMargin?: string;
-   threshold?: number;
-   once: boolean;
    callback: {
       onEnter?: (target: Element) => void;
       onLeave?: (target: Element) => void;
    };
+   rootMargin?: string;
+   threshold?: number;
+   /** default:false */
+   once?: boolean;
    dependencies?: any[];
 };
 
@@ -16,7 +17,7 @@ export const useIntersectionObserver = ({
    targetRef,
    rootMargin = "0px",
    threshold = 0,
-   once,
+   once = false,
    callback,
    dependencies = [],
 }: UseIntersectionObserverProps) => {

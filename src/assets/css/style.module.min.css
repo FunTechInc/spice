@@ -1,3 +1,3 @@
-.hover img{transition:.6s;transition-property:transform}.hover:hover img{transform:scale(1.1)}.parallax img{height:116% !important}.mask{position:absolute;width:100%;height:100%;background-color:rgba(0,0,0,.4);top:0;left:0;z-index:10}.demo_list li:not(:first-child){margin-top:2.4rem}
+.item{position:-webkit-sticky;position:sticky;top:80px;width:100%;height:100vh;background-color:gray;display:flex;align-items:center;justify-content:center;font-size:40px}.other{width:100%;height:100vh;background-color:rgba(0,0,0,0)}
 
 /*# sourceMappingURL=style.module.min.css.map */

@@ -19,19 +19,19 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`interface IUseWindowResizeObserver {
-	callback: ({
-		winW,
-		winH,
-		initWinW,
-	}: {
-		winW: number;
-		winH: number;
-		initWinW: number;
-	}) => void;
-	debounce: number;
-	dependencies?: any[];
-}`}
+            code={`type UseWindowResizeObserverProps = {
+   callback: ({
+      winW,
+      winH,
+      initWinW,
+   }: {
+      winW: number;
+      winH: number;
+      initWinW: number;
+   }) => void;
+   debounce?: number;
+   dependencies?: any[];
+};`}
          />
       </>
    );

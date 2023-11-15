@@ -1,7 +1,9 @@
 type ActionType = "down" | "up" | null;
 type UseScrollDirectionProps = {
-    threshold: number;
-    debounce: number;
+    /** default:0 */
+    threshold?: number;
+    /** default:10 */
+    debounce?: number;
     dependencies?: any[];
 };
 export declare const useScrollDirection: ({ threshold, debounce, dependencies, }: UseScrollDirectionProps) => ActionType;

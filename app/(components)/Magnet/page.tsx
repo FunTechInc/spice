@@ -145,9 +145,47 @@ const Demo = () => {
    );
 };
 
+const Code = () => {
+   return (
+      <CodeBlock
+         code={`<Magnet
+	className={s.wrapper}
+	callback={{
+		onMove: (props) => {
+			const animProps = { duration: 0.6, ease: "power1.out" };
+			let xTo = gsap.quickTo(props.target, "x", animProps),
+				yTo = gsap.quickTo(props.target, "y", animProps);
+			let childXTo = gsap.quickTo(props.children, "x", animProps),
+				childYTo = gsap.quickTo(props.children, "y", animProps);
+			xTo(props.x * 0.1);
+			yTo(props.y * 0.1);
+			childXTo(props.x * 0.3);
+			childYTo(props.y * 0.3);
+		},
+		onLeave: ({ target, children }) => {
+			gsap.to([target, children], {
+				x: 0,
+				y: 0,
+				duration: 0.6,
+				ease: "back.out(4)",
+				overwrite: true,
+			});
+		},
+	}}>
+	<div className={s.magnetBall}></div>
+</Magnet>`}
+      />
+   );
+};
+
 const Page = () => {
    return (
-      <MainView title="Magnet" description={<Description />} demo={<Demo />} />
+      <MainView
+         title="Magnet"
+         description={<Description />}
+         demo={<Demo />}
+         code={<Code />}
+      />
    );
 };
 

@@ -4,7 +4,8 @@ type UseWindowResizeObserverProps = {
         winH: number;
         initWinW: number;
     }) => void;
-    debounce: number;
+    /** default:100 */
+    debounce?: number;
     dependencies?: any[];
 };
 export declare const useWindowResizeObserver: ({ callback, debounce, dependencies, }: UseWindowResizeObserverProps) => void;
