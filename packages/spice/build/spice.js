@@ -1297,7 +1297,7 @@ const kt = "_spice_wrapper_1b9je_1", Vt = "_spice_wrapper_hidden_1b9je_10", Ye =
       return;
     const f = (_, v) => {
       _.forEach((y) => {
-        y.isIntersecting && s.onEnter ? (s.onEnter(y.target), r && v.unobserve(y.target)) : !y.isIntersecting && s.onLeave && s.onLeave(y.target);
+        y.isIntersecting && s.onEnter ? (s.onEnter(y), r && v.unobserve(y.target)) : !y.isIntersecting && s.onLeave && s.onLeave(y);
       });
     }, h = new IntersectionObserver(f, l);
     return h.observe(u), () => {

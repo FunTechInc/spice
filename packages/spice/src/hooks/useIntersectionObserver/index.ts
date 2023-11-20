@@ -3,11 +3,13 @@ import { useEffect } from "react";
 type UseIntersectionObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
    callback: {
-      onEnter?: (target: Element) => void;
-      onLeave?: (target: Element) => void;
+      onEnter?: (entry: IntersectionObserverEntry) => void;
+      onLeave?: (entry: IntersectionObserverEntry) => void;
    };
+   /** default:"0px" */
    rootMargin?: string;
-   threshold?: number;
+   /** default:0 */
+   threshold?: number | number[];
    /** default:false */
    once?: boolean;
    dependencies?: any[];
@@ -21,7 +23,7 @@ export const useIntersectionObserver = ({
    callback,
    dependencies = [],
 }: UseIntersectionObserverProps) => {
-   const options = {
+   const options: IntersectionObserverInit = {
       rootMargin: rootMargin,
       threshold: threshold,
    };
@@ -38,12 +40,12 @@ export const useIntersectionObserver = ({
       ) => {
          entries.forEach((entry) => {
             if (entry.isIntersecting && callback.onEnter) {
-               callback.onEnter(entry.target);
+               callback.onEnter(entry);
                if (once) {
                   observer.unobserve(entry.target);
                }
             } else if (!entry.isIntersecting && callback.onLeave) {
-               callback.onLeave(entry.target);
+               callback.onLeave(entry);
             }
          });
       };
