@@ -2,11 +2,13 @@
 type UseIntersectionObserverProps = {
     targetRef: React.RefObject<HTMLElement>;
     callback: {
-        onEnter?: (target: Element) => void;
-        onLeave?: (target: Element) => void;
+        onEnter?: (entry: IntersectionObserverEntry) => void;
+        onLeave?: (entry: IntersectionObserverEntry) => void;
     };
+    /** default:"0px" */
     rootMargin?: string;
-    threshold?: number;
+    /** default:0 */
+    threshold?: number | number[];
     /** default:false */
     once?: boolean;
     dependencies?: any[];
