@@ -1310,8 +1310,7 @@ const Yt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", Ue =
       }
     },
     [c, s, n]
-  );
-  return x(
+  ), h = x(
     (_) => (_ > 100 && (_ = 100), new Promise((b) => {
       const S = {
         ones: t.current.querySelectorAll("div"),
@@ -1362,6 +1361,9 @@ const Yt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", Ue =
       n
     ]
   );
+  return P(() => () => {
+    clearInterval(d.current);
+  }, []), h;
 }, Ir = "_spice_loadingProgress_digit_avxoy_1", Ar = {
   spice_loadingProgress_digit: Ir
 }, st = Nt(
