@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 type UseLoadingProgressProps = {
    onesRef: React.RefObject<HTMLElement>;
@@ -165,6 +165,12 @@ export const useLoadingProgress = ({
          tempo,
       ]
    );
+
+   useEffect(() => {
+      return () => {
+         clearInterval(countUpID.current);
+      };
+   }, []);
 
    return updateProgress;
 };
