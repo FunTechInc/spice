@@ -85,6 +85,10 @@ const componentList = [
       href: "/Modal",
       title: "Modal",
    },
+   {
+      href: "/LoadingProgress",
+      title: "LoadingProgress",
+   },
 ];
 
 export const AsideNav = ({ className }: TAsideNav) => {

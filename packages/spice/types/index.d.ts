@@ -8,6 +8,7 @@ export { Modal } from "./components/Modal";
 export { StickyItem } from "./components/StickyItem";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
+export * as LoadingProgress from "./components/LoadingProgress";
 export { useIsomorphicLayoutEffect } from "./hooks/useIsomorphicLayoutEffect";
 export { useAnimationFrame } from "./hooks/useAnimationFrame";
 export { useResizeObserver } from "./hooks/useResizeObserver";

@@ -1,0 +1,3 @@
+.wrapper{display:flex;align-items:center}.percentage{--textSize: 24px;flex-shrink:0;margin-right:24px;margin-bottom:.5rem;overflow:hidden;font-size:var(--textSize);line-height:var(--textSize);height:var(--textSize)}.num{opacity:0;color:green}.bar{display:block;opacity:1;width:0%;will-change:width;height:5px;background-color:red}
+
+/*# sourceMappingURL=index.module.min.css.map */
