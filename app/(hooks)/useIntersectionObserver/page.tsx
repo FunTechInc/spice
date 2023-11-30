@@ -1,4 +1,5 @@
 "use client";
+
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { useIntersectionObserver } from "@/packages/spice/src";
@@ -21,7 +22,7 @@ const List = ({ index }: { index: number }) => {
    useIntersectionObserver({
       targetRef: ref,
       callback: {
-         onEnter: (target) => {
+         onEnter: ({ target }) => {
             gsap.fromTo(
                target,
                {
@@ -46,7 +47,7 @@ const Demo = () => {
    useIntersectionObserver({
       targetRef: ref,
       callback: {
-         onEnter: (target) => {
+         onEnter: ({ target }) => {
             gsap.fromTo(
                target,
                {

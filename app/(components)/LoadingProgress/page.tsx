@@ -10,11 +10,7 @@ const Description = () => {
    return (
       <>
          <ul>
-            <li>You can pass FPS.</li>
-            <li>
-               If you set stopPropagation to true, pointer-event:none; will be
-               applied to children.
-            </li>
+            <li>Component that counts up to 100</li>
          </ul>
       </>
    );
