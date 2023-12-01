@@ -1,7 +1,7 @@
 /// <reference types="react" />
 type StickyItemsProps = {
     children: React.ReactNode;
-    className: string;
+    className?: string;
 };
 export declare const StickyItem: ({ children, className }: StickyItemsProps) => import("react/jsx-runtime").JSX.Element;
 export {};
