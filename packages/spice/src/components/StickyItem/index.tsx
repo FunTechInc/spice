@@ -3,7 +3,7 @@ import { useOverflowDispatch } from "../WrapperLayout";
 
 type StickyItemsProps = {
    children: React.ReactNode;
-   className: string;
+   className?: string;
 };
 
 export const StickyItem = ({ children, className }: StickyItemsProps) => {
