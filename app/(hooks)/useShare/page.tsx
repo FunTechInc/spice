@@ -8,18 +8,20 @@ import s from "./index.module.scss";
 const Description = () => {
    return (
       <ul>
-         <li>share</li>
+         <li>hook returns an object with event handlers</li>
       </ul>
    );
 };
 
 const Demo = () => {
-   const { Facebook, X, LINE, share } = useShare({
-      shareUrl: "https://google.com/",
+   const { Facebook, X, LINE, share, copy, isCopied } = useShare({
+      shareUrl: "url",
    });
    return (
-      <div>
-         <button>copy</button>
+      <div className={s.buttons}>
+         <button {...copy} className={isCopied ? s.copied : ""}>
+            copy
+         </button>
          <button {...X}>Twitter/X</button>
          <button {...share}>instagram</button>
          <button {...Facebook}>facebook</button>
@@ -32,10 +34,22 @@ const Code = () => {
    return (
       <>
          <CodeBlock
-            code={`useStarter({
-	reloadThresholds: [960, 560],
-	isFixViewportForSmall: true
-});`}
+            code={`const Demo = () => {
+   const { Facebook, X, LINE, share, copy, isCopied } = useShare({
+      shareUrl: "url",
+   });
+   return (
+      <div className={s.buttons}>
+         <button {...copy} className={isCopied ? s.copied : ""}>
+            copy
+         </button>
+         <button {...X}>Twitter/X</button>
+         <button {...share}>instagram</button>
+         <button {...Facebook}>facebook</button>
+         <button {...LINE}>LINE</button>
+      </div>
+   );
+};`}
          />
       </>
    );
