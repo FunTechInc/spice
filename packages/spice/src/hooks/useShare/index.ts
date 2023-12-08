@@ -1,77 +1,95 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 type UseShareProps = {
    shareUrl: string;
+   shareTitle?: string;
+   /** size of new window , default:600 */
    width?: number;
+   /** size of new window , default:800 */
    height?: number;
 };
 
 export const useShare = ({
    shareUrl,
+   shareTitle = "",
    width = 600,
    height = 800,
 }: UseShareProps) => {
-   const url = useMemo(() => encodeURIComponent(shareUrl), [shareUrl]);
+   const encodedUrl = useMemo(() => encodeURIComponent(shareUrl), [shareUrl]);
+   const windowSize = useMemo(
+      () => `height=${height},width=${width}`,
+      [height, width]
+   );
 
    const Facebook = useMemo(
       () => ({
          onClick: () => {
             window.open(
-               `https://www.facebook.com/sharer.php?u=${url}`,
+               `https://www.facebook.com/sharer.php?u=${encodedUrl}&t=${shareTitle}`,
                "newwindow",
-               `height=${height},width=${width}}`
+               windowSize
             );
          },
       }),
-      [url, width, height]
+      [encodedUrl, shareTitle, windowSize]
    );
 
    const X = useMemo(
       () => ({
          onClick: () => {
             window.open(
-               `https:////twitter.com/share?url=${url}`,
+               `https:////twitter.com/share?url=${encodedUrl}&text=${shareTitle}`,
                "newwindow",
-               `height=${height},width=${width}}`
+               windowSize
             );
          },
       }),
-      [url, width, height]
+      [encodedUrl, windowSize, shareTitle]
    );
 
    const LINE = useMemo(
       () => ({
          onClick: () => {
             window.open(
-               `https://social-plugins.line.me/lineit/share?url=${url}`,
+               `https://social-plugins.line.me/lineit/share?url=${encodedUrl}&text=${shareTitle}`,
                "newwindow",
-               `height=${height},width=${width}}`
+               windowSize
             );
          },
       }),
-      [url, width, height]
+      [encodedUrl, windowSize, shareTitle]
    );
 
    const share = useMemo(
       () => ({
          onClick: async () => {
             if (!navigator.share) {
-               alert("ご利用のブラウザでは共有できません。");
+               alert("このブラウザは共有機能に対応していません。");
                return;
             }
             try {
                await window.navigator.share({
-                  title: "Share API で共有！",
-                  text: "ご覧の通り、お手軽にSNSにリンクを供することができます。",
-                  url: "https://example.com/hogehoge",
+                  title: shareTitle,
+                  url: encodedUrl,
                });
-               alert("共有が完了しました。");
             } catch (e) {
-               console.log("error");
+               return;
             }
          },
       }),
-      []
+      [shareTitle, encodedUrl]
+   );
+
+   const [isCopied, setIsCopied] = useState(false);
+   const copy = useMemo(
+      () => ({
+         onClick: () => {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+               setIsCopied(true);
+            });
+         },
+      }),
+      [shareUrl]
    );
 
    return {
@@ -79,5 +97,7 @@ export const useShare = ({
       X,
       LINE,
       share,
+      copy,
+      isCopied,
    };
 };
