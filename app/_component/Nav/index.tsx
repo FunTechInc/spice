@@ -42,6 +42,10 @@ const hookList = [
       href: "/useMediaQuery",
       title: "useMediaQuery",
    },
+   {
+      href: "/useShare",
+      title: "useShare",
+   },
 ];
 
 const componentList = [
