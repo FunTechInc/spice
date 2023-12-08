@@ -23,3 +23,4 @@ export { useIsTouchDevice } from "./hooks/useIsTouchDevice";
 export { useWindowResizeObserver } from "./hooks/useWindowResizeObserver";
 export { useScrollDirection } from "./hooks/useScrollDirection";
 export { useMediaQuery } from "./hooks/useMediaQuery";
+export { useShare } from "./hooks/useShare";
