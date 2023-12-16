@@ -57,20 +57,25 @@ const Demo = () => {
          );
       },
       onComplete: (targets) => {
-         gsap.to(targets, {
-            y: -8,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            stagger: {
-               each: 0.05,
-            },
-         });
-         gsap.to(barRef.current, {
-            width: "0%",
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
+         return new Promise((resolve) => {
+            gsap.to(targets, {
+               y: -8,
+               opacity: 0,
+               duration: 1.2,
+               ease: "power2.out",
+               stagger: {
+                  each: 0.05,
+               },
+               onComplete: () => {
+                  resolve(null);
+               },
+            });
+            gsap.to(barRef.current, {
+               width: "0%",
+               opacity: 0,
+               duration: 1.2,
+               ease: "power2.out",
+            });
          });
       },
    });

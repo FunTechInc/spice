@@ -14,6 +14,7 @@ type UseLoadingProgressProps = {
         duration: number;
     }) => void;
     onStart?: (targets: NodeListOf<HTMLDivElement>[]) => void;
+    /** If you want to wait for onComplete to complete, you can make the promise return. */
     onComplete?: (targets: NodeListOf<HTMLDivElement>[]) => void;
 };
 type UpdateProgress = (destination: number) => Promise<number>;
