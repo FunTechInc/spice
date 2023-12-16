@@ -105,18 +105,21 @@ export const useLoadingProgress = ({
             countUpID.current = setInterval(async () => {
                const currentPercent = (percent.to += 1);
 
+               const handleCompletion = async () => {
+                  clearInterval(countUpID.current);
+                  if (currentPercent > 100 && onComplete) {
+                     await promiseMaker(onComplete(numberElement.getAll()));
+                     resolve(currentPercent - 1);
+                  } else {
+                     resolve(currentPercent - 1);
+                  }
+               };
+
                if (currentPercent === 1) {
                   onStart && onStart(numberElement.getAll());
                }
-
-               if (currentPercent >= destination) {
-                  clearInterval(countUpID.current);
-                  if (currentPercent === 100 && onComplete) {
-                     await promiseMaker(onComplete(numberElement.getAll()));
-                     resolve(currentPercent);
-                  } else {
-                     resolve(currentPercent);
-                  }
+               if (currentPercent > destination) {
+                  await handleCompletion();
                }
 
                const hundredsNumber = Math.floor(currentPercent / 100) % 100;
