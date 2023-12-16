@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { promiseMaker } from "../../utils/promiseMaker";
 
 type UseLoadingProgressProps = {
    onesRef: React.RefObject<HTMLElement>;
@@ -21,6 +22,7 @@ type UseLoadingProgressProps = {
       duration: number;
    }) => void;
    onStart?: (targets: NodeListOf<HTMLDivElement>[]) => void;
+   /** If you want to wait for onComplete to complete, you can make the promise return. */
    onComplete?: (targets: NodeListOf<HTMLDivElement>[]) => void;
 };
 
@@ -99,18 +101,22 @@ export const useLoadingProgress = ({
                },
             };
             clearInterval(countUpID.current);
-            countUpID.current = setInterval(() => {
-               const currentPercent = (percent.to += 1);
 
-               if (currentPercent >= destination) {
-                  clearInterval(countUpID.current);
-                  resolve(currentPercent);
-               }
+            countUpID.current = setInterval(async () => {
+               const currentPercent = (percent.to += 1);
 
                if (currentPercent === 1) {
                   onStart && onStart(numberElement.getAll());
-               } else if (currentPercent === 100) {
-                  onComplete && onComplete(numberElement.getAll());
+               }
+
+               if (currentPercent >= destination) {
+                  clearInterval(countUpID.current);
+                  if (currentPercent === 100 && onComplete) {
+                     await promiseMaker(onComplete(numberElement.getAll()));
+                     resolve(currentPercent);
+                  } else {
+                     resolve(currentPercent);
+                  }
                }
 
                const hundredsNumber = Math.floor(currentPercent / 100) % 100;
