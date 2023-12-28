@@ -1527,47 +1527,48 @@ Created by FunTech: https://funtech.inc/
   }), P(() => i(window.innerWidth), [i]), o;
 }, rn = ({
   shareUrl: r,
-  shareTitle: t = "",
-  width: o = 600,
-  height: n = 800
+  sharePath: t,
+  shareTitle: o = "",
+  width: n = 600,
+  height: i = 800
 }) => {
-  const i = F(() => encodeURIComponent(r), [r]), c = F(
-    () => `height=${n},width=${o}`,
-    [n, o]
-  ), l = F(
-    () => ({
-      onClick: () => {
-        window.open(
-          `https://www.facebook.com/sharer.php?u=${i}&t=${t}`,
-          "newwindow",
-          c
-        );
-      }
-    }),
-    [i, t, c]
+  const c = F(() => encodeURIComponent(r), [r]), l = F(
+    () => `height=${i},width=${n}`,
+    [i, n]
   ), a = F(
     () => ({
       onClick: () => {
         window.open(
-          `https:////twitter.com/share?url=${i}&text=${t}`,
+          `https://www.facebook.com/sharer.php?u=${c}&t=${o}`,
           "newwindow",
-          c
+          l
         );
       }
     }),
-    [i, c, t]
+    [c, o, l]
   ), d = F(
     () => ({
       onClick: () => {
         window.open(
-          `https://social-plugins.line.me/lineit/share?url=${i}&text=${t}`,
+          `https:////twitter.com/share?url=${c}&text=${o}`,
           "newwindow",
-          c
+          l
         );
       }
     }),
-    [i, c, t]
+    [c, l, o]
   ), v = F(
+    () => ({
+      onClick: () => {
+        window.open(
+          `https://social-plugins.line.me/lineit/share?url=${c}&text=${o}`,
+          "newwindow",
+          l
+        );
+      }
+    }),
+    [c, l, o]
+  ), h = F(
     () => ({
       onClick: async () => {
         if (!navigator.share) {
@@ -1576,32 +1577,32 @@ Created by FunTech: https://funtech.inc/
         }
         try {
           await window.navigator.share({
-            title: t,
-            url: i
+            title: o,
+            url: t || c
           });
         } catch {
           return;
         }
       }
     }),
-    [t, i]
-  ), [h, p] = L(!1), b = F(
+    [o, c, t]
+  ), [p, b] = L(!1), E = F(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(r).then(() => {
-          p(!0);
+          b(!0);
         });
       }
     }),
     [r]
   );
   return {
-    Facebook: l,
-    X: a,
-    LINE: d,
-    share: v,
-    copy: b,
-    isCopied: h
+    Facebook: a,
+    X: d,
+    LINE: v,
+    share: h,
+    copy: E,
+    isCopied: p
   };
 }, nn = (r) => {
   const t = Nr();
