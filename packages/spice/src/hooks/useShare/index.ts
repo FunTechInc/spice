@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 
 type UseShareProps = {
    shareUrl: string;
+   /** window.navigator.share API seems to automatically insert siteorigin, so just pass the path */
+   sharePath?: string;
    shareTitle?: string;
    /** size of new window , default:600 */
    width?: number;
@@ -11,6 +13,7 @@ type UseShareProps = {
 
 export const useShare = ({
    shareUrl,
+   sharePath,
    shareTitle = "",
    width = 600,
    height = 800,
@@ -70,14 +73,14 @@ export const useShare = ({
             try {
                await window.navigator.share({
                   title: shareTitle,
-                  url: encodedUrl,
+                  url: sharePath ? sharePath : encodedUrl,
                });
             } catch (e) {
                return;
             }
          },
       }),
-      [shareTitle, encodedUrl]
+      [shareTitle, encodedUrl, sharePath]
    );
 
    const [isCopied, setIsCopied] = useState(false);
