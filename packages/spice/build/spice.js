@@ -1,4 +1,4 @@
-import Je, { createContext as Y, useState as L, useContext as z, useEffect as P, useCallback as x, useRef as C, useMemo as F, forwardRef as Nt, useLayoutEffect as Mt, useReducer as kt } from "react";
+import Je, { createContext as Y, useState as L, useContext as z, useEffect as P, useCallback as x, useRef as C, useMemo as F, memo as Nt, forwardRef as Mt, useLayoutEffect as kt, useReducer as Wt } from "react";
 var ve = { exports: {} }, H = {};
 /**
  * @license React
@@ -10,7 +10,7 @@ var ve = { exports: {} }, H = {};
  * LICENSE file in the root directory of this source tree.
  */
 var Ve;
-function Wt() {
+function Vt() {
   if (Ve)
     return H;
   Ve = 1;
@@ -38,7 +38,7 @@ var G = {};
  * LICENSE file in the root directory of this source tree.
  */
 var Ye;
-function Vt() {
+function Yt() {
   return Ye || (Ye = 1, process.env.NODE_ENV !== "production" && function() {
     var r = Je, t = Symbol.for("react.element"), o = Symbol.for("react.portal"), n = Symbol.for("react.fragment"), i = Symbol.for("react.strict_mode"), c = Symbol.for("react.profiler"), l = Symbol.for("react.provider"), a = Symbol.for("react.context"), d = Symbol.for("react.forward_ref"), v = Symbol.for("react.suspense"), h = Symbol.for("react.suspense_list"), p = Symbol.for("react.memo"), b = Symbol.for("react.lazy"), E = Symbol.for("react.offscreen"), S = Symbol.iterator, q = "@@iterator";
     function I(e) {
@@ -624,15 +624,15 @@ Check the top-level render call using <` + u + ">.");
     G.Fragment = n, G.jsx = Lt, G.jsxs = qt;
   }()), G;
 }
-process.env.NODE_ENV === "production" ? ve.exports = Wt() : ve.exports = Vt();
+process.env.NODE_ENV === "production" ? ve.exports = Vt() : ve.exports = Yt();
 var f = ve.exports;
-const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze = {
-  spice_wrapper: Yt,
-  spice_wrapper_hidden: zt
-}, Xe = Y(!0), Ke = Y((r) => !r), Ut = ({ children: r }) => {
+const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze = {
+  spice_wrapper: zt,
+  spice_wrapper_hidden: Ut
+}, Xe = Y(!0), Ke = Y((r) => !r), Bt = ({ children: r }) => {
   const [t, o] = L(!0);
   return /* @__PURE__ */ f.jsx(Xe.Provider, { value: t, children: /* @__PURE__ */ f.jsx(Ke.Provider, { value: o, children: r }) });
-}, Bt = ({ children: r }) => {
+}, Ht = ({ children: r }) => {
   const t = z(Xe);
   return /* @__PURE__ */ f.jsx(
     "div",
@@ -641,10 +641,10 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       children: r
     }
   );
-}, kr = ({ children: r }) => /* @__PURE__ */ f.jsx(Ut, { children: /* @__PURE__ */ f.jsx(Bt, { children: r }) }), Qe = () => z(Ke), Ht = "_spice_aside_aside_4cj7n_1", Gt = "_spice_aside_main_4cj7n_5", fe = {
-  spice_aside_aside: Ht,
-  spice_aside_main: Gt
-}, Wr = ({
+}, Wr = ({ children: r }) => /* @__PURE__ */ f.jsx(Bt, { children: /* @__PURE__ */ f.jsx(Ht, { children: r }) }), Qe = () => z(Ke), Gt = "_spice_aside_aside_4cj7n_1", Jt = "_spice_aside_main_4cj7n_5", fe = {
+  spice_aside_aside: Gt,
+  spice_aside_main: Jt
+}, Vr = ({
   className: r,
   children: t,
   aside: o,
@@ -664,10 +664,10 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     ),
     o.index === 0 && /* @__PURE__ */ f.jsx("div", { className: fe.spice_aside_main, children: t })
   ] });
-}, Jt = "_spice_form_input_yxowj_1", Xt = "_spice_form_select_yxowj_2", Kt = "_spice_form_radioCheckInput_yxowj_8", he = {
-  spice_form_input: Jt,
-  spice_form_select: Xt,
-  spice_form_radioCheckInput: Kt
+}, Xt = "_spice_form_input_yxowj_1", Kt = "_spice_form_select_yxowj_2", Qt = "_spice_form_radioCheckInput_yxowj_8", he = {
+  spice_form_input: Xt,
+  spice_form_select: Kt,
+  spice_form_radioCheckInput: Qt
 }, Ue = ({
   formProps: r,
   className: t
@@ -677,7 +677,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     ...r,
     className: `${he.spice_form_input} ${t || ""}`
   }
-), Qt = ({ formProps: r }) => {
+), Zt = ({ formProps: r }) => {
   const { isSelect: t, ...o } = r;
   if (!t)
     return;
@@ -749,11 +749,11 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       c(0)
     ] });
   }
-}, Zt = ({ formProps: r }) => {
+}, er = ({ formProps: r }) => {
   const { isTextarea: t, ...o } = r;
   if (t)
     return /* @__PURE__ */ f.jsx("textarea", { ...o, ...t });
-}, Vr = ({
+}, Yr = ({
   className: r,
   label: t,
   formProps: o,
@@ -773,7 +773,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       errors: n
     }),
     [n, i, t, l]
-  ), h = x(() => a ? v(Qt) : d ? v(Zt) : c === "radio" || c === "checkbox" ? Be({
+  ), h = x(() => a ? v(Zt) : d ? v(er) : c === "radio" || c === "checkbox" ? Be({
     layoutType: "radio-check",
     formPropsArr: i,
     label: t,
@@ -785,11 +785,11 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
   r instanceof Promise ? r.then(() => {
     t(null);
   }) : t(null);
-}), er = "_spice_dropdown_wrapper_1nq94_1", tr = "_spice_dropdown_content_1nq94_5", rr = "_spice_dropdown_content_hidden_1nq94_10", nr = "_spice_dropdown_content_pointerPrevent_1nq94_15", J = {
-  spice_dropdown_wrapper: er,
-  spice_dropdown_content: tr,
-  spice_dropdown_content_hidden: rr,
-  spice_dropdown_content_pointerPrevent: nr,
+}), tr = "_spice_dropdown_wrapper_1nq94_1", rr = "_spice_dropdown_content_1nq94_5", nr = "_spice_dropdown_content_hidden_1nq94_10", or = "_spice_dropdown_content_pointerPrevent_1nq94_15", J = {
+  spice_dropdown_wrapper: tr,
+  spice_dropdown_content: rr,
+  spice_dropdown_content_hidden: nr,
+  spice_dropdown_content_pointerPrevent: or,
   "spice_dropdown_top-center": "_spice_dropdown_top-center_1nq94_22",
   "spice_dropdown_top-left": "_spice_dropdown_top-left_1nq94_28",
   "spice_dropdown_top-right": "_spice_dropdown_top-right_1nq94_33",
@@ -802,7 +802,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
   "spice_dropdown_right-top": "_spice_dropdown_right-top_1nq94_79",
   "spice_dropdown_right-center": "_spice_dropdown_right-center_1nq94_84",
   "spice_dropdown_right-bottom": "_spice_dropdown_right-bottom_1nq94_90"
-}, Yr = ({
+}, zr = ({
   position: r,
   parent: t,
   content: o,
@@ -834,7 +834,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       ]
     }
   );
-}, or = (r = 60, t = []) => {
+}, ir = (r = 60, t = []) => {
   r > 60 && (r = 60);
   const o = Math.floor(1e3 / r), n = C(performance.now()), i = x(
     (a) => {
@@ -864,9 +864,9 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     } else
       a === "pause" && (c.isPlay = !1);
   };
-}, ir = "_spice_magnet_stopPropagation_99wvn_1", sr = {
-  spice_magnet_stopPropagation: ir
-}, zr = ({
+}, sr = "_spice_magnet_stopPropagation_99wvn_1", cr = {
+  spice_magnet_stopPropagation: sr
+}, Ur = ({
   className: r,
   children: t,
   callback: o,
@@ -877,7 +877,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
 }) => {
   const a = C(null), d = C(null), v = C();
   n > 60 && (n = 60);
-  const h = or(n, l), p = F(
+  const h = ir(n, l), p = F(
     () => ({
       target: a.current,
       children: d.current,
@@ -936,23 +936,23 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
         "div",
         {
           ref: d,
-          className: i ? sr.spice_magnet_stopPropagation : "",
+          className: i ? cr.spice_magnet_stopPropagation : "",
           children: t
         }
       )
     }
   );
-}, cr = "_spice_thumbnail_wrapper_1qqot_1", ar = "_spice_thumbnail_view_1qqot_5", ur = "_spice_thumbnail_golden_1qqot_26", lr = "_spice_thumbnail_silver_1qqot_30", dr = "_spice_thumbnail_platinum_1qqot_34", fr = "_spice_thumbnail_square_1qqot_42", pe = {
-  spice_thumbnail_wrapper: cr,
-  spice_thumbnail_view: ar,
-  spice_thumbnail_golden: ur,
-  spice_thumbnail_silver: lr,
-  spice_thumbnail_platinum: dr,
+}, ar = "_spice_thumbnail_wrapper_1qqot_1", ur = "_spice_thumbnail_view_1qqot_5", lr = "_spice_thumbnail_golden_1qqot_26", dr = "_spice_thumbnail_silver_1qqot_30", fr = "_spice_thumbnail_platinum_1qqot_34", pr = "_spice_thumbnail_square_1qqot_42", pe = {
+  spice_thumbnail_wrapper: ar,
+  spice_thumbnail_view: ur,
+  spice_thumbnail_golden: lr,
+  spice_thumbnail_silver: dr,
+  spice_thumbnail_platinum: fr,
   "spice_thumbnail_16-9": "_spice_thumbnail_16-9_1qqot_38",
-  spice_thumbnail_square: fr,
+  spice_thumbnail_square: pr,
   "spice_thumbnail_3-2": "_spice_thumbnail_3-2_1qqot_46",
   "spice_thumbnail_4-3": "_spice_thumbnail_4-3_1qqot_50"
-}, Ur = ({ ratio: r, children: t, className: o }) => {
+}, Br = ({ ratio: r, children: t, className: o }) => {
   const n = [
     "golden",
     "silver",
@@ -986,9 +986,9 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
 }, He = (r) => {
   const t = document.documentElement.style, o = document.body.style;
   r === "add" ? (t.scrollbarGutter = "stable", t.overflow = "hidden", o.overflow = "hidden") : (t.scrollbarGutter = "", t.overflow = "", o.overflow = "");
-}, pr = "_spice_modal_dialog_1t31c_1", _r = {
-  spice_modal_dialog: pr
-}, vr = ".spice__modal_close", Br = ({
+}, _r = "_spice_modal_dialog_1t31c_1", vr = {
+  spice_modal_dialog: _r
+}, hr = ".spice__modal_close", Hr = ({
   children: r,
   className: t,
   dialog: o,
@@ -1000,7 +1000,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     n != null && n.onClose && await te(n.onClose(i.current)), He("remove"), i.current.close();
   }, [n]);
   return P(() => {
-    const a = i.current.querySelectorAll(vr);
+    const a = i.current.querySelectorAll(hr);
     if (a)
       return a.forEach(
         (d) => d.addEventListener("click", l)
@@ -1035,26 +1035,26 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
         onClick: (a) => {
           a.target === i.current && l();
         },
-        className: `${_r.spice_modal_dialog} ${o.className ? o.className : ""}`,
+        className: `${vr.spice_modal_dialog} ${o.className ? o.className : ""}`,
         children: o.children
       }
     )
   ] });
-}, Hr = ({ children: r, className: t }) => {
+}, Gr = ({ children: r, className: t }) => {
   const o = Qe();
   return P(() => (o(() => !1), () => {
     o(() => !0);
   }), [o]), /* @__PURE__ */ f.jsx("div", { className: t || "", children: r });
-}, hr = {
+}, mr = {
   isLeaving: !1,
   isAnimation: !0,
   prev: "",
   current: "",
   next: ""
-}, Ze = Y(hr), et = Y(
+}, Ze = Y(mr), et = Y(
   () => {
   }
-), mr = ({ children: r, defaultValue: t }) => {
+), gr = ({ children: r, defaultValue: t }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
@@ -1067,7 +1067,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     next: ""
   });
   return /* @__PURE__ */ f.jsx(Ze.Provider, { value: o, children: /* @__PURE__ */ f.jsx(et.Provider, { value: n, children: r }) });
-}, tt = () => z(Ze), me = () => z(et), gr = ({ children: r, value: t, className: o }) => {
+}, tt = () => z(Ze), me = () => z(et), wr = ({ children: r, value: t, className: o }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
@@ -1092,8 +1092,8 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       children: r
     }
   );
-}, wr = "_spice_tab_hidden_1r0oa_1", br = {
-  spice_tab_hidden: wr
+}, br = "_spice_tab_hidden_1r0oa_1", yr = {
+  spice_tab_hidden: br
 }, rt = ({ content: r, isOpen: t }) => {
   const o = r.querySelectorAll("a,button");
   if (!o)
@@ -1102,7 +1102,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
   o.forEach((i) => {
     i.setAttribute("tabindex", n);
   });
-}, yr = ({
+}, xr = ({
   children: r,
   value: t,
   className: o,
@@ -1138,14 +1138,14 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     "div",
     {
       ref: c,
-      className: `${a.current !== t ? br.spice_tab_hidden : ""} ${o || ""}`,
+      className: `${a.current !== t ? yr.spice_tab_hidden : ""} ${o || ""}`,
       role: "tabpanel",
       id: `tab-${t}`,
       "aria-hidden": a.current !== t,
       children: r
     }
   );
-}, xr = () => {
+}, Er = () => {
   const r = me();
   return (t, o) => {
     r((n) => ({
@@ -1156,30 +1156,30 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       next: o ? t : ""
     }));
   };
-}, Gr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Jr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: gr,
-  Content: yr,
-  Context: mr,
-  useTabSwitch: xr
-}, Symbol.toStringTag, { value: "Module" })), Er = {
+  Button: wr,
+  Content: xr,
+  Context: gr,
+  useTabSwitch: Er
+}, Symbol.toStringTag, { value: "Module" })), Sr = {
   target: "",
   toggle: !1,
   defaultValue: []
-}, nt = Y(Er), ot = Y(() => {
-}), Sr = ({ children: r, defaultValue: t }) => {
+}, nt = Y(Sr), ot = Y(() => {
+}), jr = ({ children: r, defaultValue: t }) => {
   const [o, n] = L({
     target: "",
     toggle: !1,
     defaultValue: t
   });
   return /* @__PURE__ */ f.jsx(nt.Provider, { value: o, children: /* @__PURE__ */ f.jsx(ot.Provider, { value: n, children: r }) });
-}, it = () => z(nt), jr = () => z(ot), Rr = ({ children: r, value: t, className: o }) => {
+}, it = () => z(nt), Rr = () => z(ot), Tr = ({ children: r, value: t, className: o }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const n = it(), i = jr(), c = F(
+  const n = it(), i = Rr(), c = F(
     () => !!n.defaultValue.find((d) => d === t),
     [n, t]
   ), [l, a] = L(c);
@@ -1200,7 +1200,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       children: r
     }
   );
-}, Tr = ({
+}, Cr = ({
   targetRef: r,
   callback: t,
   debounce: o = 100,
@@ -1222,10 +1222,10 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
         l.unobserve(a), clearTimeout(i.current);
       };
   }, n);
-}, Cr = "_spice_accordion_content_1wkzs_1", Or = "_spice_accordion_hidden_1wkzs_5", Ge = {
-  spice_accordion_content: Cr,
-  spice_accordion_hidden: Or
-}, Pr = ({
+}, Or = "_spice_accordion_content_1wkzs_1", Pr = "_spice_accordion_hidden_1wkzs_5", Ge = {
+  spice_accordion_content: Or,
+  spice_accordion_hidden: Pr
+}, $r = ({
   value: r,
   callback: t,
   children: o,
@@ -1255,7 +1255,7 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
     l ? t.onOpen(p) : t.onClose(p);
   }, [l, t]), P(() => {
     rt({ content: v.current, isOpen: l });
-  }, [l]), Tr({
+  }, [l]), Cr({
     targetRef: h,
     callback: (p) => {
       const b = p.getBoundingClientRect().height;
@@ -1274,12 +1274,12 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
       children: /* @__PURE__ */ f.jsx("div", { ref: h, className: n || "", children: o })
     }
   );
-}, Jr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: Rr,
-  Content: Pr,
-  Context: Sr
-}, Symbol.toStringTag, { value: "Module" })), $r = ({
+  Button: Tr,
+  Content: $r,
+  Context: jr
+}, Symbol.toStringTag, { value: "Module" })), Ir = ({
   tempo: r = 3,
   onesRef: t,
   tensRef: o,
@@ -1366,20 +1366,20 @@ const Yt = "_spice_wrapper_1b9je_1", zt = "_spice_wrapper_hidden_1b9je_10", ze =
   return P(() => () => {
     clearInterval(d.current);
   }, []), h;
-}, Ir = "_spice_loadingProgress_digit_avxoy_1", Ar = {
-  spice_loadingProgress_digit: Ir
+}, Ar = "_spice_loadingProgress_digit_avxoy_1", Dr = {
+  spice_loadingProgress_digit: Ar
 }, st = Nt(
-  ({ className: r }, t) => /* @__PURE__ */ f.jsxs("div", { className: Ar.spice_loadingProgress_digit, ref: t, children: [
+  Mt(({ className: r }, t) => /* @__PURE__ */ f.jsxs("div", { className: Dr.spice_loadingProgress_digit, ref: t, children: [
     /* @__PURE__ */ f.jsx("div", { className: r || "", children: "0" }),
     /* @__PURE__ */ f.jsx("div", { className: r || "", children: "0" })
-  ] })
+  ] }))
 );
 st.displayName = "Digit";
-const Xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Kr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Digit: st,
-  useLoadingProgress: $r
-}, Symbol.toStringTag, { value: "Module" })), Kr = typeof document < "u" ? Mt : P, Qr = ({
+  useLoadingProgress: Ir
+}, Symbol.toStringTag, { value: "Module" })), Qr = typeof document < "u" ? kt : P, Zr = ({
   targetRef: r,
   rootMargin: t = "0px",
   threshold: o = 0,
@@ -1421,14 +1421,14 @@ const Xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   P(() => (n.current = window.innerWidth, window.addEventListener("resize", c), () => {
     window.removeEventListener("resize", c), clearTimeout(i.current);
   }), o);
-}, Dr = ({
+}, Fr = ({
   initWinW: r,
   winW: t,
   threshold: o
 }) => {
   let n = !(r <= o);
   t <= o ? n && window.location.reload() : !n && window.location.reload();
-}, Fr = `
+}, Lr = `
 ███████╗██╗   ██╗███╗   ██╗████████╗███████╗ ██████╗██╗  ██╗
 ██╔════╝██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔════╝██║  ██║
 █████╗  ██║   ██║██╔██╗ ██║   ██║   █████╗  ██║     ███████║
@@ -1438,29 +1438,29 @@ const Xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
                                                             
 Created by FunTech: https://funtech.inc/
 
-`, Lr = () => {
-  console.log(Fr);
-}, qr = (r) => {
+`, qr = () => {
+  console.log(Lr);
+}, Nr = (r) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
   const o = r > 360 ? "width=device-width,initial-scale=1" : "width=360";
   t.getAttribute("content") !== o && t.setAttribute("content", o);
-}, Zr = ({
+}, en = ({
   reloadThresholds: r,
   isFixViewportForSmall: t = !0,
   areYouFun: o = !1
 }) => {
   const n = x(
     (i) => {
-      t && qr(i);
+      t && Nr(i);
     },
     [t]
   );
   re({
     callback: ({ initWinW: i, winW: c }) => {
       r && r.forEach(
-        (l) => Dr({
+        (l) => Fr({
           initWinW: i,
           winW: c,
           threshold: l
@@ -1470,9 +1470,9 @@ Created by FunTech: https://funtech.inc/
     debounce: 100,
     dependencies: []
   }), P(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), o && process.env.NODE_ENV !== "development" && Lr();
+    document.body.dataset.spiceRendered = "true", n(window.innerWidth), o && process.env.NODE_ENV !== "development" && qr();
   }, [o, n]);
-}, Nr = () => {
+}, Mr = () => {
   const [r, t] = L(null), o = x(() => {
     const n = window.ontouchstart, i = navigator.maxTouchPoints;
     n !== void 0 && 0 < i ? t(!0) : t(!1);
@@ -1482,12 +1482,12 @@ Created by FunTech: https://funtech.inc/
     debounce: 100,
     dependencies: []
   }), P(() => o(), [o]), r;
-}, _e = "scroll", en = ({
+}, _e = "scroll", tn = ({
   threshold: r = 0,
   debounce: t = 10,
   dependencies: o = []
 }) => {
-  const n = C(null), [i, c] = kt(
+  const n = C(null), [i, c] = Wt(
     (h, p) => {
       switch (p.type) {
         case _e:
@@ -1506,7 +1506,7 @@ Created by FunTech: https://funtech.inc/
   return P(() => (l.current = d(), window.addEventListener("scroll", v, { passive: !0 }), () => {
     window.removeEventListener("scroll", v), clearTimeout(a.current);
   }), o), i;
-}, tn = ({ type: r, width: t }) => {
+}, rn = ({ type: r, width: t }) => {
   const [o, n] = L(null), i = x(
     (c) => {
       switch (r) {
@@ -1525,7 +1525,7 @@ Created by FunTech: https://funtech.inc/
     debounce: 100,
     dependencies: []
   }), P(() => i(window.innerWidth), [i]), o;
-}, rn = ({
+}, nn = ({
   shareUrl: r,
   sharePath: t,
   shareTitle: o = "",
@@ -1604,8 +1604,8 @@ Created by FunTech: https://funtech.inc/
     copy: E,
     isCopied: p
   };
-}, nn = (r) => {
-  const t = Nr();
+}, on = (r) => {
+  const t = Mr();
   P(() => {
     !t || !r.current || (r.current.style.height = `${window.screen.height}px`);
   }, [t, r]), re({
@@ -1616,27 +1616,27 @@ Created by FunTech: https://funtech.inc/
   });
 };
 export {
-  Jr as Accordion,
-  Wr as AsideLayout,
-  Yr as Dropdown,
-  Vr as FormField,
-  Xr as LoadingProgress,
-  zr as Magnet,
-  Br as Modal,
-  Hr as StickyItem,
-  Gr as Tab,
-  Ur as Thumbnail,
-  kr as WrapperLayout,
-  nn as use100vh,
-  or as useAnimationFrame,
-  Qr as useIntersectionObserver,
-  Nr as useIsTouchDevice,
-  Kr as useIsomorphicLayoutEffect,
-  tn as useMediaQuery,
-  Tr as useResizeObserver,
-  en as useScrollDirection,
-  rn as useShare,
-  Zr as useStarter,
+  Xr as Accordion,
+  Vr as AsideLayout,
+  zr as Dropdown,
+  Yr as FormField,
+  Kr as LoadingProgress,
+  Ur as Magnet,
+  Hr as Modal,
+  Gr as StickyItem,
+  Jr as Tab,
+  Br as Thumbnail,
+  Wr as WrapperLayout,
+  on as use100vh,
+  ir as useAnimationFrame,
+  Zr as useIntersectionObserver,
+  Mr as useIsTouchDevice,
+  Qr as useIsomorphicLayoutEffect,
+  rn as useMediaQuery,
+  Cr as useResizeObserver,
+  tn as useScrollDirection,
+  nn as useShare,
+  en as useStarter,
   re as useWindowResizeObserver
 };
 //# sourceMappingURL=spice.js.map
