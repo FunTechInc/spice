@@ -14,18 +14,18 @@ function Vt() {
   if (Ve)
     return H;
   Ve = 1;
-  var r = Je, t = Symbol.for("react.element"), o = Symbol.for("react.fragment"), n = Object.prototype.hasOwnProperty, i = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, c = { key: !0, ref: !0, __self: !0, __source: !0 };
-  function l(a, d, v) {
-    var h, p = {}, b = null, E = null;
-    v !== void 0 && (b = "" + v), d.key !== void 0 && (b = "" + d.key), d.ref !== void 0 && (E = d.ref);
+  var r = Je, t = Symbol.for("react.element"), n = Symbol.for("react.fragment"), o = Object.prototype.hasOwnProperty, i = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, c = { key: !0, ref: !0, __self: !0, __source: !0 };
+  function a(l, d, _) {
+    var h, p = {}, w = null, E = null;
+    _ !== void 0 && (w = "" + _), d.key !== void 0 && (w = "" + d.key), d.ref !== void 0 && (E = d.ref);
     for (h in d)
-      n.call(d, h) && !c.hasOwnProperty(h) && (p[h] = d[h]);
-    if (a && a.defaultProps)
-      for (h in d = a.defaultProps, d)
+      o.call(d, h) && !c.hasOwnProperty(h) && (p[h] = d[h]);
+    if (l && l.defaultProps)
+      for (h in d = l.defaultProps, d)
         p[h] === void 0 && (p[h] = d[h]);
-    return { $$typeof: t, type: a, key: b, ref: E, props: p, _owner: i.current };
+    return { $$typeof: t, type: l, key: w, ref: E, props: p, _owner: i.current };
   }
-  return H.Fragment = o, H.jsx = l, H.jsxs = l, H;
+  return H.Fragment = n, H.jsx = a, H.jsxs = a, H;
 }
 var G = {};
 /**
@@ -40,7 +40,7 @@ var G = {};
 var Ye;
 function Yt() {
   return Ye || (Ye = 1, process.env.NODE_ENV !== "production" && function() {
-    var r = Je, t = Symbol.for("react.element"), o = Symbol.for("react.portal"), n = Symbol.for("react.fragment"), i = Symbol.for("react.strict_mode"), c = Symbol.for("react.profiler"), l = Symbol.for("react.provider"), a = Symbol.for("react.context"), d = Symbol.for("react.forward_ref"), v = Symbol.for("react.suspense"), h = Symbol.for("react.suspense_list"), p = Symbol.for("react.memo"), b = Symbol.for("react.lazy"), E = Symbol.for("react.offscreen"), S = Symbol.iterator, q = "@@iterator";
+    var r = Je, t = Symbol.for("react.element"), n = Symbol.for("react.portal"), o = Symbol.for("react.fragment"), i = Symbol.for("react.strict_mode"), c = Symbol.for("react.profiler"), a = Symbol.for("react.provider"), l = Symbol.for("react.context"), d = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), h = Symbol.for("react.suspense_list"), p = Symbol.for("react.memo"), w = Symbol.for("react.lazy"), E = Symbol.for("react.offscreen"), S = Symbol.iterator, q = "@@iterator";
     function I(e) {
       if (e === null || typeof e != "object")
         return null;
@@ -50,15 +50,15 @@ function Yt() {
     var A = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function j(e) {
       {
-        for (var s = arguments.length, u = new Array(s > 1 ? s - 1 : 0), _ = 1; _ < s; _++)
-          u[_ - 1] = arguments[_];
+        for (var s = arguments.length, u = new Array(s > 1 ? s - 1 : 0), v = 1; v < s; v++)
+          u[v - 1] = arguments[v];
         R("error", e, u);
       }
     }
     function R(e, s, u) {
       {
-        var _ = A.ReactDebugCurrentFrame, w = _.getStackAddendum();
-        w !== "" && (s += "%s", u = u.concat([w]));
+        var v = A.ReactDebugCurrentFrame, b = v.getStackAddendum();
+        b !== "" && (s += "%s", u = u.concat([b]));
         var y = u.map(function(g) {
           return String(g);
         });
@@ -68,18 +68,18 @@ function Yt() {
     var ne = !1, ct = !1, at = !1, ut = !1, lt = !1, ge;
     ge = Symbol.for("react.module.reference");
     function dt(e) {
-      return !!(typeof e == "string" || typeof e == "function" || e === n || e === c || lt || e === i || e === v || e === h || ut || e === E || ne || ct || at || typeof e == "object" && e !== null && (e.$$typeof === b || e.$$typeof === p || e.$$typeof === l || e.$$typeof === a || e.$$typeof === d || // This needs to include all possible module reference object
+      return !!(typeof e == "string" || typeof e == "function" || e === o || e === c || lt || e === i || e === _ || e === h || ut || e === E || ne || ct || at || typeof e == "object" && e !== null && (e.$$typeof === w || e.$$typeof === p || e.$$typeof === a || e.$$typeof === l || e.$$typeof === d || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
       e.$$typeof === ge || e.getModuleId !== void 0));
     }
     function ft(e, s, u) {
-      var _ = e.displayName;
-      if (_)
-        return _;
-      var w = s.displayName || s.name || "";
-      return w !== "" ? u + "(" + w + ")" : u;
+      var v = e.displayName;
+      if (v)
+        return v;
+      var b = s.displayName || s.name || "";
+      return b !== "" ? u + "(" + b + ")" : u;
     }
     function we(e) {
       return e.displayName || "Context";
@@ -92,34 +92,34 @@ function Yt() {
       if (typeof e == "string")
         return e;
       switch (e) {
-        case n:
-          return "Fragment";
         case o:
+          return "Fragment";
+        case n:
           return "Portal";
         case c:
           return "Profiler";
         case i:
           return "StrictMode";
-        case v:
+        case _:
           return "Suspense";
         case h:
           return "SuspenseList";
       }
       if (typeof e == "object")
         switch (e.$$typeof) {
-          case a:
+          case l:
             var s = e;
             return we(s) + ".Consumer";
-          case l:
+          case a:
             var u = e;
             return we(u._context) + ".Provider";
           case d:
             return ft(e, e.render, "ForwardRef");
           case p:
-            var _ = e.displayName || null;
-            return _ !== null ? _ : N(e.type) || "Memo";
-          case b: {
-            var w = e, y = w._payload, g = w._init;
+            var v = e.displayName || null;
+            return v !== null ? v : N(e.type) || "Memo";
+          case w: {
+            var b = e, y = b._payload, g = b._init;
             try {
               return N(g(y));
             } catch {
@@ -197,9 +197,9 @@ function Yt() {
         if (ie === void 0)
           try {
             throw Error();
-          } catch (w) {
-            var _ = w.stack.trim().match(/\n( *(at )?)/);
-            ie = _ && _[1] || "";
+          } catch (b) {
+            var v = b.stack.trim().match(/\n( *(at )?)/);
+            ie = v && v[1] || "";
           }
         return `
 ` + ie + e;
@@ -218,9 +218,9 @@ function Yt() {
         if (u !== void 0)
           return u;
       }
-      var _;
+      var v;
       se = !0;
-      var w = Error.prepareStackTrace;
+      var b = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
       var y;
       y = oe.current, oe.current = null, pt();
@@ -237,14 +237,14 @@ function Yt() {
             try {
               Reflect.construct(g, []);
             } catch (M) {
-              _ = M;
+              v = M;
             }
             Reflect.construct(e, [], g);
           } else {
             try {
               g.call();
             } catch (M) {
-              _ = M;
+              v = M;
             }
             e.call(g.prototype);
           }
@@ -252,14 +252,14 @@ function Yt() {
           try {
             throw Error();
           } catch (M) {
-            _ = M;
+            v = M;
           }
           e();
         }
       } catch (M) {
-        if (M && _ && typeof M.stack == "string") {
+        if (M && v && typeof M.stack == "string") {
           for (var m = M.stack.split(`
-`), $ = _.stack.split(`
+`), $ = v.stack.split(`
 `), T = m.length - 1, O = $.length - 1; T >= 1 && O >= 0 && m[T] !== $[O]; )
             O--;
           for (; T >= 1 && O >= 0; T--, O--)
@@ -276,7 +276,7 @@ function Yt() {
             }
         }
       } finally {
-        se = !1, oe.current = y, _t(), Error.prepareStackTrace = w;
+        se = !1, oe.current = y, _t(), Error.prepareStackTrace = b;
       }
       var V = e ? e.displayName || e.name : "", We = V ? X(V) : "";
       return typeof e == "function" && K.set(e, We), We;
@@ -296,7 +296,7 @@ function Yt() {
       if (typeof e == "string")
         return X(e);
       switch (e) {
-        case v:
+        case _:
           return X("Suspense");
         case h:
           return X("SuspenseList");
@@ -307,10 +307,10 @@ function Yt() {
             return ht(e.render);
           case p:
             return Q(e.type, s, u);
-          case b: {
-            var _ = e, w = _._payload, y = _._init;
+          case w: {
+            var v = e, b = v._payload, y = v._init;
             try {
-              return Q(y(w), s, u);
+              return Q(y(b), s, u);
             } catch {
             }
           }
@@ -325,7 +325,7 @@ function Yt() {
       } else
         Pe.setExtraStackFrame(null);
     }
-    function gt(e, s, u, _, w) {
+    function gt(e, s, u, v, b) {
       {
         var y = Function.call.bind(Z);
         for (var g in e)
@@ -333,14 +333,14 @@ function Yt() {
             var m = void 0;
             try {
               if (typeof e[g] != "function") {
-                var $ = Error((_ || "React class") + ": " + u + " type `" + g + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof e[g] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                var $ = Error((v || "React class") + ": " + u + " type `" + g + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof e[g] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw $.name = "Invariant Violation", $;
               }
-              m = e[g](s, g, _, u, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              m = e[g](s, g, v, u, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (T) {
               m = T;
             }
-            m && !(m instanceof Error) && (ee(w), j("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", _ || "React class", u, g, typeof m), ee(null)), m instanceof Error && !(m.message in Oe) && (Oe[m.message] = !0, ee(w), j("Failed %s type: %s", u, m.message), ee(null));
+            m && !(m instanceof Error) && (ee(b), j("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", v || "React class", u, g, typeof m), ee(null)), m instanceof Error && !(m.message in Oe) && (Oe[m.message] = !0, ee(b), j("Failed %s type: %s", u, m.message), ee(null));
           }
       }
     }
@@ -419,7 +419,7 @@ function Yt() {
         });
       }
     }
-    var Ct = function(e, s, u, _, w, y, g) {
+    var Ct = function(e, s, u, v, b, y, g) {
       var m = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: t,
@@ -440,18 +440,18 @@ function Yt() {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: _
+        value: v
       }), Object.defineProperty(m, "_source", {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: w
+        value: b
       }), Object.freeze && (Object.freeze(m.props), Object.freeze(m)), m;
     };
-    function Ot(e, s, u, _, w) {
+    function Ot(e, s, u, v, b) {
       {
         var y, g = {}, m = null, $ = null;
-        u !== void 0 && (Ie(u), m = "" + u), St(s) && (Ie(s.key), m = "" + s.key), Et(s) && ($ = s.ref, jt(s, w));
+        u !== void 0 && (Ie(u), m = "" + u), St(s) && (Ie(s.key), m = "" + s.key), Et(s) && ($ = s.ref, jt(s, b));
         for (y in s)
           Z.call(s, y) && !xt.hasOwnProperty(y) && (g[y] = s[y]);
         if (e && e.defaultProps) {
@@ -463,7 +463,7 @@ function Yt() {
           var O = typeof e == "function" ? e.displayName || e.name || "Unknown" : e;
           m && Rt(g, O), $ && Tt(g, O);
         }
-        return Ct(e, m, $, w, _, B.current, g);
+        return Ct(e, m, $, b, v, B.current, g);
       }
     }
     var ue = A.ReactCurrentOwner, Fe = A.ReactDebugCurrentFrame;
@@ -524,8 +524,8 @@ Check the top-level render call using <` + u + ">.");
         if (qe[u])
           return;
         qe[u] = !0;
-        var _ = "";
-        e && e._owner && e._owner !== ue.current && (_ = " It was passed a child from " + N(e._owner.type) + "."), W(e), j('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', u, _), W(null);
+        var v = "";
+        e && e._owner && e._owner !== ue.current && (v = " It was passed a child from " + N(e._owner.type) + "."), W(e), j('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', u, v), W(null);
       }
     }
     function Me(e, s) {
@@ -534,15 +534,15 @@ Check the top-level render call using <` + u + ">.");
           return;
         if (ce(e))
           for (var u = 0; u < e.length; u++) {
-            var _ = e[u];
-            de(_) && Ne(_, s);
+            var v = e[u];
+            de(v) && Ne(v, s);
           }
         else if (de(e))
           e._store && (e._store.validated = !0);
         else if (e) {
-          var w = I(e);
-          if (typeof w == "function" && w !== e.entries)
-            for (var y = w.call(e), g; !(g = y.next()).done; )
+          var b = I(e);
+          if (typeof b == "function" && b !== e.entries)
+            for (var y = b.call(e), g; !(g = y.next()).done; )
               de(g.value) && Ne(g.value, s);
         }
       }
@@ -562,12 +562,12 @@ Check the top-level render call using <` + u + ">.");
         else
           return;
         if (u) {
-          var _ = N(s);
-          gt(u, e.props, "prop", _, e);
+          var v = N(s);
+          gt(u, e.props, "prop", v, e);
         } else if (s.PropTypes !== void 0 && !le) {
           le = !0;
-          var w = N(s);
-          j("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", w || "Unknown");
+          var b = N(s);
+          j("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", b || "Unknown");
         }
         typeof s.getDefaultProps == "function" && !s.getDefaultProps.isReactClassApproved && j("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
@@ -575,33 +575,33 @@ Check the top-level render call using <` + u + ">.");
     function At(e) {
       {
         for (var s = Object.keys(e.props), u = 0; u < s.length; u++) {
-          var _ = s[u];
-          if (_ !== "children" && _ !== "key") {
-            W(e), j("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", _), W(null);
+          var v = s[u];
+          if (v !== "children" && v !== "key") {
+            W(e), j("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", v), W(null);
             break;
           }
         }
         e.ref !== null && (W(e), j("Invalid attribute `ref` supplied to `React.Fragment`."), W(null));
       }
     }
-    function ke(e, s, u, _, w, y) {
+    function ke(e, s, u, v, b, y) {
       {
         var g = dt(e);
         if (!g) {
           var m = "";
           (e === void 0 || typeof e == "object" && e !== null && Object.keys(e).length === 0) && (m += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
-          var $ = Pt(w);
+          var $ = Pt(b);
           $ ? m += $ : m += Le();
           var T;
           e === null ? T = "null" : ce(e) ? T = "array" : e !== void 0 && e.$$typeof === t ? (T = "<" + (N(e.type) || "Unknown") + " />", m = " Did you accidentally export a JSX literal instead of a component?") : T = typeof e, j("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", T, m);
         }
-        var O = Ot(e, s, u, w, y);
+        var O = Ot(e, s, u, b, y);
         if (O == null)
           return O;
         if (g) {
           var D = s.children;
           if (D !== void 0)
-            if (_)
+            if (v)
               if (ce(D)) {
                 for (var V = 0; V < D.length; V++)
                   Me(D[V], e);
@@ -611,7 +611,7 @@ Check the top-level render call using <` + u + ">.");
             else
               Me(D, e);
         }
-        return e === n ? At(O) : It(O), O;
+        return e === o ? At(O) : It(O), O;
       }
     }
     function Dt(e, s, u) {
@@ -621,7 +621,7 @@ Check the top-level render call using <` + u + ">.");
       return ke(e, s, u, !1);
     }
     var Lt = Ft, qt = Dt;
-    G.Fragment = n, G.jsx = Lt, G.jsxs = qt;
+    G.Fragment = o, G.jsx = Lt, G.jsxs = qt;
   }()), G;
 }
 process.env.NODE_ENV === "production" ? ve.exports = Vt() : ve.exports = Yt();
@@ -630,8 +630,8 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   spice_wrapper: zt,
   spice_wrapper_hidden: Ut
 }, Xe = Y(!0), Ke = Y((r) => !r), Bt = ({ children: r }) => {
-  const [t, o] = L(!0);
-  return /* @__PURE__ */ f.jsx(Xe.Provider, { value: t, children: /* @__PURE__ */ f.jsx(Ke.Provider, { value: o, children: r }) });
+  const [t, n] = L(!0);
+  return /* @__PURE__ */ f.jsx(Xe.Provider, { value: t, children: /* @__PURE__ */ f.jsx(Ke.Provider, { value: n, children: r }) });
 }, Ht = ({ children: r }) => {
   const t = z(Xe);
   return /* @__PURE__ */ f.jsx(
@@ -647,22 +647,22 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
 }, Vr = ({
   className: r,
   children: t,
-  aside: o,
-  isSticky: n = !1
+  aside: n,
+  isSticky: o = !1
 }) => {
   const i = Qe();
-  return P(() => (n && i(() => !1), () => {
+  return P(() => (o && i(() => !1), () => {
     i(() => !0);
-  }), [n, i]), /* @__PURE__ */ f.jsxs("div", { className: r || "", children: [
-    o.index === 1 && /* @__PURE__ */ f.jsx("div", { className: fe.spice_aside_main, children: t }),
+  }), [o, i]), /* @__PURE__ */ f.jsxs("div", { className: r || "", children: [
+    n.index === 1 && /* @__PURE__ */ f.jsx("div", { className: fe.spice_aside_main, children: t }),
     /* @__PURE__ */ f.jsx(
       "aside",
       {
-        className: `${fe.spice_aside_aside} ${o.className ? o.className : ""}`,
-        children: o.chidren
+        className: `${fe.spice_aside_aside} ${n.className ? n.className : ""}`,
+        children: n.chidren
       }
     ),
-    o.index === 0 && /* @__PURE__ */ f.jsx("div", { className: fe.spice_aside_main, children: t })
+    n.index === 0 && /* @__PURE__ */ f.jsx("div", { className: fe.spice_aside_main, children: t })
   ] });
 }, Xt = "_spice_form_input_yxowj_1", Kt = "_spice_form_select_yxowj_2", Qt = "_spice_form_radioCheckInput_yxowj_8", he = {
   spice_form_input: Xt,
@@ -678,10 +678,10 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     className: `${he.spice_form_input} ${t || ""}`
   }
 ), Zt = ({ formProps: r }) => {
-  const { isSelect: t, ...o } = r;
+  const { isSelect: t, ...n } = r;
   if (!t)
     return;
-  const n = () => {
+  const o = () => {
     const c = t.defaultValue;
     return c ? /* @__PURE__ */ f.jsx("option", { hidden: !0, children: c }) : null;
   }, i = () => {
@@ -692,11 +692,11 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   return /* @__PURE__ */ f.jsxs(
     "select",
     {
-      ...o,
+      ...n,
       className: he.spice_form_select,
       defaultValue: i(),
       children: [
-        /* @__PURE__ */ f.jsx(n, {}),
+        /* @__PURE__ */ f.jsx(o, {}),
         t.options.map((c) => /* @__PURE__ */ f.jsx("option", { value: c, children: c }, c))
       ]
     }
@@ -704,82 +704,82 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
 }, Be = ({
   layoutType: r,
   formPropsArr: t,
-  label: o,
-  FormItem: n,
+  label: n,
+  FormItem: o,
   errors: i
 }) => {
   const c = x(
-    (l) => !i || !i[l] ? null : i[l],
+    (a) => !i || !i[a] ? null : i[a],
     [i]
   );
   if (r === "block")
     return /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
-      o && /* @__PURE__ */ f.jsx("label", { htmlFor: t[0].id, children: o }),
-      /* @__PURE__ */ f.jsx(n, { formProps: t[0] }),
+      n && /* @__PURE__ */ f.jsx("label", { htmlFor: t[0].id, children: n }),
+      /* @__PURE__ */ f.jsx(o, { formProps: t[0] }),
       c(0)
     ] });
   if (r === "flex")
     return /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
-      o && /* @__PURE__ */ f.jsx("label", { htmlFor: t[0].id, children: o }),
+      n && /* @__PURE__ */ f.jsx("label", { htmlFor: t[0].id, children: n }),
       /* @__PURE__ */ f.jsxs("ul", { children: [
         /* @__PURE__ */ f.jsxs("li", { children: [
-          /* @__PURE__ */ f.jsx(n, { formProps: t[0] }),
+          /* @__PURE__ */ f.jsx(o, { formProps: t[0] }),
           c(0)
         ] }),
         /* @__PURE__ */ f.jsxs("li", { children: [
-          /* @__PURE__ */ f.jsx(n, { formProps: t[1] }),
+          /* @__PURE__ */ f.jsx(o, { formProps: t[1] }),
           c(1)
         ] })
       ] })
     ] });
   if (r === "radio-check") {
-    const l = t.map((a) => /* @__PURE__ */ f.jsxs("li", { children: [
+    const a = t.map((l) => /* @__PURE__ */ f.jsxs("li", { children: [
       /* @__PURE__ */ f.jsx(
-        n,
+        o,
         {
-          formProps: a,
+          formProps: l,
           className: he.spice_form_radioCheckInput
         }
       ),
-      /* @__PURE__ */ f.jsx("label", { htmlFor: a.id, children: a.value })
-    ] }, a.id));
+      /* @__PURE__ */ f.jsx("label", { htmlFor: l.id, children: l.value })
+    ] }, l.id));
     return /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
-      o && /* @__PURE__ */ f.jsx("label", { children: o }),
-      /* @__PURE__ */ f.jsx("ul", { children: l }),
+      n && /* @__PURE__ */ f.jsx("label", { children: n }),
+      /* @__PURE__ */ f.jsx("ul", { children: a }),
       c(0)
     ] });
   }
 }, er = ({ formProps: r }) => {
-  const { isTextarea: t, ...o } = r;
+  const { isTextarea: t, ...n } = r;
   if (t)
-    return /* @__PURE__ */ f.jsx("textarea", { ...o, ...t });
+    return /* @__PURE__ */ f.jsx("textarea", { ...n, ...t });
 }, Yr = ({
   className: r,
   label: t,
-  formProps: o,
-  errors: n
+  formProps: n,
+  errors: o
 }) => {
-  const i = o, c = i[0].type, l = i.length, a = !!i[0].isSelect, d = !!i[0].isTextarea;
-  if (!(c === "radio" || c === "checkbox") && l > 2)
+  const i = n, c = i[0].type, a = i.length, l = !!i[0].isSelect, d = !!i[0].isTextarea;
+  if (!(c === "radio" || c === "checkbox") && a > 2)
     throw new Error("The length of formProps is up to 2.");
-  if (n && n.length > 2)
+  if (o && o.length > 2)
     throw new Error("The length of error is up to 2.");
-  const v = x(
+  const _ = x(
     (p) => Be({
-      layoutType: l === 1 ? "block" : "flex",
+      layoutType: a === 1 ? "block" : "flex",
       formPropsArr: i,
       label: t,
       FormItem: p,
-      errors: n
+      errors: o
     }),
-    [n, i, t, l]
-  ), h = x(() => a ? v(Zt) : d ? v(er) : c === "radio" || c === "checkbox" ? Be({
+    [o, i, t, a]
+  ), h = x(() => l ? _(Zt) : d ? _(er) : c === "radio" || c === "checkbox" ? Be({
     layoutType: "radio-check",
     formPropsArr: i,
     label: t,
     FormItem: Ue,
-    errors: n
-  }) : v(Ue), [n, i, t, a, d, v, c]);
+    errors: o
+  }) : _(Ue), [o, i, t, l, d, _, c]);
   return /* @__PURE__ */ f.jsx("fieldset", { className: `${r}`, children: /* @__PURE__ */ f.jsx(h, {}) });
 }, te = (r) => new Promise((t) => {
   r instanceof Promise ? r.then(() => {
@@ -805,21 +805,21 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
 }, zr = ({
   position: r,
   parent: t,
-  content: o,
-  callback: n,
+  content: n,
+  callback: o,
   className: i
 }) => {
-  const c = C(null), l = C(!1), [a, d] = L(!1), [v, h] = L(!0), p = x(() => {
-    l.current = !0, h(!1), d(!0), n != null && n.onEnter && n.onEnter(c.current);
-  }, [n]), b = x(async () => {
-    l.current = !1, h(!0), n != null && n.onLeave && await te(n.onLeave(c.current)), l.current || d(!1);
-  }, [n]);
+  const c = C(null), a = C(!1), [l, d] = L(!1), [_, h] = L(!0), p = x(() => {
+    a.current = !0, h(!1), d(!0), o != null && o.onEnter && o.onEnter(c.current);
+  }, [o]), w = x(async () => {
+    a.current = !1, h(!0), o != null && o.onLeave && await te(o.onLeave(c.current)), a.current || d(!1);
+  }, [o]);
   return /* @__PURE__ */ f.jsxs(
     "div",
     {
       onMouseEnter: p,
-      onMouseLeave: b,
-      onClick: b,
+      onMouseLeave: w,
+      onClick: w,
       className: `${J.spice_dropdown_wrapper} ${i || ""}`,
       children: [
         t.children,
@@ -827,8 +827,8 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
           "div",
           {
             ref: c,
-            className: `${J.spice_dropdown_content} ${a ? "" : J.spice_dropdown_content_hidden} ${v ? J.spice_dropdown_content_pointerPrevent : ""} ${J["spice_dropdown_" + r]}`,
-            children: o.children
+            className: `${J.spice_dropdown_content} ${l ? "" : J.spice_dropdown_content_hidden} ${_ ? J.spice_dropdown_content_pointerPrevent : ""} ${J["spice_dropdown_" + r]}`,
+            children: n.children
           }
         )
       ]
@@ -836,72 +836,72 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   );
 }, ir = (r = 60, t = []) => {
   r > 60 && (r = 60);
-  const o = Math.floor(1e3 / r), n = C(performance.now()), i = x(
-    (a) => {
-      const d = a - n.current, v = d <= o;
-      return v || (n.current = a - d % o), v;
+  const n = Math.floor(1e3 / r), o = C(performance.now()), i = x(
+    (l) => {
+      const d = l - o.current, _ = d <= n;
+      return _ || (o.current = l - d % n), _;
     },
-    [o]
+    [n]
   ), c = C({
     callback: null,
     isPlay: !1,
     id: 0
-  }).current, l = x(
-    (a) => {
-      c.id = requestAnimationFrame(l), !i(a) && c.callback && c.isPlay && c.callback(a);
+  }).current, a = x(
+    (l) => {
+      c.id = requestAnimationFrame(a), !i(l) && c.callback && c.isPlay && c.callback(l);
     },
     [i, c]
   );
-  return P(() => (c.id = requestAnimationFrame(l), () => {
+  return P(() => (c.id = requestAnimationFrame(a), () => {
     cancelAnimationFrame(c.id);
-  }), t), (a, d) => {
-    if (a === "play") {
+  }), t), (l, d) => {
+    if (l === "play") {
       if (!d) {
         console.warn("Callback function is required when 'play'");
         return;
       }
       c.callback = d, c.isPlay = !0;
     } else
-      a === "pause" && (c.isPlay = !1);
+      l === "pause" && (c.isPlay = !1);
   };
 }, sr = "_spice_magnet_stopPropagation_99wvn_1", cr = {
   spice_magnet_stopPropagation: sr
 }, Ur = ({
   className: r,
   children: t,
-  callback: o,
-  fps: n = 60,
+  callback: n,
+  fps: o = 60,
   stopPropagation: i = !1,
   isOnClickReset: c = !1,
-  dependencies: l = []
+  dependencies: a = []
 }) => {
-  const a = C(null), d = C(null), v = C();
-  n > 60 && (n = 60);
-  const h = ir(n, l), p = F(
+  const l = C(null), d = C(null), _ = C();
+  o > 60 && (o = 60);
+  const h = ir(o, a), p = F(
     () => ({
-      target: a.current,
+      target: l.current,
       children: d.current,
       x: 0,
       y: 0
     }),
     []
-  ), b = x(
+  ), w = x(
     (R) => {
-      p.target = a.current, p.children = d.current;
+      p.target = l.current, p.children = d.current;
     },
     [p]
   ), E = x(
     (R) => {
-      v.current = R.currentTarget.getBoundingClientRect(), p.x = R.clientX - v.current.left - v.current.width / 2, p.y = R.clientY - v.current.top - v.current.height / 2;
+      _.current = R.currentTarget.getBoundingClientRect(), p.x = R.clientX - _.current.left - _.current.width / 2, p.y = R.clientY - _.current.top - _.current.height / 2;
     },
     [p]
   ), S = x(
     (R) => {
-      R.stopPropagation(), b(R), E(R), h("play", () => {
-        o.onMove(p);
+      R.stopPropagation(), w(R), E(R), h("play", () => {
+        n.onMove(p);
       });
     },
-    [b, E, h, o, p]
+    [w, E, h, n, p]
   ), q = x(
     (R) => {
       R.stopPropagation(), E(R);
@@ -909,9 +909,9 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     [E]
   ), I = x(
     (R) => {
-      R.stopPropagation(), h("pause"), o.onLeave && o.onLeave(p);
+      R.stopPropagation(), h("pause"), n.onLeave && n.onLeave(p);
     },
-    [h, o, p]
+    [h, n, p]
   ), A = x(
     (R) => {
       I(R);
@@ -931,7 +931,7 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
       onMouseLeave: A,
       onClick: j,
       className: r || "",
-      ref: a,
+      ref: l,
       children: /* @__PURE__ */ f.jsx(
         "div",
         {
@@ -952,8 +952,8 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   spice_thumbnail_square: pr,
   "spice_thumbnail_3-2": "_spice_thumbnail_3-2_1qqot_46",
   "spice_thumbnail_4-3": "_spice_thumbnail_4-3_1qqot_50"
-}, Br = ({ ratio: r, children: t, className: o }) => {
-  const n = [
+}, Br = ({ ratio: r, children: t, className: n }) => {
+  const o = [
     "golden",
     "silver",
     "platinum",
@@ -962,17 +962,17 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     "3-2",
     "4-3"
   ];
-  let i = n.includes(r), c = typeof r == "number" && r > 0;
+  let i = o.includes(r), c = typeof r == "number" && r > 0;
   if (!i && !c)
     throw new Error(
-      `Invalid ratio value. The 'ratio' argument should be either ${n.join(
+      `Invalid ratio value. The 'ratio' argument should be either ${o.join(
         " | "
       )} or a number greater than 0.`
     );
   return /* @__PURE__ */ f.jsx(
     "div",
     {
-      className: `${pe.spice_thumbnail_wrapper} ${o || ""}`,
+      className: `${pe.spice_thumbnail_wrapper} ${n || ""}`,
       children: /* @__PURE__ */ f.jsx(
         "div",
         {
@@ -984,46 +984,47 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     }
   );
 }, He = (r) => {
-  const t = document.documentElement.style, o = document.body.style;
-  r === "add" ? (t.scrollbarGutter = "stable", t.overflow = "hidden", o.overflow = "hidden") : (t.scrollbarGutter = "", t.overflow = "", o.overflow = "");
+  const t = document.documentElement.style, n = document.body.style;
+  r === "add" ? (t.scrollbarGutter = "stable", t.overflow = "hidden", n.overflow = "hidden") : (t.scrollbarGutter = "", t.overflow = "", n.overflow = "");
 }, _r = "_spice_modal_dialog_1t31c_1", vr = {
   spice_modal_dialog: _r
 }, hr = ".spice__modal_close", Hr = ({
   children: r,
-  className: t,
+  tag: t,
+  className: n,
   dialog: o,
-  callback: n
+  callback: i
 }) => {
-  const i = C(null), c = x(() => {
-    He("add"), i.current.showModal(), n != null && n.onOpen && n.onOpen(i.current);
-  }, [n]), l = x(async () => {
-    n != null && n.onClose && await te(n.onClose(i.current)), He("remove"), i.current.close();
-  }, [n]);
+  const c = t || "button", a = C(null), l = x(() => {
+    He("add"), a.current.showModal(), i != null && i.onOpen && i.onOpen(a.current);
+  }, [i]), d = x(async () => {
+    i != null && i.onClose && await te(i.onClose(a.current)), He("remove"), a.current.close();
+  }, [i]);
   return P(() => {
-    const a = i.current.querySelectorAll(hr);
-    if (a)
-      return a.forEach(
-        (d) => d.addEventListener("click", l)
+    const _ = a.current.querySelectorAll(hr);
+    if (_)
+      return _.forEach(
+        (h) => h.addEventListener("click", d)
       ), () => {
-        a.forEach(
-          (d) => d.removeEventListener("click", l)
+        _.forEach(
+          (h) => h.removeEventListener("click", d)
         );
       };
-  }, [l]), P(() => {
-    const a = (d) => {
-      var h;
-      ((h = i.current) == null ? void 0 : h.hasAttribute("open")) && d.key === "Escape" && l();
+  }, [d]), P(() => {
+    const _ = (h) => {
+      var w;
+      ((w = a.current) == null ? void 0 : w.hasAttribute("open")) && h.key === "Escape" && d();
     };
-    return document.addEventListener("keydown", a), () => {
-      document.removeEventListener("keydown", a);
+    return document.addEventListener("keydown", _), () => {
+      document.removeEventListener("keydown", _);
     };
-  }, [l]), /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
+  }, [d]), /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
     /* @__PURE__ */ f.jsx(
-      "button",
+      c,
       {
-        className: t || "",
+        className: n || "",
         onClick: () => {
-          c();
+          l();
         },
         children: r
       }
@@ -1031,9 +1032,9 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     /* @__PURE__ */ f.jsx(
       "dialog",
       {
-        ref: i,
-        onClick: (a) => {
-          a.target === i.current && l();
+        ref: a,
+        onClick: (_) => {
+          _.target === a.current && d();
         },
         className: `${vr.spice_modal_dialog} ${o.className ? o.className : ""}`,
         children: o.children
@@ -1041,10 +1042,10 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     )
   ] });
 }, Gr = ({ children: r, className: t }) => {
-  const o = Qe();
-  return P(() => (o(() => !1), () => {
-    o(() => !0);
-  }), [o]), /* @__PURE__ */ f.jsx("div", { className: t || "", children: r });
+  const n = Qe();
+  return P(() => (n(() => !1), () => {
+    n(() => !0);
+  }), [n]), /* @__PURE__ */ f.jsx("div", { className: t || "", children: r });
 }, mr = {
   isLeaving: !1,
   isAnimation: !0,
@@ -1059,33 +1060,33 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const [o, n] = L({
+  const [n, o] = L({
     isLeaving: !1,
     isAnimation: !0,
     prev: "",
     current: t,
     next: ""
   });
-  return /* @__PURE__ */ f.jsx(Ze.Provider, { value: o, children: /* @__PURE__ */ f.jsx(et.Provider, { value: n, children: r }) });
-}, tt = () => z(Ze), me = () => z(et), wr = ({ children: r, value: t, className: o }) => {
+  return /* @__PURE__ */ f.jsx(Ze.Provider, { value: n, children: /* @__PURE__ */ f.jsx(et.Provider, { value: o, children: r }) });
+}, tt = () => z(Ze), me = () => z(et), wr = ({ children: r, value: t, className: n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const n = me(), i = tt(), c = x(() => {
-    i.current === t || i.isLeaving || n((l) => ({
-      ...l,
+  const o = me(), i = tt(), c = x(() => {
+    i.current === t || i.isLeaving || o((a) => ({
+      ...a,
       isLeaving: !0,
       isAnimation: !0,
-      prev: l.current,
+      prev: a.current,
       next: t
     }));
-  }, [n, i, t]);
+  }, [o, i, t]);
   return /* @__PURE__ */ f.jsx(
     "button",
     {
       onClick: c,
-      className: o || "",
+      className: n || "",
       role: "tab",
       "aria-controls": `tab-${t}`,
       "aria-selected": i.current === t,
@@ -1095,65 +1096,65 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
 }, br = "_spice_tab_hidden_1r0oa_1", yr = {
   spice_tab_hidden: br
 }, rt = ({ content: r, isOpen: t }) => {
-  const o = r.querySelectorAll("a,button");
-  if (!o)
+  const n = r.querySelectorAll("a,button");
+  if (!n)
     return;
-  const n = t ? "0" : "-1";
-  o.forEach((i) => {
-    i.setAttribute("tabindex", n);
+  const o = t ? "0" : "-1";
+  n.forEach((i) => {
+    i.setAttribute("tabindex", o);
   });
 }, xr = ({
   children: r,
   value: t,
-  className: o,
-  callback: n
+  className: n,
+  callback: o
 }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const i = C(!0), c = C(null), l = me(), a = tt(), d = a.current === t && !a.isLeaving;
+  const i = C(!0), c = C(null), a = me(), l = tt(), d = l.current === t && !l.isLeaving;
   return P(() => {
     if (i.current) {
       i.current = !1;
       return;
     }
-    if (!a.isAnimation) {
-      d && n != null && n.onReset && n.onReset(c.current);
+    if (!l.isAnimation) {
+      d && o != null && o.onReset && o.onReset(c.current);
       return;
     }
-    a.prev === t && (async () => (n != null && n.onClose && await te(n.onClose(c.current)), l((v) => ({
-      ...v,
+    l.prev === t && (async () => (o != null && o.onClose && await te(o.onClose(c.current)), a((_) => ({
+      ..._,
       isLeaving: !1,
       prev: "",
-      current: v.next,
+      current: _.next,
       next: ""
-    }))))(), d && n != null && n.onOpen && n.onOpen(c.current);
-  }, [a, l, n, t, d]), P(() => {
+    }))))(), d && o != null && o.onOpen && o.onOpen(c.current);
+  }, [l, a, o, t, d]), P(() => {
     rt({
       content: c.current,
-      isOpen: a.current === t
+      isOpen: l.current === t
     });
-  }, [a, t]), /* @__PURE__ */ f.jsx(
+  }, [l, t]), /* @__PURE__ */ f.jsx(
     "div",
     {
       ref: c,
-      className: `${a.current !== t ? yr.spice_tab_hidden : ""} ${o || ""}`,
+      className: `${l.current !== t ? yr.spice_tab_hidden : ""} ${n || ""}`,
       role: "tabpanel",
       id: `tab-${t}`,
-      "aria-hidden": a.current !== t,
+      "aria-hidden": l.current !== t,
       children: r
     }
   );
 }, Er = () => {
   const r = me();
-  return (t, o) => {
-    r((n) => ({
-      isAnimation: o,
-      isLeaving: o,
-      prev: o ? n.current : "",
-      current: o ? n.current : t,
-      next: o ? t : ""
+  return (t, n) => {
+    r((o) => ({
+      isAnimation: n,
+      isLeaving: n,
+      prev: n ? o.current : "",
+      current: n ? o.current : t,
+      next: n ? t : ""
     }));
   };
 }, Jr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
@@ -1168,68 +1169,68 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   defaultValue: []
 }, nt = Y(Sr), ot = Y(() => {
 }), jr = ({ children: r, defaultValue: t }) => {
-  const [o, n] = L({
+  const [n, o] = L({
     target: "",
     toggle: !1,
     defaultValue: t
   });
-  return /* @__PURE__ */ f.jsx(nt.Provider, { value: o, children: /* @__PURE__ */ f.jsx(ot.Provider, { value: n, children: r }) });
-}, it = () => z(nt), Rr = () => z(ot), Tr = ({ children: r, value: t, className: o }) => {
+  return /* @__PURE__ */ f.jsx(nt.Provider, { value: n, children: /* @__PURE__ */ f.jsx(ot.Provider, { value: o, children: r }) });
+}, it = () => z(nt), Rr = () => z(ot), Tr = ({ children: r, value: t, className: n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const n = it(), i = Rr(), c = F(
-    () => !!n.defaultValue.find((d) => d === t),
-    [n, t]
-  ), [l, a] = L(c);
+  const o = it(), i = Rr(), c = F(
+    () => !!o.defaultValue.find((d) => d === t),
+    [o, t]
+  ), [a, l] = L(c);
   return /* @__PURE__ */ f.jsx(
     "button",
     {
-      className: o || "",
+      className: n || "",
       onClick: () => {
         i((d) => ({
           ...d,
-          toggle: l,
+          toggle: a,
           target: t
-        })), a(!l);
+        })), l(!a);
       },
       "aria-controls": `content-${t}`,
       id: `button-${t}`,
-      "aria-expanded": l,
+      "aria-expanded": a,
       children: r
     }
   );
 }, Cr = ({
   targetRef: r,
   callback: t,
-  debounce: o = 100,
-  dependencies: n = []
+  debounce: n = 100,
+  dependencies: o = []
 }) => {
   const i = C(0), c = C(!0);
   P(() => {
-    const l = new ResizeObserver((d) => {
+    const a = new ResizeObserver((d) => {
       clearTimeout(i.current), i.current = setTimeout(() => {
         if (c.current) {
           c.current = !1;
           return;
         }
         t(d[0].target);
-      }, o);
-    }), a = r.current;
-    if (a)
-      return l.observe(a), () => {
-        l.unobserve(a), clearTimeout(i.current);
+      }, n);
+    }), l = r.current;
+    if (l)
+      return a.observe(l), () => {
+        a.unobserve(l), clearTimeout(i.current);
       };
-  }, n);
+  }, o);
 }, Or = "_spice_accordion_content_1wkzs_1", Pr = "_spice_accordion_hidden_1wkzs_5", Ge = {
   spice_accordion_content: Or,
   spice_accordion_hidden: Pr
 }, $r = ({
   value: r,
   callback: t,
-  children: o,
-  className: n
+  children: n,
+  className: o
 }) => {
   if (r === "")
     throw new Error(
@@ -1238,11 +1239,11 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
   const i = it(), c = F(
     () => !!i.defaultValue.find((p) => p === r),
     [i, r]
-  ), [l, a] = L(c);
+  ), [a, l] = L(c);
   P(() => {
-    i.target === r && a(!l);
+    i.target === r && l(!a);
   }, [i.target, i.toggle]);
-  const d = C(!0), v = C(null), h = C(null);
+  const d = C(!0), _ = C(null), h = C(null);
   return P(() => {
     if (d.current) {
       d.current = !1;
@@ -1250,28 +1251,28 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     }
     const p = {
       height: h.current.getBoundingClientRect().height,
-      target: v.current
+      target: _.current
     };
-    l ? t.onOpen(p) : t.onClose(p);
-  }, [l, t]), P(() => {
-    rt({ content: v.current, isOpen: l });
-  }, [l]), Cr({
+    a ? t.onOpen(p) : t.onClose(p);
+  }, [a, t]), P(() => {
+    rt({ content: _.current, isOpen: a });
+  }, [a]), Cr({
     targetRef: h,
     callback: (p) => {
-      const b = p.getBoundingClientRect().height;
-      l && (v.current.style.height = `${b}px`);
+      const w = p.getBoundingClientRect().height;
+      a && (_.current.style.height = `${w}px`);
     },
-    dependencies: [l],
+    dependencies: [a],
     debounce: 100
   }), /* @__PURE__ */ f.jsx(
     "div",
     {
-      ref: v,
+      ref: _,
       className: `${Ge.spice_accordion_content} ${c ? "" : Ge.spice_accordion_hidden}`,
       id: `content-${r}`,
       "aria-labelledby": `button-${r}`,
-      "aria-hidden": !l,
-      children: /* @__PURE__ */ f.jsx("div", { ref: h, className: n || "", children: o })
+      "aria-hidden": !a,
+      children: /* @__PURE__ */ f.jsx("div", { ref: h, className: o || "", children: n })
     }
   );
 }, Xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
@@ -1282,51 +1283,51 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
 }, Symbol.toStringTag, { value: "Module" })), Ir = ({
   tempo: r = 3,
   onesRef: t,
-  tensRef: o,
-  hundredsRef: n,
+  tensRef: n,
+  hundredsRef: o,
   onProgress: i,
   onStart: c,
-  onComplete: l
+  onComplete: a
 }) => {
-  const a = F(() => ({ to: 0, 1: -1, 10: -1, 100: 0 }), []), d = C(null), v = x(
+  const l = F(() => ({ to: 0, 1: -1, 10: -1, 100: 0 }), []), d = C(null), _ = x(
     ({
       digitContainer: p,
-      numbersTarget: b,
+      numbersTarget: w,
       digit: E,
       digitNumber: S,
       currentPercent: q,
       limit: I,
       destination: A
     }) => {
-      if (a[E] !== S && q <= I) {
+      if (l[E] !== S && q <= I) {
         const j = S.toString(), R = (Math.min(8, S) + 1).toString(), ne = q >= I;
-        b[0].innerText = j, b[1].innerText = ne ? "0" : R, i && i({
+        w[0].innerText = j, w[1].innerText = ne ? "0" : R, i && i({
           digitContainer: p,
           percent: q,
           digit: E,
           destination: A,
           duration: r / (A / E)
-        }), a[E] = S;
+        }), l[E] = S;
       }
     },
-    [a, i, r]
+    [l, i, r]
   ), h = x(
-    (p) => (p > 100 && (p = 100), new Promise((b) => {
+    (p) => (p > 100 && (p = 100), new Promise((w) => {
       const E = {
         ones: t.current.querySelectorAll("div"),
-        tens: o.current.querySelectorAll("div"),
-        hundreds: n.current.querySelectorAll("div"),
+        tens: n.current.querySelectorAll("div"),
+        hundreds: o.current.querySelectorAll("div"),
         getAll: function() {
           return [this.ones, this.tens, this.hundreds];
         }
       };
       clearInterval(d.current), d.current = setInterval(async () => {
-        const S = a.to += 1, q = async () => {
-          clearInterval(d.current), S > 100 && l && await te(l(E.getAll())), b(S - 1);
+        const S = l.to += 1, q = async () => {
+          clearInterval(d.current), S > 100 && a && await te(a(E.getAll())), w(S - 1);
         };
         S === 1 && c && c(E.getAll()), S > p && await q();
         const I = Math.floor(S / 100) % 100, A = Math.floor(S / 10) % 10, j = S % 10;
-        v({
+        _({
           digitContainer: t.current,
           digit: 1,
           digitNumber: j,
@@ -1334,30 +1335,30 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
           numbersTarget: E.ones,
           limit: 90,
           destination: p
-        }), v({
-          digitContainer: o.current,
+        }), _({
+          digitContainer: n.current,
           digit: 10,
           digitNumber: A,
           currentPercent: S,
           numbersTarget: E.tens,
           limit: 90,
           destination: p
-        }), a[100] !== I && (E.hundreds[1].innerText = I.toString(), i && i({
-          digitContainer: n.current,
+        }), l[100] !== I && (E.hundreds[1].innerText = I.toString(), i && i({
+          digitContainer: o.current,
           percent: S,
           digit: 100,
           destination: p,
           duration: r / (p / 10)
-        }), a[100] = I);
+        }), l[100] = I);
       }, Math.max(1e3 / 60, r / p * 1e3));
     })),
     [
-      a,
-      v,
-      o,
-      n,
-      t,
       l,
+      _,
+      n,
+      o,
+      t,
+      a,
       i,
       c,
       r
@@ -1382,52 +1383,52 @@ const Kr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }, Symbol.toStringTag, { value: "Module" })), Qr = typeof document < "u" ? kt : P, Zr = ({
   targetRef: r,
   rootMargin: t = "0px",
-  threshold: o = 0,
-  once: n = !1,
+  threshold: n = 0,
+  once: o = !1,
   callback: i,
   dependencies: c = []
 }) => {
-  const l = {
+  const a = {
     rootMargin: t,
-    threshold: o
+    threshold: n
   };
   P(() => {
-    const a = r == null ? void 0 : r.current;
-    if (!a)
+    const l = r == null ? void 0 : r.current;
+    if (!l)
       return;
     const d = (h, p) => {
-      h.forEach((b) => {
-        b.isIntersecting && i.onEnter ? (i.onEnter(b), n && p.unobserve(b.target)) : !b.isIntersecting && i.onLeave && i.onLeave(b);
+      h.forEach((w) => {
+        w.isIntersecting && i.onEnter ? (i.onEnter(w), o && p.unobserve(w.target)) : !w.isIntersecting && i.onLeave && i.onLeave(w);
       });
-    }, v = new IntersectionObserver(d, l);
-    return v.observe(a), () => {
-      v.unobserve(a);
+    }, _ = new IntersectionObserver(d, a);
+    return _.observe(l), () => {
+      _.unobserve(l);
     };
   }, c);
 }, re = ({
   callback: r,
   debounce: t = 100,
-  dependencies: o = []
+  dependencies: n = []
 }) => {
-  const n = C(0), i = C(0), c = x(() => {
+  const o = C(0), i = C(0), c = x(() => {
     clearTimeout(i.current), i.current = setTimeout(() => {
       r({
         winW: window.innerWidth,
         winH: window.innerHeight,
-        initWinW: n.current
+        initWinW: o.current
       });
     }, t);
   }, [r, t]);
-  P(() => (n.current = window.innerWidth, window.addEventListener("resize", c), () => {
+  P(() => (o.current = window.innerWidth, window.addEventListener("resize", c), () => {
     window.removeEventListener("resize", c), clearTimeout(i.current);
-  }), o);
+  }), n);
 }, Fr = ({
   initWinW: r,
   winW: t,
-  threshold: o
+  threshold: n
 }) => {
-  let n = !(r <= o);
-  t <= o ? n && window.location.reload() : !n && window.location.reload();
+  let o = !(r <= n);
+  t <= n ? o && window.location.reload() : !o && window.location.reload();
 }, Lr = `
 ███████╗██╗   ██╗███╗   ██╗████████╗███████╗ ██████╗██╗  ██╗
 ██╔════╝██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔════╝██║  ██║
@@ -1444,14 +1445,14 @@ Created by FunTech: https://funtech.inc/
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
-  const o = r > 360 ? "width=device-width,initial-scale=1" : "width=360";
-  t.getAttribute("content") !== o && t.setAttribute("content", o);
+  const n = r > 360 ? "width=device-width,initial-scale=1" : "width=360";
+  t.getAttribute("content") !== n && t.setAttribute("content", n);
 }, en = ({
   reloadThresholds: r,
   isFixViewportForSmall: t = !0,
-  areYouFun: o = !1
+  areYouFun: n = !1
 }) => {
-  const n = x(
+  const o = x(
     (i) => {
       t && Nr(i);
     },
@@ -1460,61 +1461,61 @@ Created by FunTech: https://funtech.inc/
   re({
     callback: ({ initWinW: i, winW: c }) => {
       r && r.forEach(
-        (l) => Fr({
+        (a) => Fr({
           initWinW: i,
           winW: c,
-          threshold: l
+          threshold: a
         })
-      ), n(c);
+      ), o(c);
     },
     debounce: 100,
     dependencies: []
   }), P(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), o && process.env.NODE_ENV !== "development" && qr();
-  }, [o, n]);
+    document.body.dataset.spiceRendered = "true", o(window.innerWidth), n && process.env.NODE_ENV !== "development" && qr();
+  }, [n, o]);
 }, Mr = () => {
-  const [r, t] = L(null), o = x(() => {
-    const n = window.ontouchstart, i = navigator.maxTouchPoints;
-    n !== void 0 && 0 < i ? t(!0) : t(!1);
+  const [r, t] = L(null), n = x(() => {
+    const o = window.ontouchstart, i = navigator.maxTouchPoints;
+    o !== void 0 && 0 < i ? t(!0) : t(!1);
   }, []);
   return re({
-    callback: () => o(),
+    callback: () => n(),
     debounce: 100,
     dependencies: []
-  }), P(() => o(), [o]), r;
+  }), P(() => n(), [n]), r;
 }, _e = "scroll", tn = ({
   threshold: r = 0,
   debounce: t = 10,
-  dependencies: o = []
+  dependencies: n = []
 }) => {
-  const n = C(null), [i, c] = Wt(
+  const o = C(null), [i, c] = Wt(
     (h, p) => {
       switch (p.type) {
         case _e:
-          return n.current = p.payload, p.payload;
+          return o.current = p.payload, p.payload;
         default:
           return h;
       }
     },
-    n.current
-  ), l = C(0), a = C(0), d = () => window.scrollY || document.documentElement.scrollTop, v = x(() => {
-    clearTimeout(a.current), a.current = setTimeout(() => {
+    o.current
+  ), a = C(0), l = C(0), d = () => window.scrollY || document.documentElement.scrollTop, _ = x(() => {
+    clearTimeout(l.current), l.current = setTimeout(() => {
       const h = d();
-      h > l.current + r && n.current !== "down" ? c({ type: _e, payload: "down" }) : h < l.current - r && n.current !== "up" && c({ type: _e, payload: "up" }), l.current = h;
+      h > a.current + r && o.current !== "down" ? c({ type: _e, payload: "down" }) : h < a.current - r && o.current !== "up" && c({ type: _e, payload: "up" }), a.current = h;
     }, t);
   }, [t, r]);
-  return P(() => (l.current = d(), window.addEventListener("scroll", v, { passive: !0 }), () => {
-    window.removeEventListener("scroll", v), clearTimeout(a.current);
-  }), o), i;
+  return P(() => (a.current = d(), window.addEventListener("scroll", _, { passive: !0 }), () => {
+    window.removeEventListener("scroll", _), clearTimeout(l.current);
+  }), n), i;
 }, rn = ({ type: r, width: t }) => {
-  const [o, n] = L(null), i = x(
+  const [n, o] = L(null), i = x(
     (c) => {
       switch (r) {
         case "max":
-          n(t >= c);
+          o(t >= c);
           break;
         case "min":
-          n(t <= c);
+          o(t <= c);
           break;
       }
     },
@@ -1524,50 +1525,50 @@ Created by FunTech: https://funtech.inc/
     callback: ({ winW: c }) => i(c),
     debounce: 100,
     dependencies: []
-  }), P(() => i(window.innerWidth), [i]), o;
+  }), P(() => i(window.innerWidth), [i]), n;
 }, nn = ({
   shareUrl: r,
   sharePath: t,
-  shareTitle: o = "",
-  width: n = 600,
+  shareTitle: n = "",
+  width: o = 600,
   height: i = 800
 }) => {
-  const c = F(() => encodeURIComponent(r), [r]), l = F(
-    () => `height=${i},width=${n}`,
-    [i, n]
-  ), a = F(
+  const c = F(() => encodeURIComponent(r), [r]), a = F(
+    () => `height=${i},width=${o}`,
+    [i, o]
+  ), l = F(
     () => ({
       onClick: () => {
         window.open(
-          `https://www.facebook.com/sharer.php?u=${c}&t=${o}`,
+          `https://www.facebook.com/sharer.php?u=${c}&t=${n}`,
           "newwindow",
-          l
+          a
         );
       }
     }),
-    [c, o, l]
+    [c, n, a]
   ), d = F(
     () => ({
       onClick: () => {
         window.open(
-          `https:////twitter.com/share?url=${c}&text=${o}`,
+          `https:////twitter.com/share?url=${c}&text=${n}`,
           "newwindow",
-          l
+          a
         );
       }
     }),
-    [c, l, o]
-  ), v = F(
+    [c, a, n]
+  ), _ = F(
     () => ({
       onClick: () => {
         window.open(
-          `https://social-plugins.line.me/lineit/share?url=${c}&text=${o}`,
+          `https://social-plugins.line.me/lineit/share?url=${c}&text=${n}`,
           "newwindow",
-          l
+          a
         );
       }
     }),
-    [c, l, o]
+    [c, a, n]
   ), h = F(
     () => ({
       onClick: async () => {
@@ -1577,7 +1578,7 @@ Created by FunTech: https://funtech.inc/
         }
         try {
           await window.navigator.share({
-            title: o,
+            title: n,
             url: t || c
           });
         } catch {
@@ -1585,21 +1586,21 @@ Created by FunTech: https://funtech.inc/
         }
       }
     }),
-    [o, c, t]
-  ), [p, b] = L(!1), E = F(
+    [n, c, t]
+  ), [p, w] = L(!1), E = F(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(r).then(() => {
-          b(!0);
+          w(!0);
         });
       }
     }),
     [r]
   );
   return {
-    Facebook: a,
+    Facebook: l,
     X: d,
-    LINE: v,
+    LINE: _,
     share: h,
     copy: E,
     isCopied: p
@@ -1609,8 +1610,8 @@ Created by FunTech: https://funtech.inc/
   P(() => {
     !t || !r.current || (r.current.style.height = `${window.screen.height}px`);
   }, [t, r]), re({
-    callback: ({ winH: o }) => {
-      r.current && (t ? r.current.style.height = `${window.screen.height}px` : r.current.style.height = `${o}px`);
+    callback: ({ winH: n }) => {
+      r.current && (t ? r.current.style.height = `${window.screen.height}px` : r.current.style.height = `${n}px`);
     },
     dependencies: [t]
   });

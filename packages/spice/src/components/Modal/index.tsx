@@ -5,6 +5,8 @@ import s from "./spice.module.scss";
 
 type ModalProps = {
    className?: string;
+   /** default is button */
+   tag?: keyof JSX.IntrinsicElements;
    children: React.ReactNode;
    dialog: {
       children: React.ReactNode;
@@ -12,8 +14,8 @@ type ModalProps = {
    };
    /** onOpen,onClose */
    callback?: {
-      onOpen?: (target: Element) => void;
-      onClose?: (target: Element) => void;
+      onOpen?: (dialog: Element) => void;
+      onClose?: (dialog: Element) => void;
    };
 };
 
@@ -21,10 +23,13 @@ const CLOSE_BUTTON = ".spice__modal_close";
 
 export const Modal = ({
    children,
+   tag,
    className,
    dialog,
    callback,
 }: ModalProps) => {
+   const Tag = tag || "button";
+
    const ref = useRef<HTMLDialogElement>(null);
 
    const showModal = useCallback(() => {
@@ -69,13 +74,13 @@ export const Modal = ({
 
    return (
       <>
-         <button
+         <Tag
             className={className ? className : ""}
             onClick={() => {
                showModal();
             }}>
             {children}
-         </button>
+         </Tag>
          <dialog
             ref={ref}
             onClick={(e: React.MouseEvent<HTMLDialogElement>) => {

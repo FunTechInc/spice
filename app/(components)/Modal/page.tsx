@@ -7,6 +7,8 @@ import { ModalContent } from "./ModalContent";
 import s from "./style.module.scss";
 
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 const Description = () => {
    return (
@@ -45,24 +47,35 @@ const Description = () => {
 
 const Demo = () => {
    const setIsModal = useStore((state: any) => state.setIsModalOpen);
+   const ref = useRef<HTMLDivElement>(null);
+
+   const { contextSafe } = useGSAP({ scope: ref });
+   const openHandler = contextSafe(() => {
+      gsap.fromTo(
+         [".js_modal_backdrop", ".js_modal_content"],
+         {
+            opacity: 0,
+         },
+         {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out",
+         }
+      );
+   });
+   const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
+      gsap.to([".js_modal_backdrop", ".js_modal_content"], {
+         opacity: 0,
+         duration: 0.6,
+         ease: "power3.out",
+         onComplete: () => {
+            resolve(null);
+         },
+      });
+   });
+
    return (
-      <div className={s.wrapper}>
-         <Modal
-            className={s.button}
-            dialog={{ children: <ModalContent />, className: s.dialog }}
-            callback={{
-               onOpen: (dialog) => {
-                  setIsModal(true);
-                  const content =
-                     dialog.getElementsByClassName("js_modal_content")[0];
-                  content.scrollTop = 0;
-               },
-               onClose: () => {
-                  setIsModal(false);
-               },
-            }}>
-            <span>Show Modal</span>
-         </Modal>
+      <div ref={ref} className={s.wrapper}>
          <Modal
             className={s.button}
             dialog={{
@@ -74,38 +87,17 @@ const Demo = () => {
                ),
             }}
             callback={{
-               onOpen: (props) => {
+               onOpen: (dialog) => {
                   setIsModal(true);
                   const content =
-                     props.getElementsByClassName("js_modal_content")[0];
+                     dialog.getElementsByClassName("js_modal_content")[0];
                   content.scrollTop = 0;
-                  gsap.context(() => {
-                     gsap.fromTo(
-                        [".js_modal_backdrop", ".js_modal_content"],
-                        {
-                           opacity: 0,
-                        },
-                        {
-                           opacity: 1,
-                           duration: 0.6,
-                           ease: "power3.out",
-                        }
-                     );
-                  }, props);
+                  openHandler();
                },
-               onClose: (props) => {
+               onClose: () => {
                   setIsModal(false);
                   return new Promise((resolve) => {
-                     gsap.context(() => {
-                        gsap.to([".js_modal_backdrop", ".js_modal_content"], {
-                           opacity: 0,
-                           duration: 0.6,
-                           ease: "power3.out",
-                           onComplete: () => {
-                              resolve(null);
-                           },
-                        });
-                     }, props);
+                     closeHandler(resolve);
                   });
                },
             }}>
@@ -118,54 +110,67 @@ const Demo = () => {
 const Code = () => {
    return (
       <CodeBlock
-         code={`<Modal
-	className={s.button}
-	dialog={{
-		children: (
-			<div
-				className={"js_modal_backdrop"}>
-				<ModalContent />
-			</div>
-		),
-	}}
-	callback={{
-		onOpen: (props) => {
-			setIsModal(true);
-			const content =
-				props.getElementsByClassName("js_modal_content")[0];
-			content.scrollTop = 0;
-			gsap.context(() => {
-				gsap.fromTo(
-					[".js_modal_backdrop", ".js_modal_content"],
-					{
-						opacity: 0,
-					},
-					{
-						opacity: 1,
-						duration: 0.6,
-						ease: "power3.out",
-					}
-				);
-			}, props);
-		},
-		onClose: (props) => {
-			setIsModal(false);
-			return new Promise((resolve) => {
-				gsap.context(() => {
-					gsap.to([".js_modal_backdrop", ".js_modal_content"], {
-						opacity: 0,
-						duration: 0.6,
-						ease: "power3.out",
-						onComplete: () => {
-							resolve(null);
-						},
-					});
-				}, props);
-			});
-		},
-	}}>
-	<span>with Animation</span>
-</Modal>`}
+         code={`const Demo = () => {
+   const setIsModal = useStore((state: any) => state.setIsModalOpen);
+   const ref = useRef<HTMLDivElement>(null);
+
+   const { contextSafe } = useGSAP({ scope: ref });
+   const openHandler = contextSafe(() => {
+      gsap.fromTo(
+         [".js_modal_backdrop", ".js_modal_content"],
+         {
+            opacity: 0,
+         },
+         {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out",
+         }
+      );
+   });
+   const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
+      gsap.to([".js_modal_backdrop", ".js_modal_content"], {
+         opacity: 0,
+         duration: 0.6,
+         ease: "power3.out",
+         onComplete: () => {
+            resolve(null);
+         },
+      });
+   });
+
+   return (
+      <div ref={ref} className={s.wrapper}>
+         <Modal
+            className={s.button}
+            dialog={{
+               children: (
+                  <div
+                     className={\`${s.modal_content_wrapper} js_modal_backdrop\`}>
+                     <ModalContent />
+                  </div>
+               ),
+            }}
+            callback={{
+               onOpen: (dialog) => {
+                  setIsModal(true);
+                  const content =
+                     dialog.getElementsByClassName("js_modal_content")[0];
+                  content.scrollTop = 0;
+                  openHandler();
+               },
+               onClose: () => {
+                  setIsModal(false);
+                  return new Promise((resolve) => {
+                     closeHandler(resolve);
+                  });
+               },
+            }}>
+            <span>with Animation</span>
+         </Modal>
+      </div>
+   );
+};`}
       />
    );
 };
