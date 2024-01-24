@@ -1,6 +1,8 @@
 /// <reference types="react" />
 type ModalProps = {
     className?: string;
+    /** default is button */
+    tag?: keyof JSX.IntrinsicElements;
     children: React.ReactNode;
     dialog: {
         children: React.ReactNode;
@@ -8,9 +10,9 @@ type ModalProps = {
     };
     /** onOpen,onClose */
     callback?: {
-        onOpen?: (target: Element) => void;
-        onClose?: (target: Element) => void;
+        onOpen?: (dialog: Element) => void;
+        onClose?: (dialog: Element) => void;
     };
 };
-export declare const Modal: ({ children, className, dialog, callback, }: ModalProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Modal: ({ children, tag, className, dialog, callback, }: ModalProps) => import("react/jsx-runtime").JSX.Element;
 export {};
