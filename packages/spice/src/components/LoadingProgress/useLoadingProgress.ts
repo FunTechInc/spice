@@ -92,6 +92,9 @@ export const useLoadingProgress = ({
             destination = 100;
          }
          return new Promise((resolve) => {
+            if (destination === 0) {
+               return;
+            }
             const numberElement = {
                ones: onesRef.current!.querySelectorAll("div"),
                tens: tensRef.current!.querySelectorAll("div"),
