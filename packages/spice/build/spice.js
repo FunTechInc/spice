@@ -1313,6 +1313,8 @@ const zt = "_spice_wrapper_1b9je_1", Ut = "_spice_wrapper_hidden_1b9je_10", ze =
     [l, i, r]
   ), h = x(
     (p) => (p > 100 && (p = 100), new Promise((w) => {
+      if (p === 0)
+        return;
       const E = {
         ones: t.current.querySelectorAll("div"),
         tens: n.current.querySelectorAll("div"),
