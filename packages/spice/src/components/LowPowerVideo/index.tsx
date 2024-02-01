@@ -1,6 +1,7 @@
 import { VideoHTMLAttributes, useEffect, useRef, useState } from "react";
 
-interface LowPowerVideoProps extends VideoHTMLAttributes<HTMLVideoElement> {
+export interface LowPowerVideoProps
+   extends VideoHTMLAttributes<HTMLVideoElement> {
    fallback: React.ReactNode;
 }
 
