@@ -6,6 +6,7 @@ export { Magnet } from "./components/Magnet";
 export { Thumbnail } from "./components/Thumbnail";
 export { Modal } from "./components/Modal";
 export { StickyItem } from "./components/StickyItem";
+export { LowPowerVideo } from "./components/LowPowerVideo";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export * as LoadingProgress from "./components/LoadingProgress";
