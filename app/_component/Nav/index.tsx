@@ -97,6 +97,10 @@ const componentList = [
       href: "/LoadingProgress",
       title: "LoadingProgress",
    },
+   {
+      href: "/LowPowerVideo",
+      title: "LowPowerVideo",
+   },
 ];
 
 export const AsideNav = ({ className }: TAsideNav) => {
