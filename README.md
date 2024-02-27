@@ -2,8 +2,7 @@
 
 ![spice](public/app-head.jpg)
 
-one purpose, one spice.
-You can use it by loading a single component or hook for a single purpose.
+🫚 one purpose, one spice.
 
 ```bash
 $ npm i @funtech-inc/spice
