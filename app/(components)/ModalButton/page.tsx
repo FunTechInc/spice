@@ -1,7 +1,7 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { Modal } from "@/packages/spice/src";
+import { ModalButton } from "@/packages/spice/src";
 import { useStore } from "@/app/_context/store";
 import { ModalContent } from "./ModalContent";
 import s from "./style.module.scss";
@@ -76,7 +76,7 @@ const Demo = () => {
 
    return (
       <div ref={ref} className={s.wrapper}>
-         <Modal
+         <ModalButton
             className={s.button}
             dialog={{
                children: (
@@ -102,7 +102,7 @@ const Demo = () => {
                },
             }}>
             <span>with Animation</span>
-         </Modal>
+         </ModalButton>
       </div>
    );
 };
@@ -141,7 +141,7 @@ const Code = () => {
 
    return (
       <div ref={ref} className={s.wrapper}>
-         <Modal
+         <ModalButton
             className={s.button}
             dialog={{
                children: (
@@ -167,7 +167,7 @@ const Code = () => {
                },
             }}>
             <span>with Animation</span>
-         </Modal>
+         </ModalButton>
       </div>
    );
 };`}
@@ -178,7 +178,7 @@ const Code = () => {
 const Page = () => {
    return (
       <MainView
-         title="Modal"
+         title="ModalButton"
          description={<Description />}
          demo={<Demo />}
          code={<Code />}

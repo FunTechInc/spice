@@ -1,3 +1,3 @@
-.item{position:-webkit-sticky;position:sticky;top:80px;width:100%;height:100vh;background-color:gray;display:flex;align-items:center;justify-content:center;font-size:40px}.other{width:100%;height:100vh;background-color:rgba(0,0,0,0)}
+.wrapper{display:flex;justify-content:center}@media screen and (max-width: 560px ){.wrapper{display:block}}.wrapper p{font-size:1.6rem;line-height:1.4}
 
 /*# sourceMappingURL=style.module.min.css.map */

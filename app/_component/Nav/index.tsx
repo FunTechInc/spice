@@ -90,8 +90,8 @@ const componentList = [
       title: "Magnet",
    },
    {
-      href: "/Modal",
-      title: "Modal",
+      href: "/ModalButton",
+      title: "ModalButton",
    },
    {
       href: "/LoadingProgress",
@@ -100,6 +100,10 @@ const componentList = [
    {
       href: "/LowPowerVideo",
       title: "LowPowerVideo",
+   },
+   {
+      href: "/SplitText",
+      title: "SplitText",
    },
 ];
 
