@@ -3,9 +3,9 @@ import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
 
-type ModalProps = {
+type ModalButtonProps = {
    className?: string;
-   /** default is button */
+   /** default is `button` */
    tag?: keyof JSX.IntrinsicElements;
    children: React.ReactNode;
    dialog: {
@@ -21,13 +21,13 @@ type ModalProps = {
 
 const CLOSE_BUTTON = ".spice__modal_close";
 
-export const Modal = ({
+export const ModalButton = ({
    children,
    tag,
    className,
    dialog,
    callback,
-}: ModalProps) => {
+}: ModalButtonProps) => {
    const Tag = tag || "button";
 
    const ref = useRef<HTMLDialogElement>(null);
