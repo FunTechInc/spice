@@ -43,7 +43,7 @@ export const Content = ({
    );
    const [isOpen, setIsOpen] = useState<boolean>(isDefaultOpen);
 
-   useEffect(() => {
+   useMemo(() => {
       if (accordionState.target === value) {
          setIsOpen(!isOpen);
       }

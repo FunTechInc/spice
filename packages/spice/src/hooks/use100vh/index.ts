@@ -1,6 +1,7 @@
-import { MutableRefObject, RefObject, useEffect } from "react";
+import { RefObject } from "react";
 import { useIsTouchDevice } from "../useIsTouchDevice";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 /**
  * For some mobile browsers, if the CSS is 100vh or 100lvh, the navigation bar may not be included, so by using window.screen.height, it will be displayed to fill the screen.
@@ -8,7 +9,7 @@ import { useWindowResizeObserver } from "../useWindowResizeObserver";
 export const use100vh = (ref: RefObject<HTMLElement>) => {
    const isTouch = useIsTouchDevice();
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       if (!isTouch || !ref.current) {
          return;
       }

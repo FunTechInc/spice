@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { useOverflowDispatch } from "../WrapperLayout";
 import s from "./spice.module.scss";
 
@@ -22,7 +22,7 @@ export const AsideLayout = ({
 }: AsideLayoutProps) => {
    const setOverflow = useOverflowDispatch();
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       if (isSticky) {
          setOverflow(() => false);
       }
