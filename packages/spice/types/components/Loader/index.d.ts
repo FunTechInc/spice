@@ -32,5 +32,5 @@ type LoaderProps = {
     };
     children?: React.ReactNode;
 };
-export declare const Loader: ({ className, loader, delay, onView, skelton, circular, children, }: LoaderProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Loader: import("react").ForwardRefExoticComponent<LoaderProps & import("react").RefAttributes<HTMLDivElement>>;
 export {};
