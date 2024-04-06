@@ -8,6 +8,7 @@ export { ModalButton } from "./components/ModalButton";
 export { StickyItem } from "./components/StickyItem";
 export { LowPowerVideo } from "./components/LowPowerVideo";
 export { SplitText } from "./components/SplitText";
+export { Loader } from "./components/Loader";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export * as LoadingProgress from "./components/LoadingProgress";

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTabState, useSetTabState } from "./Context";
 import { promiseMaker } from "../../utils/promiseMaker";
 import s from "./spice.module.scss";
