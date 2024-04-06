@@ -1,6 +1,6 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.1.45",
+   "version": "1.1.46",
    "description": "spice",
    "main": "./build/spice.umd.cjs",
    "module": "./build/spice.js",
