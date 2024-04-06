@@ -9,7 +9,7 @@ type CallbackProps = {
    y: number;
 };
 type MouseEvent = React.MouseEvent<HTMLDivElement>;
-type MagnetProps = {
+export type MagnetProps = {
    /** you can custom FPS , default:60 */
    fps?: number;
    className?: string;

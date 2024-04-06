@@ -1,6 +1,6 @@
 /// <reference types="react" />
 export type ThumbnailRatio = "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | number;
-type ThumbnailProps = {
+export type ThumbnailProps = {
     ratio: ThumbnailRatio;
     children: React.ReactNode;
     className?: string;
@@ -19,4 +19,3 @@ type ThumbnailProps = {
     ```
  */
 export declare const Thumbnail: ({ ratio, children, className }: ThumbnailProps) => import("react/jsx-runtime").JSX.Element;
-export {};

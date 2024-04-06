@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useTabState, useSetTabState } from "./Context";
 import { promiseMaker } from "../../utils/promiseMaker";
-import s from "./spice.module.scss";
 import { setTabIndex } from "../../utils/setTabIndex";
+import s from "./spice.module.scss";
 
-type ContentProps = {
+export type ContentProps = {
    children: React.ReactNode;
    /** Please make sure to set it with the value of the Button component. */
    value: string;
@@ -16,8 +16,6 @@ type ContentProps = {
       onReset?: (target: Element) => void;
    };
 };
-
-let didInit = false;
 
 export const Content = ({
    children,

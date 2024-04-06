@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 
-type UseLoadingProgressProps = {
+export type UseLoadingProgressProps = {
    onesRef: React.RefObject<HTMLElement>;
    tensRef: React.RefObject<HTMLElement>;
    hundredsRef: React.RefObject<HTMLElement>;

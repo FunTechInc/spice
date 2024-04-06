@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type ContentProps = {
+export type ContentProps = {
     children: React.ReactNode;
     /** Please make sure to set it with the value of the Button component. */
     value: string;
@@ -12,4 +12,3 @@ type ContentProps = {
     };
 };
 export declare const Content: ({ children, value, className, callback, }: ContentProps) => import("react/jsx-runtime").JSX.Element;
-export {};

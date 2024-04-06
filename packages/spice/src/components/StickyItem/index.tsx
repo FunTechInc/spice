@@ -1,7 +1,7 @@
 import { useEffect, forwardRef } from "react";
 import { useOverflowDispatch } from "../WrapperLayout";
 
-type StickyItemsProps = {
+export type StickyItemsProps = {
    children: React.ReactNode;
    className?: string;
 };

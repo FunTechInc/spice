@@ -3,7 +3,7 @@ import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 import s from "./spice.module.scss";
 
-type ModalButtonProps = {
+export type ModalButtonProps = {
    className?: string;
    /** default is `button` */
    tag?: keyof JSX.IntrinsicElements;

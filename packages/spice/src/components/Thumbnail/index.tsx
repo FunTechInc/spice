@@ -10,7 +10,7 @@ export type ThumbnailRatio =
    | "4-3"
    | number;
 
-type ThumbnailProps = {
+export type ThumbnailProps = {
    ratio: ThumbnailRatio;
    children: React.ReactNode;
    className?: string;

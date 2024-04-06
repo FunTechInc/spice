@@ -9,7 +9,7 @@ type ClickHandler = {
    target: HTMLDivElement;
 };
 
-type ContentProps = {
+export type ContentProps = {
    children: React.ReactNode;
    /** Please make sure to set it with the value of the Button component. */
    value: string;
