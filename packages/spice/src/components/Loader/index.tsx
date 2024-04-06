@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import s from "./spice.module.scss";
 
-type LoaderProps = {
+export type LoaderProps = {
    className?: string;
    loader?: "skeleton" | "circular" | React.ReactNode;
    /** 1000ms */

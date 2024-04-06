@@ -1,4 +1,4 @@
-type SplitTextProps = {
+export type SplitTextProps = {
    /** Use "\n" to insert line break tags */
    text: string;
    /** Split by character or by word . For `words`, split by whitespace. */

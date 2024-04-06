@@ -23,7 +23,7 @@ const setAccordionStateContext = createContext<
    Dispatch<SetStateAction<AccordionState>>
 >(() => undefined);
 
-type ContextProps = {
+export type ContextProps = {
    children: React.ReactNode;
    /** Please set the value that you want to open by default. */
    defaultValue: string[];

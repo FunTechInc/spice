@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type LoaderProps = {
+export type LoaderProps = {
     className?: string;
     loader?: "skeleton" | "circular" | React.ReactNode;
     /** 1000ms */
@@ -33,4 +33,3 @@ type LoaderProps = {
     children?: React.ReactNode;
 };
 export declare const Loader: import("react").ForwardRefExoticComponent<LoaderProps & import("react").RefAttributes<HTMLDivElement>>;
-export {};

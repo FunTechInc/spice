@@ -1199,8 +1199,6 @@ const Cn = {
       children: r
     }
   );
-}, $n = "_spice_tab_hidden_1r0oa_1", In = {
-  spice_tab_hidden: $n
 }, it = ({ content: r, isOpen: t }) => {
   const o = r.querySelectorAll("a,button");
   if (!o)
@@ -1209,6 +1207,8 @@ const Cn = {
   o.forEach((i) => {
     i.setAttribute("tabindex", n);
   });
+}, $n = "_spice_tab_hidden_1r0oa_1", In = {
+  spice_tab_hidden: $n
 }, Dn = ({
   children: r,
   value: t,
@@ -1745,6 +1745,7 @@ export {
   Xn as useIsTouchDevice,
   Qe as useIsomorphicLayoutEffect,
   pr as useMediaQuery,
+  tt as useOverflowDispatch,
   Mn as useResizeObserver,
   fr as useScrollDirection,
   _r as useShare,

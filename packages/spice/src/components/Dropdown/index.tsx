@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import s from "./spice.module.scss";
 
-type DropdownProps = {
+export type DropdownProps = {
    position:
       | "bottom-left"
       | "bottom-center"

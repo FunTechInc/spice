@@ -5,7 +5,7 @@ type CallbackProps = {
     x: number;
     y: number;
 };
-type MagnetProps = {
+export type MagnetProps = {
     /** you can custom FPS , default:60 */
     fps?: number;
     className?: string;

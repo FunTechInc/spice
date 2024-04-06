@@ -27,7 +27,7 @@ const setTabStateContext = createContext<Dispatch<SetStateAction<TabState>>>(
    () => undefined
 );
 
-type ContextProps = {
+export type ContextProps = {
    children: React.ReactNode;
    /** Please set the value that you want to open by default. */
    defaultValue: string;

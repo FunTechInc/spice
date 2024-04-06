@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useAccordionState, useSetAccordionState } from "./Context";
 
-type ButtonProps = {
+export type ButtonProps = {
    children: React.ReactNode;
    /** Please make sure to set it with the value of the Content component. */
    value: string;

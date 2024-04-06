@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type ModalButtonProps = {
+export type ModalButtonProps = {
     className?: string;
     /** default is `button` */
     tag?: keyof JSX.IntrinsicElements;
@@ -15,4 +15,3 @@ type ModalButtonProps = {
     };
 };
 export declare const ModalButton: ({ children, tag, className, dialog, callback, }: ModalButtonProps) => import("react/jsx-runtime").JSX.Element;
-export {};

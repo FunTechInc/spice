@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type AsideLayoutProps = {
+export type AsideLayoutProps = {
     className?: string;
     children: React.ReactNode;
     aside: {
@@ -11,4 +11,3 @@ type AsideLayoutProps = {
     isSticky: boolean;
 };
 export declare const AsideLayout: ({ className, children, aside, isSticky, }: AsideLayoutProps) => import("react/jsx-runtime").JSX.Element;
-export {};

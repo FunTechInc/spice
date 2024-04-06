@@ -1,5 +1,5 @@
 /// <reference types="react" />
-type UseLoadingProgressProps = {
+export type UseLoadingProgressProps = {
     onesRef: React.RefObject<HTMLElement>;
     tensRef: React.RefObject<HTMLElement>;
     hundredsRef: React.RefObject<HTMLElement>;

@@ -2,7 +2,7 @@ import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect
 import { useOverflowDispatch } from "../WrapperLayout";
 import s from "./spice.module.scss";
 
-type AsideLayoutProps = {
+export type AsideLayoutProps = {
    className?: string;
    children: React.ReactNode;
    aside: {

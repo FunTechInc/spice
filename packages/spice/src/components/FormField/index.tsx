@@ -22,7 +22,7 @@ export type TextareaProps = {
    isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 };
 
-type FormFieldsProps = {
+export type FormFieldsProps = {
    className: string;
    label?: string;
    /**  param formProps If you set two in an array, they will be arranged as flex. For select and textarea, set tag attributes to isSelect and isTextarea, respectively. */
