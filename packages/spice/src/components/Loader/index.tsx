@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import s from "./spice.module.scss";
 
 type LoaderProps = {
@@ -35,75 +35,86 @@ type LoaderProps = {
    children?: React.ReactNode;
 };
 
-export const Loader = ({
-   className,
-   loader = "skeleton",
-   delay = 1000,
-   onView,
-   skelton,
-   circular,
-   children,
-}: LoaderProps) => {
-   const [isView, setIsView] = useState(delay === 0);
-   const hasChildren = Boolean(children);
-   useEffect(() => {
-      if (delay === 0) return;
-      setTimeout(() => setIsView(true), delay);
-   }, [delay]);
-   return (
-      <div
-         className={`${className ? className : ""} ${s.spice_loader_wrapper} `}
-         style={
-            hasChildren
-               ? {
-                    maxWidth: "fit-content",
-                    height: "auto",
-                 }
-               : {}
-         }>
+export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
+   (
+      {
+         className,
+         loader = "skeleton",
+         delay = 1000,
+         onView,
+         skelton,
+         circular,
+         children,
+      },
+      ref
+   ) => {
+      const [isView, setIsView] = useState(delay === 0);
+      const hasChildren = Boolean(children);
+      useEffect(() => {
+         if (delay === 0) return;
+         setTimeout(() => setIsView(true), delay);
+      }, [delay]);
+      return (
          <div
-            className={s.spice_loader_container}
+            ref={ref}
+            className={`${className ? className : ""} ${
+               s.spice_loader_wrapper
+            } `}
             style={
-               isView
+               hasChildren
                   ? {
-                       opacity: 1,
-                       transitionProperty: "opacity",
-                       transitionDuration: onView?.transitionDuration || "0.3s",
-                       transitionTimingFunction:
-                          onView?.transitionTimingFunction || "ease-in-out",
+                       maxWidth: "fit-content",
+                       height: "auto",
                     }
                   : {}
             }>
-            {loader === "skeleton" ? (
-               <div
-                  className={s.spice_loader_skelton}
-                  style={{
-                     background: `linear-gradient(90deg,transparent,${
-                        skelton?.waveColor || "rgba(255,255,255,0.64)"
-                     },transparent)`,
-                     animationDuration: skelton?.animationDuration || "1.6s",
-                     animationTimingFunction:
-                        skelton?.animationTimingFunction || "ease-in-out",
-                  }}></div>
-            ) : loader === "circular" ? (
-               <div
-                  className={s.spice_loader_circular}
-                  style={{
-                     width: circular?.width ? circular?.width : "24px",
-                     height: circular?.height ? circular?.height : "24px",
-                     border: circular?.boder || "2px solid #fff",
-                     borderBottomColor: "transparent",
-                     animationDuration: skelton?.animationDuration || "1.6s",
-                     animationTimingFunction:
-                        skelton?.animationTimingFunction || "linear",
-                  }}></div>
-            ) : (
-               loader
-            )}
-            {hasChildren && (
-               <div style={{ visibility: "hidden" }}>{children}</div>
-            )}
+            <div
+               className={s.spice_loader_container}
+               style={
+                  isView
+                     ? {
+                          opacity: 1,
+                          transitionProperty: "opacity",
+                          transitionDuration:
+                             onView?.transitionDuration || "0.3s",
+                          transitionTimingFunction:
+                             onView?.transitionTimingFunction || "ease-in-out",
+                       }
+                     : {}
+               }>
+               {loader === "skeleton" ? (
+                  <div
+                     className={s.spice_loader_skelton}
+                     style={{
+                        background: `linear-gradient(90deg,transparent,${
+                           skelton?.waveColor || "rgba(255,255,255,0.64)"
+                        },transparent)`,
+                        animationDuration: skelton?.animationDuration || "1.6s",
+                        animationTimingFunction:
+                           skelton?.animationTimingFunction || "ease-in-out",
+                     }}></div>
+               ) : loader === "circular" ? (
+                  <div
+                     className={s.spice_loader_circular}
+                     style={{
+                        width: circular?.width ? circular?.width : "24px",
+                        height: circular?.height ? circular?.height : "24px",
+                        border: circular?.boder || "2px solid #fff",
+                        borderBottomColor: "transparent",
+                        animationDuration: skelton?.animationDuration || "1.6s",
+                        animationTimingFunction:
+                           skelton?.animationTimingFunction || "linear",
+                     }}></div>
+               ) : (
+                  loader
+               )}
+               {hasChildren && (
+                  <div style={{ visibility: "hidden" }}>{children}</div>
+               )}
+            </div>
          </div>
-      </div>
-   );
-};
+      );
+   }
+);
+
+Loader.displayName = "Loader";
