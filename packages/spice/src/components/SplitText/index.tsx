@@ -12,26 +12,23 @@ export const SplitText = ({
    splitClassName,
 }: SplitTextProps) => {
    const splitTag = type === "chars" ? "" : " ";
-   const wrappedText = text
-      .split("\n")
-      .flatMap((segment, i, arr) => [
-         ...segment
-            .split(splitTag)
-            .map((char, charI) =>
-               char === " " ? (
-                  <span
-                     key={`${i}-${charI} ${
-                        splitClassName ? splitClassName : ""
-                     }`}>
-                     &nbsp;
-                  </span>
-               ) : (
-                  <span key={`${i}-${charI} ${i ? splitClassName : ""}`}>
-                     {char}
-                  </span>
-               )
-            ),
-         i < arr.length - 1 ? <br key={i} /> : null,
-      ]);
+   const wrappedText = text.split("\n").flatMap((segment, i, arr) => [
+      ...segment.split(splitTag).map((char, charI) =>
+         char === " " ? (
+            <span
+               key={`${i}-${charI}`}
+               className={`${splitClassName ? splitClassName : ""}`}>
+               &nbsp;
+            </span>
+         ) : (
+            <span
+               key={`${i}-${charI}`}
+               className={`${splitClassName ? splitClassName : ""}`}>
+               {char}
+            </span>
+         )
+      ),
+      i < arr.length - 1 ? <br key={i} /> : null,
+   ]);
    return wrappedText;
 };

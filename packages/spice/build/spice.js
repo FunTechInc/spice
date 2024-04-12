@@ -1072,10 +1072,18 @@ const ir = (r) => {
       (d, p) => d === " " ? /* @__PURE__ */ f.jsx(
         "span",
         {
+          className: `${o || ""}`,
           children: " "
         },
-        `${c}-${p} ${o || ""}`
-      ) : /* @__PURE__ */ f.jsx("span", { children: d }, `${c}-${p} ${c ? o : ""}`)
+        `${c}-${p}`
+      ) : /* @__PURE__ */ f.jsx(
+        "span",
+        {
+          className: `${o || ""}`,
+          children: d
+        },
+        `${c}-${p}`
+      )
     ),
     c < l.length - 1 ? /* @__PURE__ */ f.jsx("br", {}, c) : null
   ]);
