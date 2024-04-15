@@ -8,17 +8,21 @@ export type ThumbnailRatio =
    | "square"
    | "3-2"
    | "4-3"
+   | string
    | number;
 
 export type ThumbnailProps = {
+   /** "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" | string | number */
    ratio: ThumbnailRatio;
    children: React.ReactNode;
    className?: string;
 };
 
 /**
+ * @param ratio You can specify "golden" | "silver" | "platinum" | "16-9" | "square" | "3-2" | "4-3" as preset. Everything else is passed to the `aspect-ratio` property as is.
+ * 
  * ```jsx
- * <Thumbnail ratio={"16-9"}>
+ * <Thumbnail ratio={"golden"}>
 		<Image
 			src={"src"}
 			fill
@@ -30,39 +34,42 @@ export type ThumbnailProps = {
 	```
  */
 export const Thumbnail = ({ ratio, children, className }: ThumbnailProps) => {
-   const validRatios = [
-      "golden",
-      "silver",
-      "platinum",
-      "16-9",
-      "square",
-      "3-2",
-      "4-3",
-   ];
-
-   let isRatio: boolean = validRatios.includes(ratio as string);
-   let isNumber: boolean = typeof ratio === "number" && ratio > 0;
-
-   if (!isRatio && !isNumber) {
-      throw new Error(
-         `Invalid ratio value. The 'ratio' argument should be either ${validRatios.join(
-            " | "
-         )} or a number greater than 0.`
-      );
+   let aspectRatio;
+   switch (ratio) {
+      case "golden":
+         aspectRatio = "1.618/1";
+         break;
+      case "silver":
+         aspectRatio = "1.414/1";
+         break;
+      case "platinum":
+         aspectRatio = "1.732/1";
+         break;
+      case "16-9":
+         aspectRatio = "16/9";
+         break;
+      case "square":
+         aspectRatio = "1/1";
+         break;
+      case "3-2":
+         aspectRatio = "3/2";
+         break;
+      case "4-3":
+         aspectRatio = "4/3";
+         break;
+      default:
+         aspectRatio = ratio;
+         break;
    }
-
    return (
       <div
-         className={`${s.spice_thumbnail_wrapper} ${
+         className={`${s.spice_thumbnail_container} ${
             className ? className : ""
-         }`}>
-         <div
-            className={`${s.spice_thumbnail_view} ${
-               isRatio ? s["spice_thumbnail_" + ratio] : ""
-            }`}
-            style={isNumber ? { paddingTop: `${ratio}%` } : {}}>
-            {children}
-         </div>
+         }`}
+         style={{
+            aspectRatio: aspectRatio,
+         }}>
+         {children}
       </div>
    );
 };
