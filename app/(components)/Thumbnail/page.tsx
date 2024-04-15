@@ -36,7 +36,7 @@ const Demo = () => {
    return (
       <ul className={s.demo_list}>
          <li>
-            <Thumbnail ratio={"16-9"} className={s.hover}>
+            <Thumbnail ratio={"16/9"} className={s.hover}>
                <Image
                   src={"/logo-l.jpg"}
                   fill
@@ -60,7 +60,7 @@ const Demo = () => {
             </Thumbnail>
          </li>
          <li>
-            <Thumbnail ratio={"16-9"} className={s.video}>
+            <Thumbnail ratio={"4-3"} className={s.video}>
                <video
                   autoPlay
                   loop
@@ -71,7 +71,7 @@ const Demo = () => {
             </Thumbnail>
          </li>
          <li>
-            <Thumbnail ratio={"square"}>
+            <Thumbnail ratio={1}>
                <iframe
                   width="560"
                   height="315"
@@ -109,7 +109,7 @@ const Code = () => {
    return (
       <ul className={s.demo_list}>
          <li>
-            <Thumbnail ratio={"16-9"} className={s.hover}>
+            <Thumbnail ratio={"16/9"} className={s.hover}>
                <Image
                   src={"/logo-l.jpg"}
                   fill
@@ -133,7 +133,7 @@ const Code = () => {
             </Thumbnail>
          </li>
          <li>
-            <Thumbnail ratio={"16-9"} className={s.video}>
+            <Thumbnail ratio={"4-3"} className={s.video}>
                <video
                   autoPlay
                   loop
@@ -144,7 +144,7 @@ const Code = () => {
             </Thumbnail>
          </li>
          <li>
-            <Thumbnail ratio={"square"}>
+            <Thumbnail ratio={1}>
                <iframe
                   width="560"
                   height="315"
