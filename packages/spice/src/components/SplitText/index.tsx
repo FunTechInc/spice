@@ -4,12 +4,14 @@ export type SplitTextProps = {
    /** Split by character or by word . For `words`, split by whitespace. */
    type?: "chars" | "words";
    splitClassName?: string;
+   splitStyle?: React.CSSProperties;
 };
 
 export const SplitText = ({
    text,
    type = "chars",
    splitClassName,
+   splitStyle,
 }: SplitTextProps) => {
    const splitTag = type === "chars" ? "" : " ";
    const wrappedText = text.split("\n").flatMap((segment, i, arr) => [
@@ -17,12 +19,14 @@ export const SplitText = ({
          char === " " ? (
             <span
                key={`${i}-${charI}`}
+               style={splitStyle}
                className={`${splitClassName ? splitClassName : ""}`}>
                &nbsp;
             </span>
          ) : (
             <span
                key={`${i}-${charI}`}
+               style={splitStyle}
                className={`${splitClassName ? splitClassName : ""}`}>
                {char}
             </span>
