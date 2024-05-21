@@ -1,13 +1,13 @@
 import { useEffect, forwardRef } from "react";
 import { useOverflowDispatch } from "../WrapperLayout";
 
-export type StickyItemsProps = {
-   children: React.ReactNode;
-   className?: string;
-};
+export type StickyItemsProps = React.DetailedHTMLProps<
+   React.HTMLAttributes<HTMLDivElement>,
+   HTMLDivElement
+>;
 
 export const StickyItem = forwardRef<HTMLDivElement, StickyItemsProps>(
-   ({ children, className }, ref) => {
+   ({ children, ...props }, ref) => {
       const setOverflow = useOverflowDispatch();
 
       useEffect(() => {
@@ -18,7 +18,7 @@ export const StickyItem = forwardRef<HTMLDivElement, StickyItemsProps>(
       }, [setOverflow]);
 
       return (
-         <div ref={ref} className={className ? className : ""}>
+         <div ref={ref} {...props}>
             {children}
          </div>
       );

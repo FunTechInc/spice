@@ -15,6 +15,7 @@ export * from "./components/Loader";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export * as LoadingProgress from "./components/LoadingProgress";
+export * from "./components/AutoScrollContainer";
 
 // hooks
 export * from "./hooks/useIsomorphicLayoutEffect";
