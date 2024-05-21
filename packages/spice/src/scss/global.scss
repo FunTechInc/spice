@@ -21,6 +21,8 @@ html {
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
    scroll-behavior: auto;
    scrollbar-gutter: stable;
+   touch-action: none;
+   user-select: none;
 }
 
 a,
