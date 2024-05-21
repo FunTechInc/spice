@@ -1,6 +1,6 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.2.3",
+   "version": "1.2.11",
    "description": "spice",
    "main": "./build/spice.umd.cjs",
    "module": "./build/spice.js",
@@ -39,12 +39,13 @@
    },
    "devDependencies": {
       "@types/css-modules": "^1.0.2",
+      "@vitejs/plugin-react": "^4.2.1",
       "autoprefixer": "^10.4.14",
       "css-declaration-sorter": "^7.0.0",
       "postcss": "^8.4.24",
       "postcss-sort-media-queries": "^5.2.0",
       "sass": "^1.63.4",
       "typescript": "^5.1.3",
-      "vite": "^4.5.0"
+      "vite": "^4.5.3"
    }
 }
