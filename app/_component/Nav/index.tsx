@@ -109,6 +109,10 @@ const componentList = [
       href: "/Loader",
       title: "Loader",
    },
+   {
+      href: "/AutoScrollContainer",
+      title: "AutoScrollContainer",
+   },
 ];
 
 export const AsideNav = ({ className }: TAsideNav) => {

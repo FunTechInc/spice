@@ -1,6 +1,3 @@
 /// <reference types="react" />
-export type StickyItemsProps = {
-    children: React.ReactNode;
-    className?: string;
-};
-export declare const StickyItem: import("react").ForwardRefExoticComponent<StickyItemsProps & import("react").RefAttributes<HTMLDivElement>>;
+export type StickyItemsProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+export declare const StickyItem: import("react").ForwardRefExoticComponent<Omit<StickyItemsProps, "ref"> & import("react").RefAttributes<HTMLDivElement>>;
