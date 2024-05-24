@@ -3,7 +3,6 @@
 import { useRef, useEffect, useCallback } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
-import s from "./spice.module.scss";
 
 export type ModalButtonProps = {
    className?: string;
