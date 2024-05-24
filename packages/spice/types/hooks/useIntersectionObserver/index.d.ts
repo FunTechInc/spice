@@ -1,10 +1,6 @@
 /// <reference types="react" />
-type UseIntersectionObserverProps = {
+export type IntersectionObserverProps = {
     targetRef: React.RefObject<HTMLElement>;
-    callback: {
-        onEnter?: (entry: IntersectionObserverEntry) => void;
-        onLeave?: (entry: IntersectionObserverEntry) => void;
-    };
     /** default:"0px" */
     rootMargin?: string;
     /** default:0 */
@@ -13,5 +9,10 @@ type UseIntersectionObserverProps = {
     once?: boolean;
     dependencies?: any[];
 };
+export type UseIntersectionObserverProps = {
+    callback: {
+        onEnter?: (entry: IntersectionObserverEntry) => void;
+        onLeave?: (entry: IntersectionObserverEntry) => void;
+    };
+} & IntersectionObserverProps;
 export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, callback, dependencies, }: UseIntersectionObserverProps) => void;
-export {};

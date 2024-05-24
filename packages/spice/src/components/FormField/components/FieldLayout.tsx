@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { FormProps } from "..";
-import s from "../spice.module.scss";
 
 export type FormItem = React.FC<{ formProps: FormProps; className?: string }>;
 
@@ -62,8 +61,21 @@ export const FieldLayout = ({
          return (
             <li key={props.id}>
                <FormItem
-                  formProps={props}
-                  className={s.spice_form_radioCheckInput}
+                  formProps={{
+                     ...props,
+                     style: {
+                        position: "absolute",
+                        whiteSpace: "nowrap",
+                        width: "1px",
+                        height: "1px",
+                        overflow: "hidden",
+                        border: "0",
+                        padding: 0,
+                        clip: "rect(0 0 0 0)",
+                        clipPath: "inset(50%)",
+                        zIndex: "-99999",
+                     },
+                  }}
                />
                <label htmlFor={props.id}>{props.value}</label>
             </li>

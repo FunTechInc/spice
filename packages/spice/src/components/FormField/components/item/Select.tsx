@@ -1,5 +1,4 @@
 import { SelectProps } from "../..";
-import s from "../../spice.module.scss";
 
 export const Select = ({ formProps }: { formProps: SelectProps }) => {
    const { isSelect, ...otherProp } = formProps;
@@ -26,7 +25,10 @@ export const Select = ({ formProps }: { formProps: SelectProps }) => {
    return (
       <select
          {...otherProp}
-         className={s.spice_form_select}
+         style={{
+            overflow: "hidden",
+            fontSize: "16px",
+         }}
          defaultValue={getSelectedIndex()}>
          <DefaultValue />
          {isSelect.options.map((option: any) => {

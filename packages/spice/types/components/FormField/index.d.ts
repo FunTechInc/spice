@@ -26,34 +26,34 @@ export type FormFieldsProps = {
  *
  * ```jsx
  * <FormField
-            className={s.field}
-            label="Mail"
-            formProps={[
-               {
-                  type: "email",
-                  id: "e-mail",
-                  placeholder: "t.hashimoto@funtech.inc",
-                  ...register("email", {
-                     required: true,
-                     pattern: {
+        className={s.field}
+        label="Mail"
+        formProps={[
+            {
+                type: "email",
+                id: "e-mail",
+                placeholder: "t.hashimoto@funtech.inc",
+                ...register("email", {
+                    required: true,
+                    pattern: {
                         value: /\S+@\S+\.\S+/,
                         message: "Entered value does not match email format",
-                     },
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.email?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.email?.type === "pattern" ? (
-                     <Error error="this is not valid main patter." />
-                  ) : null}
-               </>,
-            ]}
-         />
-    ```
+                    },
+                }),
+            },
+        ]}
+        errors={[
+            <>
+                {errors?.email?.type === "required" ? (
+                    <Error error="This field is required" />
+                ) : null}
+                {errors?.email?.type === "pattern" ? (
+                    <Error error="this is not valid main patter." />
+                ) : null}
+            </>,
+        ]}
+    />
+```
  */
 export declare const FormField: ({ className, label, formProps, errors, }: FormFieldsProps) => import("react/jsx-runtime").JSX.Element;
 export {};

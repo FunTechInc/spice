@@ -1,6 +1,6 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.2.12",
+   "version": "1.2.15",
    "description": "spice",
    "main": "./build/spice.umd.cjs",
    "module": "./build/spice.js",
@@ -10,8 +10,7 @@
          "types": "./types/index.d.ts",
          "import": "./build/spice.js",
          "require": "./build/spice.umd.cjs"
-      },
-      "./css": "./build/style.css"
+      }
    },
    "type": "module",
    "scripts": {
@@ -35,6 +34,7 @@
    ],
    "peerDependencies": {
       "react": "^18.2.0",
+      "gsap": "^3.12.5",
       "react-dom": "^18.2.0"
    },
    "devDependencies": {

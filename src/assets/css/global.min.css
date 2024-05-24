@@ -1,3 +1,17 @@
-html,body{width:100%;min-height:100%;height:auto}body{font-style:normal;font-weight:normal;overflow-wrap:break-word;font-feature-settings:"palt";-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%;padding:env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px)}html{-webkit-tap-highlight-color:rgba(0,0,0,0);scroll-behavior:auto;scrollbar-gutter:stable}a,button,input,label,textarea,select{color:inherit;cursor:pointer}@media(hover: none){a,button,input,label,textarea,select{-webkit-tap-highlight-color:rgba(0,0,0,0)}}a,button{border:none;outline:none;text-decoration:none;pointer-events:auto;background:none}a>*,button>*{pointer-events:none}a:focus:not(:fous-visible),button:focus:not(:fous-visible){outline:none}a img,button img{border:none}*{min-height:0vw}img{border:0;height:auto;pointer-events:none;vertical-align:middle;width:100%;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-webkit-backface-visibility:hidden;backface-visibility:hidden}picture{display:block}iframe{width:100%}ul,ol,li{font-size:0;list-style:none}svg{overflow:visible}
+/* Error: Undefined variable.
+ *   ,
+ * 5 |    --liquid-lgDesignRatio: calc(#{$lg-design-width} / 10);
+ *   |                                   ^^^^^^^^^^^^^^^^
+ *   '
+ *   app/global.scss 5:35  root stylesheet */
 
-/*# sourceMappingURL=global.min.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined variable.\a   \2577 \a 5 \2502     --liquid-lgDesignRatio: calc(#{$lg-design-width} / 10);\a   \2502                                    ^^^^^^^^^^^^^^^^\a   \2575 \a   app/global.scss 5:35  root stylesheet";
+}

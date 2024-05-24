@@ -1,3 +1,5 @@
+"use client";
+
 import { useReducer, useRef, useEffect, useCallback } from "react";
 
 type ActionType = "down" | "up" | null;

@@ -1,5 +1,3 @@
-@use "../../helpers.scss" as *;
-
 .field {
    &:not(:first-child) {
       margin-top: 48px;
@@ -19,7 +17,7 @@
       width: 100%;
       background-color: #fff;
       padding: 16px;
-      @include placeholder(#808080);
+      // @include placeholder(#808080);
    }
 }
 
@@ -121,9 +119,9 @@
       color: #fff;
       font-size: 20px;
       text-align: center;
-      @include hover {
-         opacity: 0.8;
-      }
+      // @include hover {
+      //    opacity: 0.8;
+      // }
    }
 }
 

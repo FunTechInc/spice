@@ -1,14 +1,10 @@
 import Link from "next/link";
 import s from "./nav.module.scss";
 
-type TAsideNav = {
-   className: string;
-};
-
 const hookList = [
    {
-      href: "/useAnimationFrame",
-      title: "useAnimationFrame",
+      href: "/useFrame",
+      title: "useFrame",
    },
    {
       href: "/useIsomorphicLayoutEffect",
@@ -58,16 +54,8 @@ const componentList = [
       title: "WrapperLayout",
    },
    {
-      href: "/AsideLayout",
-      title: "AsideLayout",
-   },
-   {
       href: "/StickyItem",
       title: "StickyItem",
-   },
-   {
-      href: "/Thumbnail",
-      title: "Thumbnail",
    },
    {
       href: "/Accordion",
@@ -80,14 +68,6 @@ const componentList = [
    {
       href: "/Tab",
       title: "Tab",
-   },
-   {
-      href: "/Dropdown",
-      title: "Dropdown",
-   },
-   {
-      href: "/Magnet",
-      title: "Magnet",
    },
    {
       href: "/ModalButton",
@@ -105,9 +85,17 @@ const componentList = [
       href: "/Loader",
       title: "Loader",
    },
+   {
+      href: "/AutoScrollContainer",
+      title: "AutoScrollContainer",
+   },
+   {
+      href: "/SplitText",
+      title: "SplitText",
+   },
 ];
 
-export const AsideNav = ({ className }: TAsideNav) => {
+export const AsideNav = () => {
    const HookLinks = hookList.map((elm) => {
       return (
          <Link key={elm.href} href={elm.href}>
@@ -124,7 +112,7 @@ export const AsideNav = ({ className }: TAsideNav) => {
    });
 
    return (
-      <div className={`${s.nav} ${className}`}>
+      <div className={`${s.nav}`}>
          <div className={s.block}>
             <h3>hooks</h3>
             <div>{HookLinks}</div>

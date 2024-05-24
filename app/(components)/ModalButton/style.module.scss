@@ -1,11 +1,6 @@
-@use "../../helpers.scss" as *;
-
 .wrapper {
    display: flex;
    justify-content: center;
-   @include mq(sm) {
-      display: block;
-   }
 }
 .button {
    display: block;
@@ -19,14 +14,6 @@
    border: 2px solid #333;
    color: #fff;
    cursor: pointer;
-   @include mq(sm) {
-      margin: 8px auto;
-   }
-
-   @include hover {
-      color: #333;
-      background-color: #fff;
-   }
 }
 
 /*===============================================
@@ -82,8 +69,8 @@ close
    margin-top: 24px;
    text-align: center;
    cursor: pointer;
-   @include hover {
-      color: #333;
-      background-color: #fff;
-   }
+   // @include hover {
+   //    color: #333;
+   //    background-color: #fff;
+   // }
 }

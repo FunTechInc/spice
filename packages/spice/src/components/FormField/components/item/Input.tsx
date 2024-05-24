@@ -1,5 +1,4 @@
 import { FormProps } from "../..";
-import s from "../../spice.module.scss";
 
 export const Input = ({
    formProps,
@@ -8,10 +7,16 @@ export const Input = ({
    formProps: FormProps;
    className?: string;
 }) => {
+   const { style, ...rest } = formProps;
    return (
       <input
-         {...formProps}
-         className={`${s.spice_form_input} ${className ? className : ""}`}
+         {...rest}
+         className={className ? className : ""}
+         style={{
+            overflow: "hidden",
+            fontSize: "16px",
+            ...style,
+         }}
       />
    );
 };
