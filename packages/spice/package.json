@@ -1,6 +1,6 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.2.16",
+   "version": "1.2.18",
    "description": "spice",
    "main": "./build/spice.umd.cjs",
    "module": "./build/spice.js",
@@ -34,8 +34,8 @@
    ],
    "peerDependencies": {
       "react": "^18.2.0",
-      "gsap": "^3.12.5",
-      "react-dom": "^18.2.0"
+      "react-dom": ">=18.0",
+      "gsap": "^3.12.5"
    },
    "devDependencies": {
       "@vitejs/plugin-react": "^4.2.1",
