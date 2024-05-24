@@ -1,8 +1,9 @@
+"use client";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useAccordionState } from "./Context";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { setTabIndex } from "../../utils/setTabIndex";
-import s from "./spice.module.scss";
 
 type ClickHandler = {
    height: number;
@@ -86,9 +87,10 @@ export const Content = ({
    return (
       <div
          ref={wrapperRef}
-         className={`${s.spice_accordion_content} ${
-            isDefaultOpen ? "" : s.spice_accordion_hidden
-         }`}
+         style={{
+            overflow: "hidden",
+            height: isDefaultOpen ? "auto" : "0px",
+         }}
          id={`content-${value}`}
          aria-labelledby={`button-${value}`}
          aria-hidden={!isOpen}>

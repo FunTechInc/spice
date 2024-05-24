@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useCallback } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
@@ -88,9 +90,16 @@ export const ModalButton = ({
                   closeModal();
                }
             }}
-            className={`${s.spice_modal_dialog} ${
-               dialog.className ? dialog.className : ""
-            }`}>
+            style={{
+               border: "none",
+               background: "none",
+               maxWidth: "100%",
+               maxHeight: "100%",
+               width: "100%",
+               height: "100%",
+               padding: "0",
+            }}
+            className={dialog.className ? dialog.className : ""}>
             {dialog.children}
          </dialog>
       </>

@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "./components/item/Input";
 import { Select } from "./components/item/Select";
 import { FieldLayout, FormItem } from "./components/FieldLayout";
@@ -35,34 +37,34 @@ export type FormFieldsProps = {
  * 
  * ```jsx
  * <FormField
-            className={s.field}
-            label="Mail"
-            formProps={[
-               {
-                  type: "email",
-                  id: "e-mail",
-                  placeholder: "t.hashimoto@funtech.inc",
-                  ...register("email", {
-                     required: true,
-                     pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Entered value does not match email format",
-                     },
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.email?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.email?.type === "pattern" ? (
-                     <Error error="this is not valid main patter." />
-                  ) : null}
-               </>,
-            ]}
-         />
-	```
+		className={s.field}
+		label="Mail"
+		formProps={[
+			{
+				type: "email",
+				id: "e-mail",
+				placeholder: "t.hashimoto@funtech.inc",
+				...register("email", {
+					required: true,
+					pattern: {
+						value: /\S+@\S+\.\S+/,
+						message: "Entered value does not match email format",
+					},
+				}),
+			},
+		]}
+		errors={[
+			<>
+				{errors?.email?.type === "required" ? (
+					<Error error="This field is required" />
+				) : null}
+				{errors?.email?.type === "pattern" ? (
+					<Error error="this is not valid main patter." />
+				) : null}
+			</>,
+		]}
+	/>
+```
  */
 export const FormField = ({
    className,

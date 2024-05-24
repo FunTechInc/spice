@@ -1,3 +1,3 @@
-.spice_thumbnail_container{overflow:hidden;position:relative}.spice_thumbnail_container img,.spice_thumbnail_container video,.spice_thumbnail_container iframe{position:absolute;top:0;left:0;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;max-width:initial;max-height:initial;min-width:100%;min-height:100%;width:100%;height:100%;max-block-size:initial;max-inline-size:initial}
+.spice_wrapper>main:first-of-type{flex:1}
 
 /*# sourceMappingURL=spice.module.min.css.map */

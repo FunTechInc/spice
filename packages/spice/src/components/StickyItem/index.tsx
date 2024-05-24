@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, forwardRef } from "react";
-import { useOverflowDispatch } from "../WrapperLayout";
+import { useOverflowDispatch } from "../SpiceWrapper";
 
 export type StickyItemsProps = React.DetailedHTMLProps<
    React.HTMLAttributes<HTMLDivElement>,

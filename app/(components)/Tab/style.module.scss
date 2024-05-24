@@ -1,5 +1,3 @@
-@use "../../helpers.scss" as *;
-
 .buttonWrapper {
    display: flex;
    justify-content: center;
@@ -11,8 +9,6 @@
    text-align: center;
    line-height: 40px;
    font-weight: bold;
-   @include transition(0.6s);
-   @include my-cubic-bezier01;
    color: #fff;
    &:hover {
       opacity: 0.7;
@@ -48,9 +44,9 @@ switch button
 ===============================================*/
 .switchButtonWrapper {
    display: flex;
-   margin-bottom: $spacing-2;
+   margin-bottom: 24px;
    button {
       font-size: 2rem;
-      margin: 0 $spacing-1;
+      margin: 0 16px;
    }
 }

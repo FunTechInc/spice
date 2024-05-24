@@ -1,3 +1,5 @@
+"use client";
+
 import { VideoHTMLAttributes, useEffect, useRef, useState } from "react";
 
 export interface LowPowerVideoProps

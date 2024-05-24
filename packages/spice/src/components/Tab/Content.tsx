@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { useTabState, useSetTabState } from "./Context";
 import { promiseMaker } from "../../utils/promiseMaker";
 import { setTabIndex } from "../../utils/setTabIndex";
-import s from "./spice.module.scss";
 
 export type ContentProps = {
    children: React.ReactNode;
@@ -78,9 +77,18 @@ export const Content = ({
    return (
       <div
          ref={ref}
-         className={`${tabState.current !== value ? s.spice_tab_hidden : ""} ${
-            className ? className : ""
-         }`}
+         className={className ? className : ""}
+         style={
+            tabState.current !== value
+               ? {
+                    pointerEvents: "none",
+                    position: "absolute",
+                    visibility: "hidden",
+                    opacity: 0,
+                    display: "none",
+                 }
+               : {}
+         }
          role="tabpanel"
          id={`tab-${value}`}
          aria-hidden={tabState.current !== value}>
