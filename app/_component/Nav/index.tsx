@@ -82,10 +82,6 @@ const componentList = [
       title: "LowPowerVideo",
    },
    {
-      href: "/Loader",
-      title: "Loader",
-   },
-   {
       href: "/AutoScrollContainer",
       title: "AutoScrollContainer",
    },
