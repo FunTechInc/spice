@@ -12,11 +12,13 @@ export default defineConfig({
          fileName: "spice",
       },
       rollupOptions: {
-         external: ["react"],
+         external: ["react", "gsap", "react-dom"],
          output: {
             dir: "./build",
             globals: {
                react: "React",
+               "react-dom": "ReactDOM",
+               gsap: "gsap",
             },
             banner: `'use client';`,
          },
