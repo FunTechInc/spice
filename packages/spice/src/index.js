@@ -9,6 +9,7 @@ export * as Accordion from "./components/Accordion";
 export * as LoadingProgress from "./components/LoadingProgress";
 export * from "./components/AutoScrollContainer";
 export * from "./components/SplitText";
+export * from "./components/Video";
 
 // hooks
 export * from "./hooks/useIsomorphicLayoutEffect";

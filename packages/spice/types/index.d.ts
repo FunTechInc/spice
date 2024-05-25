@@ -5,6 +5,7 @@ export * from "./components/StickyItem";
 export * from "./components/LowPowerVideo";
 export * from "./components/AutoScrollContainer";
 export * from "./components/SplitText";
+export * from "./components/Video";
 export * from "./hooks/useIsomorphicLayoutEffect";
 export * from "./hooks/useFrame";
 export * from "./hooks/useResizeObserver";
