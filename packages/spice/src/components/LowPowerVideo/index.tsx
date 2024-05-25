@@ -1,9 +1,9 @@
 "use client";
 
-import { VideoHTMLAttributes, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Video, VideoProps } from "../Video";
 
-export interface LowPowerVideoProps
-   extends VideoHTMLAttributes<HTMLVideoElement> {
+export interface LowPowerVideoProps extends VideoProps {
    fallback: React.ReactNode;
 }
 
@@ -24,5 +24,5 @@ export const LowPowerVideo = (props: LowPowerVideoProps) => {
          });
    }, []);
 
-   return isLowPower ? fallback : <video ref={video} {...rest}></video>;
+   return isLowPower ? fallback : <Video ref={video} {...rest}></Video>;
 };
