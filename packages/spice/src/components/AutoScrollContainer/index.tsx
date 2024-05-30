@@ -6,19 +6,16 @@ import { useIsIntersecting } from "../../hooks/useIsIntersecting";
 import { useFrame } from "../../hooks/useFrame";
 
 type AutoScrollContainerProps = {
-   children: React.ReactNode;
-   className?: string;
-   style?: React.CSSProperties;
    isReverse?: boolean;
    speed?: number;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const AutoScrollContainer = ({
    children,
-   className,
-   style = {},
    isReverse = false,
    speed = 1,
+   style,
+   ...rest
 }: AutoScrollContainerProps) => {
    const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -69,11 +66,11 @@ export const AutoScrollContainer = ({
    return (
       <div
          ref={wrapperRef}
-         className={className ? className : ""}
          style={{
             overflow: "hidden",
-            ...style,
-         }}>
+            ...(style || {}),
+         }}
+         {...rest}>
          <div
             style={{
                whiteSpace: "nowrap",

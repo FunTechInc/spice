@@ -5,31 +5,27 @@ import { promiseMaker } from "../../utils/promiseMaker";
 import { toggleScroll } from "./utils/toggleScroll";
 
 export type ModalButtonProps = {
-   className?: string;
-   /** default is `button` */
-   tag?: keyof JSX.IntrinsicElements;
-   children: React.ReactNode;
-   dialog: {
-      children: React.ReactNode;
-      className?: string;
-   };
+   dialog: React.DialogHTMLAttributes<HTMLDialogElement>;
    /** onOpen,onClose */
    callback?: {
       onOpen?: (dialog: Element) => void;
       onClose?: (dialog: Element) => void;
    };
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CLOSE_BUTTON = ".spice__modal_close";
 
 export const ModalButton = ({
    children,
-   tag,
-   className,
    dialog,
    callback,
+   ...rest
 }: ModalButtonProps) => {
-   const Tag = tag || "button";
+   const {
+      children: dialogChildren,
+      style: dialogStyle,
+      ...dialogProps
+   } = dialog;
 
    const ref = useRef<HTMLDialogElement>(null);
 
@@ -75,13 +71,13 @@ export const ModalButton = ({
 
    return (
       <>
-         <Tag
-            className={className ? className : ""}
+         <button
             onClick={() => {
                showModal();
-            }}>
+            }}
+            {...rest}>
             {children}
-         </Tag>
+         </button>
          <dialog
             ref={ref}
             onClick={(e: React.MouseEvent<HTMLDialogElement>) => {
@@ -97,9 +93,10 @@ export const ModalButton = ({
                width: "100%",
                height: "100%",
                padding: "0",
+               ...(dialogStyle || {}),
             }}
-            className={dialog.className ? dialog.className : ""}>
-            {dialog.children}
+            {...dialogProps}>
+            {dialogChildren}
          </dialog>
       </>
    );

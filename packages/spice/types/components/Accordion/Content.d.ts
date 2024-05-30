@@ -4,15 +4,13 @@ type ClickHandler = {
     target: HTMLDivElement;
 };
 export type ContentProps = {
-    children: React.ReactNode;
     /** Please make sure to set it with the value of the Button component. */
     value: string;
-    className?: string;
     /** onOpen,onClose */
     callback: {
         onOpen: (props: ClickHandler) => void;
         onClose: (props: ClickHandler) => void;
     };
-};
-export declare const Content: ({ value, callback, children, className, }: ContentProps) => import("react/jsx-runtime").JSX.Element;
+} & React.HTMLAttributes<HTMLDivElement>;
+export declare const Content: ({ value, callback, children, ...rest }: ContentProps) => import("react/jsx-runtime").JSX.Element;
 export {};

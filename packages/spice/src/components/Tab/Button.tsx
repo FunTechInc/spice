@@ -2,13 +2,11 @@ import { useCallback } from "react";
 import { useSetTabState, useTabState } from "./Context";
 
 export type ButtonProps = {
-   children: React.ReactNode;
    /** Please make sure to set it with the value of the Content component. */
    value: string;
-   className?: string;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children, value, className }: ButtonProps) => {
+export const Button = ({ children, value, ...rest }: ButtonProps) => {
    if (value === "") {
       throw new Error(
          "Please set the value to something other than an empty string."
@@ -35,10 +33,10 @@ export const Button = ({ children, value, className }: ButtonProps) => {
    return (
       <button
          onClick={clickHandler}
-         className={className ? className : ""}
          role="tab"
          aria-controls={`tab-${value}`}
-         aria-selected={tabState.current === value}>
+         aria-selected={tabState.current === value}
+         {...rest}>
          {children}
       </button>
    );

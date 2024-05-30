@@ -1,11 +1,9 @@
 import { forwardRef, memo } from "react";
 
-type DigitProps = {
-   className?: string;
-};
+type DigitProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Digit = memo(
-   forwardRef<HTMLDivElement, DigitProps>(({ className }, ref) => {
+   forwardRef<HTMLDivElement, DigitProps>((props, ref) => {
       return (
          <div
             style={{
@@ -15,8 +13,8 @@ export const Digit = memo(
                textAlign: "center",
             }}
             ref={ref}>
-            <div className={className ? className : ""}>0</div>
-            <div className={className ? className : ""}>0</div>
+            <div {...props}>0</div>
+            <div {...props}>0</div>
          </div>
       );
    })
