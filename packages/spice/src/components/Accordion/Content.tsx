@@ -11,22 +11,20 @@ type ClickHandler = {
 };
 
 export type ContentProps = {
-   children: React.ReactNode;
    /** Please make sure to set it with the value of the Button component. */
    value: string;
-   className?: string;
    /** onOpen,onClose */
    callback: {
       onOpen: (props: ClickHandler) => void;
       onClose: (props: ClickHandler) => void;
    };
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export const Content = ({
    value,
    callback,
    children,
-   className,
+   ...rest
 }: ContentProps) => {
    if (value === "") {
       throw new Error(
@@ -94,7 +92,7 @@ export const Content = ({
          id={`content-${value}`}
          aria-labelledby={`button-${value}`}
          aria-hidden={!isOpen}>
-         <div ref={innerRef} className={className ? className : ""}>
+         <div ref={innerRef} {...rest}>
             {children}
          </div>
       </div>

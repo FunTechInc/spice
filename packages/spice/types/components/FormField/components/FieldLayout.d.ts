@@ -2,7 +2,6 @@
 import { FormProps } from "..";
 export type FormItem = React.FC<{
     formProps: FormProps;
-    className?: string;
 }>;
 type FieldLayoutProps = {
     layoutType: "block" | "flex" | "radio-check";

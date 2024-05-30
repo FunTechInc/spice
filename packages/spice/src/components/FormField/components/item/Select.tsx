@@ -1,7 +1,7 @@
 import { SelectProps } from "../..";
 
 export const Select = ({ formProps }: { formProps: SelectProps }) => {
-   const { isSelect, ...otherProp } = formProps;
+   const { isSelect, style, ...rest } = formProps;
    if (!isSelect) {
       return;
    }
@@ -24,10 +24,11 @@ export const Select = ({ formProps }: { formProps: SelectProps }) => {
 
    return (
       <select
-         {...otherProp}
+         {...rest}
          style={{
             overflow: "hidden",
             fontSize: "16px",
+            ...(style || {}),
          }}
          defaultValue={getSelectedIndex()}>
          <DefaultValue />

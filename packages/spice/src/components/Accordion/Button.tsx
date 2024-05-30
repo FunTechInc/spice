@@ -4,13 +4,11 @@ import { useMemo, useState } from "react";
 import { useAccordionState, useSetAccordionState } from "./Context";
 
 export type ButtonProps = {
-   children: React.ReactNode;
    /** Please make sure to set it with the value of the Content component. */
    value: string;
-   className?: string;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children, value, className }: ButtonProps) => {
+export const Button = ({ children, value, ...rest }: ButtonProps) => {
    if (value === "") {
       throw new Error(
          "Please set the value to something other than an empty string."
@@ -30,7 +28,6 @@ export const Button = ({ children, value, className }: ButtonProps) => {
    const [isOpen, setIsOpen] = useState<boolean>(isDefaultOpen);
    return (
       <button
-         className={className ? className : ""}
          onClick={() => {
             setAccordionState((state) => {
                return {
@@ -43,7 +40,8 @@ export const Button = ({ children, value, className }: ButtonProps) => {
          }}
          aria-controls={`content-${value}`}
          id={`button-${value}`}
-         aria-expanded={isOpen}>
+         aria-expanded={isOpen}
+         {...rest}>
          {children}
       </button>
    );

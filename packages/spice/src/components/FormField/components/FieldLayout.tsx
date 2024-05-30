@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 import { FormProps } from "..";
 
-export type FormItem = React.FC<{ formProps: FormProps; className?: string }>;
+export type FormItem = React.FC<{
+   formProps: FormProps;
+}>;
 
 type FieldLayoutProps = {
    layoutType: "block" | "flex" | "radio-check";
@@ -57,12 +59,12 @@ export const FieldLayout = ({
    }
 
    if (layoutType === "radio-check") {
-      const Options = formPropsArr.map((props) => {
+      const Options = formPropsArr.map(({ id, value, style, ...rest }) => {
          return (
-            <li key={props.id}>
+            <li key={id}>
                <FormItem
                   formProps={{
-                     ...props,
+                     ...rest,
                      style: {
                         position: "absolute",
                         whiteSpace: "nowrap",
@@ -74,10 +76,11 @@ export const FieldLayout = ({
                         clip: "rect(0 0 0 0)",
                         clipPath: "inset(50%)",
                         zIndex: "-99999",
+                        ...(style || {}),
                      },
                   }}
                />
-               <label htmlFor={props.id}>{props.value}</label>
+               <label htmlFor={id}>{value}</label>
             </li>
          );
       });
