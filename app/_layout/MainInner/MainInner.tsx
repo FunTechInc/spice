@@ -9,7 +9,7 @@ export const MainInner = ({
    style?: React.CSSProperties;
 }) => {
    return (
-      <div className={`${s.inner} ${className ? className : ""}`} style={style}>
+      <div className={`${s.inner} ${className || ""}`} style={style}>
          {children}
       </div>
    );
