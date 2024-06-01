@@ -10,7 +10,10 @@ export type SelectProps = {
 export type TextareaProps = {
     isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-export type FormProps = React.InputHTMLAttributes<HTMLInputElement> & SelectProps & TextareaProps;
+type OptionLabel = {
+    optionLabel?: React.ReactNode;
+};
+export type FormProps = React.InputHTMLAttributes<HTMLInputElement> & SelectProps & TextareaProps & OptionLabel;
 export type FormFieldsProps = {
     label?: string | React.ReactNode;
     /**  param formProps If you set two in an array, they will be arranged as flex. For select and textarea, set tag attributes to isSelect and isTextarea, respectively. */

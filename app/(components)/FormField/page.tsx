@@ -35,6 +35,7 @@ type TInputs = {
    firstName: string;
    lastName: string;
    email: string;
+   tel: string;
    radio: string;
    selectBlock: string;
    lengthWatch: string;
@@ -58,8 +59,19 @@ const LengthWatch = ({ control }: { control: Control<TInputs> }) => {
    return <p className={s.watchExample}>Watch Example: {txt.length}</p>;
 };
 
-const Error = ({ error }: { error: string }) => {
-   return <p className={s.error}>{error}</p>;
+const Error = ({ error }: { error?: string }) => {
+   return error ? <p className={s.error}>{error}</p> : null;
+};
+
+const VALIDATION_MESSAGE = {
+   emailRegExp: /^[^\s]+@[^\s]+$/,
+   telRegExp: /^[0-9-]*$/,
+   maxLength: "20文字以内で入力してください",
+   required: "必須項目です",
+   email: "メールアドレスの形式で入力してください",
+   select: "選択してください",
+   tel: "数字とハイフンのみ入力してください",
+   defaultSelect: "選択してください",
 };
 
 const Demo = () => {
@@ -101,22 +113,40 @@ const Demo = () => {
                   id: "e-mail",
                   placeholder: "t.hashimoto@funtech.inc",
                   ...register("email", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                      pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Entered value does not match email format",
+                        value: VALIDATION_MESSAGE.emailRegExp,
+                        message: VALIDATION_MESSAGE.email,
                      },
                   }),
                },
             ]}
             errors={[
                <>
-                  {errors?.email?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.email?.type === "pattern" ? (
-                     <Error error="this is not valid main patter." />
-                  ) : null}
+                  <Error error={errors?.email?.message || ""} />
+               </>,
+            ]}
+         />
+         <FormField
+            className={s.field}
+            label="Tel"
+            formProps={[
+               {
+                  type: "tel",
+                  id: "tel",
+                  placeholder: "000-0000-000",
+                  ...register("tel", {
+                     required: VALIDATION_MESSAGE.required,
+                     pattern: {
+                        value: /^[0-9-]*$/,
+                        message: VALIDATION_MESSAGE.tel,
+                     },
+                  }),
+               },
+            ]}
+            errors={[
+               <>
+                  <Error error={errors?.tel?.message || ""} />
                </>,
             ]}
          />
@@ -129,8 +159,11 @@ const Demo = () => {
                   id: "firstName",
                   placeholder: "firstName",
                   ...register("firstName", {
-                     required: true,
-                     maxLength: 20,
+                     required: VALIDATION_MESSAGE.required,
+                     maxLength: {
+                        value: 20,
+                        message: VALIDATION_MESSAGE.maxLength,
+                     },
                   }),
                },
                {
@@ -138,27 +171,20 @@ const Demo = () => {
                   id: "lastName",
                   placeholder: "lastName",
                   ...register("lastName", {
-                     required: true,
-                     maxLength: 20,
+                     required: VALIDATION_MESSAGE.required,
+                     maxLength: {
+                        value: 20,
+                        message: VALIDATION_MESSAGE.maxLength,
+                     },
                   }),
                },
             ]}
             errors={[
                <>
-                  {errors?.firstName?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.firstName?.type === "maxLength" ? (
-                     <Error error="First name cannot exceed 20 characters" />
-                  ) : null}
+                  <Error error={errors?.firstName?.message || ""} />
                </>,
                <>
-                  {errors?.lastName?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.lastName?.type === "maxLength" ? (
-                     <Error error="First name cannot exceed 20 characters" />
-                  ) : null}
+                  <Error error={errors?.lastName?.message || ""} />
                </>,
             ]}
          />
@@ -171,7 +197,7 @@ const Demo = () => {
                   id: "radio-1",
                   value: "option1",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
                {
@@ -179,7 +205,7 @@ const Demo = () => {
                   id: "radio-2",
                   value: "option2",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
                {
@@ -187,15 +213,13 @@ const Demo = () => {
                   id: "radio-3",
                   value: "option3",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
             ]}
             errors={[
                <>
-                  {errors?.radio?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
+                  <Error error={errors?.radio?.message || ""} />
                </>,
             ]}
          />
@@ -229,17 +253,20 @@ const Demo = () => {
             formProps={[
                {
                   isSelect: {
-                     defaultValue: "--Please choose an option--",
+                     defaultValue: VALIDATION_MESSAGE.defaultSelect,
                      options: ["option1", "option2", "option3"],
                   },
-                  ...register("selectBlock", { required: true }),
+                  ...register("selectBlock", {
+                     required: VALIDATION_MESSAGE.required,
+                     validate: (value) =>
+                        value !== VALIDATION_MESSAGE.defaultSelect ||
+                        VALIDATION_MESSAGE.select,
+                  }),
                },
             ]}
             errors={[
                <>
-                  {errors?.selectBlock?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
+                  <Error error={errors?.selectBlock?.message || ""} />
                </>,
             ]}
          />
@@ -275,15 +302,16 @@ const Demo = () => {
                   placeholder: "Your text here",
                   id: "lengthWatch",
                   ...register("lengthWatch", {
-                     maxLength: 20,
+                     maxLength: {
+                        value: 20,
+                        message: VALIDATION_MESSAGE.maxLength,
+                     },
                   }),
                },
             ]}
             errors={[
                <>
-                  {errors?.lengthWatch?.type === "maxLength" ? (
-                     <Error error="20文字以上です" />
-                  ) : null}
+                  <Error error={errors?.lengthWatch?.message || ""} />
                </>,
             ]}
          />
@@ -339,7 +367,7 @@ const Code = () => {
                   id: "e-mail",
                   placeholder: "t.hashimoto@funtech.inc",
                   ...register("email", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                      pattern: {
                         value: /\S+@\S+\.\S+/,
                         message: "Entered value does not match email format",
@@ -366,7 +394,7 @@ const Code = () => {
                   id: "firstName",
                   placeholder: "firstName",
                   ...register("firstName", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                      maxLength: 20,
                   }),
                },
@@ -375,7 +403,7 @@ const Code = () => {
                   id: "lastName",
                   placeholder: "lastName",
                   ...register("lastName", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                      maxLength: 20,
                   }),
                },
@@ -407,7 +435,7 @@ const Code = () => {
                   id: "radio-1",
                   value: "option1",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
                {
@@ -415,7 +443,7 @@ const Code = () => {
                   id: "radio-2",
                   value: "option2",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
                {
@@ -423,7 +451,7 @@ const Code = () => {
                   id: "radio-3",
                   value: "option3",
                   ...register("radio", {
-                     required: true,
+                     required: VALIDATION_MESSAGE.required,
                   }),
                },
             ]}
@@ -466,7 +494,7 @@ const Code = () => {
                      defaultValue: "--Please choose an option--",
                      options: ["option1", "option2", "option3"],
                   },
-                  ...register("selectBlock", { required: true }),
+                  ...register("selectBlock", { required: VALIDATION_MESSAGE.required }),
                },
             ]}
             errors={[

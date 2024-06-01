@@ -719,32 +719,34 @@ const qe = Y(!0), He = Y((n) => !n), Mt = ({ children: n }) => {
       ] })
     ] });
   if (n === "radio-check") {
-    const s = t.map(({ id: d, value: l, style: p, ...h }) => /* @__PURE__ */ f.jsxs("li", { children: [
-      /* @__PURE__ */ f.jsx(
-        i,
-        {
-          formProps: {
-            id: d,
-            value: l,
-            style: {
-              position: "absolute",
-              whiteSpace: "nowrap",
-              width: "1px",
-              height: "1px",
-              overflow: "hidden",
-              border: "0",
-              padding: 0,
-              clip: "rect(0 0 0 0)",
-              clipPath: "inset(50%)",
-              zIndex: "-99999",
-              ...p || {}
-            },
-            ...h
+    const s = t.map(
+      ({ id: d, value: l, style: p, optionLabel: h, ...v }) => /* @__PURE__ */ f.jsxs("li", { children: [
+        /* @__PURE__ */ f.jsx(
+          i,
+          {
+            formProps: {
+              id: d,
+              value: l,
+              style: {
+                position: "absolute",
+                whiteSpace: "nowrap",
+                width: "1px",
+                height: "1px",
+                overflow: "hidden",
+                border: "0",
+                padding: 0,
+                clip: "rect(0 0 0 0)",
+                clipPath: "inset(50%)",
+                zIndex: "-99999",
+                ...p || {}
+              },
+              ...v
+            }
           }
-        }
-      ),
-      /* @__PURE__ */ f.jsx("label", { htmlFor: d, children: l })
-    ] }, d));
+        ),
+        /* @__PURE__ */ f.jsx("label", { htmlFor: d, children: h || l })
+      ] }, d)
+    );
     return /* @__PURE__ */ f.jsxs(f.Fragment, { children: [
       r && /* @__PURE__ */ f.jsx("label", { children: r }),
       /* @__PURE__ */ f.jsx("ul", { children: s }),

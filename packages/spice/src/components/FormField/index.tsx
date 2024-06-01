@@ -20,9 +20,14 @@ export type TextareaProps = {
    isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
+type OptionLabel = {
+   optionLabel?: React.ReactNode;
+};
+
 export type FormProps = React.InputHTMLAttributes<HTMLInputElement> &
    SelectProps &
-   TextareaProps;
+   TextareaProps &
+   OptionLabel;
 
 export type FormFieldsProps = {
    label?: string | React.ReactNode;
