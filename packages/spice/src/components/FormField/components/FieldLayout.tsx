@@ -59,33 +59,35 @@ export const FieldLayout = ({
    }
 
    if (layoutType === "radio-check") {
-      const Options = formPropsArr.map(({ id, value, style, ...rest }) => {
-         return (
-            <li key={id}>
-               <FormItem
-                  formProps={{
-                     id,
-                     value,
-                     style: {
-                        position: "absolute",
-                        whiteSpace: "nowrap",
-                        width: "1px",
-                        height: "1px",
-                        overflow: "hidden",
-                        border: "0",
-                        padding: 0,
-                        clip: "rect(0 0 0 0)",
-                        clipPath: "inset(50%)",
-                        zIndex: "-99999",
-                        ...(style || {}),
-                     },
-                     ...rest,
-                  }}
-               />
-               <label htmlFor={id}>{value}</label>
-            </li>
-         );
-      });
+      const Options = formPropsArr.map(
+         ({ id, value, style, optionLabel, ...rest }) => {
+            return (
+               <li key={id}>
+                  <FormItem
+                     formProps={{
+                        id,
+                        value,
+                        style: {
+                           position: "absolute",
+                           whiteSpace: "nowrap",
+                           width: "1px",
+                           height: "1px",
+                           overflow: "hidden",
+                           border: "0",
+                           padding: 0,
+                           clip: "rect(0 0 0 0)",
+                           clipPath: "inset(50%)",
+                           zIndex: "-99999",
+                           ...(style || {}),
+                        },
+                        ...rest,
+                     }}
+                  />
+                  <label htmlFor={id}>{optionLabel || value}</label>
+               </li>
+            );
+         }
+      );
       return (
          <>
             {label && <label>{label}</label>}
