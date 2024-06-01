@@ -655,7 +655,6 @@ const qe = Y(!0), He = Y((n) => !n), Mt = ({ children: n }) => {
       ...r,
       style: {
         overflow: "hidden",
-        fontSize: "16px",
         ...t
       }
     }
@@ -725,7 +724,8 @@ const qe = Y(!0), He = Y((n) => !n), Mt = ({ children: n }) => {
         i,
         {
           formProps: {
-            ...h,
+            id: d,
+            value: l,
             style: {
               position: "absolute",
               whiteSpace: "nowrap",
@@ -738,7 +738,8 @@ const qe = Y(!0), He = Y((n) => !n), Mt = ({ children: n }) => {
               clipPath: "inset(50%)",
               zIndex: "-99999",
               ...p || {}
-            }
+            },
+            ...h
           }
         }
       ),

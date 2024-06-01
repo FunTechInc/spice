@@ -17,7 +17,11 @@
       width: 100%;
       background-color: #fff;
       padding: 16px;
+      font-size: 18px;
       // @include placeholder(#808080);
+      &::placeholder {
+         opacity: 0.4;
+      }
    }
 }
 
@@ -117,11 +121,14 @@
       line-height: 64px;
       background-color: #333;
       color: #fff;
-      font-size: 20px;
+      font-size: 24px;
       text-align: center;
-      // @include hover {
-      //    opacity: 0.8;
-      // }
+      cursor: pointer;
+      &[disabled] {
+         pointer-events: none;
+         background-color: #ccc;
+         color: #fff;
+      }
    }
 }
 
