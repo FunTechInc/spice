@@ -63,7 +63,7 @@ const Error = ({ error }: { error?: string }) => {
    return error ? <p className={s.error}>{error}</p> : null;
 };
 
-const VALIDATION_MESSAGE = {
+const VALIDATION = {
    emailRegExp: /^[^\s]+@[^\s]+$/,
    telRegExp: /^[0-9-]*$/,
    maxLength: "20文字以内で入力してください",
@@ -113,10 +113,10 @@ const Demo = () => {
                   id: "e-mail",
                   placeholder: "t.hashimoto@funtech.inc",
                   ...register("email", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      pattern: {
-                        value: VALIDATION_MESSAGE.emailRegExp,
-                        message: VALIDATION_MESSAGE.email,
+                        value: VALIDATION.emailRegExp,
+                        message: VALIDATION.email,
                      },
                   }),
                },
@@ -136,10 +136,10 @@ const Demo = () => {
                   id: "tel",
                   placeholder: "000-0000-000",
                   ...register("tel", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      pattern: {
                         value: /^[0-9-]*$/,
-                        message: VALIDATION_MESSAGE.tel,
+                        message: VALIDATION.tel,
                      },
                   }),
                },
@@ -159,10 +159,10 @@ const Demo = () => {
                   id: "firstName",
                   placeholder: "firstName",
                   ...register("firstName", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      maxLength: {
                         value: 20,
-                        message: VALIDATION_MESSAGE.maxLength,
+                        message: VALIDATION.maxLength,
                      },
                   }),
                },
@@ -171,10 +171,10 @@ const Demo = () => {
                   id: "lastName",
                   placeholder: "lastName",
                   ...register("lastName", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      maxLength: {
                         value: 20,
-                        message: VALIDATION_MESSAGE.maxLength,
+                        message: VALIDATION.maxLength,
                      },
                   }),
                },
@@ -196,31 +196,17 @@ const Demo = () => {
                   type: "radio",
                   id: "radio-1",
                   value: "option1",
-                  ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
-                  }),
                },
                {
                   type: "radio",
                   id: "radio-2",
                   value: "option2",
-                  ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
-                  }),
                },
                {
                   type: "radio",
                   id: "radio-3",
                   value: "option3",
-                  ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
-                  }),
                },
-            ]}
-            errors={[
-               <>
-                  <Error error={errors?.radio?.message || ""} />
-               </>,
             ]}
          />
          <FormField
@@ -253,14 +239,13 @@ const Demo = () => {
             formProps={[
                {
                   isSelect: {
-                     defaultValue: VALIDATION_MESSAGE.defaultSelect,
+                     defaultValue: VALIDATION.defaultSelect,
                      options: ["option1", "option2", "option3"],
                   },
                   ...register("selectBlock", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      validate: (value) =>
-                        value !== VALIDATION_MESSAGE.defaultSelect ||
-                        VALIDATION_MESSAGE.select,
+                        value !== VALIDATION.defaultSelect || VALIDATION.select,
                   }),
                },
             ]}
@@ -304,7 +289,7 @@ const Demo = () => {
                   ...register("lengthWatch", {
                      maxLength: {
                         value: 20,
-                        message: VALIDATION_MESSAGE.maxLength,
+                        message: VALIDATION.maxLength,
                      },
                   }),
                },
@@ -367,7 +352,7 @@ const Code = () => {
                   id: "e-mail",
                   placeholder: "t.hashimoto@funtech.inc",
                   ...register("email", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      pattern: {
                         value: /\S+@\S+\.\S+/,
                         message: "Entered value does not match email format",
@@ -394,7 +379,7 @@ const Code = () => {
                   id: "firstName",
                   placeholder: "firstName",
                   ...register("firstName", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      maxLength: 20,
                   }),
                },
@@ -403,7 +388,7 @@ const Code = () => {
                   id: "lastName",
                   placeholder: "lastName",
                   ...register("lastName", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                      maxLength: 20,
                   }),
                },
@@ -435,7 +420,7 @@ const Code = () => {
                   id: "radio-1",
                   value: "option1",
                   ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                   }),
                },
                {
@@ -443,7 +428,7 @@ const Code = () => {
                   id: "radio-2",
                   value: "option2",
                   ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                   }),
                },
                {
@@ -451,7 +436,7 @@ const Code = () => {
                   id: "radio-3",
                   value: "option3",
                   ...register("radio", {
-                     required: VALIDATION_MESSAGE.required,
+                     required: VALIDATION.required,
                   }),
                },
             ]}
@@ -494,7 +479,7 @@ const Code = () => {
                      defaultValue: "--Please choose an option--",
                      options: ["option1", "option2", "option3"],
                   },
-                  ...register("selectBlock", { required: VALIDATION_MESSAGE.required }),
+                  ...register("selectBlock", { required: VALIDATION.required }),
                },
             ]}
             errors={[
