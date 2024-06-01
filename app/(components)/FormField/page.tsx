@@ -67,10 +67,12 @@ const Demo = () => {
       register,
       control,
       handleSubmit,
-      formState: { errors },
+      formState: { errors, isValid },
    } = useForm<TInputs>({ mode: "onBlur" });
 
    // const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
+
+   const allFieldsFilled = Object.keys(errors).length === 0 && isValid;
 
    return (
       <form
@@ -292,6 +294,7 @@ const Demo = () => {
                {
                   type: "submit",
                   value: "Send Request",
+                  disabled: !allFieldsFilled,
                },
             ]}
          />

@@ -64,7 +64,8 @@ export const FieldLayout = ({
             <li key={id}>
                <FormItem
                   formProps={{
-                     ...rest,
+                     id,
+                     value,
                      style: {
                         position: "absolute",
                         whiteSpace: "nowrap",
@@ -78,6 +79,7 @@ export const FieldLayout = ({
                         zIndex: "-99999",
                         ...(style || {}),
                      },
+                     ...rest,
                   }}
                />
                <label htmlFor={id}>{value}</label>

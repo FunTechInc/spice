@@ -7,7 +7,6 @@ export const Input = ({ formProps }: { formProps: FormProps }) => {
          {...rest}
          style={{
             overflow: "hidden",
-            fontSize: "16px",
             ...style,
          }}
       />
