@@ -25,7 +25,7 @@ export type FormProps = React.InputHTMLAttributes<HTMLInputElement> &
    TextareaProps;
 
 export type FormFieldsProps = {
-   label?: string;
+   label?: string | React.ReactNode;
    /**  param formProps If you set two in an array, they will be arranged as flex. For select and textarea, set tag attributes to isSelect and isTextarea, respectively. */
    formProps: FormProps[];
    /** React.ReactNode[] for validation */

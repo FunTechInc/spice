@@ -6,7 +6,7 @@ export type FormItem = React.FC<{
 type FieldLayoutProps = {
     layoutType: "block" | "flex" | "radio-check";
     formPropsArr: FormProps[];
-    label?: string;
+    label?: string | React.ReactNode;
     FormItem: FormItem;
     errors?: React.ReactNode[];
 };
