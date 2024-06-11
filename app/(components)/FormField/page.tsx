@@ -238,6 +238,7 @@ const Demo = () => {
             label="Select Block"
             formProps={[
                {
+                  id: "selectBlock",
                   isSelect: {
                      defaultValue: VALIDATION.defaultSelect,
                      options: ["option1", "option2", "option3"],
