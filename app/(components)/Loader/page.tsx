@@ -7,19 +7,35 @@ import s from "./index.module.scss";
 
 const Demo = () => {
    return (
-      <div className={s.container}>
-         <Loader
-            delay={0}
-            style={{
-               position: "absolute",
-               width: "100%",
-               height: "100%",
-               top: 0,
-               left: 0,
-               backgroundColor: "red",
-            }}
-         />
-      </div>
+      <>
+         <div className={s.container}>
+            <Loader
+               delay={0}
+               style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  top: 0,
+                  left: 0,
+                  backgroundColor: "red",
+               }}
+            />
+         </div>
+         <div className={s.container} style={{ marginTop: 10 }}>
+            <Loader
+               loader={"circular"}
+               delay={0}
+               style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  top: 0,
+                  left: 0,
+                  backgroundColor: "red",
+               }}
+            />
+         </div>
+      </>
    );
 };
 

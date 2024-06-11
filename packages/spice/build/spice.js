@@ -1452,7 +1452,7 @@ const Er = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
                     animationName: "circular",
                     animationIterationCount: "infinite"
                   },
-                  children: /* @__PURE__ */ f.jsx("style", { children: "@keyframes cicrular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}" })
+                  children: /* @__PURE__ */ f.jsx("style", { children: "@keyframes circular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}" })
                 }
               ) : n,
               d && /* @__PURE__ */ f.jsx("div", { style: { visibility: "hidden" }, children: c })

@@ -134,7 +134,7 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
                         animationIterationCount: "infinite",
                      }}>
                      <style>
-                        {`@keyframes cicrular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}`}
+                        {`@keyframes circular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}`}
                      </style>
                   </div>
                ) : (
