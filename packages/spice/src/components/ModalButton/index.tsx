@@ -6,6 +6,8 @@ import { toggleScroll } from "./utils/toggleScroll";
 
 export type ModalButtonProps = {
    dialog: React.DialogHTMLAttributes<HTMLDialogElement>;
+   /** set focus to `focusTarget` when the modal is opened */
+   focusTarget?: React.RefObject<HTMLElement>;
    /** onOpen,onClose */
    callback?: {
       onOpen?: (dialog: Element) => void;
@@ -19,6 +21,7 @@ export const ModalButton = ({
    children,
    dialog,
    callback,
+   focusTarget,
    ...rest
 }: ModalButtonProps) => {
    const {
@@ -32,8 +35,9 @@ export const ModalButton = ({
    const showModal = useCallback(() => {
       toggleScroll("add");
       ref.current!.showModal();
+      focusTarget?.current?.focus();
       callback?.onOpen && callback.onOpen(ref.current!);
-   }, [callback]);
+   }, [callback, focusTarget]);
 
    const closeModal = useCallback(async () => {
       callback?.onClose && (await promiseMaker(callback.onClose(ref.current!)));
