@@ -1,0 +1,3 @@
+.loader_circular{position:absolute;top:0;left:0;bottom:0;right:0;margin:auto;border-radius:50%;-webkit-animation-name:cicrular;animation-name:cicrular;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes cicrular{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes cicrular{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/*# sourceMappingURL=loader.module.min.css.map */
