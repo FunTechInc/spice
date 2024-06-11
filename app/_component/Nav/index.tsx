@@ -89,6 +89,10 @@ const componentList = [
       href: "/SplitText",
       title: "SplitText",
    },
+   {
+      href: "/Loader",
+      title: "Loader",
+   },
 ];
 
 export const AsideNav = () => {
