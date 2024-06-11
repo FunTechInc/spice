@@ -851,6 +851,7 @@ const qe = Y(!0), He = Y((n) => !n), Mt = ({ children: n }) => {
           width: "100%",
           height: "100%",
           padding: "0",
+          pointerEvents: "auto",
           ...u || {}
         },
         ...s,

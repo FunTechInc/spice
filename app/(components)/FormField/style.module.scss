@@ -19,10 +19,12 @@
       background-color: #fff;
       padding: 16px;
       font-size: 18px;
-      // @include placeholder(#808080);
       &::placeholder {
          opacity: 0.4;
       }
+   }
+   textarea {
+      line-height: 1.2;
    }
 }
 
