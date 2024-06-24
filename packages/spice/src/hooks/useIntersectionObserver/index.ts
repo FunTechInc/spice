@@ -4,20 +4,18 @@ import { useEffect } from "react";
 
 export type IntersectionObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
-   /** default:"0px" */
+   /** default : `0px` */
    rootMargin?: string;
-   /** default:0 */
+   /** default : `0` */
    threshold?: number | number[];
-   /** default:false */
+   /** default : `false` */
    once?: boolean;
    dependencies?: any[];
 };
 
 export type UseIntersectionObserverProps = {
-   callback: {
-      onEnter?: (entry: IntersectionObserverEntry) => void;
-      onLeave?: (entry: IntersectionObserverEntry) => void;
-   };
+   onEnter?: (entry: IntersectionObserverEntry) => void;
+   onLeave?: (entry: IntersectionObserverEntry) => void;
 } & IntersectionObserverProps;
 
 export const useIntersectionObserver = ({
@@ -25,7 +23,8 @@ export const useIntersectionObserver = ({
    rootMargin = "0px",
    threshold = 0,
    once = false,
-   callback,
+   onEnter,
+   onLeave,
    dependencies = [],
 }: UseIntersectionObserverProps) => {
    const options: IntersectionObserverInit = {
@@ -44,13 +43,13 @@ export const useIntersectionObserver = ({
          observer: IntersectionObserver
       ) => {
          entries.forEach((entry) => {
-            if (entry.isIntersecting && callback.onEnter) {
-               callback.onEnter(entry);
+            if (entry.isIntersecting && onEnter) {
+               onEnter(entry);
                if (once) {
                   observer.unobserve(entry.target);
                }
-            } else if (!entry.isIntersecting && callback.onLeave) {
-               callback.onLeave(entry);
+            } else if (!entry.isIntersecting && onLeave) {
+               onLeave(entry);
             }
          });
       };

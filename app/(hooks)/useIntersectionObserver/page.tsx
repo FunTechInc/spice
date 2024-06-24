@@ -21,22 +21,20 @@ const List = ({ index }: { index: number }) => {
    const xPos = index % 2 === 0 ? pos : pos * -1;
    useIntersectionObserver({
       targetRef: ref,
-      callback: {
-         onEnter: ({ target }) => {
-            gsap.fromTo(
-               target,
-               {
-                  opacity: 0,
-                  x: xPos,
-               },
-               {
-                  opacity: 1,
-                  x: 0,
-                  duration: 1,
-                  ease: "power3.out",
-               }
-            );
-         },
+      onEnter: ({ target }) => {
+         gsap.fromTo(
+            target,
+            {
+               opacity: 0,
+               x: xPos,
+            },
+            {
+               opacity: 1,
+               x: 0,
+               duration: 1,
+               ease: "power3.out",
+            }
+         );
       },
    });
    return <li ref={ref}>target</li>;
@@ -46,20 +44,18 @@ const Demo = () => {
    const ref = useRef(null);
    useIntersectionObserver({
       targetRef: ref,
-      callback: {
-         onEnter: ({ target }) => {
-            gsap.fromTo(
-               target,
-               {
-                  y: 120,
-               },
-               {
-                  y: 0,
-                  duration: 1,
-                  ease: "power3.out",
-               }
-            );
-         },
+      onEnter: ({ target }) => {
+         gsap.fromTo(
+            target,
+            {
+               y: 120,
+            },
+            {
+               y: 0,
+               duration: 1,
+               ease: "power3.out",
+            }
+         );
       },
    });
    const ListArr = [...Array(3)].map((_, i) => <List key={i} index={i} />);
@@ -78,8 +74,7 @@ const Code = () => {
    const ref = useRef(null);
    useIntersectionObserver({
       targetRef: ref,
-      callback: {
-         onEnter: (target) => {
+      onEnter: (target) => {
             gsap.fromTo(
                target,
                {
@@ -92,7 +87,6 @@ const Code = () => {
                }
             );
          },
-      },
    });
    const ListArr = [...Array(3)].map((_, i) => <List key={i} index={i} />);
    return (
