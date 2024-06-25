@@ -86,20 +86,18 @@ const Demo = () => {
                   </div>
                ),
             }}
-            callback={{
-               onOpen: (dialog) => {
-                  setIsModal(true);
-                  const content =
-                     dialog.getElementsByClassName("js_modal_content")[0];
-                  content.scrollTop = 0;
-                  openHandler();
-               },
-               onClose: () => {
-                  setIsModal(false);
-                  return new Promise((resolve) => {
-                     closeHandler(resolve);
-                  });
-               },
+            onOpen={(dialog) => {
+               setIsModal(true);
+               const content =
+                  dialog.getElementsByClassName("js_modal_content")[0];
+               content.scrollTop = 0;
+               openHandler();
+            }}
+            onClose={() => {
+               setIsModal(false);
+               return new Promise((resolve) => {
+                  closeHandler(resolve);
+               });
             }}>
             <span>with Animation</span>
          </ModalButton>
@@ -151,20 +149,18 @@ const Code = () => {
                   </div>
                ),
             }}
-            callback={{
-               onOpen: (dialog) => {
-                  setIsModal(true);
-                  const content =
-                     dialog.getElementsByClassName("js_modal_content")[0];
-                  content.scrollTop = 0;
-                  openHandler();
-               },
-               onClose: () => {
-                  setIsModal(false);
-                  return new Promise((resolve) => {
-                     closeHandler(resolve);
-                  });
-               },
+            onOpen={(dialog) => {
+               setIsModal(true);
+               const content =
+                  dialog.getElementsByClassName("js_modal_content")[0];
+               content.scrollTop = 0;
+               openHandler();
+            }}
+            onClose={() => {
+               setIsModal(false);
+               return new Promise((resolve) => {
+                  closeHandler(resolve);
+               });
             }}>
             <span>with Animation</span>
          </ModalButton>

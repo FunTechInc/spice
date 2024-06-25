@@ -63,13 +63,11 @@ const Demo = () => {
                </Accordion.Button>
                <Accordion.Content
                   value={list.value}
-                  callback={{
-                     onOpen: (props) => {
-                        accordionEvent(props, true);
-                     },
-                     onClose: (props) => {
-                        accordionEvent(props, false);
-                     },
+                  onOpen={(props) => {
+                     accordionEvent(props, true);
+                  }}
+                  onClose={(props) => {
+                     accordionEvent(props, false);
                   }}>
                   <div className={s.content}>
                      <p>{list.contentTxt}</p>
@@ -103,13 +101,11 @@ const Code = () => {
                </Accordion.Button>
                <Accordion.Content
                   value={list.value}
-                  callback={{
-                     onOpen: (props) => {
-                        accordionEvent(props, true);
-                     },
-                     onClose: (props) => {
-                        accordionEvent(props, false);
-                     },
+                  onOpen={(props) => {
+                     accordionEvent(props, true);
+                  }}
+                  onClose={(props) => {
+                     accordionEvent(props, false);
                   }}>
                   <div className={s.content}>
                      <p>{list.contentTxt}</p>

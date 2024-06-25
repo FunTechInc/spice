@@ -3,7 +3,7 @@
 import { useRef, useEffect, useCallback } from "react";
 
 type UseWindowResizeObserverProps = {
-   callback: ({
+   onResize: ({
       winW,
       winH,
       initWinW,
@@ -18,7 +18,7 @@ type UseWindowResizeObserverProps = {
 };
 
 export const useWindowResizeObserver = ({
-   callback,
+   onResize,
    debounce = 100,
    dependencies = [],
 }: UseWindowResizeObserverProps) => {
@@ -28,13 +28,13 @@ export const useWindowResizeObserver = ({
    const callbackEvent = useCallback(() => {
       clearTimeout(timeoutID.current);
       timeoutID.current = setTimeout(() => {
-         callback({
+         onResize({
             winW: window.innerWidth,
             winH: window.innerHeight,
             initWinW: initialWidth.current,
          });
       }, debounce);
-   }, [callback, debounce]);
+   }, [onResize, debounce]);
 
    useEffect(() => {
       initialWidth.current = window.innerWidth;

@@ -1,5 +1,5 @@
 type UseWindowResizeObserverProps = {
-    callback: ({ winW, winH, initWinW, }: {
+    onResize: ({ winW, winH, initWinW, }: {
         winW: number;
         winH: number;
         initWinW: number;
@@ -8,5 +8,5 @@ type UseWindowResizeObserverProps = {
     debounce?: number;
     dependencies?: any[];
 };
-export declare const useWindowResizeObserver: ({ callback, debounce, dependencies, }: UseWindowResizeObserverProps) => void;
+export declare const useWindowResizeObserver: ({ onResize, debounce, dependencies, }: UseWindowResizeObserverProps) => void;
 export {};

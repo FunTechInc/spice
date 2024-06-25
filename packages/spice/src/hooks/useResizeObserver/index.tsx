@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 
 type UseResizeObserverProps = {
    targetRef: React.RefObject<HTMLElement>;
-   callback: (entry: Element) => void;
+   onResize: (entry: Element) => void;
    /** default:100 */
    debounce?: number;
    dependencies?: any[];
@@ -12,7 +12,7 @@ type UseResizeObserverProps = {
 
 export const useResizeObserver = ({
    targetRef,
-   callback,
+   onResize,
    debounce = 100,
    dependencies = [],
 }: UseResizeObserverProps) => {
@@ -27,7 +27,7 @@ export const useResizeObserver = ({
                isInitialRender.current = false;
                return;
             }
-            callback(entries[0].target);
+            onResize(entries[0].target);
          }, debounce);
       });
       const targetElm = targetRef.current;

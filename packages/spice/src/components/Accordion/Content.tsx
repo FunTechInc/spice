@@ -13,16 +13,14 @@ type ClickHandler = {
 export type ContentProps = {
    /** Please make sure to set it with the value of the Button component. */
    value: string;
-   /** onOpen,onClose */
-   callback: {
-      onOpen: (props: ClickHandler) => void;
-      onClose: (props: ClickHandler) => void;
-   };
+   onOpen: (props: ClickHandler) => void;
+   onClose: (props: ClickHandler) => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Content = ({
    value,
-   callback,
+   onOpen,
+   onClose,
    children,
    ...rest
 }: ContentProps) => {
@@ -63,8 +61,8 @@ export const Content = ({
          target: wrapperRef.current!,
       };
 
-      isOpen ? callback.onOpen(callbackProps) : callback.onClose(callbackProps);
-   }, [isOpen, callback]);
+      isOpen ? onOpen(callbackProps) : onClose(callbackProps);
+   }, [isOpen, onOpen, onClose]);
 
    useEffect(() => {
       setTabIndex({ content: wrapperRef.current!, isOpen });
@@ -72,7 +70,7 @@ export const Content = ({
 
    useResizeObserver({
       targetRef: innerRef,
-      callback: (entry) => {
+      onResize: (entry) => {
          const contentHeight = entry.getBoundingClientRect().height;
          if (isOpen) {
             wrapperRef.current!.style.height = `${contentHeight}px`;
