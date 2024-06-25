@@ -32,7 +32,7 @@ export const useStarter = ({
    );
 
    useWindowResizeObserver({
-      callback: ({ initWinW, winW }) => {
+      onResize: ({ initWinW, winW }) => {
          if (reloadThresholds) {
             reloadThresholds.forEach((threshold) =>
                resizeReload({

@@ -28,7 +28,7 @@ export const useMediaQuery = ({ type, width }: UseMediaQueryProps) => {
    );
 
    useWindowResizeObserver({
-      callback: ({ winW }) => updateState(winW),
+      onResize: ({ winW }) => updateState(winW),
       debounce: 100,
       dependencies: [],
    });

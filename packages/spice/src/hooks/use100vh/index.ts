@@ -17,7 +17,7 @@ export const use100vh = (ref: RefObject<HTMLElement>) => {
    }, [isTouch, ref]);
 
    useWindowResizeObserver({
-      callback: ({ winH }) => {
+      onResize: ({ winH }) => {
          if (!ref.current) {
             return;
          }

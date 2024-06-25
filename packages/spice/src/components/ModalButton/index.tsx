@@ -8,17 +8,14 @@ export type ModalButtonProps = {
    dialog: React.DialogHTMLAttributes<HTMLDialogElement>;
    /** set focus to `focusTarget` when the modal is opened */
    focusTarget?: React.RefObject<HTMLElement>;
-   /** onOpen,onClose */
-   callback?: {
-      onOpen?: (dialog: Element) => void;
-      onClose?: (dialog: Element) => void;
-   };
+   onOpen?: (dialog: Element) => void;
+   onClose?: (dialog: Element) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CLOSE_BUTTON = ".spice__modal_close";
 
 export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
-   ({ children, dialog, callback, focusTarget, ...rest }, ref) => {
+   ({ children, dialog, onOpen, onClose, focusTarget, ...rest }, ref) => {
       const {
          children: dialogChildren,
          style: dialogStyle,
@@ -31,15 +28,14 @@ export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
          toggleScroll("add");
          dialogRef.current!.showModal();
          focusTarget?.current?.focus();
-         callback?.onOpen && callback.onOpen(dialogRef.current!);
-      }, [callback, focusTarget]);
+         onOpen && onOpen(dialogRef.current!);
+      }, [onOpen, focusTarget]);
 
       const closeModal = useCallback(async () => {
-         callback?.onClose &&
-            (await promiseMaker(callback.onClose(dialogRef.current!)));
+         onClose && (await promiseMaker(onClose(dialogRef.current!)));
          toggleScroll("remove");
          dialogRef.current!.close();
-      }, [callback]);
+      }, [onClose]);
 
       useEffect(() => {
          const closeBtn = dialogRef.current!.querySelectorAll(CLOSE_BUTTON);

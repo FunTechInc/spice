@@ -6,18 +6,18 @@ import { setTabIndex } from "../../utils/setTabIndex";
 export type ContentProps = {
    /** Please make sure to set it with the value of the Button component. */
    value: string;
-   /** onOpen,onClose,onReset(onReset is callback if isAnimation is false when use useTabSwitch) */
-   callback?: {
-      onOpen?: (target: Element) => void;
-      onClose?: (target: Element) => void;
-      onReset?: (target: Element) => void;
-   };
+   onOpen?: (target: Element) => void;
+   onClose?: (target: Element) => void;
+   /** callback if isAnimation is false when use useTabSwitch */
+   onReset?: (target: Element) => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Content = ({
    children,
    value,
-   callback,
+   onOpen,
+   onClose,
+   onReset,
    style,
    ...rest
 }: ContentProps) => {
@@ -40,15 +40,14 @@ export const Content = ({
 
       if (!tabState.isAnimation) {
          if (isCurrent) {
-            callback?.onReset && callback.onReset(ref.current!);
+            onReset && onReset(ref.current!);
          }
          return;
       }
 
       if (tabState.prev === value) {
          (async () => {
-            callback?.onClose &&
-               (await promiseMaker(callback.onClose(ref.current!)));
+            onClose && (await promiseMaker(onClose(ref.current!)));
             setTabState((state) => {
                return {
                   ...state,
@@ -62,9 +61,9 @@ export const Content = ({
       }
 
       if (isCurrent) {
-         callback?.onOpen && callback.onOpen(ref.current!);
+         onOpen && onOpen(ref.current!);
       }
-   }, [tabState, setTabState, callback, value, isCurrent]);
+   }, [tabState, setTabState, onOpen, onClose, onReset, value, isCurrent]);
 
    useEffect(() => {
       setTabIndex({

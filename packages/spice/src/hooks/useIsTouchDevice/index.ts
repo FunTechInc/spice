@@ -20,7 +20,7 @@ export const useIsTouchDevice = () => {
    }, []);
 
    useWindowResizeObserver({
-      callback: () => updateState(),
+      onResize: () => updateState(),
       debounce: 100,
       dependencies: [],
    });

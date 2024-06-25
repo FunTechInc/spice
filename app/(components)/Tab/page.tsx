@@ -47,43 +47,41 @@ const Demo = () => {
          className={s.content}
          value={`tab_${i}`}
          key={`tab_${i}`}
-         callback={{
-            onClose: (target) => {
-               return new Promise((resolve) => {
-                  gsap.context(() => {
-                     gsap.to("p,button", {
-                        opacity: 0,
-                        y: -16,
-                        onComplete: () => {
-                           resolve(null);
-                        },
-                     });
-                  }, target);
-               });
-            },
-            onOpen: (target) => {
+         onClose={(target) => {
+            return new Promise((resolve) => {
                gsap.context(() => {
-                  gsap.fromTo(
-                     "p,button",
-                     {
-                        opacity: 0,
-                        y: 16,
+                  gsap.to("p,button", {
+                     opacity: 0,
+                     y: -16,
+                     onComplete: () => {
+                        resolve(null);
                      },
-                     {
-                        opacity: 1,
-                        y: 0,
-                     }
-                  );
-               }, target);
-            },
-            onReset: (target) => {
-               gsap.context(() => {
-                  gsap.set("p,button", {
-                     opacity: 1,
-                     y: 0,
                   });
                }, target);
-            },
+            });
+         }}
+         onOpen={(target) => {
+            gsap.context(() => {
+               gsap.fromTo(
+                  "p,button",
+                  {
+                     opacity: 0,
+                     y: 16,
+                  },
+                  {
+                     opacity: 1,
+                     y: 0,
+                  }
+               );
+            }, target);
+         }}
+         onReset={(target) => {
+            gsap.context(() => {
+               gsap.set("p,button", {
+                  opacity: 1,
+                  y: 0,
+               });
+            }, target);
          }}>
          <p>{`tab_${i}`}</p>
          <button>ボタン</button>
