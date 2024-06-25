@@ -1567,7 +1567,7 @@ Created by FunTech: https://funtech.inc/
   return C(() => (c.current = d(), window.addEventListener("scroll", g, { passive: !0 }), () => {
     window.removeEventListener("scroll", g), clearTimeout(p.current);
   }), n), i;
-}, Cr = ({ type: r, width: t }) => {
+}, Cr = (r, t) => {
   const [n, o] = $(null), i = P(
     (s) => {
       switch (r) {

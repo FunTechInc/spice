@@ -3,12 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 
-type UseMediaQueryProps = {
-   type: "max" | "min";
-   width: number;
-};
-
-export const useMediaQuery = ({ type, width }: UseMediaQueryProps) => {
+export const useMediaQuery = (type: "max" | "min", width: number) => {
    const [isQuery, setIsQuery] = useState<boolean | null>(null);
 
    const updateState = useCallback(
