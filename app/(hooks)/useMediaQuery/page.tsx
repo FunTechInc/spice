@@ -15,10 +15,7 @@ const Description = () => {
 };
 
 const Code = () => {
-   const isMatch = useMediaQuery({
-      type: "max",
-      width: 960,
-   });
+   const isMatch = useMediaQuery("max", 960);
 
    const match = () => {
       if (isMatch === null) {
