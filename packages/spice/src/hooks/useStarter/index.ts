@@ -9,8 +9,9 @@ import { fixViewportForSmall } from "./utils/fixViewportForSmall";
 type UseStarterProps = {
    /** Reload when crossing this threshold */
    reloadThresholds?: number[];
-   /** If set to true, "width=360" will be set in "meta[name="viewport"]" , default:true */
+   /** If set to true, "width=360" will be set in "meta[name="viewport"]" , default : `true` */
    isFixViewportForSmall?: boolean;
+   /** default : `false` */
    areYouFun?: boolean;
 };
 
@@ -21,7 +22,7 @@ export const useStarter = ({
    reloadThresholds,
    isFixViewportForSmall = true,
    areYouFun = false,
-}: UseStarterProps) => {
+}: UseStarterProps = {}) => {
    const fixViewportForSmallContoller = useCallback(
       (winW: number) => {
          if (isFixViewportForSmall) {

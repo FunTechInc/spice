@@ -1511,7 +1511,7 @@ Created by FunTech: https://funtech.inc/
   reloadThresholds: r,
   isFixViewportForSmall: t = !0,
   areYouFun: n = !1
-}) => {
+} = {}) => {
   const o = P(
     (i) => {
       t && pr(i);
