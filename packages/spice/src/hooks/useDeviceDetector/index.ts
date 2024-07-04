@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 
 type DeviceType = "iOS" | "Android" | undefined;
 
-export const useDeviceDetector = (): DeviceType => {
+export const useDeviceDetector = (): {
+   device: DeviceType;
+   isMobile: boolean;
+} => {
    const [device, setDevice] = useState<DeviceType>(undefined);
+   const isMobile = device === "iOS" || device === "Android";
 
    useEffect(() => {
       const ua = navigator.userAgent;
@@ -16,5 +20,8 @@ export const useDeviceDetector = (): DeviceType => {
       }
    }, []);
 
-   return device;
+   return {
+      device,
+      isMobile,
+   };
 };
