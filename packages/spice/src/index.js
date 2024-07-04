@@ -26,3 +26,4 @@ export * from "./hooks/useScrollDirection";
 export * from "./hooks/useMediaQuery";
 export * from "./hooks/useShare";
 export * from "./hooks/use100vh";
+export * from "./hooks/useDeviceDetector";
