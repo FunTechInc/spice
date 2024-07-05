@@ -1,14 +1,14 @@
-type ResizeReloadProps = {
+type ReloadOnResizeProps = {
    initWinW: number;
    winW: number;
    threshold: number;
 };
 
-export const resizeReload = ({
+export const reloadOnResize = ({
    initWinW,
    winW,
    threshold,
-}: ResizeReloadProps) => {
+}: ReloadOnResizeProps) => {
    let resizeFlag = initWinW <= threshold ? false : true;
    if (winW <= threshold) {
       resizeFlag && window.location.reload();

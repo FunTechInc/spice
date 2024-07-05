@@ -1504,7 +1504,7 @@ Created by FunTech with 😘
   const n = r > 360 ? "width=device-width,initial-scale=1" : "width=360";
   t.getAttribute("content") !== n && t.setAttribute("content", n);
 }, Rr = ({
-  reloadThresholds: r,
+  reloadThresholds: r = [],
   isFixViewportForSmall: t = !0,
   areYouFun: n = !1
 } = {}) => {
@@ -1516,7 +1516,7 @@ Created by FunTech with 😘
   );
   he({
     onResize: ({ initWinW: i, winW: s }) => {
-      r && r.forEach(
+      r.length > 0 && r.forEach(
         (c) => lr({
           initWinW: i,
           winW: s,
