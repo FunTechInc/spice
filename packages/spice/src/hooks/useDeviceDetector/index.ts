@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 type DeviceType = "iOS" | "Android" | undefined;
 
@@ -13,7 +14,7 @@ export const useDeviceDetector = (): {
    const [device, setDevice] = useState<DeviceType>(undefined);
    const isMobile = device === "iOS" || device === "Android";
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       const ua = navigator.userAgent;
       if (/iPhone|iPad|iPod/i.test(ua)) {
          setDevice("iOS");
