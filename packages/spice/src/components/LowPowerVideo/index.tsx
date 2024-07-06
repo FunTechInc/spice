@@ -14,15 +14,27 @@ export const LowPowerVideo = (props: LowPowerVideoProps) => {
    const { fallback, ...rest } = props;
 
    useEffect(() => {
-      video.current
-         ?.play()
-         .then(() => {
-            setIsLowPower(false);
-         })
-         .catch(() => {
-            setIsLowPower(true);
-         });
-   }, []);
+      let isActive = true;
+
+      const playVideo = async () => {
+         try {
+            await video.current?.play();
+            if (isActive) {
+               setIsLowPower(false);
+            }
+         } catch (error) {
+            if (isActive) {
+               setIsLowPower(true);
+            }
+         }
+      };
+
+      playVideo();
+
+      return () => {
+         isActive = false;
+      };
+   }, [props.src]);
 
    return isLowPower ? fallback : <Video ref={video} {...rest}></Video>;
 };
