@@ -1672,6 +1672,7 @@ Created by FunTech with 😘
 }, kr = (r) => {
   const [t, n] = A({
     mobileOS: void 0,
+    isMobile: void 0,
     renderingEngine: void 0,
     userAgent: "",
     testing: void 0
@@ -1680,6 +1681,7 @@ Created by FunTech with 😘
     const o = navigator.userAgent, i = pr(o), s = hr(o);
     n({
       mobileOS: i,
+      isMobile: /Mobi/.test(o),
       renderingEngine: s,
       userAgent: o,
       testing: r && r(o)

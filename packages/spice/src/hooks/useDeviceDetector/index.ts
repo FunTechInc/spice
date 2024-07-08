@@ -32,9 +32,12 @@ const detectRenderingEngine = (ua: string): RenderingEngine => {
 type DeviceState = {
    /** `iOS` | `Android` | `undefined` */
    mobileOS: mobileOSType;
+   /** returns the result of `/Mobi/.test(ua)` */
+   isMobile: boolean | undefined;
    /** `Gecko` | `WebKit` | `Presto` | `Trident` | `EdgeHTML` | `Blink` | `undefined` */
    renderingEngine: RenderingEngine;
    userAgent: string;
+   /** Result of executing the testing function for the argument */
    testing: boolean | undefined;
 };
 
@@ -43,6 +46,7 @@ export const useDeviceDetector = (
 ): DeviceState => {
    const [deviceState, setDeviceState] = useState<DeviceState>({
       mobileOS: undefined,
+      isMobile: undefined,
       renderingEngine: undefined,
       userAgent: "",
       testing: undefined,
@@ -55,6 +59,7 @@ export const useDeviceDetector = (
 
       setDeviceState({
          mobileOS,
+         isMobile: /Mobi/.test(ua),
          renderingEngine,
          userAgent: ua,
          testing: testing && testing(ua),
