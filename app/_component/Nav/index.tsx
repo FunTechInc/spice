@@ -74,10 +74,6 @@ const componentList = [
       title: "LoadingProgress",
    },
    {
-      href: "/LowPowerVideo",
-      title: "LowPowerVideo",
-   },
-   {
       href: "/AutoScrollContainer",
       title: "AutoScrollContainer",
    },
