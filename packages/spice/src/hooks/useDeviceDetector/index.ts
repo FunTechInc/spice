@@ -42,7 +42,7 @@ type DeviceState = {
 };
 
 export const useDeviceDetector = (
-   testing?: (ua: string) => boolean
+   testing?: (userAgent: string) => boolean
 ): DeviceState => {
    const [deviceState, setDeviceState] = useState<DeviceState>({
       mobileOS: undefined,

@@ -11,5 +11,5 @@ type DeviceState = {
     /** Result of executing the testing function for the argument */
     testing: boolean | undefined;
 };
-export declare const useDeviceDetector: (testing?: ((ua: string) => boolean) | undefined) => DeviceState;
+export declare const useDeviceDetector: (testing?: ((userAgent: string) => boolean) | undefined) => DeviceState;
 export {};
