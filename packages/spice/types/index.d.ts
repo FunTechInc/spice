@@ -2,7 +2,6 @@ export * from "./components/SpiceWrapper";
 export * from "./components/FormField";
 export * from "./components/ModalButton";
 export * from "./components/StickyItem";
-export * from "./components/LowPowerVideo";
 export * from "./components/AutoScrollContainer";
 export * from "./components/SplitText";
 export * from "./components/Video";
