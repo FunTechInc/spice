@@ -10,7 +10,8 @@ type RenderingEngine =
    | "Presto"
    | "Trident"
    | "EdgeHTML"
-   | "Blink";
+   | "Blink"
+   | undefined;
 
 const detectMobileOS = (ua: string): mobileOSType => {
    if (/\b(iPad|iPhone|iPod)\b/.test(ua)) return "iOS";
@@ -25,24 +26,27 @@ const detectRenderingEngine = (ua: string): RenderingEngine => {
    if (/Trident\/\d+/i.test(ua)) return "Trident";
    if (/Edge\/\d+/i.test(ua)) return "EdgeHTML";
    if (/Chrome\/\d+/i.test(ua)) return "Blink";
-   return "WebKit"; // Fallback to WebKit if no other engine is detected.
+   return undefined;
 };
 
 type DeviceState = {
    /** `iOS` | `Android` | `undefined` */
    mobileOS: mobileOSType;
-   /** `Gecko` | `WebKit` | `Presto` | `Trident` | `EdgeHTML` | `Blink` */
+   /** `Gecko` | `WebKit` | `Presto` | `Trident` | `EdgeHTML` | `Blink` | `undefined` */
    renderingEngine: RenderingEngine;
    userAgent: string;
-   testing?: boolean;
+   testing: boolean | undefined;
 };
 
 export const useDeviceDetector = (
    testing?: (ua: string) => boolean
-): DeviceState | undefined => {
-   const [deviceState, setDeviceState] = useState<DeviceState | undefined>(
-      undefined
-   );
+): DeviceState => {
+   const [deviceState, setDeviceState] = useState<DeviceState>({
+      mobileOS: undefined,
+      renderingEngine: undefined,
+      userAgent: "",
+      testing: undefined,
+   });
 
    useIsomorphicLayoutEffect(() => {
       const ua = navigator.userAgent;
@@ -53,7 +57,7 @@ export const useDeviceDetector = (
          mobileOS,
          renderingEngine,
          userAgent: ua,
-         testing: testing ? testing(ua) : undefined,
+         testing: testing && testing(ua),
       });
    }, []);
 

@@ -1656,17 +1656,33 @@ Created by FunTech with 😘
     return "iOS";
   if (/\bAndroid\b/i.test(r))
     return "Android";
-}, hr = (r) => /Gecko\/\d+/i.test(r) && !/like Gecko/i.test(r) ? "Gecko" : /AppleWebKit\/\d+/i.test(r) && /like Gecko/i.test(r) ? "WebKit" : /Opera\/\d+/i.test(r) ? "Presto" : /Trident\/\d+/i.test(r) ? "Trident" : /Edge\/\d+/i.test(r) ? "EdgeHTML" : /Chrome\/\d+/i.test(r) ? "Blink" : "WebKit", kr = (r) => {
-  const [t, n] = A(
-    void 0
-  );
+}, hr = (r) => {
+  if (/Gecko\/\d+/i.test(r) && !/like Gecko/i.test(r))
+    return "Gecko";
+  if (/AppleWebKit\/\d+/i.test(r) && /like Gecko/i.test(r))
+    return "WebKit";
+  if (/Opera\/\d+/i.test(r))
+    return "Presto";
+  if (/Trident\/\d+/i.test(r))
+    return "Trident";
+  if (/Edge\/\d+/i.test(r))
+    return "EdgeHTML";
+  if (/Chrome\/\d+/i.test(r))
+    return "Blink";
+}, kr = (r) => {
+  const [t, n] = A({
+    mobileOS: void 0,
+    renderingEngine: void 0,
+    userAgent: "",
+    testing: void 0
+  });
   return ur(() => {
     const o = navigator.userAgent, i = pr(o), s = hr(o);
     n({
       mobileOS: i,
       renderingEngine: s,
       userAgent: o,
-      testing: r ? r(o) : void 0
+      testing: r && r(o)
     });
   }, []), t;
 };
