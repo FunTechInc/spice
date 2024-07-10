@@ -8,8 +8,8 @@ import { fixViewportForSmall } from "./utils/fixViewportForSmall";
 type UseStarterProps = {
    /** If set to true, `width=360` will be set in `meta[name="viewport"]` , default : `true` */
    isFixViewportForSmall?: boolean;
-   /** default : `false` */
-   areYouFun?: boolean;
+   /** If a string is set, it is concatenated with the default string. default : `false` */
+   areYouFun?: boolean | string;
 };
 
 /**
@@ -38,7 +38,7 @@ export const useStarter = ({
       document.body.dataset.spiceRendered = "true";
       handleFixViewportForSmall(window.innerWidth);
       if (areYouFun && process.env.NODE_ENV !== "development") {
-         funtechConsole();
+         funtechConsole(areYouFun);
       }
    }, [areYouFun, handleFixViewportForSmall]);
 };

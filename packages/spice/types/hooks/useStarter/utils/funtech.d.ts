@@ -1,1 +1,1 @@
-export declare const funtechConsole: () => void;
+export declare const funtechConsole: (customLog: string | true) => void;
