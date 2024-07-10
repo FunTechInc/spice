@@ -26,12 +26,7 @@ const Code = () => {
 
    return (
       <>
-         <CodeBlock
-            code={`const isMatch = useMediaQuery({
-	type: "max",
-	width: 960,
-});`}
-         />
+         <CodeBlock code={`const isMatch = useMediaQuery("max", 960);`} />
          <p>return:{match()}</p>
       </>
    );

@@ -3,32 +3,35 @@
 import { useCallback, useEffect, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
 
-export const useMediaQuery = (type: "max" | "min", width: number) => {
-   const [isQuery, setIsQuery] = useState<boolean | null>(null);
+export const useMediaQuery = (
+   mediaQueryType: "max" | "min",
+   breakpoint: number
+) => {
+   const [isRange, setIsRange] = useState<boolean | null>(null);
 
-   const updateState = useCallback(
+   const updateIsRange = useCallback(
       (currentWidth: number) => {
-         switch (type) {
+         switch (mediaQueryType) {
             case "max":
-               setIsQuery(width >= currentWidth);
+               setIsRange(breakpoint >= currentWidth);
                break;
             case "min":
-               setIsQuery(width <= currentWidth);
+               setIsRange(breakpoint <= currentWidth);
                break;
             default:
                break;
          }
       },
-      [type, width]
+      [mediaQueryType, breakpoint]
    );
 
    useWindowResizeObserver({
-      onResize: ({ winW }) => updateState(winW),
+      onResize: ({ winW }) => updateIsRange(winW),
       debounce: 100,
-      dependencies: [],
+      dependencies: [updateIsRange],
    });
 
-   useEffect(() => updateState(window.innerWidth), [updateState]);
+   useEffect(() => updateIsRange(window.innerWidth), [updateIsRange]);
 
-   return isQuery;
+   return isRange;
 };
