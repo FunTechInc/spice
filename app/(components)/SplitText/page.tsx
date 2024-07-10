@@ -5,7 +5,18 @@ import { SplitText } from "@/packages/spice/src";
 const Demo = () => {
    return (
       <div>
-         <SplitText text="ほげほげほげほげほげ" />
+         <SplitText
+            exception={{
+               selector: "「",
+               attributes: {
+                  style: {
+                     color: "red",
+                     marginLeft: "-.5em",
+                  },
+               },
+            }}
+            text={`ほ「げほげ\nほげほげほげ`}
+         />
       </div>
    );
 };

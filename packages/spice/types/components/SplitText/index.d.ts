@@ -4,5 +4,10 @@ export type SplitTextProps = {
     text: string;
     /** Split by character or by word . For `words`, split by whitespace. */
     type?: "chars" | "words";
-} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-export declare const SplitText: ({ type, text, ...rest }: SplitTextProps) => (import("react/jsx-runtime").JSX.Element | null)[];
+    /** It is possible to set exceptional attributes for certain characters only */
+    exception?: {
+        selector: string;
+        attributes?: Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
+    };
+} & Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
+export declare const SplitText: ({ type, text, exception, ...rest }: SplitTextProps) => (import("react/jsx-runtime").JSX.Element | null)[];
