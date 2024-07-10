@@ -1,1 +1,1 @@
-export declare const useMediaQuery: (type: "max" | "min", width: number) => boolean | null;
+export declare const useMediaQuery: (mediaQueryType: "max" | "min", breakpoint: number) => boolean | null;
