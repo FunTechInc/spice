@@ -6,6 +6,10 @@ Created by FunTech with 😘
 
 `;
 
-export const funtechConsole = () => {
-   console.log(funtechLog);
+export const funtechConsole = (customLog: string | true) => {
+   let log = funtechLog;
+   if (typeof customLog === "string") {
+      log += customLog;
+   }
+   console.log(log);
 };

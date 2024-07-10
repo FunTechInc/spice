@@ -1,5 +1,5 @@
 "use client";
-import Ue, { createContext as B, useContext as z, useState as A, useCallback as P, forwardRef as G, useRef as j, useEffect as C, useMemo as k, memo as Dt, useLayoutEffect as Ft, useReducer as At } from "react";
+import Ue, { createContext as B, useContext as z, useState as F, useCallback as P, forwardRef as G, useRef as j, useEffect as C, useMemo as k, memo as Dt, useLayoutEffect as At, useReducer as Ft } from "react";
 import fe from "gsap";
 var de = { exports: {} }, q = {};
 /**
@@ -49,7 +49,7 @@ function Lt() {
       var i = E && e[E] || e[W];
       return typeof i == "function" ? i : null;
     }
-    var F = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    var A = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function T(e) {
       {
         for (var i = arguments.length, a = new Array(i > 1 ? i - 1 : 0), g = 1; g < i; g++)
@@ -59,7 +59,7 @@ function Lt() {
     }
     function ee(e, i, a) {
       {
-        var g = F.ReactDebugCurrentFrame, x = g.getStackAddendum();
+        var g = A.ReactDebugCurrentFrame, x = g.getStackAddendum();
         x !== "" && (i += "%s", a = a.concat([x]));
         var S = a.map(function(w) {
           return String(w);
@@ -193,7 +193,7 @@ function Lt() {
         V < 0 && T("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
-    var re = F.ReactCurrentDispatcher, ne;
+    var re = A.ReactCurrentDispatcher, ne;
     function X(e, i, a) {
       {
         if (ne === void 0)
@@ -319,7 +319,7 @@ function Lt() {
         }
       return "";
     }
-    var Z = Object.prototype.hasOwnProperty, je = {}, Ce = F.ReactDebugCurrentFrame;
+    var Z = Object.prototype.hasOwnProperty, je = {}, Ce = A.ReactDebugCurrentFrame;
     function Q(e) {
       if (e) {
         var i = e._owner, a = K(e.type, e._source, i ? i.type : null);
@@ -370,7 +370,7 @@ function Lt() {
       if (gt(e))
         return T("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", ht(e)), Oe(e);
     }
-    var U = F.ReactCurrentOwner, mt = {
+    var U = A.ReactCurrentOwner, mt = {
       key: !0,
       ref: !0,
       __self: !0,
@@ -468,7 +468,7 @@ function Lt() {
         return St(e, y, O, x, g, U.current, w);
       }
     }
-    var ae = F.ReactCurrentOwner, De = F.ReactDebugCurrentFrame;
+    var ae = A.ReactCurrentOwner, De = A.ReactDebugCurrentFrame;
     function N(e) {
       if (e) {
         var i = e._owner, a = K(e.type, e._source, i ? i.type : null);
@@ -481,7 +481,7 @@ function Lt() {
     function ue(e) {
       return typeof e == "object" && e !== null && e.$$typeof === t;
     }
-    function Fe() {
+    function Ae() {
       {
         if (ae.current) {
           var e = $(ae.current.type);
@@ -504,10 +504,10 @@ Check your code at ` + i + ":" + a + ".";
         return "";
       }
     }
-    var Ae = {};
+    var Fe = {};
     function Tt(e) {
       {
-        var i = Fe();
+        var i = Ae();
         if (!i) {
           var a = typeof e == "string" ? e : e.displayName || e.name;
           a && (i = `
@@ -523,9 +523,9 @@ Check the top-level render call using <` + a + ">.");
           return;
         e._store.validated = !0;
         var a = Tt(i);
-        if (Ae[a])
+        if (Fe[a])
           return;
-        Ae[a] = !0;
+        Fe[a] = !0;
         var g = "";
         e && e._owner && e._owner !== ae.current && (g = " It was passed a child from " + $(e._owner.type) + "."), N(e), T('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', a, g), N(null);
       }
@@ -593,7 +593,7 @@ Check the top-level render call using <` + a + ">.");
           var y = "";
           (e === void 0 || typeof e == "object" && e !== null && Object.keys(e).length === 0) && (y += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
           var O = _t(x);
-          O ? y += O : y += Fe();
+          O ? y += O : y += Ae();
           var R;
           e === null ? R = "null" : ie(e) ? R = "array" : e !== void 0 && e.$$typeof === t ? (R = "<" + ($(e.type) || "Unknown") + " />", y = " Did you accidentally export a JSX literal instead of a component?") : R = typeof e, T("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", R, y);
         }
@@ -629,7 +629,7 @@ Check the top-level render call using <` + a + ">.");
 process.env.NODE_ENV === "production" ? de.exports = $t() : de.exports = Lt();
 var l = de.exports;
 const qe = B(!0), He = B((r) => !r), Wt = ({ children: r }) => {
-  const [t, n] = A(!0);
+  const [t, n] = F(!0);
   return /* @__PURE__ */ l.jsx(qe.Provider, { value: t, children: /* @__PURE__ */ l.jsx(He.Provider, { value: n, children: r }) });
 }, Mt = ({ children: r }) => {
   const t = z(qe);
@@ -883,7 +883,7 @@ const qt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const [n, o] = A({
+  const [n, o] = F({
     isLeaving: !1,
     isAnimation: !0,
     prev: "",
@@ -1003,7 +1003,7 @@ const qt = {
   defaultValue: []
 }, Ze = B(Kt), Qe = B(() => {
 }), Zt = ({ children: r, defaultValue: t }) => {
-  const [n, o] = A({
+  const [n, o] = F({
     target: "",
     toggle: !1,
     defaultValue: t
@@ -1017,7 +1017,7 @@ const qt = {
   const o = et(), s = Qt(), c = k(
     () => !!o.defaultValue.find((v) => v === t),
     [o, t]
-  ), [u, d] = A(c);
+  ), [u, d] = F(c);
   return /* @__PURE__ */ l.jsx(
     "button",
     {
@@ -1071,7 +1071,7 @@ const qt = {
   const c = et(), u = k(
     () => !!c.defaultValue.find((m) => m === r),
     [c, r]
-  ), [d, v] = A(u);
+  ), [d, v] = F(u);
   k(() => {
     c.target === r && v(!d);
   }, [c.target, c.toggle]);
@@ -1132,7 +1132,7 @@ const qt = {
       digitNumber: E,
       currentPercent: W,
       limit: D,
-      destination: F
+      destination: A
     }) => {
       if (d[b] !== E && W <= D) {
         const T = E.toString(), ee = (Math.min(8, E) + 1).toString(), te = W >= D;
@@ -1140,8 +1140,8 @@ const qt = {
           digitContainer: p,
           percent: W,
           digit: b,
-          destination: F,
-          duration: r / (F / b)
+          destination: A,
+          duration: r / (A / b)
         }), d[b] = E;
       }
     },
@@ -1163,7 +1163,7 @@ const qt = {
           clearInterval(v.current), E > 100 && u && await ve(u(b.getAll())), m(E - 1);
         };
         E === 1 && c && c(b.getAll()), E > p && await W();
-        const D = Math.floor(E / 100) % 100, F = Math.floor(E / 10) % 10, T = E % 10;
+        const D = Math.floor(E / 100) % 100, A = Math.floor(E / 10) % 10, T = E % 10;
         h({
           digitContainer: t.current,
           digit: 1,
@@ -1175,7 +1175,7 @@ const qt = {
         }), h({
           digitContainer: n.current,
           digit: 10,
-          digitNumber: F,
+          digitNumber: A,
           currentPercent: E,
           numbersTarget: b.tens,
           limit: 90,
@@ -1254,7 +1254,7 @@ const xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     };
   }, u);
 }, ir = (r) => {
-  const [t, n] = A(!1);
+  const [t, n] = F(!1);
   return or({
     ...r,
     onEnter: () => n(!0),
@@ -1380,7 +1380,7 @@ const Rr = ({
     style: u,
     ...d
   }, v) => {
-    const [h, f] = A(t === 0), p = !!c;
+    const [h, f] = F(t === 0), p = !!c;
     return C(() => {
       t !== 0 && setTimeout(() => f(!0), t);
     }, [t]), /* @__PURE__ */ l.jsx(
@@ -1462,7 +1462,7 @@ const Rr = ({
   }
 );
 cr.displayName = "Loader";
-const ur = typeof document < "u" ? Ft : C, he = ({
+const ur = typeof document < "u" ? At : C, he = ({
   onResize: r,
   debounce: t = 100,
   dependencies: n = []
@@ -1485,8 +1485,9 @@ Created by FunTech with 😘
 👉 https://funtech.inc/
 👉 https://github.com/FunTechInc
 
-`, fr = () => {
-  console.log(lr);
+`, fr = (r) => {
+  let t = lr;
+  typeof r == "string" && (t += r), console.log(t);
 }, dr = (r) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
@@ -1508,10 +1509,10 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), C(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && fr();
+    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && fr(t);
   }, [t, n]);
 }, Tr = () => {
-  const [r, t] = A(null), n = P(() => {
+  const [r, t] = F(null), n = P(() => {
     const o = window.ontouchstart, s = navigator.maxTouchPoints;
     o !== void 0 && 0 < s ? t(!0) : t(!1);
   }, []);
@@ -1525,7 +1526,7 @@ Created by FunTech with 😘
   debounce: t = 10,
   dependencies: n = []
 }) => {
-  const o = j(null), [s, c] = At(
+  const o = j(null), [s, c] = Ft(
     (f, p) => {
       switch (p.type) {
         case le:
@@ -1545,7 +1546,7 @@ Created by FunTech with 😘
     window.removeEventListener("scroll", h), clearTimeout(d.current);
   }), n), s;
 }, Cr = (r, t) => {
-  const [n, o] = A(null), s = P(
+  const [n, o] = F(null), s = P(
     (c) => {
       switch (r) {
         case "max":
@@ -1624,7 +1625,7 @@ Created by FunTech with 😘
       }
     }),
     [n, c, t]
-  ), [p, m] = A(!1), b = k(
+  ), [p, m] = F(!1), b = k(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(r).then(() => {
@@ -1661,7 +1662,7 @@ Created by FunTech with 😘
   if (/Chrome\/\d+/i.test(r))
     return "Blink";
 }, Pr = (r) => {
-  const [t, n] = A({
+  const [t, n] = F({
     mobileOS: void 0,
     isMobile: void 0,
     renderingEngine: void 0,
