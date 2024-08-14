@@ -6,15 +6,17 @@ const Demo = () => {
    return (
       <div>
          <SplitText
-            exception={{
-               selector: "「",
-               attributes: {
-                  style: {
-                     color: "red",
-                     marginLeft: "-.5em",
+            exception={[
+               {
+                  selector: "「",
+                  attributes: {
+                     style: {
+                        color: "red",
+                        marginLeft: "-.5em",
+                     },
                   },
                },
-            }}
+            ]}
             text={`ほ「げほげ\nほげほげほげ`}
          />
       </div>

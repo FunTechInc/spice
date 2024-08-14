@@ -9,7 +9,7 @@ export type SplitTextProps = {
    exception?: {
       selector: string;
       attributes?: Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
-   };
+   }[];
 } & Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
 
 export const SplitText = ({
@@ -24,15 +24,20 @@ export const SplitText = ({
       () =>
          text.split("\n").flatMap((segment, i, arr) => [
             ...segment.split(splitTag).map((char, charI) => {
-               if (exception && exception.selector === char) {
-                  return (
-                     <span
-                        key={`${i}-${charI}`}
-                        {...rest}
-                        {...exception.attributes}>
-                        {char}
-                     </span>
+               if (exception) {
+                  const match = exception.find(
+                     (item) => item.selector === char
                   );
+                  if (match) {
+                     return (
+                        <span
+                           key={`${i}-${charI}`}
+                           {...rest}
+                           {...match.attributes}>
+                           {char}
+                        </span>
+                     );
+                  }
                }
                return char === " " ? (
                   <span key={`${i}-${charI}`} {...rest}>

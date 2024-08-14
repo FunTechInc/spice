@@ -8,6 +8,6 @@ export type SplitTextProps = {
     exception?: {
         selector: string;
         attributes?: Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
-    };
+    }[];
 } & Omit<React.HTMLAttributes<HTMLSpanElement>, "children">;
 export declare const SplitText: ({ type, text, exception, ...rest }: SplitTextProps) => (import("react/jsx-runtime").JSX.Element | null)[];

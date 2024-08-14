@@ -1315,15 +1315,24 @@ const xr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   return k(
     () => t.split(`
 `).flatMap((u, d, v) => [
-      ...u.split(s).map((h, f) => n && n.selector === h ? /* @__PURE__ */ l.jsx(
-        "span",
-        {
-          ...o,
-          ...n.attributes,
-          children: h
-        },
-        `${d}-${f}`
-      ) : h === " " ? /* @__PURE__ */ l.jsx("span", { ...o, children: " " }, `${d}-${f}`) : /* @__PURE__ */ l.jsx("span", { ...o, children: h }, `${d}-${f}`)),
+      ...u.split(s).map((h, f) => {
+        if (n) {
+          const p = n.find(
+            (m) => m.selector === h
+          );
+          if (p)
+            return /* @__PURE__ */ l.jsx(
+              "span",
+              {
+                ...o,
+                ...p.attributes,
+                children: h
+              },
+              `${d}-${f}`
+            );
+        }
+        return h === " " ? /* @__PURE__ */ l.jsx("span", { ...o, children: " " }, `${d}-${f}`) : /* @__PURE__ */ l.jsx("span", { ...o, children: h }, `${d}-${f}`);
+      }),
       d < v.length - 1 ? /* @__PURE__ */ l.jsx("br", {}, d) : null
     ]),
     [s, t, o, n]
