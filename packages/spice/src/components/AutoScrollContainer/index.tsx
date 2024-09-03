@@ -5,14 +5,13 @@ import gsap from "gsap";
 import { useIsIntersecting } from "../../hooks/useIsIntersecting";
 import { useFrame } from "../../hooks/useFrame";
 
-type AutoScrollContainerProps = {
-   isReverse?: boolean;
+export type AutoScrollContainerProps = {
+   /** Negative values will result in the opposite direction. default : `1` */
    speed?: number;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const AutoScrollContainer = ({
    children,
-   isReverse = false,
    speed = 1,
    style,
    ...rest
@@ -44,22 +43,20 @@ export const AutoScrollContainer = ({
 
       const delta = gsap.ticker.deltaRatio() / 1000;
       const ratio = wrapper.clientWidth / firstChild.clientWidth;
-      progress.current += delta * speed * ratio;
+      progress.current += delta * Math.abs(speed) * ratio;
 
       if (progress.current >= 1) {
          progress.current = 0;
       }
 
-      if (isReverse) {
-         firstChild.style.transform = `translateX(${progress.current * -100}%)`;
-         secondChild.style.transform = `translateX(${
-            100 - progress.current * 100
-         }%)`;
+      if (speed < 0) {
+         const _progress = progress.current * -100;
+         firstChild.style.transform = `translateX(${_progress}%)`;
+         secondChild.style.transform = `translateX(${_progress}%)`;
       } else {
-         firstChild.style.transform = `translateX(${progress.current * 100}%)`;
-         secondChild.style.transform = `translateX(${
-            progress.current * 100 - 200
-         }%)`;
+         const _progress = progress.current * 100;
+         firstChild.style.transform = `translateX(${_progress}%)`;
+         secondChild.style.transform = `translateX(${_progress - 200}%)`;
       }
    });
 
