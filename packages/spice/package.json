@@ -1,24 +1,28 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.2.60",
+   "version": "1.2.62",
    "description": "spice",
-   "main": "./build/server/spice.cjs",
+   "main": "./build/client/spice.umd.cjs",
    "module": "./build/client/spice.js",
-   "types": "./types/server.d.ts",
+   "types": "./types/client.d.ts",
    "exports": {
       ".": {
          "types": "./types/client.d.ts",
-         "import": "./build/client/spice.js"
+         "import": "./build/client/spice.js",
+         "require": "./build/client/spice.umd.cjs"
       },
       "./server": {
          "types": "./types/server.d.ts",
-         "import": "./build/server/spice.cjs"
+         "import": "./build/server/spice.js",
+         "require": "./build/server/spice.umd.cjs"
       }
    },
    "type": "module",
    "scripts": {
       "type": "tsc",
-      "build": "tsc && vite build",
+      "build:client": "vite build --config vite.client.config.js",
+      "build:server": "vite build --config vite.server.config.js",
+      "build": "tsc && npm run build:client && npm run build:server",
       "clean": "rimraf build && rimraf types"
    },
    "repository": {
