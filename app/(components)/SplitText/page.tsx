@@ -1,24 +1,31 @@
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { SplitText } from "@/packages/spice/src/client";
+import { SplitText, CustomBreakLineParser } from "@/packages/spice/src/client";
 
 const Demo = () => {
    return (
       <div>
-         <SplitText
-            exception={[
-               {
-                  selector: "「",
-                  attributes: {
-                     style: {
-                        color: "red",
-                        marginLeft: "-.5em",
+         <p>
+            <SplitText
+               exception={[
+                  {
+                     selector: "「",
+                     attributes: {
+                        style: {
+                           color: "red",
+                           marginLeft: "-.5em",
+                        },
                      },
                   },
-               },
-            ]}
-            text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
-         />
+               ]}
+               text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
+            />
+         </p>
+         <p>
+            <CustomBreakLineParser
+               text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
+            />
+         </p>
       </div>
    );
 };
