@@ -85,6 +85,10 @@ const componentList = [
       href: "/Loader",
       title: "Loader",
    },
+   {
+      href: "/CustomBreakLineParser",
+      title: "CustomBreakLineParser",
+   },
 ];
 
 export const AsideNav = () => {
