@@ -1,7 +1,6 @@
 /// <reference types="react" />
-type AutoScrollContainerProps = {
-    isReverse?: boolean;
+export type AutoScrollContainerProps = {
+    /** Negative values will result in the opposite direction. default : `1` */
     speed?: number;
 } & React.HTMLAttributes<HTMLDivElement>;
-export declare const AutoScrollContainer: ({ children, isReverse, speed, style, ...rest }: AutoScrollContainerProps) => import("react/jsx-runtime").JSX.Element;
-export {};
+export declare const AutoScrollContainer: ({ children, speed, style, ...rest }: AutoScrollContainerProps) => import("react/jsx-runtime").JSX.Element;

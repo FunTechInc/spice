@@ -7,8 +7,8 @@ import { AutoScrollContainer } from "@/packages/spice/src";
 const Demo = () => {
    return (
       <div style={{ width: "400px" }}>
-         <AutoScrollContainer>
-            <p style={{ fontSize: "120px" }}>hgoehogheogheoghoehgoehgo</p>
+         <AutoScrollContainer speed={-10}>
+            <p style={{ fontSize: "120px" }}>hgoehogheog</p>
          </AutoScrollContainer>
       </div>
    );
