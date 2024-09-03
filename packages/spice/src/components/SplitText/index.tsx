@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { CustomBreakLineUtils } from "../CustomBreakLineParser";
 
 export type SplitTextProps = {
    /** The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class. */
@@ -22,23 +23,21 @@ export const SplitText = ({
 
    const wrappedText = useMemo(
       () =>
-         text.split(/(\n|###br\.[^#]+###|###br###)/).flatMap((segment, i) => {
-            if (segment === "\n" || segment === "###br###") {
+         text.split(CustomBreakLineUtils.regex).flatMap((line, i) => {
+            if (CustomBreakLineUtils.isRegularBreak(line)) {
                return [null, <br key={i} />];
             }
-            if (segment?.match(/###br\.(.*?)###/)) {
+            if (CustomBreakLineUtils.isSpecificBreak(line)) {
                return [
                   null,
                   <br
                      key={i}
-                     className={
-                        segment.match(/(?<=###br\.).+?(?=###)/)?.[0] || ""
-                     }
+                     className={CustomBreakLineUtils.getClassName(line)}
                   />,
                ];
             }
             return [
-               ...segment.split(splitTag).map((char, charI) => {
+               ...line.split(splitTag).map((char, charI) => {
                   if (exception) {
                      const match = exception.find(
                         (item) => item.selector === char
