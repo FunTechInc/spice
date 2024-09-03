@@ -1,15 +1,18 @@
 {
    "name": "@funtech-inc/spice",
-   "version": "1.2.56",
+   "version": "1.2.60",
    "description": "spice",
-   "main": "./build/spice.umd.cjs",
-   "module": "./build/spice.js",
-   "types": "./types/index.d.ts",
+   "main": "./build/server/spice.cjs",
+   "module": "./build/client/spice.js",
+   "types": "./types/server.d.ts",
    "exports": {
       ".": {
-         "types": "./types/index.d.ts",
-         "import": "./build/spice.js",
-         "require": "./build/spice.umd.cjs"
+         "types": "./types/client.d.ts",
+         "import": "./build/client/spice.js"
+      },
+      "./server": {
+         "types": "./types/server.d.ts",
+         "import": "./build/server/spice.cjs"
       }
    },
    "type": "module",

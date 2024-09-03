@@ -1,6 +1,6 @@
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { SplitText } from "@/packages/spice/src";
+import { SplitText } from "@/packages/spice/src/client";
 
 const Demo = () => {
    return (

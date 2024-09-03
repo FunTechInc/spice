@@ -1,7 +1,7 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { useIsTouchDevice } from "@/packages/spice/src";
+import { useIsTouchDevice } from "@/packages/spice/src/client";
 
 const Description = () => {
    return (

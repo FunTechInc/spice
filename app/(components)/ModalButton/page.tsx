@@ -1,7 +1,7 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { ModalButton } from "@/packages/spice/src";
+import { ModalButton } from "@/packages/spice/src/client";
 import { useStore } from "@/app/_context/store";
 import { ModalContent } from "./ModalContent";
 import s from "./style.module.scss";

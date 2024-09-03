@@ -1,5 +1,3 @@
-"use client";
-
 import { Input } from "./components/item/Input";
 import { Select } from "./components/item/Select";
 import { FieldLayout, FormItem } from "./components/FieldLayout";

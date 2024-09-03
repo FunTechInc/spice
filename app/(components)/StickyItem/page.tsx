@@ -2,7 +2,7 @@
 
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { StickyItem } from "@/packages/spice/src";
+import { StickyItem } from "@/packages/spice/src/client";
 import s from "./style.module.scss";
 
 const Description = () => {

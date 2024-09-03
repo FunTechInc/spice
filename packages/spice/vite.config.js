@@ -12,16 +12,32 @@ export default defineConfig({
          fileName: "spice",
       },
       rollupOptions: {
-         external: ["react", "gsap", "react-dom"],
-         output: {
-            dir: "./build",
-            globals: {
-               react: "React",
-               "react-dom": "ReactDOM",
-               gsap: "gsap",
-            },
-            banner: `'use client';`,
+         input: {
+            client: path.resolve(__dirname, "src/client.js"), // クライアント用のエントリーポイント
+            server: path.resolve(__dirname, "src/server.js"), // サーバー用のエントリーポイント
          },
+         external: ["react", "gsap", "react-dom"],
+         output: [
+            {
+               dir: path.resolve(__dirname, "build/client"),
+               format: "es",
+               globals: {
+                  react: "React",
+                  "react-dom": "ReactDOM",
+                  gsap: "gsap",
+               },
+               banner: `'use client';`,
+            },
+            {
+               dir: path.resolve(__dirname, "build/server"),
+               format: "cjs",
+               globals: {
+                  react: "React",
+                  "react-dom": "ReactDOM",
+                  gsap: "gsap",
+               },
+            },
+         ],
       },
       sourcemap: true,
    },

@@ -1,7 +1,7 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { LoadingProgress } from "@/packages/spice/src";
+import { LoadingProgress } from "@/packages/spice/src/client";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import s from "./index.module.scss";

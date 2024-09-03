@@ -1,7 +1,7 @@
 "use client";
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { useScrollDirection } from "@/packages/spice/src";
+import { useScrollDirection } from "@/packages/spice/src/client";
 import s from "./style.module.scss";
 import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
