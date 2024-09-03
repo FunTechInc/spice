@@ -1,5 +1,3 @@
-"use client";
-
 import { VideoHTMLAttributes, forwardRef } from "react";
 
 export interface VideoProps extends VideoHTMLAttributes<HTMLVideoElement> {

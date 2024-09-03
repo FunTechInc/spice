@@ -2,7 +2,7 @@
 
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { useIntersectionObserver } from "@/packages/spice/src";
+import { useIntersectionObserver } from "@/packages/spice/src/client";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import s from "./style.module.scss";

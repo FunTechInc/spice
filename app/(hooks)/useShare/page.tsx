@@ -2,7 +2,7 @@
 
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
-import { useShare } from "@/packages/spice/src";
+import { useShare } from "@/packages/spice/src/client";
 import s from "./index.module.scss";
 
 const Description = () => {

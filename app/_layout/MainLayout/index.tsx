@@ -1,5 +1,5 @@
 import { MainInner } from "../MainInner/MainInner";
-import { StickyItem, SpiceWrapper } from "@/packages/spice/src";
+import { StickyItem, SpiceWrapper } from "@/packages/spice/src/client";
 import { AsideNav } from "@/app/_component/Nav";
 import s from "./layout.module.scss";
 
