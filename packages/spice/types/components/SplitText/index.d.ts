@@ -1,6 +1,6 @@
 /// <reference types="react" />
 export type SplitTextProps = {
-    /** Use "\n" to insert line break tags */
+    /** The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class. */
     text: string;
     /** Split by character or by word . For `words`, split by whitespace. */
     type?: "chars" | "words";
