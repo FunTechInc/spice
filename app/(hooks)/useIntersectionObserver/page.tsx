@@ -3,7 +3,7 @@
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { useIntersectionObserver } from "@/packages/spice/src/client";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { gsap } from "gsap";
 import s from "./style.module.scss";
 
@@ -16,28 +16,36 @@ const Description = () => {
 };
 
 const List = ({ index }: { index: number }) => {
-   const ref = useRef(null);
    const pos = 120;
    const xPos = index % 2 === 0 ? pos : pos * -1;
-   useIntersectionObserver({
-      targetRef: ref,
-      onEnter: ({ target }) => {
-         gsap.fromTo(
-            target,
-            {
-               opacity: 0,
-               x: xPos,
-            },
-            {
-               opacity: 1,
-               x: 0,
-               duration: 1,
-               ease: "power3.out",
-            }
-         );
-      },
+   const { ref, isIntersecting } = useIntersectionObserver({
+      onEnter: useCallback(
+         ({ target }: any) => {
+            gsap.fromTo(
+               target,
+               {
+                  opacity: 0,
+                  x: xPos,
+               },
+               {
+                  opacity: 1,
+                  x: 0,
+                  duration: 1,
+                  ease: "power3.out",
+               }
+            );
+         },
+         [xPos]
+      ),
    });
-   return <li ref={ref}>target</li>;
+
+   return (
+      <li
+         ref={ref}
+         style={{ backgroundColor: isIntersecting ? "red" : "blue" }}>
+         target
+      </li>
+   );
 };
 
 const Demo = () => {
