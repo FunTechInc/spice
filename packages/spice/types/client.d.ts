@@ -12,7 +12,6 @@ export * from "./hooks/useIsomorphicLayoutEffect";
 export * from "./hooks/useFrame";
 export * from "./hooks/useResizeObserver";
 export * from "./hooks/useIntersectionObserver";
-export * from "./hooks/useIsIntersecting";
 export * from "./hooks/useStarter";
 export * from "./hooks/useIsTouchDevice";
 export * from "./hooks/useWindowResizeObserver";

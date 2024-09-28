@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import gsap from "gsap";
-import { useIsIntersecting } from "../../hooks/useIsIntersecting";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { useFrame } from "../../hooks/useFrame";
 
 export type AutoScrollContainerProps = {
@@ -21,7 +21,7 @@ export const AutoScrollContainer = ({
    const firstChildRef = useRef<HTMLDivElement>(null);
    const secondChildRef = useRef<HTMLDivElement>(null);
 
-   const isIntersecting = useIsIntersecting({
+   const { isIntersecting } = useIntersectionObserver({
       targetRef: wrapperRef,
       once: false,
    });
