@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useAccordionState, useSetAccordionState } from "./Context";
 
 export type ButtonProps = {
@@ -15,15 +15,9 @@ export const Button = ({ children, value, ...rest }: ButtonProps) => {
    const accordionState = useAccordionState();
    const setAccordionState = useSetAccordionState();
 
-   const isDefaultOpen = useMemo(
-      () =>
-         accordionState.defaultValue.find((val) => val === value)
-            ? true
-            : false,
-      [accordionState, value]
+   const [isOpen, setIsOpen] = useState<boolean>(() =>
+      accordionState.defaultValue.find((val) => val === value) ? true : false
    );
-
-   const [isOpen, setIsOpen] = useState<boolean>(isDefaultOpen);
    return (
       <button
          onClick={() => {

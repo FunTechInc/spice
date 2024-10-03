@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAccordionState } from "./Context";
 import { useResizeObserver } from "../../hooks/useResizeObserver";
 import { setTabIndex } from "../../utils/setTabIndex";
@@ -29,16 +29,12 @@ export const Content = ({
    }
 
    const accordionState = useAccordionState();
-   const isDefaultOpen = useMemo(
-      () =>
-         accordionState.defaultValue.find((val) => val === value)
-            ? true
-            : false,
-      [accordionState, value]
+   const [isOpen, setIsOpen] = useState<boolean>(() =>
+      accordionState.defaultValue.find((val) => val === value) ? true : false
    );
-   const [isOpen, setIsOpen] = useState<boolean>(isDefaultOpen);
+   const isOpenDefault = useRef(isOpen);
 
-   useMemo(() => {
+   useEffect(() => {
       if (accordionState.target === value) {
          setIsOpen(!isOpen);
       }
@@ -83,7 +79,7 @@ export const Content = ({
          ref={wrapperRef}
          style={{
             overflow: "hidden",
-            height: isDefaultOpen ? "auto" : "0px",
+            height: isOpenDefault.current ? "auto" : "0px",
          }}
          id={`content-${value}`}
          aria-labelledby={`button-${value}`}
