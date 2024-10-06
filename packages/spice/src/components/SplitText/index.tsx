@@ -82,7 +82,7 @@ export const SplitText = ({
                         key={`${i}-${charI}`}
                         containerProps={containerProps}
                         {...rest}>
-                        {char === " " ? "&nbsp;" : char}
+                        {char === " " ? "\u00A0" : char}
                      </SplitContainer>
                   );
                }),

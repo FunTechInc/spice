@@ -831,7 +831,7 @@ const Se = ({ formProps: o }) => {
           {
             containerProps: h,
             ...d,
-            children: R === " " ? "&nbsp;" : R
+            children: R === " " ? " " : R
           },
           `${v}-${b}`
         );

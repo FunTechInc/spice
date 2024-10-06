@@ -17,7 +17,7 @@ const Demo = () => {
                }}
                style={{
                   display: "inline-block",
-                  translate: "0 12px",
+                  translate: "0 8px",
                }}
                exception={[
                   {
@@ -30,7 +30,7 @@ const Demo = () => {
                      },
                   },
                ]}
-               text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
+               text={`ほ「げ ほげ\nほ###br.hoge###げほげほげ`}
             />
          </p>
          {/* <p>
