@@ -1378,7 +1378,7 @@ const Sr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
           {
             containerProps: i,
             ...o,
-            children: g === " " ? "&nbsp;" : g
+            children: g === " " ? " " : g
           },
           `${d}-${f}`
         );
