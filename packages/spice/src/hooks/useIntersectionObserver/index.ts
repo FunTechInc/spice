@@ -26,7 +26,7 @@ export const useIntersectionObserver = ({
    onEnter,
    onLeave,
    dependencies = [],
-}: UseIntersectionObserverProps) => {
+}: UseIntersectionObserverProps = {}) => {
    const ref = useRef(null);
    const [isIntersecting, setIsIntersecting] = useState(false);
 
