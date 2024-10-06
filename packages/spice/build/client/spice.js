@@ -1233,7 +1233,7 @@ const Sr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   onEnter: o,
   onLeave: a,
   dependencies: l = []
-}) => {
+} = {}) => {
   const v = _(null), [d, g] = A(!1);
   return C(() => {
     const f = (r == null ? void 0 : r.current) ?? v.current;

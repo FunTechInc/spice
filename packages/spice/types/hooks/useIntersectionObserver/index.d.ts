@@ -13,7 +13,7 @@ export type UseIntersectionObserverProps = {
     onEnter?: (entry: IntersectionObserverEntry) => void;
     onLeave?: (entry: IntersectionObserverEntry) => void;
 } & IntersectionObserverProps;
-export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, onEnter, onLeave, dependencies, }: UseIntersectionObserverProps) => {
+export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, onEnter, onLeave, dependencies, }?: UseIntersectionObserverProps) => {
     ref: import("react").MutableRefObject<null>;
     isIntersecting: boolean;
 };
