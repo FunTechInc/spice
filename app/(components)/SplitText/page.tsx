@@ -7,6 +7,18 @@ const Demo = () => {
       <div>
          <p>
             <SplitText
+               containerProps={{
+                  className: "container",
+                  style: {
+                     backgroundColor: "lightblue",
+                     overflow: "hidden",
+                     display: "inline-block",
+                  },
+               }}
+               style={{
+                  display: "inline-block",
+                  translate: "0 12px",
+               }}
                exception={[
                   {
                      selector: "「",
@@ -21,11 +33,11 @@ const Demo = () => {
                text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
             />
          </p>
-         <p>
+         {/* <p>
             <CustomBreakLineParser
                text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
             />
-         </p>
+         </p> */}
       </div>
    );
 };
