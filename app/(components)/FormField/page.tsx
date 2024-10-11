@@ -107,48 +107,36 @@ const Demo = () => {
          <FormField
             className={s.field}
             label="Mail"
-            formProps={[
-               {
-                  type: "email",
-                  id: "e-mail",
-                  placeholder: "t.hashimoto@funtech.inc",
-                  ...register("email", {
-                     required: VALIDATION.required,
-                     pattern: {
-                        value: VALIDATION.emailRegExp,
-                        message: VALIDATION.email,
-                     },
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  <Error error={errors?.email?.message || ""} />
-               </>,
-            ]}
+            formProps={{
+               type: "email",
+               id: "e-mail",
+               placeholder: "t.hashimoto@funtech.inc",
+               ...register("email", {
+                  required: VALIDATION.required,
+                  pattern: {
+                     value: VALIDATION.emailRegExp,
+                     message: VALIDATION.email,
+                  },
+               }),
+            }}
+            errors={<Error error={errors?.email?.message || ""} />}
          />
          <FormField
             className={s.field}
             label="Tel"
-            formProps={[
-               {
-                  type: "tel",
-                  id: "tel",
-                  placeholder: "000-0000-000",
-                  ...register("tel", {
-                     required: VALIDATION.required,
-                     pattern: {
-                        value: /^[0-9-]*$/,
-                        message: VALIDATION.tel,
-                     },
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  <Error error={errors?.tel?.message || ""} />
-               </>,
-            ]}
+            formProps={{
+               type: "tel",
+               id: "tel",
+               placeholder: "000-0000-000",
+               ...register("tel", {
+                  required: VALIDATION.required,
+                  pattern: {
+                     value: /^[0-9-]*$/,
+                     message: VALIDATION.tel,
+                  },
+               }),
+            }}
+            errors={<Error error={errors?.tel?.message || ""} />}
          />
          <FormField
             className={`${s.field} ${s.flex}`}
@@ -180,12 +168,8 @@ const Demo = () => {
                },
             ]}
             errors={[
-               <>
-                  <Error error={errors?.firstName?.message || ""} />
-               </>,
-               <>
-                  <Error error={errors?.lastName?.message || ""} />
-               </>,
+               <Error key={0} error={errors?.firstName?.message || ""} />,
+               <Error key={1} error={errors?.lastName?.message || ""} />,
             ]}
          />
          <FormField
@@ -236,25 +220,19 @@ const Demo = () => {
          <FormField
             className={`${s.field} ${s.select}`}
             label="Select Block"
-            formProps={[
-               {
-                  id: "selectBlock",
-                  isSelect: {
-                     defaultValue: VALIDATION.defaultSelect,
-                     options: ["option1", "option2", "option3"],
-                  },
-                  ...register("selectBlock", {
-                     required: VALIDATION.required,
-                     validate: (value) =>
-                        value !== VALIDATION.defaultSelect || VALIDATION.select,
-                  }),
+            formProps={{
+               id: "selectBlock",
+               isSelect: {
+                  defaultValue: VALIDATION.defaultSelect,
+                  options: ["option1", "option2", "option3"],
                },
-            ]}
-            errors={[
-               <>
-                  <Error error={errors?.selectBlock?.message || ""} />
-               </>,
-            ]}
+               ...register("selectBlock", {
+                  required: VALIDATION.required,
+                  validate: (value) =>
+                     value !== VALIDATION.defaultSelect || VALIDATION.select,
+               }),
+            }}
+            errors={<Error error={errors?.selectBlock?.message || ""} />}
          />
          <FormField
             className={`${s.field} ${s.select} ${s.flex}`}
@@ -278,275 +256,33 @@ const Demo = () => {
          <FormField
             className={s.field}
             label="Textarea"
-            formProps={[
-               {
-                  isTextarea: {
-                     rows: 10,
-                     cols: 33,
-                     defaultValue: "hogehogehogehoge",
-                  },
-                  placeholder: "Your text here",
-                  id: "lengthWatch",
-                  ...register("lengthWatch", {
-                     maxLength: {
-                        value: 20,
-                        message: VALIDATION.maxLength,
-                     },
-                  }),
+            formProps={{
+               isTextarea: {
+                  rows: 10,
+                  cols: 33,
+                  defaultValue: "hogehogehogehoge",
                },
-            ]}
-            errors={[
-               <>
-                  <Error error={errors?.lengthWatch?.message || ""} />
-               </>,
-            ]}
+               placeholder: "Your text here",
+               id: "lengthWatch",
+               ...register("lengthWatch", {
+                  maxLength: {
+                     value: 20,
+                     message: VALIDATION.maxLength,
+                  },
+               }),
+            }}
+            errors={<Error error={errors?.lengthWatch?.message || ""} />}
          />
          <LengthWatch control={control} />
          <FormField
             className={`${s.field} ${s.submit}`}
-            formProps={[
-               {
-                  type: "submit",
-                  value: "Send Request",
-                  disabled: !allFieldsFilled,
-               },
-            ]}
+            formProps={{
+               type: "submit",
+               value: "Send Request",
+               disabled: !allFieldsFilled,
+            }}
          />
       </form>
-   );
-};
-
-const Code = () => {
-   return (
-      <CodeBlock
-         code={`const Demo = () => {
-   const {
-      register,
-      control,
-      handleSubmit,
-      formState: { errors },
-   } = useForm<TInputs>({ mode: "onBlur" });
-
-   return (
-      <form
-         action="https://hyperform.jp/api/bcSznryS"
-         method="post">
-         <FormField
-            className={s.field}
-            label="Watch input"
-            formProps={[
-               {
-                  type: "text",
-                  id: "block-1",
-                  placeholder: "hoge",
-                  ...register("watchExample"),
-               },
-            ]}
-         />
-         <WatchTest control={control} />
-         <FormField
-            className={s.field}
-            label="Mail"
-            formProps={[
-               {
-                  type: "email",
-                  id: "e-mail",
-                  placeholder: "t.hashimoto@funtech.inc",
-                  ...register("email", {
-                     required: VALIDATION.required,
-                     pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Entered value does not match email format",
-                     },
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.email?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.email?.type === "pattern" ? (
-                     <Error error="this is not valid main patter." />
-                  ) : null}
-               </>,
-            ]}
-         />
-         <FormField
-            label="Name"
-            formProps={[
-               {
-                  type: "text",
-                  id: "firstName",
-                  placeholder: "firstName",
-                  ...register("firstName", {
-                     required: VALIDATION.required,
-                     maxLength: 20,
-                  }),
-               },
-               {
-                  type: "text",
-                  id: "lastName",
-                  placeholder: "lastName",
-                  ...register("lastName", {
-                     required: VALIDATION.required,
-                     maxLength: 20,
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.firstName?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.firstName?.type === "maxLength" ? (
-                     <Error error="First name cannot exceed 20 characters" />
-                  ) : null}
-               </>,
-               <>
-                  {errors?.lastName?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-                  {errors?.lastName?.type === "maxLength" ? (
-                     <Error error="First name cannot exceed 20 characters" />
-                  ) : null}
-               </>,
-            ]}
-         />
-         <FormField
-            label="Radio"
-            formProps={[
-               {
-                  type: "radio",
-                  id: "radio-1",
-                  value: "option1",
-                  ...register("radio", {
-                     required: VALIDATION.required,
-                  }),
-               },
-               {
-                  type: "radio",
-                  id: "radio-2",
-                  value: "option2",
-                  ...register("radio", {
-                     required: VALIDATION.required,
-                  }),
-               },
-               {
-                  type: "radio",
-                  id: "radio-3",
-                  value: "option3",
-                  ...register("radio", {
-                     required: VALIDATION.required,
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.radio?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-               </>,
-            ]}
-         />
-         <FormField
-            label="Checkbox"
-            formProps={[
-               {
-                  type: "checkbox",
-                  id: "check-1",
-                  value: "option1",
-                  name: "check-sample",
-               },
-               {
-                  type: "checkbox",
-                  id: "check-2",
-                  value: "option2",
-                  name: "check-sample",
-               },
-               {
-                  type: "checkbox",
-                  id: "check-3",
-                  value: "option3",
-                  name: "check-sample",
-               },
-            ]}
-         />
-         <FormField
-            label="Select Block"
-            formProps={[
-               {
-                  isSelect: {
-                     defaultValue: "--Please choose an option--",
-                     options: ["option1", "option2", "option3"],
-                  },
-                  ...register("selectBlock", { required: VALIDATION.required }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.selectBlock?.type === "required" ? (
-                     <Error error="This field is required" />
-                  ) : null}
-               </>,
-            ]}
-         />
-         <FormField
-            label="Select flex"
-            formProps={[
-               {
-                  isSelect: {
-                     options: ["option1", "初期値にする", "option3"],
-                     defaultSelectedIndex: 1,
-                  },
-                  name: "select flex 1",
-               },
-               {
-                  isSelect: {
-                     options: ["option1", "option2", "option3"],
-                  },
-                  name: "select flex 2",
-               },
-            ]}
-         />
-         <FormField
-            className={s.field}
-            label="Textarea"
-            formProps={[
-               {
-                  isTextarea: {
-                     rows: 10,
-                     cols: 33,
-                     defaultValue: "hogehogehogehoge",
-                  },
-                  placeholder: "Your text here",
-                  id: "lengthWatch",
-                  ...register("lengthWatch", {
-                     maxLength: 20,
-                  }),
-               },
-            ]}
-            errors={[
-               <>
-                  {errors?.lengthWatch?.type === "maxLength" ? (
-                     <Error error="20文字以上です" />
-                  ) : null}
-               </>,
-            ]}
-         />
-         <LengthWatch control={control} />
-         <FormField
-            formProps={[
-               {
-                  type: "submit",
-                  value: "Send Request",
-               },
-            ]}
-         />
-      </form>
-   );
-};`}
-      />
    );
 };
 
@@ -556,7 +292,6 @@ const Page = () => {
          title="FormField"
          description={<Description />}
          demo={<Demo />}
-         code={<Code />}
       />
    );
 };
