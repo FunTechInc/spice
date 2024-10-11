@@ -88,6 +88,7 @@ const Demo = () => {
 
    return (
       <form
+         className={s.formContainer}
          // onSubmit={handleSubmit(onSubmit)}
          action="https://hyperform.jp/api/bcSznryS"
          method="post">
