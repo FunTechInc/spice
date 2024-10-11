@@ -131,7 +131,7 @@ const Demo = () => {
                ...register("tel", {
                   required: VALIDATION.required,
                   pattern: {
-                     value: /^[0-9-]*$/,
+                     value: VALIDATION.telRegExp,
                      message: VALIDATION.tel,
                   },
                }),
