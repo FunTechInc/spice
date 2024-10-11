@@ -8,7 +8,7 @@ type FieldLayoutProps = {
     formPropsArr: FormProps[];
     label?: string | React.ReactNode;
     FormItem: FormItem;
-    errors?: React.ReactNode[];
+    errors?: React.ReactNode[] | React.ReactNode;
 };
 export declare const FieldLayout: ({ layoutType, formPropsArr, label, FormItem, errors, }: FieldLayoutProps) => import("react/jsx-runtime").JSX.Element | undefined;
 export {};

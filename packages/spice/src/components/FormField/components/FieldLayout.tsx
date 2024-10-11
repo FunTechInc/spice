@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { FormProps } from "..";
 
 export type FormItem = React.FC<{
@@ -10,7 +9,7 @@ type FieldLayoutProps = {
    formPropsArr: FormProps[];
    label?: string | React.ReactNode;
    FormItem: FormItem;
-   errors?: React.ReactNode[];
+   errors?: React.ReactNode[] | React.ReactNode;
 };
 
 export const FieldLayout = ({
@@ -20,22 +19,22 @@ export const FieldLayout = ({
    FormItem,
    errors,
 }: FieldLayoutProps) => {
-   const createErrorMessage = useCallback(
-      (index: number) => {
-         if (!errors || !errors[index]) {
-            return null;
-         }
+   const ErrorMessage = ({ index }: { index: number }) => {
+      if (!errors) {
+         return null;
+      }
+      if (Array.isArray(errors)) {
          return errors[index];
-      },
-      [errors]
-   );
+      }
+      return errors;
+   };
 
    if (layoutType === "block") {
       return (
          <>
             {label && <label htmlFor={formPropsArr[0].id}>{label}</label>}
             <FormItem formProps={formPropsArr[0]} />
-            {createErrorMessage(0)}
+            <ErrorMessage index={0} />
          </>
       );
    }
@@ -47,11 +46,11 @@ export const FieldLayout = ({
             <ul>
                <li>
                   <FormItem formProps={formPropsArr[0]} />
-                  {createErrorMessage(0)}
+                  <ErrorMessage index={0} />
                </li>
                <li>
                   <FormItem formProps={formPropsArr[1]} />
-                  {createErrorMessage(1)}
+                  <ErrorMessage index={1} />
                </li>
             </ul>
          </>
@@ -92,7 +91,7 @@ export const FieldLayout = ({
          <>
             {label && <label>{label}</label>}
             <ul>{Options}</ul>
-            {createErrorMessage(0)}
+            <ErrorMessage index={0} />
          </>
       );
    }
