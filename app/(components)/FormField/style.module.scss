@@ -78,21 +78,23 @@
          content: "";
       }
       &:before {
+         --size: 16px;
+         width: var(--size);
+         height: var(--size);
+         left: calc(var(--size) * 0.5);
          opacity: 0;
-         left: 8px;
          z-index: 1;
-         width: 16px;
-         height: 16px;
          margin-top: 0;
          border-radius: $radius;
          background-color: #333;
       }
 
       &:after {
+         --size: 32px;
+         width: var(--size);
+         height: var(--size);
          left: 0;
          z-index: 0;
-         width: 32px;
-         height: 32px;
          margin-top: 0;
          border: 1px solid #333;
          border-radius: $radius;
