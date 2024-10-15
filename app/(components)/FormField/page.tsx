@@ -94,14 +94,12 @@ const Demo = () => {
          <FormField
             className={s.field}
             label="Watch input"
-            formProps={[
-               {
-                  type: "text",
-                  id: "block-1",
-                  placeholder: "hoge",
-                  ...register("watchExample"),
-               },
-            ]}
+            formProps={{
+               type: "text",
+               id: "block-1",
+               placeholder: "hoge",
+               ...register("watchExample"),
+            }}
          />
          <WatchTest control={control} />
          <FormField
@@ -175,47 +173,22 @@ const Demo = () => {
          <FormField
             className={`${s.field} ${s.radio}`}
             label="Radio"
-            formProps={[
-               {
-                  type: "radio",
-                  id: "radio-1",
-                  value: "option1",
-               },
-               {
-                  type: "radio",
-                  id: "radio-2",
-                  value: "option2",
-               },
-               {
-                  type: "radio",
-                  id: "radio-3",
-                  value: "option3",
-               },
-            ]}
+            formProps={[...Array(3)].map((_, i) => ({
+               type: "radio",
+               id: `radio-${i + 1}`,
+               value: `option${i + 1}`,
+               name: "radio",
+            }))}
          />
          <FormField
             className={`${s.field} ${s.check}`}
             label="Checkbox"
-            formProps={[
-               {
-                  type: "checkbox",
-                  id: "check-1",
-                  value: "option1",
-                  name: "check-sample",
-               },
-               {
-                  type: "checkbox",
-                  id: "check-2",
-                  value: "option2",
-                  name: "check-sample",
-               },
-               {
-                  type: "checkbox",
-                  id: "check-3",
-                  value: "option3",
-                  name: "check-sample",
-               },
-            ]}
+            formProps={[...Array(3)].map((_, i) => ({
+               type: "checkbox",
+               id: `checkbox-${i + 1}`,
+               value: `option${i + 1}`,
+               name: "checkbox",
+            }))}
          />
          <FormField
             className={`${s.field} ${s.select}`}

@@ -1,8 +1,7 @@
 import { Input } from "./components/item/Input";
 import { Select } from "./components/item/Select";
-import { FieldLayout, FormItem } from "./components/FieldLayout";
+import { FieldLayout } from "./components/FieldLayout";
 import { Textarea } from "./components/item/Textarea";
-import { useCallback, useMemo } from "react";
 
 type SelectOptions = {
    defaultValue?: string;
@@ -35,8 +34,8 @@ export type FormFieldsProps = {
    errors?: React.ReactNode[] | React.ReactNode;
 } & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
-/** 
- * 
+/**
+ *
  * ```jsx
  * <FormField
 		className={s.field}
@@ -63,64 +62,34 @@ export const FormField = ({
    errors,
    ...rest
 }: FormFieldsProps) => {
-   const formPropsArr = useMemo(
-      () => (Array.isArray(formProps) ? formProps : [formProps]),
-      [formProps]
-   );
-
-   const type = formPropsArr[0].type;
-   const propsLength = formPropsArr.length;
-
-   const isSelect = formPropsArr[0].isSelect ? true : false;
-   const isTextarea = formPropsArr[0].isTextarea ? true : false;
-
-   if (!(type === "radio" || type === "checkbox") && propsLength > 2) {
-      throw new Error("The length of formProps is up to 2.");
-   }
    if (errors && Array.isArray(errors) && errors.length > 2) {
       throw new Error("The length of error is up to 2.");
    }
 
-   const switchLayout = useCallback(
-      (FormItem: FormItem) => {
-         const layoutType = propsLength === 1 ? "block" : "flex";
-         return FieldLayout({
-            layoutType,
-            formPropsArr,
-            label,
-            FormItem,
-            errors,
-         });
-      },
-      [errors, formPropsArr, label, propsLength]
-   );
+   const formPropsArr = Array.isArray(formProps) ? formProps : [formProps];
 
-   const Field = useCallback(() => {
-      if (isSelect) {
-         return switchLayout(Select);
-      }
+   const { type, isSelect, isTextarea } = formPropsArr[0];
+   const propsLength = formPropsArr.length;
 
-      if (isTextarea) {
-         return switchLayout(Textarea);
-      }
+   if (!(type === "radio" || type === "checkbox") && propsLength > 2) {
+      throw new Error("The length of formProps is up to 2.");
+   }
 
-      if (type === "radio" || type === "checkbox") {
-         const layoutType = "radio-check";
-         return FieldLayout({
-            layoutType,
-            formPropsArr,
-            label,
-            FormItem: Input,
-            errors,
-         });
-      }
-
-      return switchLayout(Input);
-   }, [errors, formPropsArr, label, isSelect, isTextarea, switchLayout, type]);
+   const layoutType = ["radio", "checkbox"].includes(type || "")
+      ? "radio-check"
+      : propsLength === 1
+      ? "block"
+      : "flex";
 
    return (
       <fieldset {...rest}>
-         <Field />
+         <FieldLayout
+            layoutType={layoutType}
+            formPropsArr={formPropsArr}
+            label={label}
+            errors={errors}
+            FormItem={isSelect ? Select : isTextarea ? Textarea : Input}
+         />
       </fieldset>
    );
 };
