@@ -12,6 +12,19 @@ type FieldLayoutProps = {
    errors?: React.ReactNode[] | React.ReactNode;
 };
 
+const RADIO_CHECKBOX_STYLE = {
+   position: "absolute",
+   whiteSpace: "nowrap",
+   width: "1px",
+   height: "1px",
+   overflow: "hidden",
+   border: "0",
+   padding: 0,
+   clip: "rect(0 0 0 0)",
+   clipPath: "inset(50%)",
+   zIndex: "-99999",
+} as React.CSSProperties;
+
 export const FieldLayout = ({
    layoutType,
    formPropsArr,
@@ -67,16 +80,7 @@ export const FieldLayout = ({
                         id,
                         value,
                         style: {
-                           position: "absolute",
-                           whiteSpace: "nowrap",
-                           width: "1px",
-                           height: "1px",
-                           overflow: "hidden",
-                           border: "0",
-                           padding: 0,
-                           clip: "rect(0 0 0 0)",
-                           clipPath: "inset(50%)",
-                           zIndex: "-99999",
+                           ...RADIO_CHECKBOX_STYLE,
                            ...(style || {}),
                         },
                         ...rest,
