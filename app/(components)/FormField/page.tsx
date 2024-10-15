@@ -1,7 +1,6 @@
 "use client";
 import { useForm, SubmitHandler, useWatch, Control } from "react-hook-form";
 
-import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { FormField } from "@/packages/spice/src/client";
 import s from "./style.module.scss";
@@ -39,6 +38,7 @@ type TInputs = {
    radio: string;
    selectBlock: string;
    lengthWatch: string;
+   privacyCheck: string;
 };
 
 const WatchTest = ({ control }: { control: Control<TInputs> }) => {
@@ -80,7 +80,7 @@ const Demo = () => {
       control,
       handleSubmit,
       formState: { errors, isValid },
-   } = useForm<TInputs>({ mode: "onBlur" });
+   } = useForm<TInputs>({ mode: "onChange" });
 
    // const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
 
@@ -247,6 +247,23 @@ const Demo = () => {
             errors={<Error error={errors?.lengthWatch?.message || ""} />}
          />
          <LengthWatch control={control} />
+         <FormField
+            className={s.privacyCheck}
+            formProps={[
+               {
+                  type: "checkbox",
+                  optionLabel: (
+                     <p className={s.privacyCheckLink}>
+                        <a href="#">個人情報の取り扱い</a>に同意する
+                     </p>
+                  ),
+                  id: "privacyCheck",
+                  ...register("privacyCheck", {
+                     required: VALIDATION.required,
+                  }),
+               },
+            ]}
+         />
          <FormField
             className={`${s.field} ${s.submit}`}
             formProps={{
