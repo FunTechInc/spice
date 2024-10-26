@@ -15,21 +15,22 @@ export type ModalButtonProps = {
 const CLOSE_BUTTON = ".spice__modal_close";
 
 export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
-   ({ children, dialog, onOpen, onClose, focusTarget, ...rest }, ref) => {
-      const {
-         children: dialogChildren,
-         style: dialogStyle,
-         ...dialogProps
-      } = dialog;
-
+   (
+      { children, dialog, onOpen, onClose, onClick, focusTarget, ...rest },
+      ref
+   ) => {
       const dialogRef = useRef<HTMLDialogElement>(null);
 
-      const showModal = useCallback(() => {
-         toggleScroll("add");
-         dialogRef.current!.showModal();
-         focusTarget?.current?.focus();
-         onOpen && onOpen(dialogRef.current!);
-      }, [onOpen, focusTarget]);
+      const showModal = useCallback(
+         (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+            onClick?.(e);
+            toggleScroll("add");
+            dialogRef.current!.showModal();
+            focusTarget?.current?.focus();
+            onOpen?.(dialogRef.current!);
+         },
+         [onOpen, onClick, focusTarget]
+      );
 
       const closeModal = useCallback(async () => {
          onClose && (await promiseMaker(onClose(dialogRef.current!)));
@@ -67,12 +68,7 @@ export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
 
       return (
          <>
-            <button
-               ref={ref}
-               onClick={() => {
-                  showModal();
-               }}
-               {...rest}>
+            <button ref={ref} onClick={showModal} {...rest}>
                {children}
             </button>
             <dialog
@@ -91,11 +87,10 @@ export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
                   height: "100%",
                   padding: "0",
                   pointerEvents: "auto",
-                  ...(dialogStyle || {}),
+                  ...(dialog.style || {}),
                }}
-               {...dialogProps}>
-               {dialogChildren}
-            </dialog>
+               {...dialog}
+            />
          </>
       );
    }

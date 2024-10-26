@@ -5,7 +5,11 @@ import { useFrame } from "../useFrame";
 
 export const useOnHovering = (
    onHovering: (e: React.PointerEvent) => void
-): React.HTMLAttributes<HTMLElement> => {
+): {
+   onPointerEnter: (e: React.PointerEvent) => void;
+   onPointerLeave: () => void;
+   onPointerMove: (e: React.PointerEvent) => void;
+} => {
    const [isHovering, setIsHovering] = useState(false);
    const pointerEvent = useRef<React.PointerEvent>();
 
