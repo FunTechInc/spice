@@ -1,14 +1,12 @@
 "use client";
-import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { ModalButton } from "@/packages/spice/src/client";
 import { useStore } from "@/app/_context/store";
-import { ModalContent } from "./ModalContent";
-import s from "./style.module.scss";
-
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import classNames from "classnames";
+import s from "./style.module.scss";
 
 const Description = () => {
    return (
@@ -45,6 +43,12 @@ const Description = () => {
    );
 };
 
+const MODAL_CLASSNAME = {
+   backdrop: "js_modal_backdrop",
+   content: "js_modal_content",
+   close: "spice__modal_close",
+};
+
 const Demo = () => {
    const setIsModal = useStore((state: any) => state.setIsModalOpen);
    const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +56,7 @@ const Demo = () => {
    const { contextSafe } = useGSAP({ scope: ref });
    const openHandler = contextSafe(() => {
       gsap.fromTo(
-         [".js_modal_backdrop", ".js_modal_content"],
+         [`.${MODAL_CLASSNAME.backdrop}`, `.${MODAL_CLASSNAME.content}`],
          {
             opacity: 0,
          },
@@ -64,9 +68,9 @@ const Demo = () => {
       );
    });
    const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
-      gsap.to([".js_modal_backdrop", ".js_modal_content"], {
+      gsap.to([`.${MODAL_CLASSNAME.backdrop}`, `.${MODAL_CLASSNAME.content}`], {
          opacity: 0,
-         duration: 0.6,
+         duration: 1,
          ease: "power3.out",
          onComplete: () => {
             resolve(null);
@@ -81,15 +85,38 @@ const Demo = () => {
             dialog={{
                children: (
                   <div
-                     className={`${s.modal_content_wrapper} js_modal_backdrop`}>
-                     <ModalContent />
+                     className={classNames(
+                        s.modalContentContainer,
+                        MODAL_CLASSNAME.backdrop
+                     )}>
+                     <div
+                        className={classNames(
+                           s.modalContent,
+                           MODAL_CLASSNAME.content
+                        )}
+                        data-lenis-prevent>
+                        <p>
+                           Lorem ipsum dolor sit amet, consectetur adipisicing
+                           elit. Ex dolor nostrum ea accusantium magni quisquam
+                           esse minima provident ut odio delectus iste, tenetur
+                           nobis corrupti laborum mollitia vitae vero ipsam.
+                        </p>
+                        <button
+                           className={classNames(
+                              s.modalClose,
+                              MODAL_CLASSNAME.close
+                           )}>
+                           close
+                        </button>
+                     </div>
                   </div>
                ),
             }}
             onOpen={(dialog) => {
                setIsModal(true);
-               const content =
-                  dialog.getElementsByClassName("js_modal_content")[0];
+               const content = dialog.getElementsByClassName(
+                  MODAL_CLASSNAME.content
+               )[0];
                content.scrollTop = 0;
                openHandler();
             }}
@@ -102,72 +129,6 @@ const Demo = () => {
             <span>with Animation</span>
          </ModalButton>
       </div>
-   );
-};
-
-const Code = () => {
-   return (
-      <CodeBlock
-         code={`const Demo = () => {
-   const setIsModal = useStore((state: any) => state.setIsModalOpen);
-   const ref = useRef<HTMLDivElement>(null);
-
-   const { contextSafe } = useGSAP({ scope: ref });
-   const openHandler = contextSafe(() => {
-      gsap.fromTo(
-         [".js_modal_backdrop", ".js_modal_content"],
-         {
-            opacity: 0,
-         },
-         {
-            opacity: 1,
-            duration: 0.6,
-            ease: "power3.out",
-         }
-      );
-   });
-   const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
-      gsap.to([".js_modal_backdrop", ".js_modal_content"], {
-         opacity: 0,
-         duration: 0.6,
-         ease: "power3.out",
-         onComplete: () => {
-            resolve(null);
-         },
-      });
-   });
-
-   return (
-      <div ref={ref} className={s.wrapper}>
-         <ModalButton
-            className={s.button}
-            dialog={{
-               children: (
-                  <div
-                     className={\`${s.modal_content_wrapper} js_modal_backdrop\`}>
-                     <ModalContent />
-                  </div>
-               ),
-            }}
-            onOpen={(dialog) => {
-               setIsModal(true);
-               const content =
-                  dialog.getElementsByClassName("js_modal_content")[0];
-               content.scrollTop = 0;
-               openHandler();
-            }}
-            onClose={() => {
-               setIsModal(false);
-               return new Promise((resolve) => {
-                  closeHandler(resolve);
-               });
-            }}>
-            <span>with Animation</span>
-         </ModalButton>
-      </div>
-   );
-};`}
-      />
    );
 };
 
@@ -177,7 +138,6 @@ const Page = () => {
          title="ModalButton"
          description={<Description />}
          demo={<Demo />}
-         code={<Code />}
       />
    );
 };
