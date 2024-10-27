@@ -44,8 +44,8 @@ const Description = () => {
 };
 
 const MODAL_CLASSNAME = {
-   backdrop: "js_modal_backdrop",
    content: "js_modal_content",
+   scrollArea: "js_modal_scroll_area",
    close: "spice__modal_close",
 };
 
@@ -56,22 +56,22 @@ const Demo = () => {
    const { contextSafe } = useGSAP({ scope: ref });
    const openHandler = contextSafe(() => {
       gsap.fromTo(
-         [`.${MODAL_CLASSNAME.backdrop}`, `.${MODAL_CLASSNAME.content}`],
+         `.${MODAL_CLASSNAME.content}`,
          {
             opacity: 0,
          },
          {
             opacity: 1,
-            duration: 0.6,
+            duration: 0.3,
             ease: "power3.out",
          }
       );
    });
    const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
-      gsap.to([`.${MODAL_CLASSNAME.backdrop}`, `.${MODAL_CLASSNAME.content}`], {
+      gsap.to(`.${MODAL_CLASSNAME.content}`, {
          opacity: 0,
-         duration: 1,
-         ease: "power3.out",
+         duration: 0.3,
+         ease: "power1.out",
          onComplete: () => {
             resolve(null);
          },
@@ -87,19 +87,28 @@ const Demo = () => {
                   <div
                      className={classNames(
                         s.modalContentContainer,
-                        MODAL_CLASSNAME.backdrop
+                        MODAL_CLASSNAME.content
                      )}>
                      <div
                         className={classNames(
                            s.modalContent,
-                           MODAL_CLASSNAME.content
+                           MODAL_CLASSNAME.scrollArea
                         )}
                         data-lenis-prevent>
                         <p>
                            Lorem ipsum dolor sit amet, consectetur adipisicing
                            elit. Ex dolor nostrum ea accusantium magni quisquam
                            esse minima provident ut odio delectus iste, tenetur
-                           nobis corrupti laborum mollitia vitae vero ipsam.
+                           nobis corrupti laborum mollitia vitae vero
+                           ipsam.Lorem ipsum dolor sit amet, consectetur
+                           adipisicing elit. Ex dolor nostrum ea accusantium
+                           magni quisquam esse minima provident ut odio delectus
+                           iste, tenetur nobis corrupti laborum mollitia vitae
+                           vero ipsam.Lorem ipsum dolor sit amet, consectetur
+                           adipisicing elit. Ex dolor nostrum ea accusantium
+                           magni quisquam esse minima provident ut odio delectus
+                           iste, tenetur nobis corrupti laborum mollitia vitae
+                           vero ipsam.
                         </p>
                         <button
                            className={classNames(
@@ -114,10 +123,9 @@ const Demo = () => {
             }}
             onOpen={(dialog) => {
                setIsModal(true);
-               const content = dialog.getElementsByClassName(
-                  MODAL_CLASSNAME.content
-               )[0];
-               content.scrollTop = 0;
+               dialog.getElementsByClassName(
+                  MODAL_CLASSNAME.scrollArea
+               )[0].scrollTop = 0;
                openHandler();
             }}
             onClose={() => {
