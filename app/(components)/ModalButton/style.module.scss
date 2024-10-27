@@ -28,7 +28,8 @@ content
    overflow-y: auto;
    overscroll-behavior: contain;
    p {
-      font-size: 20px;
+      font-size: 40px;
+      line-height: 1.5;
       &:not(:first-child) {
          margin-top: 24px;
       }
