@@ -6,7 +6,7 @@ import s from "./layout.module.scss";
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <SpiceWrapper>
-         <main>
+         <main style={{ flex: 1 }}>
             <MainInner style={{ display: "flex", alignItems: "flex-start" }}>
                <StickyItem className={s.nav}>
                   <AsideNav />

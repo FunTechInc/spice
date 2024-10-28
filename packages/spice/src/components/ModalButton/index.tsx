@@ -3,32 +3,22 @@
 import { useRef, useEffect, useCallback, forwardRef } from "react";
 import { promiseMaker } from "../../utils/promiseMaker";
 
-function toggleScroll(action: "add" | "remove") {
-   const htmlRootStyle = document.documentElement.style;
-   const bodyStyle = document.body.style;
-
-   if (action === "add") {
-      htmlRootStyle.scrollbarGutter = "stable";
-      htmlRootStyle.overflow = "hidden";
-      bodyStyle.overflow = "hidden";
-   } else {
-      htmlRootStyle.scrollbarGutter = "";
-      htmlRootStyle.overflow = "";
-      bodyStyle.overflow = "";
-   }
-}
-
 export type ModalButtonProps = {
    dialog: React.DialogHTMLAttributes<HTMLDialogElement>;
    /** set focus to `focusTarget` when the modal is opened */
    focusTarget?: React.RefObject<HTMLElement>;
    onOpen?: (dialog: Element) => void;
    onClose?: (dialog: Element) => void;
+   /** scroll lock behavior. default : `true` */
+   scrollLock?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const CLOSE_BUTTON = "spice__modal_close";
+type StyleStore = {
+   paddingRight: number;
+   scrollbarWidth: number;
+};
 
-const DIALOG_STYLE = {
+const DIALOG_STYLE: React.CSSProperties = {
    border: "none",
    background: "none",
    maxWidth: "100%",
@@ -37,29 +27,72 @@ const DIALOG_STYLE = {
    height: "100%",
    padding: "0",
    pointerEvents: "auto",
-} as React.CSSProperties;
+};
+
+export const MODAL_CLASSNAME = {
+   close: "spice__modal_close",
+   scrollArea: "js_modal_scroll_area",
+};
+
+const getPaddingRight = () =>
+   parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0;
+const getScrollbarWidth = () =>
+   window.innerWidth - document.documentElement.clientWidth;
+
+const toggleScrollLock = (
+   lock: boolean,
+   { paddingRight, scrollbarWidth }: StyleStore
+) => {
+   const htmlRootStyle = document.documentElement.style;
+   const bodyStyle = document.body.style;
+   const adjustedPaddingRight = lock
+      ? paddingRight + scrollbarWidth
+      : paddingRight - scrollbarWidth;
+   htmlRootStyle.paddingRight = `${adjustedPaddingRight}px`;
+   htmlRootStyle.scrollbarGutter = lock ? "auto" : "";
+   bodyStyle.overflow = lock ? "hidden" : "";
+};
 
 export const ModalButton = forwardRef<HTMLButtonElement, ModalButtonProps>(
-   ({ dialog, onOpen, onClose, focusTarget, ...rest }, ref) => {
+   (
+      { dialog, onOpen, onClose, focusTarget, scrollLock = true, ...rest },
+      ref
+   ) => {
       const dialogRef = useRef<HTMLDialogElement>(null);
+      const styleStore = useRef<StyleStore>({
+         paddingRight: 0,
+         scrollbarWidth: 0,
+      });
 
       const showModal = useCallback(() => {
-         toggleScroll("add");
+         if (scrollLock) {
+            styleStore.current.paddingRight = getPaddingRight();
+            styleStore.current.scrollbarWidth = getScrollbarWidth();
+            toggleScrollLock(true, styleStore.current);
+         }
          dialogRef.current!.showModal();
          focusTarget?.current?.focus();
+         dialogRef.current
+            ?.getElementsByClassName(MODAL_CLASSNAME.scrollArea)[0]
+            ?.scrollTo(0, 0);
          onOpen?.(dialogRef.current!);
-      }, [onOpen, focusTarget]);
+      }, [onOpen, focusTarget, scrollLock]);
 
       const closeModal = useCallback(async () => {
-         onClose && (await promiseMaker(onClose(dialogRef.current!)));
-         toggleScroll("remove");
+         if (onClose) {
+            await promiseMaker(onClose(dialogRef.current!));
+         }
+         if (scrollLock) {
+            styleStore.current.paddingRight = getPaddingRight();
+            toggleScrollLock(false, styleStore.current);
+         }
          dialogRef.current!.close();
-      }, [onClose]);
+      }, [onClose, scrollLock]);
 
       // close the modal when ‘spice__modal_close’ is clicked.
       useEffect(() => {
          const closeBtn = dialogRef.current!.querySelectorAll(
-            `.${CLOSE_BUTTON}`
+            `.${MODAL_CLASSNAME.close}`
          );
          if (!closeBtn) return;
          closeBtn.forEach((element) =>

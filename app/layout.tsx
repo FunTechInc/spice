@@ -1,4 +1,5 @@
-import "the-new-css-reset/css/reset.css";
+import "@/css/reset.css";
+import "@/css/global.scss";
 
 import { Lato } from "next/font/google";
 import { MainLayout } from "@/app/_layout/MainLayout";
