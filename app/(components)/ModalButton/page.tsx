@@ -1,11 +1,12 @@
 "use client";
 import { MainView } from "@/app/_component/MainView";
-import { ModalButton } from "@/packages/spice/src/client";
+import { ModalButton, MODAL_CLASSNAME } from "@/packages/spice/src/client";
 import { useStore } from "@/app/_context/store";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import classNames from "classnames";
+import { FocusTrap } from "@mui/base";
 import s from "./style.module.scss";
 
 const Description = () => {
@@ -43,11 +44,7 @@ const Description = () => {
    );
 };
 
-const MODAL_CLASSNAME = {
-   content: "js_modal_content",
-   scrollArea: "js_modal_scroll_area",
-   close: "spice__modal_close",
-};
+const CONTENT_CLASSNAME = "js_modal_content";
 
 const Demo = () => {
    const setIsModal = useStore((state: any) => state.setIsModalOpen);
@@ -56,7 +53,7 @@ const Demo = () => {
    const { contextSafe } = useGSAP({ scope: ref });
    const openHandler = contextSafe(() => {
       gsap.fromTo(
-         `.${MODAL_CLASSNAME.content}`,
+         `.${CONTENT_CLASSNAME}`,
          {
             opacity: 0,
          },
@@ -68,7 +65,7 @@ const Demo = () => {
       );
    });
    const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
-      gsap.to(`.${MODAL_CLASSNAME.content}`, {
+      gsap.to(`.${CONTENT_CLASSNAME}`, {
          opacity: 0,
          duration: 0.3,
          ease: "power1.out",
@@ -78,54 +75,60 @@ const Demo = () => {
       });
    });
 
+   const closeBtn = useRef<HTMLButtonElement>(null);
+
    return (
       <div ref={ref} className={s.wrapper}>
          <ModalButton
+            focusTarget={closeBtn}
             className={s.button}
             dialog={{
                children: (
-                  <div
-                     className={classNames(
-                        s.modalContentContainer,
-                        MODAL_CLASSNAME.content
-                     )}>
+                  <FocusTrap open={true}>
                      <div
+                        tabIndex={-1}
                         className={classNames(
-                           s.modalContent,
-                           MODAL_CLASSNAME.scrollArea
-                        )}
-                        data-lenis-prevent>
-                        <p>
-                           Lorem ipsum dolor sit amet, consectetur adipisicing
-                           elit. Ex dolor nostrum ea accusantium magni quisquam
-                           esse minima provident ut odio delectus iste, tenetur
-                           nobis corrupti laborum mollitia vitae vero
-                           ipsam.Lorem ipsum dolor sit amet, consectetur
-                           adipisicing elit. Ex dolor nostrum ea accusantium
-                           magni quisquam esse minima provident ut odio delectus
-                           iste, tenetur nobis corrupti laborum mollitia vitae
-                           vero ipsam.Lorem ipsum dolor sit amet, consectetur
-                           adipisicing elit. Ex dolor nostrum ea accusantium
-                           magni quisquam esse minima provident ut odio delectus
-                           iste, tenetur nobis corrupti laborum mollitia vitae
-                           vero ipsam.
-                        </p>
-                        <button
+                           s.modalContentContainer,
+                           CONTENT_CLASSNAME
+                        )}>
+                        <div
                            className={classNames(
-                              s.modalClose,
-                              MODAL_CLASSNAME.close
-                           )}>
-                           close
-                        </button>
+                              s.modalContent,
+                              MODAL_CLASSNAME.scrollArea
+                           )}
+                           data-lenis-prevent>
+                           <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit. Ex dolor nostrum ea accusantium
+                              magni quisquam esse minima provident ut odio
+                              delectus iste, tenetur nobis corrupti laborum
+                              mollitia vitae vero ipsam.Lorem ipsum dolor sit
+                              amet, consectetur adipisicing elit. Ex dolor
+                              nostrum ea accusantium magni quisquam esse minima
+                              provident ut odio delectus iste, tenetur nobis
+                              corrupti laborum mollitia vitae vero ipsam.Lorem
+                              ipsum dolor sit amet, consectetur adipisicing
+                              elit. Ex dolor nostrum ea accusantium magni
+                              quisquam esse minima provident ut odio delectus
+                              iste, tenetur nobis corrupti laborum mollitia
+                              vitae vero ipsam.
+                              <button>hogehoge</button>
+                           </p>
+                           <button
+                              ref={closeBtn}
+                              className={classNames(
+                                 s.modalClose,
+                                 MODAL_CLASSNAME.close
+                              )}>
+                              close
+                           </button>
+                        </div>
                      </div>
-                  </div>
+                  </FocusTrap>
                ),
             }}
-            onOpen={(dialog) => {
+            onOpen={() => {
                setIsModal(true);
-               dialog.getElementsByClassName(
-                  MODAL_CLASSNAME.scrollArea
-               )[0].scrollTop = 0;
                openHandler();
             }}
             onClose={() => {

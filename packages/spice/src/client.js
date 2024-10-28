@@ -9,7 +9,6 @@ export * as LoadingProgress from "./components/LoadingProgress";
 export * from "./components/AutoScrollContainer";
 export * from "./components/SplitText";
 export * from "./components/Video";
-export * from "./components/FocusTrap";
 export * from "./components/Loader";
 export * from "./components/CustomBreakLineParser";
 
