@@ -4,11 +4,11 @@ import { useCallback, useRef, useState } from "react";
 import { useFrame } from "../useFrame";
 
 export const useOnHovering = (
-   onHovering: (e: React.PointerEvent) => void
+   onHovering: React.PointerEventHandler
 ): {
-   onPointerEnter: (e: React.PointerEvent) => void;
-   onPointerLeave: () => void;
-   onPointerMove: (e: React.PointerEvent) => void;
+   onPointerEnter: React.PointerEventHandler;
+   onPointerLeave: React.PointerEventHandler;
+   onPointerMove: React.PointerEventHandler;
 } => {
    const [isHovering, setIsHovering] = useState(false);
    const pointerEvent = useRef<React.PointerEvent>();
