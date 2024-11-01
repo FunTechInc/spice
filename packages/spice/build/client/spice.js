@@ -1,5 +1,5 @@
 "use client";
-import qe, { createContext as V, useContext as z, useState as I, forwardRef as X, useRef as R, useCallback as k, useEffect as T, useMemo as $, memo as Ft, useLayoutEffect as Lt, useReducer as Wt } from "react";
+import qe, { createContext as V, useContext as z, useState as A, forwardRef as X, useRef as R, useCallback as k, useEffect as C, useMemo as $, memo as Ft, useLayoutEffect as Lt, useReducer as Wt } from "react";
 import de from "gsap";
 var ve = { exports: {} }, q = {};
 /**
@@ -50,7 +50,7 @@ function Nt() {
       return typeof s == "function" ? s : null;
     }
     var D = r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function C(e) {
+    function T(e) {
       {
         for (var s = arguments.length, u = new Array(s > 1 ? s - 1 : 0), g = 1; g < s; g++)
           u[g - 1] = arguments[g];
@@ -89,7 +89,7 @@ function Nt() {
     function F(e) {
       if (e == null)
         return null;
-      if (typeof e.tag == "number" && C("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof e == "function")
+      if (typeof e.tag == "number" && T("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof e == "function")
         return e.displayName || e.name || null;
       if (typeof e == "string")
         return e;
@@ -190,7 +190,7 @@ function Nt() {
             })
           });
         }
-        H < 0 && C("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+        H < 0 && T("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
     var ne = D.ReactCurrentDispatcher, ie;
@@ -269,9 +269,9 @@ function Nt() {
               if (_ !== 1 || j !== 1)
                 do
                   if (_--, j--, j < 0 || b[_] !== O[j]) {
-                    var A = `
+                    var I = `
 ` + b[_].replace(" at new ", " at ");
-                    return e.displayName && A.includes("<anonymous>") && (A = A.replace("<anonymous>", e.displayName)), typeof e == "function" && K.set(e, A), A;
+                    return e.displayName && I.includes("<anonymous>") && (I = I.replace("<anonymous>", e.displayName)), typeof e == "function" && K.set(e, I), I;
                   }
                 while (_ >= 1 && j >= 0);
               break;
@@ -342,7 +342,7 @@ function Nt() {
             } catch (_) {
               b = _;
             }
-            b && !(b instanceof Error) && (ee(w), C("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", g || "React class", u, y, typeof b), ee(null)), b instanceof Error && !(b.message in Te) && (Te[b.message] = !0, ee(w), C("Failed %s type: %s", u, b.message), ee(null));
+            b && !(b instanceof Error) && (ee(w), T("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", g || "React class", u, y, typeof b), ee(null)), b instanceof Error && !(b.message in Te) && (Te[b.message] = !0, ee(w), T("Failed %s type: %s", u, b.message), ee(null));
           }
       }
     }
@@ -368,7 +368,7 @@ function Nt() {
     }
     function ke(e) {
       if (yt(e))
-        return C("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", bt(e)), Pe(e);
+        return T("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", bt(e)), Pe(e);
     }
     var U = D.ReactCurrentOwner, xt = {
       key: !0,
@@ -396,13 +396,13 @@ function Nt() {
     function St(e, s) {
       if (typeof e.ref == "string" && U.current && s && U.current.stateNode !== s) {
         var u = F(U.current.type);
-        ae[u] || (C('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', F(U.current.type), e.ref), ae[u] = !0);
+        ae[u] || (T('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', F(U.current.type), e.ref), ae[u] = !0);
       }
     }
     function Rt(e, s) {
       {
         var u = function() {
-          Ae || (Ae = !0, C("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", s));
+          Ae || (Ae = !0, T("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", s));
         };
         u.isReactWarning = !0, Object.defineProperty(e, "key", {
           get: u,
@@ -413,7 +413,7 @@ function Nt() {
     function _t(e, s) {
       {
         var u = function() {
-          Ie || (Ie = !0, C("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", s));
+          Ie || (Ie = !0, T("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", s));
         };
         u.isReactWarning = !0, Object.defineProperty(e, "ref", {
           get: u,
@@ -527,7 +527,7 @@ Check the top-level render call using <` + u + ">.");
           return;
         Fe[u] = !0;
         var g = "";
-        e && e._owner && e._owner !== ce.current && (g = " It was passed a child from " + F(e._owner.type) + "."), B(e), C('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', u, g), B(null);
+        e && e._owner && e._owner !== ce.current && (g = " It was passed a child from " + F(e._owner.type) + "."), B(e), T('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', u, g), B(null);
       }
     }
     function We(e, s) {
@@ -569,9 +569,9 @@ Check the top-level render call using <` + u + ">.");
         } else if (s.PropTypes !== void 0 && !ue) {
           ue = !0;
           var w = F(s);
-          C("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", w || "Unknown");
+          T("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", w || "Unknown");
         }
-        typeof s.getDefaultProps == "function" && !s.getDefaultProps.isReactClassApproved && C("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+        typeof s.getDefaultProps == "function" && !s.getDefaultProps.isReactClassApproved && T("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
     }
     function kt(e) {
@@ -579,11 +579,11 @@ Check the top-level render call using <` + u + ">.");
         for (var s = Object.keys(e.props), u = 0; u < s.length; u++) {
           var g = s[u];
           if (g !== "children" && g !== "key") {
-            B(e), C("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", g), B(null);
+            B(e), T("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", g), B(null);
             break;
           }
         }
-        e.ref !== null && (B(e), C("Invalid attribute `ref` supplied to `React.Fragment`."), B(null));
+        e.ref !== null && (B(e), T("Invalid attribute `ref` supplied to `React.Fragment`."), B(null));
       }
     }
     function Me(e, s, u, g, w, S) {
@@ -595,23 +595,23 @@ Check the top-level render call using <` + u + ">.");
           var O = Tt(w);
           O ? b += O : b += $e();
           var _;
-          e === null ? _ = "null" : se(e) ? _ = "array" : e !== void 0 && e.$$typeof === t ? (_ = "<" + (F(e.type) || "Unknown") + " />", b = " Did you accidentally export a JSX literal instead of a component?") : _ = typeof e, C("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", _, b);
+          e === null ? _ = "null" : se(e) ? _ = "array" : e !== void 0 && e.$$typeof === t ? (_ = "<" + (F(e.type) || "Unknown") + " />", b = " Did you accidentally export a JSX literal instead of a component?") : _ = typeof e, T("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", _, b);
         }
         var j = Ct(e, s, u, w, S);
         if (j == null)
           return j;
         if (y) {
-          var A = s.children;
-          if (A !== void 0)
+          var I = s.children;
+          if (I !== void 0)
             if (g)
-              if (se(A)) {
-                for (var Y = 0; Y < A.length; Y++)
-                  We(A[Y], e);
-                Object.freeze && Object.freeze(A);
+              if (se(I)) {
+                for (var Y = 0; Y < I.length; Y++)
+                  We(I[Y], e);
+                Object.freeze && Object.freeze(I);
               } else
-                C("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                T("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
             else
-              We(A, e);
+              We(I, e);
         }
         return e === i ? kt(j) : Pt(j), j;
       }
@@ -629,7 +629,7 @@ Check the top-level render call using <` + u + ">.");
 process.env.NODE_ENV === "production" ? ve.exports = Mt() : ve.exports = Nt();
 var c = ve.exports;
 const Ge = V(!0), Xe = V((r) => !r), Bt = ({ children: r }) => {
-  const [t, n] = I(!0);
+  const [t, n] = A(!0);
   return /* @__PURE__ */ c.jsx(Ge.Provider, { value: t, children: /* @__PURE__ */ c.jsx(Xe.Provider, { value: n, children: r }) });
 }, Yt = ({ children: r }) => {
   const t = z(Ge);
@@ -808,7 +808,7 @@ const Ge = V(!0), Xe = V((r) => !r), Bt = ({ children: r }) => {
     }, [t, i, o]), h = k(async () => {
       n && await he(n(f.current)), o && (v.current.paddingRight = ze(), He(!1, v.current)), f.current.close();
     }, [n, o]);
-    return T(() => {
+    return C(() => {
       const d = f.current.querySelectorAll(
         `.${Ve.close}`
       );
@@ -818,7 +818,7 @@ const Ge = V(!0), Xe = V((r) => !r), Bt = ({ children: r }) => {
         ), () => d.forEach(
           (p) => p.removeEventListener("click", h)
         );
-    }, [h]), T(() => {
+    }, [h]), C(() => {
       const d = (p) => {
         var x;
         ((x = f.current) == null ? void 0 : x.hasAttribute("open")) && p.key === "Escape" && h();
@@ -858,7 +858,7 @@ Kt.displayName = "ModalButton";
 const Zt = X(
   ({ children: r, ...t }, n) => {
     const i = Vt();
-    return T(() => (i(() => !1), () => {
+    return C(() => (i(() => !1), () => {
       i(() => !0);
     }), [i]), /* @__PURE__ */ c.jsx("div", { ref: n, ...t, children: r });
   }
@@ -878,7 +878,7 @@ const Qt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const [n, i] = I({
+  const [n, i] = A({
     isLeaving: !1,
     isAnimation: !0,
     prev: "",
@@ -933,7 +933,7 @@ const Qt = {
       "Please set the value to something other than an empty string."
     );
   const f = R(!0), v = R(null), m = pe(), h = Ze(), d = h.current === t && !h.isLeaving;
-  return T(() => {
+  return C(() => {
     if (f.current) {
       f.current = !1;
       return;
@@ -949,7 +949,7 @@ const Qt = {
       current: p.next,
       next: ""
     }))))(), d && n && n(v.current);
-  }, [h, m, n, i, o, t, d]), T(() => {
+  }, [h, m, n, i, o, t, d]), C(() => {
     Qe({
       content: v.current,
       isOpen: h.current === t
@@ -998,7 +998,7 @@ const Qt = {
   defaultValue: []
 }, et = V(ir), tt = V(() => {
 }), or = ({ children: r, defaultValue: t }) => {
-  const [n, i] = I({
+  const [n, i] = A({
     target: "",
     toggle: !1,
     defaultValue: t
@@ -1009,7 +1009,7 @@ const Qt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const i = rt(), o = sr(), [a, l] = I(
+  const i = rt(), o = sr(), [a, l] = A(
     () => !!i.defaultValue.find((f) => f === t)
   );
   return /* @__PURE__ */ c.jsx(
@@ -1036,7 +1036,7 @@ const Qt = {
   dependencies: i = []
 }) => {
   const o = R(0), a = R(!0);
-  T(() => {
+  C(() => {
     const l = new ResizeObserver((v) => {
       clearTimeout(o.current), o.current = setTimeout(() => {
         if (a.current) {
@@ -1062,14 +1062,14 @@ const Qt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const a = rt(), [l, f] = I(
+  const a = rt(), [l, f] = A(
     () => !!a.defaultValue.find((p) => p === r)
   ), v = R(l);
-  T(() => {
+  C(() => {
     a.target === r && f(!l);
   }, [a.target, a.toggle]);
   const m = R(!0), h = R(null), d = R(null);
-  return T(() => {
+  return C(() => {
     if (m.current) {
       m.current = !1;
       return;
@@ -1079,7 +1079,7 @@ const Qt = {
       target: h.current
     };
     l ? t(p) : n(p);
-  }, [l, t, n]), T(() => {
+  }, [l, t, n]), C(() => {
     Qe({ content: h.current, isOpen: l });
   }, [l]), cr({
     targetRef: d,
@@ -1128,8 +1128,8 @@ const Qt = {
       destination: D
     }) => {
       if (f[E] !== x && P <= W) {
-        const C = x.toString(), te = (Math.min(8, x) + 1).toString(), re = P >= W;
-        p[0].innerText = C, p[1].innerText = re ? "0" : te, o && o({
+        const T = x.toString(), te = (Math.min(8, x) + 1).toString(), re = P >= W;
+        p[0].innerText = T, p[1].innerText = re ? "0" : te, o && o({
           digitContainer: d,
           percent: P,
           digit: E,
@@ -1156,11 +1156,11 @@ const Qt = {
           clearInterval(v.current), x > 100 && l && await he(l(E.getAll())), p(x - 1);
         };
         x === 1 && a && a(E.getAll()), x > d && await P();
-        const W = Math.floor(x / 100) % 100, D = Math.floor(x / 10) % 10, C = x % 10;
+        const W = Math.floor(x / 100) % 100, D = Math.floor(x / 10) % 10, T = x % 10;
         m({
           digitContainer: t.current,
           digit: 1,
-          digitNumber: C,
+          digitNumber: T,
           currentPercent: x,
           numbersTarget: E.ones,
           limit: 90,
@@ -1194,7 +1194,7 @@ const Qt = {
       r
     ]
   );
-  return T(() => () => {
+  return C(() => () => {
     clearInterval(v.current);
   }, []), h;
 }, nt = Ft(
@@ -1229,8 +1229,8 @@ const Cr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   onLeave: a,
   dependencies: l = []
 } = {}) => {
-  const f = R(null), [v, m] = I(!1);
-  return T(() => {
+  const f = R(null), [v, m] = A(!1);
+  return C(() => {
     const h = (r == null ? void 0 : r.current) ?? f.current;
     if (!h)
       return;
@@ -1257,7 +1257,7 @@ const Cr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     ...l
   ]), { ref: f, isIntersecting: v };
 }, it = (r, t, n) => {
-  T(() => (de.ticker.add(r, t, n), () => de.ticker.remove(r)), [t, n, r]);
+  C(() => (de.ticker.add(r, t, n), () => de.ticker.remove(r)), [t, n, r]);
 }, Tr = ({
   children: r,
   speed: t = 1,
@@ -1412,8 +1412,8 @@ const hr = X(
     style: l,
     ...f
   }, v) => {
-    const [m, h] = I(t === 0), d = !!a;
-    return T(() => {
+    const [m, h] = A(t === 0), d = !!a;
+    return C(() => {
       t !== 0 && setTimeout(() => h(!0), t);
     }, [t]), /* @__PURE__ */ c.jsx(
       "div",
@@ -1494,7 +1494,7 @@ const hr = X(
   }
 );
 hr.displayName = "Loader";
-const pr = typeof document < "u" ? Lt : T, ge = ({
+const pr = typeof document < "u" ? Lt : C, ge = ({
   onResize: r,
   debounce: t = 100,
   dependencies: n = []
@@ -1508,7 +1508,7 @@ const pr = typeof document < "u" ? Lt : T, ge = ({
       });
     }, t);
   }, [r, t]);
-  T(() => (i.current = window.innerWidth, window.addEventListener("resize", a), () => {
+  C(() => (i.current = window.innerWidth, window.addEventListener("resize", a), () => {
     window.removeEventListener("resize", a), clearTimeout(o.current);
   }), n);
 }, gr = `
@@ -1540,11 +1540,11 @@ Created by FunTech with 😘
     onResize: ({ winW: i }) => n(i),
     debounce: 100,
     dependencies: []
-  }), T(() => {
+  }), C(() => {
     document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && mr(t);
   }, [t, n]);
 }, Ar = () => {
-  const [r, t] = I(null), n = k(() => {
+  const [r, t] = A(null), n = k(() => {
     const i = window.ontouchstart, o = navigator.maxTouchPoints;
     i !== void 0 && 0 < o ? t(!0) : t(!1);
   }, []);
@@ -1552,7 +1552,7 @@ Created by FunTech with 😘
     onResize: () => n(),
     debounce: 100,
     dependencies: []
-  }), T(() => n(), [n]), r;
+  }), C(() => n(), [n]), r;
 }, fe = "scroll", Ir = ({
   threshold: r = 0,
   debounce: t = 10,
@@ -1574,11 +1574,11 @@ Created by FunTech with 😘
       h > l.current + r && i.current !== "down" ? a({ type: fe, payload: "down" }) : h < l.current - r && i.current !== "up" && a({ type: fe, payload: "up" }), l.current = h;
     }, t);
   }, [t, r]);
-  return T(() => (l.current = v(), window.addEventListener("scroll", m, { passive: !0 }), () => {
+  return C(() => (l.current = v(), window.addEventListener("scroll", m, { passive: !0 }), () => {
     window.removeEventListener("scroll", m), clearTimeout(f.current);
   }), n), o;
 }, Dr = (r, t) => {
-  const [n, i] = I(null), o = k(
+  const [n, i] = A(null), o = k(
     (a) => {
       switch (r) {
         case "max":
@@ -1595,7 +1595,7 @@ Created by FunTech with 😘
     onResize: ({ winW: a }) => o(a),
     debounce: 100,
     dependencies: [o]
-  }), T(() => o(window.innerWidth), [o]), n;
+  }), C(() => o(window.innerWidth), [o]), n;
 }, $r = ({
   shareUrl: r,
   sharePath: t,
@@ -1657,7 +1657,7 @@ Created by FunTech with 😘
       }
     }),
     [n, a, t]
-  ), [d, p] = I(!1), E = $(
+  ), [d, p] = A(!1), E = $(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(r).then(() => {
@@ -1694,7 +1694,7 @@ Created by FunTech with 😘
   if (/Chrome\/\d+/i.test(r))
     return "Blink";
 }, Fr = (r) => {
-  const [t, n] = I({
+  const [t, n] = A({
     mobileOS: void 0,
     isMobile: void 0,
     renderingEngine: void 0,
@@ -1712,7 +1712,7 @@ Created by FunTech with 😘
     });
   }, []), t;
 }, Lr = (r) => {
-  const [t, n] = I(!1), i = R();
+  const [t, n] = A(!1), i = R();
   it(() => {
     t && i.current && r(i.current);
   });
@@ -1728,6 +1728,11 @@ Created by FunTech with 😘
     onPointerLeave: a,
     onPointerMove: l
   };
+}, Wr = (r) => {
+  const [t, n] = A(null);
+  return C(() => {
+    r != null && r.current && n(r.current);
+  }, [r]), t;
 };
 export {
   jr as Accordion,
@@ -1757,6 +1762,7 @@ export {
   Ir as useScrollDirection,
   $r as useShare,
   kr as useStarter,
+  Wr as useValidElement,
   ge as useWindowResizeObserver
 };
 //# sourceMappingURL=spice.js.map

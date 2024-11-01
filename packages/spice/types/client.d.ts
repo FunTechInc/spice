@@ -19,6 +19,7 @@ export * from "./hooks/useMediaQuery";
 export * from "./hooks/useShare";
 export * from "./hooks/useDeviceDetector";
 export * from "./hooks/useOnHovering";
+export * from "./hooks/useValidElement";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export * as LoadingProgress from "./components/LoadingProgress";
