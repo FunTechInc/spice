@@ -1731,7 +1731,7 @@ Created by FunTech with 😘
 }, Wr = (r) => {
   const [t, n] = A();
   return C(() => {
-    r !== void 0 && r.current && n(r.current);
+    r && r.current && n(r.current);
   }, [r]), t;
 };
 export {

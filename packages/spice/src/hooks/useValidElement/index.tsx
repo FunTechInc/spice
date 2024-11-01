@@ -11,7 +11,7 @@ export const useValidElement = <T extends Element>(
    const [element, setElement] = useState<T | undefined>();
 
    useEffect(() => {
-      if (ref === undefined) return;
+      if (!ref) return;
       if (ref.current) setElement(ref.current);
    }, [ref]);
 
