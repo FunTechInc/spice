@@ -1729,9 +1729,9 @@ Created by FunTech with 😘
     onPointerMove: l
   };
 }, Wr = (r) => {
-  const [t, n] = A(null);
+  const [t, n] = A();
   return C(() => {
-    r != null && r.current && n(r.current);
+    r !== void 0 && r.current && n(r.current);
   }, [r]), t;
 };
 export {
