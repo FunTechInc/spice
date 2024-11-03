@@ -3,23 +3,25 @@
 import { useRef, useEffect } from "react";
 
 type UseResizeObserverProps = {
-   targetRef: React.RefObject<HTMLElement>;
-   onResize: (entry: Element) => void;
+   target?: React.RefObject<Element> | Element;
+   onResize?: (entry: Element) => void;
    /** default:100 */
    debounce?: number;
-   dependencies?: any[];
 };
 
-export const useResizeObserver = ({
-   targetRef,
-   onResize,
-   debounce = 100,
-   dependencies = [],
-}: UseResizeObserverProps) => {
+export const useResizeObserver = (
+   { target, onResize, debounce = 100 }: UseResizeObserverProps = {},
+   dependencies?: React.DependencyList
+) => {
+   const ref = useRef(null);
    const timeoutID = useRef<NodeJS.Timeout | number>(0);
    const isInitialRender = useRef(true);
 
    useEffect(() => {
+      const _target =
+         target instanceof Element ? target : target?.current ?? ref.current;
+      if (!_target) return;
+
       const resizeObserver = new ResizeObserver((entries) => {
          clearTimeout(timeoutID.current);
          timeoutID.current = setTimeout(() => {
@@ -27,18 +29,16 @@ export const useResizeObserver = ({
                isInitialRender.current = false;
                return;
             }
-            onResize(entries[0].target);
+            onResize?.(entries[0].target);
          }, debounce);
       });
-      const targetElm = targetRef.current;
-      if (!targetElm) {
-         return;
-      }
-      resizeObserver.observe(targetElm);
+      resizeObserver.observe(_target);
       return () => {
-         resizeObserver.unobserve(targetElm);
+         resizeObserver.unobserve(_target);
          clearTimeout(timeoutID.current);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
+
+   return ref;
 };

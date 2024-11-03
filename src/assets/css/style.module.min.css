@@ -1,3 +1,3 @@
-.wrapper{display:flex;justify-content:center}.button{display:block;width:min(100%,240px);margin:0 16px;line-height:64px;font-size:18px;font-weight:bold;text-align:center;background-color:#333;border:2px solid #333;color:#fff;cursor:pointer}.modalContentContainer{width:100%;height:100%;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background-color:rgba(0,0,0,.9);pointer-events:none}.modalContent{width:min(100% - 32px,800px);height:min(100% - 32px,400px);background-color:#fff;padding:40px;pointer-events:auto;overflow-y:auto;overscroll-behavior:contain}.modalContent p{font-size:40px;line-height:1.5}.modalContent p:not(:first-child){margin-top:24px}.modalClose{width:min(100%,320px);line-height:48px;font-size:16px;background-color:#333;border:2px solid #333;color:#fff;margin-top:24px;text-align:center;cursor:pointer}
+.sample{width:100%;height:2000px;opacity:0}
 
 /*# sourceMappingURL=style.module.min.css.map */
