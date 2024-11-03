@@ -22,7 +22,7 @@ export const AutoScrollContainer = ({
    const secondChildRef = useRef<HTMLDivElement>(null);
 
    const { isIntersecting } = useIntersectionObserver({
-      targetRef: wrapperRef,
+      target: wrapperRef,
       once: false,
    });
 

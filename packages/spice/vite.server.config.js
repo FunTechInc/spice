@@ -2,6 +2,9 @@ import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const root = process.platform === "win32" ? path.resolve("/") : "/";
+const external = (id) => !id.startsWith(".") && !id.startsWith(root);
+
 export default defineConfig({
    root: "src",
    plugins: [react()],
@@ -13,7 +16,7 @@ export default defineConfig({
       },
       rollupOptions: {
          input: path.resolve(__dirname, "src/server.js"),
-         external: ["react", "gsap", "react-dom"],
+         external,
          output: {
             dir: path.resolve(__dirname, "build/server"),
             format: "cjs",

@@ -1,19 +1,13 @@
 /// <reference types="react" />
-export type IntersectionObserverProps = {
-    targetRef?: React.RefObject<HTMLElement>;
-    /** default : `0px` */
-    rootMargin?: string;
-    /** default : `0` */
-    threshold?: number | number[];
+export type UseIntersectionObserverProps = {
+    target?: React.RefObject<Element> | Element;
+    options?: IntersectionObserverInit;
     /** default : `false` */
     once?: boolean;
-    dependencies?: any[];
-};
-export type UseIntersectionObserverProps = {
     onEnter?: (entry: IntersectionObserverEntry) => void;
     onLeave?: (entry: IntersectionObserverEntry) => void;
-} & IntersectionObserverProps;
-export declare const useIntersectionObserver: ({ targetRef, rootMargin, threshold, once, onEnter, onLeave, dependencies, }?: UseIntersectionObserverProps) => {
+};
+export declare const useIntersectionObserver: ({ target, options, once, onEnter, onLeave, }?: UseIntersectionObserverProps, dependencies?: React.DependencyList) => {
     ref: import("react").MutableRefObject<null>;
     isIntersecting: boolean;
 };

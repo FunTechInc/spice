@@ -51,7 +51,7 @@ const List = ({ index }: { index: number }) => {
 const Demo = () => {
    const ref = useRef(null);
    useIntersectionObserver({
-      targetRef: ref,
+      target: ref,
       onEnter: ({ target }) => {
          gsap.fromTo(
             target,

@@ -62,17 +62,19 @@ export const Content = ({
       setTabIndex({ content: wrapperRef.current!, isOpen });
    }, [isOpen]);
 
-   useResizeObserver({
-      targetRef: innerRef,
-      onResize: (entry) => {
-         const contentHeight = entry.getBoundingClientRect().height;
-         if (isOpen) {
-            wrapperRef.current!.style.height = `${contentHeight}px`;
-         }
+   useResizeObserver(
+      {
+         target: innerRef,
+         onResize: (entry) => {
+            const contentHeight = entry.getBoundingClientRect().height;
+            if (isOpen) {
+               wrapperRef.current!.style.height = `${contentHeight}px`;
+            }
+         },
+         debounce: 100,
       },
-      dependencies: [isOpen],
-      debounce: 100,
-   });
+      [isOpen]
+   );
 
    return (
       <div

@@ -2,39 +2,32 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type IntersectionObserverProps = {
-   targetRef?: React.RefObject<HTMLElement>;
-   /** default : `0px` */
-   rootMargin?: string;
-   /** default : `0` */
-   threshold?: number | number[];
+export type UseIntersectionObserverProps = {
+   target?: React.RefObject<Element> | Element;
+   options?: IntersectionObserverInit;
    /** default : `false` */
    once?: boolean;
-   dependencies?: any[];
-};
-
-export type UseIntersectionObserverProps = {
    onEnter?: (entry: IntersectionObserverEntry) => void;
    onLeave?: (entry: IntersectionObserverEntry) => void;
-} & IntersectionObserverProps;
+};
 
-export const useIntersectionObserver = ({
-   targetRef,
-   rootMargin = "0px",
-   threshold = 0,
-   once = false,
-   onEnter,
-   onLeave,
-   dependencies = [],
-}: UseIntersectionObserverProps = {}) => {
+export const useIntersectionObserver = (
+   {
+      target,
+      options,
+      once = false,
+      onEnter,
+      onLeave,
+   }: UseIntersectionObserverProps = {},
+   dependencies?: React.DependencyList
+) => {
    const ref = useRef(null);
    const [isIntersecting, setIsIntersecting] = useState(false);
 
    useEffect(() => {
-      const target = targetRef?.current ?? ref.current;
-      if (!target) {
-         return;
-      }
+      const _target =
+         target instanceof Element ? target : target?.current ?? ref.current;
+      if (!_target) return;
 
       const callbackEvent = (
          entries: IntersectionObserverEntry[],
@@ -51,26 +44,13 @@ export const useIntersectionObserver = ({
          });
       };
 
-      const observer = new IntersectionObserver(callbackEvent, {
-         rootMargin,
-         threshold,
-      });
-      observer.observe(target);
+      const observer = new IntersectionObserver(callbackEvent, options);
+      observer.observe(_target);
 
       return () => {
-         observer.unobserve(target);
+         observer.unobserve(_target);
       };
-   }, [
-      ref,
-      onEnter,
-      onLeave,
-      once,
-      threshold,
-      rootMargin,
-      targetRef,
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      ...dependencies,
-   ]);
+   }, dependencies);
 
    return { ref, isIntersecting };
 };
