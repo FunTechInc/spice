@@ -50,6 +50,7 @@ export const useIntersectionObserver = (
       return () => {
          observer.unobserve(_target);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 
    return { ref, isIntersecting };
