@@ -26,24 +26,27 @@ export const useScrollTrigger = (
    const scrollTrigger = useRef<globalThis.ScrollTrigger>();
 
    const lerpP = useRef<number | null>(null);
-   const lerpProgress = useCallback((alpha: number, precision: number = 6) => {
-      if (!scrollTrigger.current) return 0;
+   const lerpProgress = useCallback(
+      (alpha: number, precision: number = 4, threshold: number = 1e-3) => {
+         if (!scrollTrigger.current) return 0;
 
-      precision = Math.max(precision, 0);
+         precision = Math.max(precision, 0);
 
-      const { progress } = scrollTrigger.current;
-      if (lerpP.current === null) lerpP.current = progress;
+         const { progress } = scrollTrigger.current;
+         if (lerpP.current === null) lerpP.current = progress;
 
-      lerpP.current = gsap.utils.interpolate(lerpP.current, progress, alpha);
+         lerpP.current = gsap.utils.interpolate(lerpP.current, progress, alpha);
 
-      const factor = Math.pow(10, precision);
-      lerpP.current = Math.round(lerpP.current * factor) / factor;
+         const factor = Math.pow(10, precision);
+         lerpP.current = Math.round(lerpP.current * factor) / factor;
 
-      const threshold = precision > 0 ? 1 / Math.pow(10, precision - 1) : 1;
-      if (lerpP.current < threshold) return 0;
+         if (lerpP.current < threshold) return 0;
+         if (1 - lerpP.current < threshold) return 1;
 
-      return lerpP.current;
-   }, []);
+         return lerpP.current;
+      },
+      []
+   );
 
    useIsomorphicLayoutEffect(() => {
       const { onUpdate, onToggle, trigger, ...rest } = vars;

@@ -7,7 +7,7 @@ export declare const useScrollTrigger: (vars: ScrollTrigger.StaticVars, { reacti
 }) => {
     isActive: boolean;
     direction: number | false;
-    lerpProgress: (alpha: number, precision?: number) => number;
+    lerpProgress: (alpha: number, precision?: number, threshold?: number) => number;
     scrollTrigger: import("react").MutableRefObject<globalThis.ScrollTrigger | undefined>;
 };
 export {};

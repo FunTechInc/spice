@@ -24,6 +24,23 @@ const Description = () => {
 const Demo = () => {
    const ref = useRef<HTMLDivElement>(null);
    const validElm = useValidElement(ref);
+   // useGSAP(
+   //    () => {
+   //       if (!validElm) {
+   //          return;
+   //       }
+   //       gsap.registerPlugin(ScrollTrigger);
+   //       const scrollTrigger: ScrollTrigger.Vars = {
+   //          trigger: validElm,
+   //          scrub: 1,
+   //       };
+   //       gsap.to(ref.current, {
+   //          scrollTrigger,
+   //          opacity: 0,
+   //       });
+   //    },
+   //    { dependencies: [validElm] }
+   // );
    const { scrollTrigger, lerpProgress, direction } = useScrollTrigger(
       {
          trigger: validElm,
@@ -37,22 +54,24 @@ const Demo = () => {
 
    useFrame(() => {
       const p = lerpProgress(0.1);
-      if (scrollTrigger?.current?.isActive) {
-         gsap.set(ref.current, {
-            opacity: p,
-            scale: p,
-         });
-      }
+      // console.log(p, "p");
+      gsap.set(ref.current, {
+         opacity: p,
+         // scale: p,
+      });
+      // if (scrollTrigger?.current?.isActive) {
+      // }
    });
 
    return (
       <div
          ref={ref}
          className={s.sample}
-         style={{
-            backgroundColor:
-               direction === false ? "red" : direction === 1 ? "blue" : "green",
-         }}></div>
+         // style={{
+         //    backgroundColor:
+         //       direction === false ? "red" : direction === 1 ? "blue" : "green",
+         // }}
+      ></div>
    );
 };
 
