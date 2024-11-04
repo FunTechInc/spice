@@ -37,7 +37,7 @@ export const TouchScroller = ({
             style={{
                ...(isActive
                   ? {
-                       height: "100vh",
+                       height: "100svh",
                        overflowY: "auto",
                     }
                   : {}),
