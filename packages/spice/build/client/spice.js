@@ -874,7 +874,7 @@ const R = ({
       ref: r,
       style: {
         ...o ? {
-          height: "100vh",
+          height: "100svh",
           overflowY: "auto"
         } : {},
         ...t

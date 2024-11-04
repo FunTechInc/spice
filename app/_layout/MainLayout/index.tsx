@@ -5,7 +5,7 @@ import s from "./layout.module.scss";
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
    return (
-      <TouchScroller style={{ overscrollBehaviorY: "none" }}>
+      <TouchScroller>
          <div
             style={{
                flexDirection: "column",
@@ -20,6 +20,16 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
                   <div className={s.wrapper}>{children}</div>
                </MainInner>
             </main>
+            <footer
+               style={{
+                  marginTop: 40,
+                  height: "20px",
+                  color: "white",
+                  textAlign: "center",
+                  backgroundColor: "#333",
+               }}>
+               footer
+            </footer>
          </div>
       </TouchScroller>
    );
