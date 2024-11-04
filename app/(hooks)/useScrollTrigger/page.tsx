@@ -6,12 +6,11 @@ import {
    useScrollTrigger,
    useFrame,
    useValidElement,
+   useTouchScroller,
 } from "@/packages/spice/src/client";
 import { useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import s from "./style.module.scss";
-import { useGSAP } from "@gsap/react";
 
 const Description = () => {
    return (
@@ -24,55 +23,26 @@ const Description = () => {
 const Demo = () => {
    const ref = useRef<HTMLDivElement>(null);
    const validElm = useValidElement(ref);
-   // useGSAP(
-   //    () => {
-   //       if (!validElm) {
-   //          return;
-   //       }
-   //       gsap.registerPlugin(ScrollTrigger);
-   //       const scrollTrigger: ScrollTrigger.Vars = {
-   //          trigger: validElm,
-   //          scrub: 1,
-   //       };
-   //       gsap.to(ref.current, {
-   //          scrollTrigger,
-   //          opacity: 0,
-   //       });
-   //    },
-   //    { dependencies: [validElm] }
-   // );
-   const { scrollTrigger, lerpProgress, direction } = useScrollTrigger(
+   const touchScroller = useTouchScroller();
+
+   const { lerpProgress } = useScrollTrigger(
       {
          trigger: validElm,
-         markers: true,
+         scroller: touchScroller,
       },
       {
-         reactive: ["direction"],
-         dependencies: [validElm],
+         dependencies: [validElm, touchScroller],
       }
    );
 
    useFrame(() => {
       const p = lerpProgress(0.1);
-      // console.log(p, "p");
       gsap.set(ref.current, {
          opacity: p,
-         // scale: p,
       });
-      // if (scrollTrigger?.current?.isActive) {
-      // }
    });
 
-   return (
-      <div
-         ref={ref}
-         className={s.sample}
-         // style={{
-         //    backgroundColor:
-         //       direction === false ? "red" : direction === 1 ? "blue" : "green",
-         // }}
-      ></div>
-   );
+   return <div ref={ref} className={s.sample}></div>;
 };
 
 const Code = () => {

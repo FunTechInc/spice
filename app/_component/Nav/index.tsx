@@ -31,10 +31,6 @@ const hookList = [
       title: "useIsTouchDevice",
    },
    {
-      href: "/useScrollDirection",
-      title: "useScrollDirection",
-   },
-   {
       href: "/useMediaQuery",
       title: "useMediaQuery",
    },
@@ -60,10 +56,6 @@ const componentList = [
    {
       href: "/WrapperLayout",
       title: "WrapperLayout",
-   },
-   {
-      href: "/StickyItem",
-      title: "StickyItem",
    },
    {
       href: "/Accordion",
