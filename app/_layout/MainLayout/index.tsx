@@ -7,7 +7,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
    return (
       <SpiceWrapper>
          <main style={{ flex: 1 }}>
-            <MainInner style={{ display: "flex", alignItems: "flex-start" }}>
+            <MainInner className={s.inner}>
                <StickyItem className={s.nav}>
                   <AsideNav />
                </StickyItem>

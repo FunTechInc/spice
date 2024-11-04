@@ -1,3 +1,5 @@
+@use "@/css" as *;
+
 .wrapper {
    margin: 120px auto 0;
    display: flex;
@@ -8,4 +10,12 @@
 .nav {
    position: sticky;
    top: 80px;
+}
+
+.inner {
+   display: flex;
+   align-items: flex-start;
+   @include mq(md) {
+      flex-direction: column-reverse;
+   }
 }

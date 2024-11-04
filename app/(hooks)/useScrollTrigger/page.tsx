@@ -9,7 +9,9 @@ import {
 } from "@/packages/spice/src/client";
 import { useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import s from "./style.module.scss";
+import { useGSAP } from "@gsap/react";
 
 const Description = () => {
    return (
@@ -34,9 +36,11 @@ const Demo = () => {
    );
 
    useFrame(() => {
+      const p = lerpProgress(0.1);
       if (scrollTrigger?.current?.isActive) {
          gsap.set(ref.current, {
-            opacity: lerpProgress(0.1),
+            opacity: p,
+            scale: p,
          });
       }
    });

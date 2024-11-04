@@ -26,11 +26,22 @@ export const useScrollTrigger = (
    const scrollTrigger = useRef<globalThis.ScrollTrigger>();
 
    const lerpP = useRef<number | null>(null);
-   const lerpProgress = useCallback((alpha: number) => {
+   const lerpProgress = useCallback((alpha: number, precision: number = 6) => {
       if (!scrollTrigger.current) return 0;
+
+      precision = Math.max(precision, 0);
+
       const { progress } = scrollTrigger.current;
       if (lerpP.current === null) lerpP.current = progress;
+
       lerpP.current = gsap.utils.interpolate(lerpP.current, progress, alpha);
+
+      const factor = Math.pow(10, precision);
+      lerpP.current = Math.round(lerpP.current * factor) / factor;
+
+      const threshold = precision > 0 ? 1 / Math.pow(10, precision - 1) : 1;
+      if (lerpP.current < threshold) return 0;
+
       return lerpP.current;
    }, []);
 
