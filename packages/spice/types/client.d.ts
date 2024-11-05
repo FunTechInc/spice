@@ -5,7 +5,7 @@ export * from "./components/SplitText";
 export * from "./components/Video";
 export * from "./components/Loader";
 export * from "./components/CustomBreakLineParser";
-export * from "./components/TouchScroller";
+export * from "./components/StableScroller";
 export * from "./hooks/useIsomorphicLayoutEffect";
 export * from "./hooks/useFrame";
 export * from "./hooks/useResizeObserver";

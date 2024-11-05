@@ -1,11 +1,11 @@
 import { MainInner } from "../MainInner/MainInner";
 import { AsideNav } from "@/app/_component/Nav";
-import { TouchScroller } from "@/packages/spice/src/client";
+import { StableScroller } from "@/packages/spice/src/client";
 import s from "./layout.module.scss";
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
    return (
-      <TouchScroller>
+      <StableScroller>
          <div
             style={{
                flexDirection: "column",
@@ -31,6 +31,6 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
                footer
             </footer>
          </div>
-      </TouchScroller>
+      </StableScroller>
    );
 };

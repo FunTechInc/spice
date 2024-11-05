@@ -1,23 +1,31 @@
 "use client";
 
+import { useDeviceDetector } from "../../client";
 import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
-import { useIsTouchDevice } from "../../hooks/useIsTouchDevice";
 import { createContext, useContext, useRef, useState } from "react";
 
-const TouchScrollerContext = createContext<HTMLDivElement | undefined>(
+const StableScrollerContext = createContext<HTMLDivElement | undefined>(
    undefined
 );
 
-export const useTouchScroller = () => useContext(TouchScrollerContext);
+export const useStableScroller = () => useContext(StableScrollerContext);
 
-export const TouchScroller = ({
+/**
+ * @param active - If the scroller should be active or not
+ * - Components to stabilise the behaviour of the scroller in mobile browsers.
+ * - based on the `isMobile` on `useDeviceDetector`
+ * - It is possible to use `useStableScroller` to get the `HTMLDivElement` if it is in context
+ */
+export const StableScroller = ({
    active = true,
    style,
    ...rest
 }: { active?: boolean } & React.HTMLAttributes<HTMLDivElement>) => {
    const ref = useRef<HTMLDivElement>(null);
-   const isTouch = useIsTouchDevice();
-   const isActive = active && isTouch;
+
+   const { isMobile } = useDeviceDetector();
+   const isActive = active && isMobile;
+
    const [scroller, setScroller] = useState<HTMLDivElement | undefined>(
       undefined
    );
@@ -31,7 +39,7 @@ export const TouchScroller = ({
    }, [isActive]);
 
    return (
-      <TouchScrollerContext.Provider value={scroller}>
+      <StableScrollerContext.Provider value={scroller}>
          <div
             ref={ref}
             style={{
@@ -45,6 +53,6 @@ export const TouchScroller = ({
             }}
             {...rest}
          />
-      </TouchScrollerContext.Provider>
+      </StableScrollerContext.Provider>
    );
 };
