@@ -6,7 +6,7 @@ import {
    useScrollTrigger,
    useFrame,
    useValidElement,
-   useTouchScroller,
+   useStableScroller,
 } from "@/packages/spice/src/client";
 import { useRef } from "react";
 import { gsap } from "gsap";
@@ -23,7 +23,7 @@ const Description = () => {
 const Demo = () => {
    const ref = useRef<HTMLDivElement>(null);
    const validElm = useValidElement(ref);
-   const touchScroller = useTouchScroller();
+   const touchScroller = useStableScroller();
 
    const { lerpProgress } = useScrollTrigger(
       {
