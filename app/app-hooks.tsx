@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeviceDetector, useStarter } from "@/packages/spice/src/client";
+import { useStarter } from "@/packages/spice/src/client";
 import { useLenisRegister } from "./useLenis";
 
 export const AppHooks = () => {

@@ -1,6 +1,6 @@
 "use client";
 import { jsx as u, jsxs as S, Fragment as T } from "react/jsx-runtime";
-import { forwardRef as M, useRef as m, useCallback as w, useEffect as b, createContext as $, useState as v, useContext as k, useMemo as x, memo as tt, useLayoutEffect as et } from "react";
+import { forwardRef as L, useRef as m, useCallback as w, useEffect as b, createContext as $, useState as v, useContext as k, useMemo as x, memo as tt, useLayoutEffect as et } from "react";
 import A from "gsap";
 import O from "gsap/ScrollTrigger";
 const nt = ({ formProps: e }) => {
@@ -153,7 +153,7 @@ const nt = ({ formProps: e }) => {
 }, N = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, at = () => window.innerWidth - document.documentElement.clientWidth, W = (e, { paddingRight: t, scrollbarWidth: n }) => {
   const r = document.documentElement.style, i = document.body.style, o = e ? t + n : t - n;
   r.paddingRight = `${o}px`, r.scrollbarGutter = e ? "auto" : "", i.overflow = e ? "hidden" : "";
-}, ut = M(
+}, ut = L(
   ({ dialog: e, onOpen: t, onClose: n, focusTarget: r, scrollLock: i = !0, ...o }, s) => {
     const c = m(null), l = m({
       paddingRight: 0,
@@ -471,7 +471,7 @@ const lt = {
       digitNumber: f,
       currentPercent: y,
       limit: E,
-      destination: L
+      destination: M
     }) => {
       if (c[p] !== f && y <= E) {
         const _ = f.toString(), Q = (Math.min(8, f) + 1).toString(), Z = y >= E;
@@ -479,8 +479,8 @@ const lt = {
           digitContainer: a,
           percent: y,
           digit: p,
-          destination: L,
-          duration: e / (L / p)
+          destination: M,
+          duration: e / (M / p)
         }), c[p] = f;
       }
     },
@@ -502,7 +502,7 @@ const lt = {
           clearInterval(l.current), f > 100 && s && await D(s(p.getAll())), h(f - 1);
         };
         f === 1 && o && o(p.getAll()), f > a && await y();
-        const E = Math.floor(f / 100) % 100, L = Math.floor(f / 10) % 10, _ = f % 10;
+        const E = Math.floor(f / 100) % 100, M = Math.floor(f / 10) % 10, _ = f % 10;
         g({
           digitContainer: t.current,
           digit: 1,
@@ -514,7 +514,7 @@ const lt = {
         }), g({
           digitContainer: n.current,
           digit: 10,
-          digitNumber: L,
+          digitNumber: M,
           currentPercent: f,
           numbersTarget: p.tens,
           limit: 90,
@@ -544,7 +544,7 @@ const lt = {
     clearInterval(l.current);
   }, []), d;
 }, U = tt(
-  M((e, t) => /* @__PURE__ */ S(
+  L((e, t) => /* @__PURE__ */ S(
     "div",
     {
       style: {
@@ -717,7 +717,7 @@ const Wt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     ]),
     [o, t, i, n, r]
   );
-}, Et = M((e, t) => {
+}, Et = L((e, t) => {
   const { fill: n, style: r, ...i } = e;
   return /* @__PURE__ */ u(
     "video",
@@ -736,7 +736,7 @@ const Wt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   );
 });
 Et.displayName = "Video";
-const Tt = M(
+const Tt = L(
   ({
     loader: e = "skeleton",
     delay: t = 1e3,
@@ -829,41 +829,14 @@ const Tt = M(
   }
 );
 Tt.displayName = "Loader";
-const R = ({
-  onResize: e,
-  debounce: t = 100,
-  dependencies: n = []
-}) => {
-  const r = m(0), i = m(0), o = w(() => {
-    clearTimeout(i.current), i.current = setTimeout(() => {
-      e({
-        winW: window.innerWidth,
-        winH: window.innerHeight,
-        initWinW: r.current
-      });
-    }, t);
-  }, [e, t]);
-  b(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
-    window.removeEventListener("resize", o), clearTimeout(i.current);
-  }), n);
-}, At = () => {
-  const [e, t] = v(null), n = w(() => {
-    const r = window.ontouchstart, i = navigator.maxTouchPoints;
-    r !== void 0 && 0 < i ? t(!0) : t(!1);
-  }, []);
-  return R({
-    onResize: () => n(),
-    debounce: 100,
-    dependencies: []
-  }), b(() => n(), [n]), e;
-}, J = $(
+const J = $(
   void 0
 ), zt = () => k(J), Xt = ({
   active: e = !0,
   style: t,
   ...n
 }) => {
-  const r = m(null), i = At(), o = e && i, [s, c] = v(
+  const r = m(null), { isMobile: i } = Lt(), o = e && i, [s, c] = v(
     void 0
   );
   return I(() => {
@@ -882,16 +855,33 @@ const R = ({
       ...n
     }
   ) });
-}, It = `
+}, R = ({
+  onResize: e,
+  debounce: t = 100,
+  dependencies: n = []
+}) => {
+  const r = m(0), i = m(0), o = w(() => {
+    clearTimeout(i.current), i.current = setTimeout(() => {
+      e({
+        winW: window.innerWidth,
+        winH: window.innerHeight,
+        initWinW: r.current
+      });
+    }, t);
+  }, [e, t]);
+  b(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
+    window.removeEventListener("resize", o), clearTimeout(i.current);
+  }), n);
+}, At = `
 Created by FunTech with 😘
 
 👉 https://funtech.inc/
 👉 https://github.com/FunTechInc
 
-`, $t = (e) => {
-  let t = It;
+`, It = (e) => {
+  let t = At;
   typeof e == "string" && (t += e), console.log(t);
-}, kt = (e) => {
+}, $t = (e) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
@@ -903,7 +893,7 @@ Created by FunTech with 😘
 } = {}) => {
   const n = w(
     (r) => {
-      e && kt(r);
+      e && $t(r);
     },
     [e]
   );
@@ -912,9 +902,19 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), b(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && $t(t);
+    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && It(t);
   }, [t, n]);
-}, Gt = (e, t) => {
+}, Gt = () => {
+  const [e, t] = v(null), n = w(() => {
+    const r = window.ontouchstart, i = navigator.maxTouchPoints;
+    r !== void 0 && 0 < i ? t(!0) : t(!1);
+  }, []);
+  return R({
+    onResize: () => n(),
+    debounce: 100,
+    dependencies: []
+  }), b(() => n(), [n]), e;
+}, Vt = (e, t) => {
   const [n, r] = v(null), i = w(
     (o) => {
       switch (e) {
@@ -933,7 +933,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: [i]
   }), b(() => i(window.innerWidth), [i]), n;
-}, Vt = ({
+}, Kt = ({
   shareUrl: e,
   sharePath: t,
   shareTitle: n = "",
@@ -1012,7 +1012,7 @@ Created by FunTech with 😘
     copy: p,
     isCopied: a
   };
-}, Lt = (e) => {
+}, kt = (e) => {
   if (/\b(iPad|iPhone|iPod)\b/.test(e))
     return "iOS";
   if (/\bAndroid\b/i.test(e))
@@ -1030,7 +1030,7 @@ Created by FunTech with 😘
     return "EdgeHTML";
   if (/Chrome\/\d+/i.test(e))
     return "Blink";
-}, Kt = (e) => {
+}, Lt = (e) => {
   const [t, n] = v({
     mobileOS: void 0,
     isMobile: void 0,
@@ -1039,7 +1039,7 @@ Created by FunTech with 😘
     testing: void 0
   });
   return I(() => {
-    const r = navigator.userAgent, i = Lt(r), o = Mt(r);
+    const r = navigator.userAgent, i = kt(r), o = Mt(r);
     n({
       mobileOS: i,
       isMobile: /Mobi/.test(r),
@@ -1120,22 +1120,22 @@ export {
   B as MODAL_CLASSNAME,
   ut as ModalButton,
   jt as SplitText,
+  Xt as StableScroller,
   Bt as Tab,
-  Xt as TouchScroller,
   Et as Video,
-  Kt as useDeviceDetector,
+  Lt as useDeviceDetector,
   Y as useFrame,
   xt as useIntersectionObserver,
-  At as useIsTouchDevice,
+  Gt as useIsTouchDevice,
   I as useIsomorphicLayoutEffect,
-  Gt as useMediaQuery,
+  Vt as useMediaQuery,
   Ut as useOnHovering,
   Ct as useParseBreakLine,
   wt as useResizeObserver,
   Jt as useScrollTrigger,
-  Vt as useShare,
+  Kt as useShare,
+  zt as useStableScroller,
   qt as useStarter,
-  zt as useTouchScroller,
   Yt as useValidElement,
   R as useWindowResizeObserver
 };
