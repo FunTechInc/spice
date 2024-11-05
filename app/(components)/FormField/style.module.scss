@@ -16,7 +16,7 @@
    select,
    textarea {
       width: 100%;
-      background-color: #fff;
+      background-color: wheat;
       padding: 16px;
       font-size: 18px;
       &::placeholder {
@@ -32,8 +32,9 @@
    ul {
       display: flex;
       justify-content: space-between;
+      gap: 16px;
       li {
-         width: calc(50% - 8px);
+         width: 100%;
       }
    }
 }
@@ -42,11 +43,9 @@
    ul {
       display: flex;
       justify-content: flex-start;
-      li {
-         &:not(:first-child) {
-            margin-left: 32px;
-         }
-      }
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 40px;
    }
    input[type="radio"]:checked + label:before,
    input[type="checkbox"]:checked + label:before {
@@ -63,39 +62,41 @@
    }
 
    ul label {
+      --checkSize: 16px;
+      --boxSize: 32px;
+      --labelGap: 40px;
+      --labelPadding: 7px;
+
       font-size: 18px;
       display: block;
       position: relative;
-      padding: 6px 0 6px 40px;
+      padding: var(--labelPadding) 0 var(--labelPadding) var(--labelGap);
       margin-bottom: 0;
       cursor: pointer;
+      background-color: magenta;
+
       &::after,
       &::before {
          display: block;
          position: absolute;
          top: 50%;
-         transform: translateY(-50%);
+         translate: 0 -50%;
          content: "";
       }
       &:before {
-         --size: 16px;
-         width: var(--size);
-         height: var(--size);
-         left: calc(var(--size) * 0.5);
+         width: var(--checkSize);
+         height: var(--checkSize);
+         left: calc(var(--checkSize) * 0.5);
          opacity: 0;
          z-index: 1;
-         margin-top: 0;
          border-radius: $radius;
          background-color: #333;
       }
 
       &:after {
-         --size: 32px;
-         width: var(--size);
-         height: var(--size);
+         width: var(--boxSize);
+         height: var(--boxSize);
          left: 0;
-         z-index: 0;
-         margin-top: 0;
          border: 1px solid #333;
          border-radius: $radius;
          background-color: #fff;
@@ -144,13 +145,11 @@ validation
 .watchExample {
    margin-top: 12px;
    font-size: 14px;
-   font-weight: bold;
    color: #808080;
 }
 
 .error {
    font-size: 14px;
-   font-weight: bold;
    margin-top: 12px;
    color: red;
 }
@@ -159,7 +158,6 @@ validation
 policyCheck
 ===============================================*/
 .privacyCheck {
-   text-align: center;
    display: flex;
    justify-content: center;
    margin: 40px 0;
@@ -167,8 +165,6 @@ policyCheck
    @include radio-check(0);
 
    .privacyCheckLink {
-      display: flex;
-      gap: 12px;
       font-size: 16px;
       a {
          font-weight: 700;
