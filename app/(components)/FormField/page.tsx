@@ -249,20 +249,18 @@ const Demo = () => {
          <LengthWatch control={control} />
          <FormField
             className={s.privacyCheck}
-            formProps={[
-               {
-                  type: "checkbox",
-                  optionLabel: (
-                     <p className={s.privacyCheckLink}>
-                        <a href="#">個人情報の取り扱い</a>に同意する
-                     </p>
-                  ),
-                  id: "privacyCheck",
-                  ...register("privacyCheck", {
-                     required: VALIDATION.required,
-                  }),
-               },
-            ]}
+            formProps={{
+               type: "checkbox",
+               optionLabel: (
+                  <p className={s.privacyCheckLink}>
+                     <a href="#">個人情報の取り扱い</a>に同意する
+                  </p>
+               ),
+               id: "privacyCheck",
+               ...register("privacyCheck", {
+                  required: VALIDATION.required,
+               }),
+            }}
          />
          <FormField
             className={`${s.field} ${s.submit}`}
