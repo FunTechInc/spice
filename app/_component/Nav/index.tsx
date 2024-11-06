@@ -74,10 +74,6 @@ const componentList = [
       title: "ModalButton",
    },
    {
-      href: "/LoadingProgress",
-      title: "LoadingProgress",
-   },
-   {
       href: "/AutoScrollContainer",
       title: "AutoScrollContainer",
    },
