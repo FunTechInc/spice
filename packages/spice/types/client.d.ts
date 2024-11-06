@@ -21,4 +21,3 @@ export * from "./hooks/useValidElement";
 export * from "./hooks/useScrollTrigger";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
-export * as LoadingProgress from "./components/LoadingProgress";

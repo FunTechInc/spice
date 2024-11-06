@@ -3,7 +3,6 @@ export * from "./components/FormField";
 export * from "./components/ModalButton";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
-export * as LoadingProgress from "./components/LoadingProgress";
 export * from "./components/AutoScrollContainer";
 export * from "./components/SplitText";
 export * from "./components/Video";
