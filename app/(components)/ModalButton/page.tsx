@@ -4,7 +4,7 @@ import { ModalButton, MODAL_CLASSNAME } from "@/packages/spice/src/client";
 import { useStore } from "@/app/_context/store";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import classNames from "classnames";
 import { FocusTrap } from "@mui/base";
 import s from "./style.module.scss";
@@ -48,39 +48,48 @@ const CONTENT_CLASSNAME = "js_modal_content";
 
 const Demo = () => {
    const setIsModal = useStore((state: any) => state.setIsModalOpen);
-   const ref = useRef<HTMLDivElement>(null);
+   const closeBtnRef = useRef<HTMLButtonElement>(null);
+   const scopeRef = useRef<HTMLDivElement>(null);
 
-   const { contextSafe } = useGSAP({ scope: ref });
-   const openHandler = contextSafe(() => {
-      gsap.fromTo(
-         `.${CONTENT_CLASSNAME}`,
-         {
-            opacity: 0,
-         },
-         {
-            opacity: 1,
-            duration: 0.3,
-            ease: "power3.out",
-         }
-      );
-   });
-   const closeHandler = contextSafe((resolve: (value: unknown) => void) => {
-      gsap.to(`.${CONTENT_CLASSNAME}`, {
-         opacity: 0,
-         duration: 0.3,
-         ease: "power1.out",
-         onComplete: () => {
-            resolve(null);
-         },
+   const { contextSafe } = useGSAP({ scope: scopeRef });
+
+   const handleOpen = useCallback(() => {
+      setIsModal(true);
+      contextSafe(() => {
+         gsap.fromTo(
+            `.${CONTENT_CLASSNAME}`,
+            {
+               opacity: 0,
+            },
+            {
+               opacity: 1,
+               duration: 0.3,
+               ease: "power3.out",
+            }
+         );
+      })();
+   }, [contextSafe, setIsModal]);
+
+   const handleClose = useCallback(() => {
+      setIsModal(false);
+      return new Promise((resolve) => {
+         contextSafe((resolve: (value: unknown) => void) => {
+            gsap.to(`.${CONTENT_CLASSNAME}`, {
+               opacity: 0,
+               duration: 0.3,
+               ease: "power1.out",
+               onComplete: () => {
+                  resolve(null);
+               },
+            });
+         })(resolve);
       });
-   });
-
-   const closeBtn = useRef<HTMLButtonElement>(null);
+   }, [contextSafe, setIsModal]);
 
    return (
-      <div ref={ref} className={s.wrapper}>
+      <div ref={scopeRef} className={s.wrapper}>
          <ModalButton
-            focusTarget={closeBtn}
+            focusTarget={closeBtnRef}
             className={s.button}
             dialog={{
                children: (
@@ -115,7 +124,7 @@ const Demo = () => {
                               <button>hogehoge</button>
                            </p>
                            <button
-                              ref={closeBtn}
+                              ref={closeBtnRef}
                               className={classNames(
                                  s.modalClose,
                                  MODAL_CLASSNAME.close
@@ -127,16 +136,8 @@ const Demo = () => {
                   </FocusTrap>
                ),
             }}
-            onOpen={() => {
-               setIsModal(true);
-               openHandler();
-            }}
-            onClose={() => {
-               setIsModal(false);
-               return new Promise((resolve) => {
-                  closeHandler(resolve);
-               });
-            }}>
+            onOpen={handleOpen}
+            onClose={handleClose}>
             <span>with Animation</span>
          </ModalButton>
       </div>
