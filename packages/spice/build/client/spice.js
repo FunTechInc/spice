@@ -1,6 +1,6 @@
 "use client";
 import { jsx as a, jsxs as v, Fragment as E } from "react/jsx-runtime";
-import { forwardRef as $, useRef as g, useCallback as S, useEffect as b, createContext as I, useState as w, useContext as R, useLayoutEffect as K, useMemo as y } from "react";
+import { forwardRef as R, useRef as g, useCallback as S, useEffect as b, createContext as A, useState as w, useContext as I, useLayoutEffect as K, useMemo as y } from "react";
 import T from "gsap";
 import P from "gsap/ScrollTrigger";
 const Y = ({ formProps: e }) => {
@@ -84,7 +84,7 @@ const Y = ({ formProps: e }) => {
     ] });
   if (e === "radio-check") {
     const s = t.map(
-      ({ id: c, value: u, style: f, optionLabel: l, ...d }) => /* @__PURE__ */ v("li", { children: [
+      ({ id: c, value: u, style: f, optionLabel: d, ...l }) => /* @__PURE__ */ v("li", { children: [
         /* @__PURE__ */ a(
           r,
           {
@@ -95,11 +95,11 @@ const Y = ({ formProps: e }) => {
                 ...Q,
                 ...f || {}
               },
-              ...d
+              ...l
             }
           }
         ),
-        /* @__PURE__ */ a("label", { htmlFor: c, children: l || u })
+        /* @__PURE__ */ a("label", { htmlFor: c, children: d || u })
       ] }, c)
     );
     return /* @__PURE__ */ v(E, { children: [
@@ -153,42 +153,42 @@ const Y = ({ formProps: e }) => {
 }, _ = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, et = () => window.innerWidth - document.documentElement.clientWidth, B = (e, { paddingRight: t, scrollbarWidth: n }) => {
   const r = document.documentElement.style, i = document.body.style, o = e ? t + n : t - n;
   r.paddingRight = `${o}px`, r.scrollbarGutter = e ? "auto" : "", i.overflow = e ? "hidden" : "";
-}, nt = $(
+}, nt = R(
   ({ dialog: e, onOpen: t, onClose: n, focusTarget: r, scrollLock: i = !0, ...o }, s) => {
     const c = g(null), u = g({
       paddingRight: 0,
       scrollbarWidth: 0
     }), f = S(() => {
-      var d, h, m;
-      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
-    }, [t, r, i]), l = S(async () => {
+      var l, h, m;
+      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
+    }, [t, r, i]), d = S(async () => {
       n && await W(n(c.current)), i && (u.current.paddingRight = _(), B(!1, u.current)), c.current.close();
     }, [n, i]);
     return b(() => {
-      const d = c.current.querySelectorAll(
+      const l = c.current.querySelectorAll(
         `.${M.close}`
       );
-      if (d)
-        return d.forEach(
-          (h) => h.addEventListener("click", l)
-        ), () => d.forEach(
-          (h) => h.removeEventListener("click", l)
+      if (l)
+        return l.forEach(
+          (h) => h.addEventListener("click", d)
+        ), () => l.forEach(
+          (h) => h.removeEventListener("click", d)
         );
-    }, [l]), b(() => {
-      const d = (h) => {
+    }, [d]), b(() => {
+      const l = (h) => {
         var p;
-        ((p = c.current) == null ? void 0 : p.hasAttribute("open")) && h.key === "Escape" && l();
+        ((p = c.current) == null ? void 0 : p.hasAttribute("open")) && h.key === "Escape" && d();
       };
-      return window.addEventListener("keydown", d), () => window.removeEventListener("keydown", d);
-    }, [l]), /* @__PURE__ */ v(E, { children: [
+      return window.addEventListener("keydown", l), () => window.removeEventListener("keydown", l);
+    }, [d]), /* @__PURE__ */ v(E, { children: [
       /* @__PURE__ */ a(
         "button",
         {
           ref: s,
           ...o,
-          onClick: (d) => {
+          onClick: (l) => {
             var h;
-            f(), (h = o == null ? void 0 : o.onClick) == null || h.call(o, d);
+            f(), (h = o == null ? void 0 : o.onClick) == null || h.call(o, l);
           }
         }
       ),
@@ -197,9 +197,9 @@ const Y = ({ formProps: e }) => {
         {
           ref: c,
           ...e,
-          onClick: (d) => {
+          onClick: (l) => {
             var h;
-            d.target === c.current && l(), (h = e.onClick) == null || h.call(e, d);
+            l.target === c.current && d(), (h = e.onClick) == null || h.call(e, l);
           },
           style: {
             ...tt,
@@ -217,7 +217,7 @@ const rt = {
   prev: "",
   current: "",
   next: ""
-}, F = I(rt), N = I(
+}, F = A(rt), N = A(
   () => {
   }
 ), it = ({ children: e, defaultValue: t }) => {
@@ -233,12 +233,12 @@ const rt = {
     next: ""
   });
   return /* @__PURE__ */ a(F.Provider, { value: n, children: /* @__PURE__ */ a(N.Provider, { value: r, children: e }) });
-}, H = () => R(F), k = () => R(N), ot = ({ children: e, value: t, ...n }) => {
+}, H = () => I(F), $ = () => I(N), ot = ({ children: e, value: t, ...n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = k(), i = H(), o = S(() => {
+  const r = $(), i = H(), o = S(() => {
     i.current === t || i.isLeaving || r((s) => ({
       ...s,
       isLeaving: !0,
@@ -279,34 +279,34 @@ const rt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const c = g(!0), u = g(null), f = k(), l = H(), d = l.current === t && !l.isLeaving;
+  const c = g(!0), u = g(null), f = $(), d = H(), l = d.current === t && !d.isLeaving;
   return b(() => {
     if (c.current) {
       c.current = !1;
       return;
     }
-    if (!l.isAnimation) {
-      d && i && i(u.current);
+    if (!d.isAnimation) {
+      l && i && i(u.current);
       return;
     }
-    l.prev === t && (async () => (r && await W(r(u.current)), f((h) => ({
+    d.prev === t && (async () => (r && await W(r(u.current)), f((h) => ({
       ...h,
       isLeaving: !1,
       prev: "",
       current: h.next,
       next: ""
-    }))))(), d && n && n(u.current);
-  }, [l, f, n, r, i, t, d]), b(() => {
+    }))))(), l && n && n(u.current);
+  }, [d, f, n, r, i, t, l]), b(() => {
     z({
       content: u.current,
-      isOpen: l.current === t
+      isOpen: d.current === t
     });
-  }, [l, t]), /* @__PURE__ */ a(
+  }, [d, t]), /* @__PURE__ */ a(
     "div",
     {
       ref: u,
       style: {
-        ...l.current !== t ? {
+        ...d.current !== t ? {
           pointerEvents: "none",
           position: "absolute",
           visibility: "hidden",
@@ -317,13 +317,13 @@ const rt = {
       },
       role: "tabpanel",
       id: `tab-${t}`,
-      "aria-hidden": l.current !== t,
+      "aria-hidden": d.current !== t,
       ...s,
       children: e
     }
   );
 }, ct = () => {
-  const e = k();
+  const e = $();
   return (t, n) => {
     e((r) => ({
       isAnimation: n,
@@ -343,7 +343,7 @@ const rt = {
   target: "",
   toggle: !1,
   defaultValue: []
-}, j = I(at), X = I(() => {
+}, j = A(at), X = A(() => {
 }), ut = ({ children: e, defaultValue: t }) => {
   const [n, r] = w({
     target: "",
@@ -351,12 +351,12 @@ const rt = {
     defaultValue: t
   });
   return /* @__PURE__ */ a(j.Provider, { value: n, children: /* @__PURE__ */ a(X.Provider, { value: r, children: e }) });
-}, G = () => R(j), dt = () => R(X), lt = ({ children: e, value: t, ...n }) => {
+}, G = () => I(j), lt = () => I(X), dt = ({ children: e, value: t, ...n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = G(), i = dt(), [o, s] = w(
+  const r = G(), i = lt(), [o, s] = w(
     () => !!r.defaultValue.find((c) => c === t)
   );
   return /* @__PURE__ */ a(
@@ -412,25 +412,25 @@ const rt = {
   b(() => {
     o.target === e && c(!s);
   }, [o.target, o.toggle]);
-  const f = g(!0), l = g(null), d = g(null);
+  const f = g(!0), d = g(null), l = g(null);
   return b(() => {
     if (f.current) {
       f.current = !1;
       return;
     }
     const h = {
-      height: d.current.getBoundingClientRect().height,
-      target: l.current
+      height: l.current.getBoundingClientRect().height,
+      target: d.current
     };
     s ? t(h) : n(h);
   }, [s, t, n]), b(() => {
-    z({ content: l.current, isOpen: s });
+    z({ content: d.current, isOpen: s });
   }, [s]), ht(
     {
-      target: d,
+      target: l,
       onResize: (h) => {
         const m = h.getBoundingClientRect().height;
-        s && (l.current.style.height = `${m}px`);
+        s && (d.current.style.height = `${m}px`);
       },
       debounce: 100
     },
@@ -438,7 +438,7 @@ const rt = {
   ), /* @__PURE__ */ a(
     "div",
     {
-      ref: l,
+      ref: d,
       style: {
         overflow: "hidden",
         height: u.current ? "auto" : "0px"
@@ -446,12 +446,12 @@ const rt = {
       id: `content-${e}`,
       "aria-labelledby": `button-${e}`,
       "aria-hidden": !s,
-      children: /* @__PURE__ */ a("div", { ref: d, ...i, children: r })
+      children: /* @__PURE__ */ a("div", { ref: l, ...i, children: r })
     }
   );
-}, kt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Lt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: lt,
+  Button: dt,
   Content: ft,
   Context: ut
 }, Symbol.toStringTag, { value: "Module" })), gt = ({
@@ -466,22 +466,27 @@ const rt = {
     const f = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? s.current;
     if (!f)
       return;
-    const l = (h, m) => {
+    const d = (h, m) => {
       h.forEach((p) => {
         u(p.isIntersecting), p.isIntersecting ? (r && r(p), n && m.unobserve(p.target)) : p.isIntersecting || i && i(p);
       });
-    }, d = new IntersectionObserver(l, t);
-    return d.observe(f), () => {
-      d.unobserve(f);
+    }, l = new IntersectionObserver(d, t);
+    return l.observe(f), () => {
+      l.unobserve(f);
     };
   }, o), { ref: s, isIntersecting: c };
-}, A = typeof window < "u" ? K : b, V = (e, t, n) => {
-  const r = g(e);
-  A(() => void (r.current = e), [e]), A(() => {
+}, k = typeof window < "u" ? K : b;
+function pt(e) {
+  const t = g(e);
+  return k(() => void (t.current = e), [e]), t;
+}
+const V = (e, t, n) => {
+  const r = pt(e);
+  k(() => {
     const i = (...o) => r.current(...o);
     return T.ticker.add(i, t, n), () => T.ticker.remove(i);
   }, [t, n]);
-}, Lt = ({
+}, Pt = ({
   children: e,
   speed: t = 1,
   style: n,
@@ -494,16 +499,16 @@ const rt = {
   return V(() => {
     if (!c)
       return;
-    const f = i.current, l = o.current, d = s.current;
-    if (!f || !l || !d)
+    const f = i.current, d = o.current, l = s.current;
+    if (!f || !d || !l)
       return;
-    const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / l.clientWidth;
+    const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / d.clientWidth;
     if (u.current += h * Math.abs(t) * m, u.current >= 1 && (u.current = 0), t < 0) {
       const p = u.current * -100;
-      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p}%)`;
+      d.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p}%)`;
     } else {
       const p = u.current * 100;
-      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p - 200}%)`;
+      d.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p - 200}%)`;
     }
   }), /* @__PURE__ */ a(
     "div",
@@ -538,7 +543,7 @@ const rt = {
     var t;
     return ((t = e.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : t[0]) || "";
   }
-}, pt = (e) => y(
+}, mt = (e) => y(
   () => e.split(x.regex).map((t, n) => x.isRegularBreak(t) ? /* @__PURE__ */ a("br", {}, n) : x.isSpecificBreak(t) ? /* @__PURE__ */ a(
     "br",
     {
@@ -547,15 +552,15 @@ const rt = {
     n
   ) : t),
   [e]
-), Pt = ({
+), Mt = ({
   text: e
 }) => {
-  const t = pt(e);
+  const t = mt(e);
   return /* @__PURE__ */ a(E, { children: t });
 }, D = ({
   containerProps: e,
   ...t
-}) => e ? /* @__PURE__ */ a("span", { ...e, children: /* @__PURE__ */ a("span", { ...t }) }) : /* @__PURE__ */ a("span", { ...t }), Mt = ({
+}) => e ? /* @__PURE__ */ a("span", { ...e, children: /* @__PURE__ */ a("span", { ...t }) }) : /* @__PURE__ */ a("span", { ...t }), _t = ({
   type: e = "chars",
   text: t,
   exception: n,
@@ -574,21 +579,21 @@ const rt = {
         u
       )
     ] : [
-      ...c.split(o).map((f, l) => {
+      ...c.split(o).map((f, d) => {
         if (n) {
-          const d = n.find(
+          const l = n.find(
             (h) => h.selector === f
           );
-          if (d)
+          if (l)
             return /* @__PURE__ */ a(
               D,
               {
                 containerProps: r,
                 ...i,
-                ...d.attributes,
+                ...l.attributes,
                 children: f
               },
-              `${u}-${l}`
+              `${u}-${d}`
             );
         }
         return /* @__PURE__ */ a(
@@ -598,14 +603,14 @@ const rt = {
             ...i,
             children: f === " " ? " " : f
           },
-          `${u}-${l}`
+          `${u}-${d}`
         );
       }),
       null
     ]),
     [o, t, i, n, r]
   );
-}, mt = $((e, t) => {
+}, bt = R((e, t) => {
   const { fill: n, style: r, ...i } = e;
   return /* @__PURE__ */ a(
     "video",
@@ -623,8 +628,8 @@ const rt = {
     }
   );
 });
-mt.displayName = "Video";
-const bt = $(
+bt.displayName = "Video";
+const wt = R(
   ({
     loader: e = "skeleton",
     delay: t = 1e3,
@@ -635,9 +640,9 @@ const bt = $(
     style: s,
     ...c
   }, u) => {
-    const [f, l] = w(t === 0), d = !!o;
+    const [f, d] = w(t === 0), l = !!o;
     return b(() => {
-      t !== 0 && setTimeout(() => l(!0), t);
+      t !== 0 && setTimeout(() => d(!0), t);
     }, [t]), /* @__PURE__ */ a(
       "div",
       {
@@ -645,7 +650,7 @@ const bt = $(
         style: {
           overflow: "hidden",
           pointerEvents: "none",
-          ...d ? {
+          ...l ? {
             maxWidth: "fit-content",
             height: "auto"
           } : {},
@@ -708,7 +713,7 @@ const bt = $(
                   children: /* @__PURE__ */ a("style", { children: "@keyframes circular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}" })
                 }
               ) : e,
-              d && /* @__PURE__ */ a("div", { style: { visibility: "hidden" }, children: o })
+              l && /* @__PURE__ */ a("div", { style: { visibility: "hidden" }, children: o })
             ]
           }
         )
@@ -716,18 +721,18 @@ const bt = $(
     );
   }
 );
-bt.displayName = "Loader";
-const q = I(
+wt.displayName = "Loader";
+const q = A(
   void 0
-), _t = () => R(q), Bt = ({
+), Bt = () => I(q), Dt = ({
   active: e = !0,
   style: t,
   ...n
 }) => {
-  const r = g(null), { isMobile: i } = Ct(), o = e && i, [s, c] = w(
+  const r = g(null), { isMobile: i } = Et(), o = e && i, [s, c] = w(
     void 0
   );
-  return A(() => {
+  return k(() => {
     o && r.current ? c(r.current) : c(void 0);
   }, [o]), /* @__PURE__ */ a(q.Provider, { value: s, children: /* @__PURE__ */ a(
     "div",
@@ -760,28 +765,28 @@ const q = I(
   b(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
     window.removeEventListener("resize", o), clearTimeout(i.current);
   }), n);
-}, wt = `
+}, vt = `
 Created by FunTech with 😘
 
 👉 https://funtech.inc/
 👉 https://github.com/FunTechInc
 
-`, vt = (e) => {
-  let t = wt;
+`, St = (e) => {
+  let t = vt;
   typeof e == "string" && (t += e), console.log(t);
-}, St = (e) => {
+}, yt = (e) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
   const n = e > 360 ? "width=device-width,initial-scale=1" : "width=360";
   t.getAttribute("content") !== n && t.setAttribute("content", n);
-}, Dt = ({
+}, Ot = ({
   isFixViewportForSmall: e = !0,
   areYouFun: t = !1
 } = {}) => {
   const n = S(
     (r) => {
-      e && St(r);
+      e && yt(r);
     },
     [e]
   );
@@ -790,9 +795,9 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), b(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && vt(t);
+    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
   }, [t, n]);
-}, Ot = () => {
+}, Wt = () => {
   const [e, t] = w(null), n = S(() => {
     const r = window.ontouchstart, i = navigator.maxTouchPoints;
     r !== void 0 && 0 < i ? t(!0) : t(!1);
@@ -802,7 +807,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), b(() => n(), [n]), e;
-}, Wt = (e, t) => {
+}, Ft = (e, t) => {
   const [n, r] = w(null), i = S(
     (o) => {
       switch (e) {
@@ -821,7 +826,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: [i]
   }), b(() => i(window.innerWidth), [i]), n;
-}, Ft = ({
+}, Nt = ({
   shareUrl: e,
   sharePath: t,
   shareTitle: n = "",
@@ -864,7 +869,7 @@ Created by FunTech with 😘
       }
     }),
     [o, s, n]
-  ), l = y(
+  ), d = y(
     () => ({
       onClick: async () => {
         if (!navigator.share) {
@@ -882,7 +887,7 @@ Created by FunTech with 😘
       }
     }),
     [n, o, t]
-  ), [d, h] = w(!1), m = y(
+  ), [l, h] = w(!1), m = y(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(e).then(() => {
@@ -896,16 +901,16 @@ Created by FunTech with 😘
     Facebook: c,
     X: u,
     LINE: f,
-    share: l,
+    share: d,
     copy: m,
-    isCopied: d
+    isCopied: l
   };
-}, yt = (e) => {
+}, xt = (e) => {
   if (/\b(iPad|iPhone|iPod)\b/.test(e))
     return "iOS";
   if (/\bAndroid\b/i.test(e))
     return "Android";
-}, xt = (e) => {
+}, Ct = (e) => {
   if (/Gecko\/\d+/i.test(e) && !/like Gecko/i.test(e))
     return "Gecko";
   if (/AppleWebKit\/\d+/i.test(e) && /like Gecko/i.test(e))
@@ -918,7 +923,7 @@ Created by FunTech with 😘
     return "EdgeHTML";
   if (/Chrome\/\d+/i.test(e))
     return "Blink";
-}, Ct = (e) => {
+}, Et = (e) => {
   const [t, n] = w({
     mobileOS: void 0,
     isMobile: void 0,
@@ -926,8 +931,8 @@ Created by FunTech with 😘
     userAgent: "",
     testing: void 0
   });
-  return A(() => {
-    const r = navigator.userAgent, i = yt(r), o = xt(r);
+  return k(() => {
+    const r = navigator.userAgent, i = xt(r), o = Ct(r);
     n({
       mobileOS: i,
       isMobile: /Mobi/.test(r),
@@ -936,7 +941,7 @@ Created by FunTech with 😘
       testing: e && e(r)
     });
   }, []), t;
-}, Nt = (e) => {
+}, Ht = (e) => {
   const [t, n] = w(!1), r = g();
   V(() => {
     t && r.current && e(r.current);
@@ -953,29 +958,29 @@ Created by FunTech with 😘
     onPointerLeave: o,
     onPointerMove: s
   };
-}, Ht = (e) => {
+}, zt = (e) => {
   const [t, n] = w();
   return b(() => {
     e && e.current && n(e.current);
   }, [e]), t;
-}, O = (e, t) => !!(e != null && e.includes(t)), zt = (e, {
+}, O = (e, t) => !!(e != null && e.includes(t)), jt = (e, {
   reactive: t = [],
   dependencies: n = []
 } = {}) => {
   const [r, i] = w(!1), [o, s] = w(!1), c = g(), u = g(null), f = S(
-    (l, d = 4, h = 1e-3) => {
+    (d, l = 4, h = 1e-3) => {
       if (!c.current)
         return 0;
-      d = Math.max(d, 0);
+      l = Math.max(l, 0);
       const { progress: m } = c.current;
-      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, l);
-      const p = Math.pow(10, d);
+      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, d);
+      const p = Math.pow(10, l);
       return u.current = Math.round(u.current * p) / p, u.current < h ? 0 : 1 - u.current < h ? 1 : u.current;
     },
     []
   );
-  return A(() => {
-    const { onUpdate: l, onToggle: d, trigger: h, ...m } = e;
+  return k(() => {
+    const { onUpdate: d, onToggle: l, trigger: h, ...m } = e;
     if (!h)
       return;
     T.registerPlugin(P);
@@ -983,10 +988,10 @@ Created by FunTech with 😘
       ...m,
       trigger: h,
       onToggle: (C) => {
-        d == null || d(C), O(t, "isActive") && i(C.isActive);
+        l == null || l(C), O(t, "isActive") && i(C.isActive);
       },
       onUpdate: (C) => {
-        c.current = C, l == null || l(C), O(t, "direction") && s(C.direction);
+        c.current = C, d == null || d(C), O(t, "direction") && s(C.direction);
       }
     });
     return () => p.kill();
@@ -998,32 +1003,32 @@ Created by FunTech with 😘
   };
 };
 export {
-  kt as Accordion,
-  Lt as AutoScrollContainer,
-  Pt as CustomBreakLineParser,
+  Lt as Accordion,
+  Pt as AutoScrollContainer,
+  Mt as CustomBreakLineParser,
   x as CustomBreakLineUtils,
   Rt as FormField,
-  bt as Loader,
+  wt as Loader,
   M as MODAL_CLASSNAME,
   nt as ModalButton,
-  Mt as SplitText,
-  Bt as StableScroller,
+  _t as SplitText,
+  Dt as StableScroller,
   $t as Tab,
-  mt as Video,
-  Ct as useDeviceDetector,
+  bt as Video,
+  Et as useDeviceDetector,
   V as useFrame,
   gt as useIntersectionObserver,
-  Ot as useIsTouchDevice,
-  A as useIsomorphicLayoutEffect,
-  Wt as useMediaQuery,
-  Nt as useOnHovering,
-  pt as useParseBreakLine,
+  Wt as useIsTouchDevice,
+  k as useIsomorphicLayoutEffect,
+  Ft as useMediaQuery,
+  Ht as useOnHovering,
+  mt as useParseBreakLine,
   ht as useResizeObserver,
-  zt as useScrollTrigger,
-  Ft as useShare,
-  _t as useStableScroller,
-  Dt as useStarter,
-  Ht as useValidElement,
+  jt as useScrollTrigger,
+  Nt as useShare,
+  Bt as useStableScroller,
+  Ot as useStarter,
+  zt as useValidElement,
   L as useWindowResizeObserver
 };
 //# sourceMappingURL=spice.js.map
