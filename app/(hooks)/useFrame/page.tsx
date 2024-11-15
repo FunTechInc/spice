@@ -16,7 +16,7 @@ const Description = () => {
 };
 const Demo = () => {
    useFrame((t, d) => {
-      console.log(t, d);
+      // console.log(t, d, "hoge");
    });
    return <p>console log</p>;
 };

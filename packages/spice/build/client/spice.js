@@ -84,7 +84,7 @@ const Y = ({ formProps: e }) => {
     ] });
   if (e === "radio-check") {
     const s = t.map(
-      ({ id: c, value: u, style: f, optionLabel: d, ...l }) => /* @__PURE__ */ v("li", { children: [
+      ({ id: c, value: u, style: f, optionLabel: l, ...d }) => /* @__PURE__ */ v("li", { children: [
         /* @__PURE__ */ a(
           r,
           {
@@ -95,11 +95,11 @@ const Y = ({ formProps: e }) => {
                 ...Q,
                 ...f || {}
               },
-              ...l
+              ...d
             }
           }
         ),
-        /* @__PURE__ */ a("label", { htmlFor: c, children: d || u })
+        /* @__PURE__ */ a("label", { htmlFor: c, children: l || u })
       ] }, c)
     );
     return /* @__PURE__ */ v(E, { children: [
@@ -112,7 +112,7 @@ const Y = ({ formProps: e }) => {
   const { isTextarea: t, ...n } = e;
   if (t)
     return /* @__PURE__ */ a("textarea", { ...n, ...t });
-}, Rt = ({
+}, kt = ({
   label: e,
   formProps: t,
   errors: n,
@@ -159,36 +159,36 @@ const Y = ({ formProps: e }) => {
       paddingRight: 0,
       scrollbarWidth: 0
     }), f = S(() => {
-      var l, h, m;
-      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
-    }, [t, r, i]), d = S(async () => {
+      var d, h, m;
+      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
+    }, [t, r, i]), l = S(async () => {
       n && await W(n(c.current)), i && (u.current.paddingRight = _(), B(!1, u.current)), c.current.close();
     }, [n, i]);
     return b(() => {
-      const l = c.current.querySelectorAll(
+      const d = c.current.querySelectorAll(
         `.${M.close}`
       );
-      if (l)
-        return l.forEach(
-          (h) => h.addEventListener("click", d)
-        ), () => l.forEach(
-          (h) => h.removeEventListener("click", d)
+      if (d)
+        return d.forEach(
+          (h) => h.addEventListener("click", l)
+        ), () => d.forEach(
+          (h) => h.removeEventListener("click", l)
         );
-    }, [d]), b(() => {
-      const l = (h) => {
+    }, [l]), b(() => {
+      const d = (h) => {
         var p;
-        ((p = c.current) == null ? void 0 : p.hasAttribute("open")) && h.key === "Escape" && d();
+        ((p = c.current) == null ? void 0 : p.hasAttribute("open")) && h.key === "Escape" && l();
       };
-      return window.addEventListener("keydown", l), () => window.removeEventListener("keydown", l);
-    }, [d]), /* @__PURE__ */ v(E, { children: [
+      return window.addEventListener("keydown", d), () => window.removeEventListener("keydown", d);
+    }, [l]), /* @__PURE__ */ v(E, { children: [
       /* @__PURE__ */ a(
         "button",
         {
           ref: s,
           ...o,
-          onClick: (l) => {
+          onClick: (d) => {
             var h;
-            f(), (h = o == null ? void 0 : o.onClick) == null || h.call(o, l);
+            f(), (h = o == null ? void 0 : o.onClick) == null || h.call(o, d);
           }
         }
       ),
@@ -197,9 +197,9 @@ const Y = ({ formProps: e }) => {
         {
           ref: c,
           ...e,
-          onClick: (l) => {
+          onClick: (d) => {
             var h;
-            l.target === c.current && d(), (h = e.onClick) == null || h.call(e, l);
+            d.target === c.current && l(), (h = e.onClick) == null || h.call(e, d);
           },
           style: {
             ...tt,
@@ -279,34 +279,34 @@ const rt = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const c = g(!0), u = g(null), f = $(), d = H(), l = d.current === t && !d.isLeaving;
+  const c = g(!0), u = g(null), f = $(), l = H(), d = l.current === t && !l.isLeaving;
   return b(() => {
     if (c.current) {
       c.current = !1;
       return;
     }
-    if (!d.isAnimation) {
-      l && i && i(u.current);
+    if (!l.isAnimation) {
+      d && i && i(u.current);
       return;
     }
-    d.prev === t && (async () => (r && await W(r(u.current)), f((h) => ({
+    l.prev === t && (async () => (r && await W(r(u.current)), f((h) => ({
       ...h,
       isLeaving: !1,
       prev: "",
       current: h.next,
       next: ""
-    }))))(), l && n && n(u.current);
-  }, [d, f, n, r, i, t, l]), b(() => {
+    }))))(), d && n && n(u.current);
+  }, [l, f, n, r, i, t, d]), b(() => {
     z({
       content: u.current,
-      isOpen: d.current === t
+      isOpen: l.current === t
     });
-  }, [d, t]), /* @__PURE__ */ a(
+  }, [l, t]), /* @__PURE__ */ a(
     "div",
     {
       ref: u,
       style: {
-        ...d.current !== t ? {
+        ...l.current !== t ? {
           pointerEvents: "none",
           position: "absolute",
           visibility: "hidden",
@@ -317,7 +317,7 @@ const rt = {
       },
       role: "tabpanel",
       id: `tab-${t}`,
-      "aria-hidden": d.current !== t,
+      "aria-hidden": l.current !== t,
       ...s,
       children: e
     }
@@ -333,7 +333,7 @@ const rt = {
       next: n ? t : ""
     }));
   };
-}, $t = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Rt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Button: ot,
   Content: st,
@@ -351,12 +351,12 @@ const rt = {
     defaultValue: t
   });
   return /* @__PURE__ */ a(j.Provider, { value: n, children: /* @__PURE__ */ a(X.Provider, { value: r, children: e }) });
-}, G = () => I(j), lt = () => I(X), dt = ({ children: e, value: t, ...n }) => {
+}, G = () => I(j), dt = () => I(X), lt = ({ children: e, value: t, ...n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = G(), i = lt(), [o, s] = w(
+  const r = G(), i = dt(), [o, s] = w(
     () => !!r.defaultValue.find((c) => c === t)
   );
   return /* @__PURE__ */ a(
@@ -412,25 +412,25 @@ const rt = {
   b(() => {
     o.target === e && c(!s);
   }, [o.target, o.toggle]);
-  const f = g(!0), d = g(null), l = g(null);
+  const f = g(!0), l = g(null), d = g(null);
   return b(() => {
     if (f.current) {
       f.current = !1;
       return;
     }
     const h = {
-      height: l.current.getBoundingClientRect().height,
-      target: d.current
+      height: d.current.getBoundingClientRect().height,
+      target: l.current
     };
     s ? t(h) : n(h);
   }, [s, t, n]), b(() => {
-    z({ content: d.current, isOpen: s });
+    z({ content: l.current, isOpen: s });
   }, [s]), ht(
     {
-      target: l,
+      target: d,
       onResize: (h) => {
         const m = h.getBoundingClientRect().height;
-        s && (d.current.style.height = `${m}px`);
+        s && (l.current.style.height = `${m}px`);
       },
       debounce: 100
     },
@@ -438,7 +438,7 @@ const rt = {
   ), /* @__PURE__ */ a(
     "div",
     {
-      ref: d,
+      ref: l,
       style: {
         overflow: "hidden",
         height: u.current ? "auto" : "0px"
@@ -446,12 +446,12 @@ const rt = {
       id: `content-${e}`,
       "aria-labelledby": `button-${e}`,
       "aria-hidden": !s,
-      children: /* @__PURE__ */ a("div", { ref: l, ...i, children: r })
+      children: /* @__PURE__ */ a("div", { ref: d, ...i, children: r })
     }
   );
-}, Lt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, $t = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: dt,
+  Button: lt,
   Content: ft,
   Context: ut
 }, Symbol.toStringTag, { value: "Module" })), gt = ({
@@ -466,27 +466,22 @@ const rt = {
     const f = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? s.current;
     if (!f)
       return;
-    const d = (h, m) => {
+    const l = (h, m) => {
       h.forEach((p) => {
         u(p.isIntersecting), p.isIntersecting ? (r && r(p), n && m.unobserve(p.target)) : p.isIntersecting || i && i(p);
       });
-    }, l = new IntersectionObserver(d, t);
-    return l.observe(f), () => {
-      l.unobserve(f);
+    }, d = new IntersectionObserver(l, t);
+    return d.observe(f), () => {
+      d.unobserve(f);
     };
   }, o), { ref: s, isIntersecting: c };
-}, k = typeof window < "u" ? K : b;
-function pt(e) {
-  const t = g(e);
-  return k(() => void (t.current = e), [e]), t;
-}
-const V = (e, t, n) => {
-  const r = pt(e);
-  k(() => {
+}, k = typeof window < "u" ? K : b, V = (e, t, n) => {
+  const r = g(e);
+  r.current = e, k(() => {
     const i = (...o) => r.current(...o);
     return T.ticker.add(i, t, n), () => T.ticker.remove(i);
   }, [t, n]);
-}, Pt = ({
+}, Lt = ({
   children: e,
   speed: t = 1,
   style: n,
@@ -499,16 +494,16 @@ const V = (e, t, n) => {
   return V(() => {
     if (!c)
       return;
-    const f = i.current, d = o.current, l = s.current;
-    if (!f || !d || !l)
+    const f = i.current, l = o.current, d = s.current;
+    if (!f || !l || !d)
       return;
-    const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / d.clientWidth;
+    const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / l.clientWidth;
     if (u.current += h * Math.abs(t) * m, u.current >= 1 && (u.current = 0), t < 0) {
       const p = u.current * -100;
-      d.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p}%)`;
+      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p}%)`;
     } else {
       const p = u.current * 100;
-      d.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p - 200}%)`;
+      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p - 200}%)`;
     }
   }), /* @__PURE__ */ a(
     "div",
@@ -543,7 +538,7 @@ const V = (e, t, n) => {
     var t;
     return ((t = e.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : t[0]) || "";
   }
-}, mt = (e) => y(
+}, pt = (e) => y(
   () => e.split(x.regex).map((t, n) => x.isRegularBreak(t) ? /* @__PURE__ */ a("br", {}, n) : x.isSpecificBreak(t) ? /* @__PURE__ */ a(
     "br",
     {
@@ -552,15 +547,15 @@ const V = (e, t, n) => {
     n
   ) : t),
   [e]
-), Mt = ({
+), Pt = ({
   text: e
 }) => {
-  const t = mt(e);
+  const t = pt(e);
   return /* @__PURE__ */ a(E, { children: t });
 }, D = ({
   containerProps: e,
   ...t
-}) => e ? /* @__PURE__ */ a("span", { ...e, children: /* @__PURE__ */ a("span", { ...t }) }) : /* @__PURE__ */ a("span", { ...t }), _t = ({
+}) => e ? /* @__PURE__ */ a("span", { ...e, children: /* @__PURE__ */ a("span", { ...t }) }) : /* @__PURE__ */ a("span", { ...t }), Mt = ({
   type: e = "chars",
   text: t,
   exception: n,
@@ -579,21 +574,21 @@ const V = (e, t, n) => {
         u
       )
     ] : [
-      ...c.split(o).map((f, d) => {
+      ...c.split(o).map((f, l) => {
         if (n) {
-          const l = n.find(
+          const d = n.find(
             (h) => h.selector === f
           );
-          if (l)
+          if (d)
             return /* @__PURE__ */ a(
               D,
               {
                 containerProps: r,
                 ...i,
-                ...l.attributes,
+                ...d.attributes,
                 children: f
               },
-              `${u}-${d}`
+              `${u}-${l}`
             );
         }
         return /* @__PURE__ */ a(
@@ -603,14 +598,14 @@ const V = (e, t, n) => {
             ...i,
             children: f === " " ? " " : f
           },
-          `${u}-${d}`
+          `${u}-${l}`
         );
       }),
       null
     ]),
     [o, t, i, n, r]
   );
-}, bt = R((e, t) => {
+}, mt = R((e, t) => {
   const { fill: n, style: r, ...i } = e;
   return /* @__PURE__ */ a(
     "video",
@@ -628,8 +623,8 @@ const V = (e, t, n) => {
     }
   );
 });
-bt.displayName = "Video";
-const wt = R(
+mt.displayName = "Video";
+const bt = R(
   ({
     loader: e = "skeleton",
     delay: t = 1e3,
@@ -640,9 +635,9 @@ const wt = R(
     style: s,
     ...c
   }, u) => {
-    const [f, d] = w(t === 0), l = !!o;
+    const [f, l] = w(t === 0), d = !!o;
     return b(() => {
-      t !== 0 && setTimeout(() => d(!0), t);
+      t !== 0 && setTimeout(() => l(!0), t);
     }, [t]), /* @__PURE__ */ a(
       "div",
       {
@@ -650,7 +645,7 @@ const wt = R(
         style: {
           overflow: "hidden",
           pointerEvents: "none",
-          ...l ? {
+          ...d ? {
             maxWidth: "fit-content",
             height: "auto"
           } : {},
@@ -713,7 +708,7 @@ const wt = R(
                   children: /* @__PURE__ */ a("style", { children: "@keyframes circular {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}" })
                 }
               ) : e,
-              l && /* @__PURE__ */ a("div", { style: { visibility: "hidden" }, children: o })
+              d && /* @__PURE__ */ a("div", { style: { visibility: "hidden" }, children: o })
             ]
           }
         )
@@ -721,15 +716,15 @@ const wt = R(
     );
   }
 );
-wt.displayName = "Loader";
+bt.displayName = "Loader";
 const q = A(
   void 0
-), Bt = () => I(q), Dt = ({
+), _t = () => I(q), Bt = ({
   active: e = !0,
   style: t,
   ...n
 }) => {
-  const r = g(null), { isMobile: i } = Et(), o = e && i, [s, c] = w(
+  const r = g(null), { isMobile: i } = Ct(), o = e && i, [s, c] = w(
     void 0
   );
   return k(() => {
@@ -765,28 +760,28 @@ const q = A(
   b(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
     window.removeEventListener("resize", o), clearTimeout(i.current);
   }), n);
-}, vt = `
+}, wt = `
 Created by FunTech with 😘
 
 👉 https://funtech.inc/
 👉 https://github.com/FunTechInc
 
-`, St = (e) => {
-  let t = vt;
+`, vt = (e) => {
+  let t = wt;
   typeof e == "string" && (t += e), console.log(t);
-}, yt = (e) => {
+}, St = (e) => {
   const t = document.querySelector('meta[name="viewport"]');
   if (!t)
     return;
   const n = e > 360 ? "width=device-width,initial-scale=1" : "width=360";
   t.getAttribute("content") !== n && t.setAttribute("content", n);
-}, Ot = ({
+}, Dt = ({
   isFixViewportForSmall: e = !0,
   areYouFun: t = !1
 } = {}) => {
   const n = S(
     (r) => {
-      e && yt(r);
+      e && St(r);
     },
     [e]
   );
@@ -795,9 +790,9 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), b(() => {
-    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
+    document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && vt(t);
   }, [t, n]);
-}, Wt = () => {
+}, Ot = () => {
   const [e, t] = w(null), n = S(() => {
     const r = window.ontouchstart, i = navigator.maxTouchPoints;
     r !== void 0 && 0 < i ? t(!0) : t(!1);
@@ -807,7 +802,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: []
   }), b(() => n(), [n]), e;
-}, Ft = (e, t) => {
+}, Wt = (e, t) => {
   const [n, r] = w(null), i = S(
     (o) => {
       switch (e) {
@@ -826,7 +821,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: [i]
   }), b(() => i(window.innerWidth), [i]), n;
-}, Nt = ({
+}, Ft = ({
   shareUrl: e,
   sharePath: t,
   shareTitle: n = "",
@@ -869,7 +864,7 @@ Created by FunTech with 😘
       }
     }),
     [o, s, n]
-  ), d = y(
+  ), l = y(
     () => ({
       onClick: async () => {
         if (!navigator.share) {
@@ -887,7 +882,7 @@ Created by FunTech with 😘
       }
     }),
     [n, o, t]
-  ), [l, h] = w(!1), m = y(
+  ), [d, h] = w(!1), m = y(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(e).then(() => {
@@ -901,16 +896,16 @@ Created by FunTech with 😘
     Facebook: c,
     X: u,
     LINE: f,
-    share: d,
+    share: l,
     copy: m,
-    isCopied: l
+    isCopied: d
   };
-}, xt = (e) => {
+}, yt = (e) => {
   if (/\b(iPad|iPhone|iPod)\b/.test(e))
     return "iOS";
   if (/\bAndroid\b/i.test(e))
     return "Android";
-}, Ct = (e) => {
+}, xt = (e) => {
   if (/Gecko\/\d+/i.test(e) && !/like Gecko/i.test(e))
     return "Gecko";
   if (/AppleWebKit\/\d+/i.test(e) && /like Gecko/i.test(e))
@@ -923,7 +918,7 @@ Created by FunTech with 😘
     return "EdgeHTML";
   if (/Chrome\/\d+/i.test(e))
     return "Blink";
-}, Et = (e) => {
+}, Ct = (e) => {
   const [t, n] = w({
     mobileOS: void 0,
     isMobile: void 0,
@@ -932,7 +927,7 @@ Created by FunTech with 😘
     testing: void 0
   });
   return k(() => {
-    const r = navigator.userAgent, i = xt(r), o = Ct(r);
+    const r = navigator.userAgent, i = yt(r), o = xt(r);
     n({
       mobileOS: i,
       isMobile: /Mobi/.test(r),
@@ -941,7 +936,7 @@ Created by FunTech with 😘
       testing: e && e(r)
     });
   }, []), t;
-}, Ht = (e) => {
+}, Nt = (e) => {
   const [t, n] = w(!1), r = g();
   V(() => {
     t && r.current && e(r.current);
@@ -958,29 +953,29 @@ Created by FunTech with 😘
     onPointerLeave: o,
     onPointerMove: s
   };
-}, zt = (e) => {
+}, Ht = (e) => {
   const [t, n] = w();
   return b(() => {
     e && e.current && n(e.current);
   }, [e]), t;
-}, O = (e, t) => !!(e != null && e.includes(t)), jt = (e, {
+}, O = (e, t) => !!(e != null && e.includes(t)), zt = (e, {
   reactive: t = [],
   dependencies: n = []
 } = {}) => {
   const [r, i] = w(!1), [o, s] = w(!1), c = g(), u = g(null), f = S(
-    (d, l = 4, h = 1e-3) => {
+    (l, d = 4, h = 1e-3) => {
       if (!c.current)
         return 0;
-      l = Math.max(l, 0);
+      d = Math.max(d, 0);
       const { progress: m } = c.current;
-      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, d);
-      const p = Math.pow(10, l);
+      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, l);
+      const p = Math.pow(10, d);
       return u.current = Math.round(u.current * p) / p, u.current < h ? 0 : 1 - u.current < h ? 1 : u.current;
     },
     []
   );
   return k(() => {
-    const { onUpdate: d, onToggle: l, trigger: h, ...m } = e;
+    const { onUpdate: l, onToggle: d, trigger: h, ...m } = e;
     if (!h)
       return;
     T.registerPlugin(P);
@@ -988,10 +983,10 @@ Created by FunTech with 😘
       ...m,
       trigger: h,
       onToggle: (C) => {
-        l == null || l(C), O(t, "isActive") && i(C.isActive);
+        d == null || d(C), O(t, "isActive") && i(C.isActive);
       },
       onUpdate: (C) => {
-        c.current = C, d == null || d(C), O(t, "direction") && s(C.direction);
+        c.current = C, l == null || l(C), O(t, "direction") && s(C.direction);
       }
     });
     return () => p.kill();
@@ -1003,32 +998,32 @@ Created by FunTech with 😘
   };
 };
 export {
-  Lt as Accordion,
-  Pt as AutoScrollContainer,
-  Mt as CustomBreakLineParser,
+  $t as Accordion,
+  Lt as AutoScrollContainer,
+  Pt as CustomBreakLineParser,
   x as CustomBreakLineUtils,
-  Rt as FormField,
-  wt as Loader,
+  kt as FormField,
+  bt as Loader,
   M as MODAL_CLASSNAME,
   nt as ModalButton,
-  _t as SplitText,
-  Dt as StableScroller,
-  $t as Tab,
-  bt as Video,
-  Et as useDeviceDetector,
+  Mt as SplitText,
+  Bt as StableScroller,
+  Rt as Tab,
+  mt as Video,
+  Ct as useDeviceDetector,
   V as useFrame,
   gt as useIntersectionObserver,
-  Wt as useIsTouchDevice,
+  Ot as useIsTouchDevice,
   k as useIsomorphicLayoutEffect,
-  Ft as useMediaQuery,
-  Ht as useOnHovering,
-  mt as useParseBreakLine,
+  Wt as useMediaQuery,
+  Nt as useOnHovering,
+  pt as useParseBreakLine,
   ht as useResizeObserver,
-  jt as useScrollTrigger,
-  Nt as useShare,
-  Bt as useStableScroller,
-  Ot as useStarter,
-  zt as useValidElement,
+  zt as useScrollTrigger,
+  Ft as useShare,
+  _t as useStableScroller,
+  Dt as useStarter,
+  Ht as useValidElement,
   L as useWindowResizeObserver
 };
 //# sourceMappingURL=spice.js.map
