@@ -19,7 +19,7 @@ const w = ({ formProps: r }) => {
   const i = () => {
     const s = e.defaultValue;
     return s ? /* @__PURE__ */ t("option", { hidden: !0, children: s }) : null;
-  }, c = () => {
+  }, a = () => {
     const s = e.defaultSelectedIndex;
     if (s)
       return e.options[s];
@@ -33,7 +33,7 @@ const w = ({ formProps: r }) => {
         fontSize: "16px",
         ...n || {}
       },
-      defaultValue: c(),
+      defaultValue: a(),
       children: [
         /* @__PURE__ */ t(i, {}),
         e.options.map((s) => /* @__PURE__ */ t("option", { value: s, children: s }, s))
@@ -58,12 +58,12 @@ const w = ({ formProps: r }) => {
   FormItem: l,
   errors: i
 }) => {
-  const c = ({ index: s }) => i ? Array.isArray(i) ? i[s] : i : null;
+  const a = ({ index: s }) => i ? Array.isArray(i) ? i[s] : i : null;
   if (r === "block")
     return /* @__PURE__ */ u(x, { children: [
       n && /* @__PURE__ */ t("label", { htmlFor: e[0].id, children: n }),
       /* @__PURE__ */ t(l, { formProps: e[0] }),
-      /* @__PURE__ */ t(c, { index: 0 })
+      /* @__PURE__ */ t(a, { index: 0 })
     ] });
   if (r === "flex")
     return /* @__PURE__ */ u(x, { children: [
@@ -71,22 +71,22 @@ const w = ({ formProps: r }) => {
       /* @__PURE__ */ u("ul", { children: [
         /* @__PURE__ */ u("li", { children: [
           /* @__PURE__ */ t(l, { formProps: e[0] }),
-          /* @__PURE__ */ t(c, { index: 0 })
+          /* @__PURE__ */ t(a, { index: 0 })
         ] }),
         /* @__PURE__ */ u("li", { children: [
           /* @__PURE__ */ t(l, { formProps: e[1] }),
-          /* @__PURE__ */ t(c, { index: 1 })
+          /* @__PURE__ */ t(a, { index: 1 })
         ] })
       ] })
     ] });
   if (r === "radio-check") {
     const s = e.map(
-      ({ id: a, value: o, style: d, optionLabel: f, ...p }) => /* @__PURE__ */ u("li", { children: [
+      ({ id: c, value: o, style: d, optionLabel: f, ...p }) => /* @__PURE__ */ u("li", { children: [
         /* @__PURE__ */ t(
           l,
           {
             formProps: {
-              id: a,
+              id: c,
               value: o,
               style: {
                 ...S,
@@ -96,13 +96,13 @@ const w = ({ formProps: r }) => {
             }
           }
         ),
-        /* @__PURE__ */ t("label", { htmlFor: a, children: f || o })
-      ] }, a)
+        /* @__PURE__ */ t("label", { htmlFor: c, children: f || o })
+      ] }, c)
     );
     return /* @__PURE__ */ u(x, { children: [
       n && /* @__PURE__ */ t("label", { children: n }),
       /* @__PURE__ */ t("ul", { children: s }),
-      /* @__PURE__ */ t(c, { index: 0 })
+      /* @__PURE__ */ t(a, { index: 0 })
     ] });
   }
 }, T = ({ formProps: r }) => {
@@ -117,10 +117,10 @@ const w = ({ formProps: r }) => {
 }) => {
   if (n && Array.isArray(n) && n.length > 2)
     throw new Error("The length of error is up to 2.");
-  const i = Array.isArray(e) ? e : [e], { type: c, isSelect: s, isTextarea: a } = i[0], o = i.length;
-  if (!(c === "radio" || c === "checkbox") && o > 2)
+  const i = Array.isArray(e) ? e : [e], { type: a, isSelect: s, isTextarea: c } = i[0], o = i.length;
+  if (!(a === "radio" || a === "checkbox") && o > 2)
     throw new Error("The length of formProps is up to 2.");
-  const d = ["radio", "checkbox"].includes(c || "") ? "radio-check" : o === 1 ? "block" : "flex";
+  const d = ["radio", "checkbox"].includes(a || "") ? "radio-check" : o === 1 ? "block" : "flex";
   return /* @__PURE__ */ t("fieldset", { ...l, children: /* @__PURE__ */ t(
     B,
     {
@@ -128,7 +128,7 @@ const w = ({ formProps: r }) => {
       formPropsArr: i,
       label: r,
       errors: n,
-      FormItem: s ? y : a ? T : w
+      FormItem: s ? y : c ? T : w
     }
   ) });
 }, h = {
@@ -150,7 +150,7 @@ const w = ({ formProps: r }) => {
   ) : e),
   [r]
 ), E = ({
-  text: r
+  children: r
 }) => {
   const e = C(r);
   return /* @__PURE__ */ t(x, { children: e });
@@ -159,24 +159,24 @@ const w = ({ formProps: r }) => {
   ...e
 }) => r ? /* @__PURE__ */ t("span", { ...r, children: /* @__PURE__ */ t("span", { ...e }) }) : /* @__PURE__ */ t("span", { ...e }), F = ({
   type: r = "chars",
-  text: e,
+  children: e,
   exception: n,
   containerProps: l,
   ...i
 }) => {
-  const c = r === "chars" ? "" : " ";
+  const a = r === "chars" ? "" : " ";
   return m(
-    () => e.split(h.regex).flatMap((a, o) => h.isRegularBreak(a) ? [null, /* @__PURE__ */ t("br", {}, o)] : h.isSpecificBreak(a) ? [
+    () => e.split(h.regex).flatMap((c, o) => h.isRegularBreak(c) ? [null, /* @__PURE__ */ t("br", {}, o)] : h.isSpecificBreak(c) ? [
       null,
       /* @__PURE__ */ t(
         "br",
         {
-          className: h.getClassName(a)
+          className: h.getClassName(c)
         },
         o
       )
     ] : [
-      ...a.split(c).map((d, f) => {
+      ...c.split(a).map((d, f) => {
         if (n) {
           const p = n.find(
             (b) => b.selector === d
@@ -205,7 +205,7 @@ const w = ({ formProps: r }) => {
       }),
       null
     ]),
-    [c, e, i, n, l]
+    [a, e, i, n, l]
   );
 }, L = k((r, e) => {
   const { fill: n, style: l, ...i } = r;
@@ -232,6 +232,6 @@ export {
   v as FormField,
   F as SplitText,
   L as Video,
-  C as useParseBreakLine
+  C as useParsedBreakLine
 };
 //# sourceMappingURL=spice.js.map

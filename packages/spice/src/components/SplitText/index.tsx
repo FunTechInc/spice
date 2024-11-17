@@ -7,8 +7,6 @@ type SpanOmittedChildren = Omit<
 >;
 
 export type SplitTextProps = {
-   /** The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class. */
-   text: string;
    /** Split by character or by word . For `words`, split by whitespace. */
    type?: "chars" | "words";
    /** It is possible to set exceptional attributes for certain characters only */
@@ -17,6 +15,7 @@ export type SplitTextProps = {
       attributes?: SpanOmittedChildren;
    }[];
    containerProps?: SpanOmittedChildren;
+   children: string;
 } & SpanOmittedChildren;
 
 const SplitContainer = ({
@@ -35,9 +34,12 @@ const SplitContainer = ({
    return <span {...props} />;
 };
 
+/**
+ * @param children - The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class.
+ */
 export const SplitText = ({
    type = "chars",
-   text,
+   children,
    exception,
    containerProps,
    ...rest
@@ -46,7 +48,7 @@ export const SplitText = ({
 
    const wrappedText = useMemo(
       () =>
-         text.split(CustomBreakLineUtils.regex).flatMap((line, i) => {
+         children.split(CustomBreakLineUtils.regex).flatMap((line, i) => {
             if (CustomBreakLineUtils.isRegularBreak(line)) {
                return [null, <br key={i} />];
             }
@@ -89,7 +91,7 @@ export const SplitText = ({
                null,
             ];
          }),
-      [splitTag, text, rest, exception, containerProps]
+      [splitTag, children, rest, exception, containerProps]
    );
 
    return wrappedText;

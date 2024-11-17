@@ -11,13 +11,11 @@ const Demo = () => {
                   className: "container",
                   style: {
                      backgroundColor: "lightblue",
-                     overflow: "hidden",
                      display: "inline-block",
                   },
                }}
                style={{
                   display: "inline-block",
-                  translate: "0 8px",
                }}
                exception={[
                   {
@@ -25,25 +23,52 @@ const Demo = () => {
                      attributes: {
                         style: {
                            color: "red",
-                           marginLeft: "-.5em",
+                           fontWeight: "bold",
                         },
                      },
                   },
-               ]}
-               text={`ほ「げ ほげ\nほ###br.hoge###げほげほげ`}
-            />
+               ]}>
+               {`ほ「げ ほげ\nほ###br.hoge###げほげほげ`}
+            </SplitText>
          </p>
-         {/* <p>
-            <CustomBreakLineParser
-               text={`ほ「げほげ\nほ###br.hoge###げほげほげ`}
-            />
-         </p> */}
+         <p>
+            <CustomBreakLineParser>
+               {`ほ「げほげ\nほ###br.hoge###げほげほげ`}
+            </CustomBreakLineParser>
+         </p>
       </div>
    );
 };
 
 const Code = () => {
-   return <CodeBlock code={`<SplitText text="ほげほげほげほげほげ" />`} />;
+   return (
+      <CodeBlock
+         code={`<SplitText
+               containerProps={{
+                  className: "container",
+                  style: {
+                     backgroundColor: "lightblue",
+                     display: "inline-block",
+                  },
+               }}
+               style={{
+                  display: "inline-block",
+               }}
+               exception={[
+                  {
+                     selector: "「",
+                     attributes: {
+                        style: {
+                           color: "red",
+                           fontWeight: "bold",
+                        },
+                     },
+                  },
+               ]}>
+               {\`ほ「げ ほげ\nほ###br.hoge###げほげほげ\`}
+            </SplitText>`}
+      />
+   );
 };
 
 const Page = () => {
