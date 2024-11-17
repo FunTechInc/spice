@@ -3,6 +3,7 @@
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { useFrame } from "@/packages/spice/src/client";
+import { useEffect, useState } from "react";
 
 const Description = () => {
    return (
@@ -16,7 +17,7 @@ const Description = () => {
 };
 const Demo = () => {
    useFrame((t, d) => {
-      // console.log(t, d, "hoge");
+      console.log(t);
    });
    return <p>console log</p>;
 };
