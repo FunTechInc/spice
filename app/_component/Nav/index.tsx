@@ -87,32 +87,36 @@ const componentList = [
    },
 ];
 
+const utilsList = [
+   {
+      href: "/paging",
+      title: "paging",
+   },
+];
+
 export const AsideNav = () => {
-   const HookLinks = hookList.map((elm) => {
-      return (
+   const renderLinks = (list: any) => {
+      return list.map((elm: any) => (
          <Link key={elm.href} href={elm.href}>
             {elm.title}
          </Link>
-      );
-   });
-   const ComponentLinks = componentList.map((elm) => {
-      return (
-         <Link key={elm.href} href={elm.href}>
-            {elm.title}
-         </Link>
-      );
-   });
+      ));
+   };
+
+   const sections = [
+      { title: "hooks", links: hookList },
+      { title: "components", links: componentList },
+      { title: "utils", links: utilsList },
+   ];
 
    return (
-      <div className={`${s.nav}`}>
-         <div className={s.block}>
-            <h3>hooks</h3>
-            <div>{HookLinks}</div>
-         </div>
-         <div className={s.block}>
-            <h3>components</h3>
-            <div>{ComponentLinks}</div>
-         </div>
+      <div className={s.nav}>
+         {sections.map(({ title, links }) => (
+            <div key={title} className={s.block}>
+               <h3>{title}</h3>
+               <div>{renderLinks(links)}</div>
+            </div>
+         ))}
       </div>
    );
 };
