@@ -1,5 +1,5 @@
-import { jsx as n, jsxs as h, Fragment as g } from "react/jsx-runtime";
-import { useMemo as b, forwardRef as k } from "react";
+import { jsx as n, jsxs as u, Fragment as g } from "react/jsx-runtime";
+import { useMemo as x, forwardRef as S } from "react";
 const T = ({ formProps: r }) => {
   const { style: e, ...t } = r;
   return /* @__PURE__ */ n(
@@ -12,7 +12,7 @@ const T = ({ formProps: r }) => {
       }
     }
   );
-}, S = ({ formProps: r }) => {
+}, k = ({ formProps: r }) => {
   const { isSelect: e, style: t, ...i } = r;
   if (!e)
     return;
@@ -24,7 +24,7 @@ const T = ({ formProps: r }) => {
     if (a)
       return e.options[a];
   };
-  return /* @__PURE__ */ h(
+  return /* @__PURE__ */ u(
     "select",
     {
       ...i,
@@ -40,7 +40,7 @@ const T = ({ formProps: r }) => {
       ]
     }
   );
-}, B = {
+}, v = {
   position: "absolute",
   whiteSpace: "nowrap",
   width: "1px",
@@ -51,7 +51,7 @@ const T = ({ formProps: r }) => {
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   zIndex: "-99999"
-}, v = ({
+}, B = ({
   layoutType: r,
   formPropsArr: e,
   label: t,
@@ -60,20 +60,20 @@ const T = ({ formProps: r }) => {
 }) => {
   const c = ({ index: a }) => s ? Array.isArray(s) ? s[a] : s : null;
   if (r === "block")
-    return /* @__PURE__ */ h(g, { children: [
+    return /* @__PURE__ */ u(g, { children: [
       t && /* @__PURE__ */ n("label", { htmlFor: e[0].id, children: t }),
       /* @__PURE__ */ n(i, { formProps: e[0] }),
       /* @__PURE__ */ n(c, { index: 0 })
     ] });
   if (r === "flex")
-    return /* @__PURE__ */ h(g, { children: [
+    return /* @__PURE__ */ u(g, { children: [
       t && /* @__PURE__ */ n("label", { htmlFor: e[0].id, children: t }),
-      /* @__PURE__ */ h("ul", { children: [
-        /* @__PURE__ */ h("li", { children: [
+      /* @__PURE__ */ u("ul", { children: [
+        /* @__PURE__ */ u("li", { children: [
           /* @__PURE__ */ n(i, { formProps: e[0] }),
           /* @__PURE__ */ n(c, { index: 0 })
         ] }),
-        /* @__PURE__ */ h("li", { children: [
+        /* @__PURE__ */ u("li", { children: [
           /* @__PURE__ */ n(i, { formProps: e[1] }),
           /* @__PURE__ */ n(c, { index: 1 })
         ] })
@@ -81,7 +81,7 @@ const T = ({ formProps: r }) => {
     ] });
   if (r === "radio-check") {
     const a = e.map(
-      ({ id: o, value: l, style: d, optionLabel: f, ...p }) => /* @__PURE__ */ h("li", { children: [
+      ({ id: o, value: l, style: d, optionLabel: f, ...p }) => /* @__PURE__ */ u("li", { children: [
         /* @__PURE__ */ n(
           i,
           {
@@ -89,7 +89,7 @@ const T = ({ formProps: r }) => {
               id: o,
               value: l,
               style: {
-                ...B,
+                ...v,
                 ...d || {}
               },
               ...p
@@ -99,7 +99,7 @@ const T = ({ formProps: r }) => {
         /* @__PURE__ */ n("label", { htmlFor: o, children: f || l })
       ] }, o)
     );
-    return /* @__PURE__ */ h(g, { children: [
+    return /* @__PURE__ */ u(g, { children: [
       t && /* @__PURE__ */ n("label", { children: t }),
       /* @__PURE__ */ n("ul", { children: a }),
       /* @__PURE__ */ n(c, { index: 0 })
@@ -109,7 +109,7 @@ const T = ({ formProps: r }) => {
   const { isTextarea: e, ...t } = r;
   if (e)
     return /* @__PURE__ */ n("textarea", { ...t, ...e });
-}, V = ({
+}, $ = ({
   label: r,
   formProps: e,
   errors: t,
@@ -122,16 +122,16 @@ const T = ({ formProps: r }) => {
     throw new Error("The length of formProps is up to 2.");
   const d = ["radio", "checkbox"].includes(c || "") ? "radio-check" : l === 1 ? "block" : "flex";
   return /* @__PURE__ */ n("fieldset", { ...i, children: /* @__PURE__ */ n(
-    v,
+    B,
     {
       layoutType: d,
       formPropsArr: s,
       label: r,
       errors: t,
-      FormItem: a ? S : o ? R : T
+      FormItem: a ? k : o ? R : T
     }
   ) });
-}, u = {
+}, h = {
   regex: /(\n|###br\.[^#]+###|###br###)/,
   isRegularBreak: (r) => r === `
 ` || r === "###br###",
@@ -140,24 +140,24 @@ const T = ({ formProps: r }) => {
     var e;
     return ((e = r.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : e[0]) || "";
   }
-}, E = (r) => b(
-  () => r.split(u.regex).map((e, t) => u.isRegularBreak(e) ? /* @__PURE__ */ n("br", {}, t) : u.isSpecificBreak(e) ? /* @__PURE__ */ n(
+}, M = (r) => x(
+  () => r.split(h.regex).map((e, t) => h.isRegularBreak(e) ? /* @__PURE__ */ n("br", {}, t) : h.isSpecificBreak(e) ? /* @__PURE__ */ n(
     "br",
     {
-      className: u.getClassName(e)
+      className: h.getClassName(e)
     },
     t
   ) : e),
   [r]
-), $ = ({
+), A = ({
   children: r
 }) => {
-  const e = E(r);
+  const e = M(r);
   return /* @__PURE__ */ n(g, { children: e });
 }, m = ({
   containerProps: r,
   ...e
-}) => r ? /* @__PURE__ */ n("span", { ...r, children: /* @__PURE__ */ n("span", { ...e }) }) : /* @__PURE__ */ n("span", { ...e }), A = ({
+}) => r ? /* @__PURE__ */ n("span", { ...r, children: /* @__PURE__ */ n("span", { ...e }) }) : /* @__PURE__ */ n("span", { ...e }), F = ({
   type: r = "chars",
   children: e,
   exception: t,
@@ -165,13 +165,13 @@ const T = ({ formProps: r }) => {
   ...s
 }) => {
   const c = r === "chars" ? "" : " ";
-  return b(
-    () => e.split(u.regex).flatMap((o, l) => u.isRegularBreak(o) ? [null, /* @__PURE__ */ n("br", {}, l)] : u.isSpecificBreak(o) ? [
+  return x(
+    () => e.split(h.regex).flatMap((o, l) => h.isRegularBreak(o) ? [null, /* @__PURE__ */ n("br", {}, l)] : h.isSpecificBreak(o) ? [
       null,
       /* @__PURE__ */ n(
         "br",
         {
-          className: u.getClassName(o)
+          className: h.getClassName(o)
         },
         l
       )
@@ -207,7 +207,7 @@ const T = ({ formProps: r }) => {
     ]),
     [c, e, s, t, i]
   );
-}, L = k((r, e) => {
+}, E = S((r, e) => {
   const { fill: t, style: i, ...s } = r;
   return /* @__PURE__ */ n(
     "video",
@@ -225,7 +225,7 @@ const T = ({ formProps: r }) => {
     }
   );
 });
-L.displayName = "Video";
+E.displayName = "Video";
 const w = (r, e) => {
   if (e < r)
     throw Error(
@@ -233,7 +233,7 @@ const w = (r, e) => {
     );
   const t = e - r + 1;
   return Array(t).fill(0).map((i, s) => s + r);
-}, x = (r, e, t) => Math.min(Math.max(r, e), t), F = (r, e) => w(1, Math.ceil(r / e)), C = (r, e, t, i = 5, s = "...") => {
+}, b = (r, e, t) => Math.min(Math.max(r, e), t), L = (r, e) => w(1, Math.ceil(r / e)), _ = (r, e, t, i = 5, s = "...") => {
   if (e = Math.ceil(e / t), e < 1)
     return console.warn("Page count has negative value. Returning empty array."), [];
   r < 1 && (console.warn(
@@ -243,23 +243,26 @@ const w = (r, e) => {
     e
   ), r = e), i % 2 === 0 && (console.warn("The size must be odd. The size will be increased by 1"), i += 1), i < 5 && (console.warn("The minimum size is 5. The size will be increased to 5"), i = 5);
   const c = (i - 1) / 2, a = e > i, o = {
-    start: x(
+    start: b(
       r - c,
       1,
       a ? e - i + 1 : 1
     ),
-    end: x(r + c, i, e)
+    end: b(r + c, i, e)
   }, l = w(o.start, o.end);
   return a && l[0] !== 1 && (l[0] = 1, l[1] = s), a && l[l.length - 1] !== e && (l[l.length - 1] = e, l[l.length - 2] = s), l;
-};
+}, O = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  getPageRange: L,
+  getPaginationRange: _
+}, Symbol.toStringTag, { value: "Module" }));
 export {
-  $ as CustomBreakLineParser,
-  u as CustomBreakLineUtils,
-  V as FormField,
-  A as SplitText,
-  L as Video,
-  F as getPageRange,
-  C as getPaginationRange,
-  E as useParsedBreakLine
+  A as CustomBreakLineParser,
+  h as CustomBreakLineUtils,
+  $ as FormField,
+  F as SplitText,
+  E as Video,
+  M as useParsedBreakLine,
+  O as utils
 };
 //# sourceMappingURL=spice.js.map
