@@ -1,6 +1,6 @@
 import { jsx as n, jsxs as u, Fragment as g } from "react/jsx-runtime";
-import { useMemo as x, forwardRef as S } from "react";
-const T = ({ formProps: r }) => {
+import { useMemo as x, forwardRef as k } from "react";
+const S = ({ formProps: r }) => {
   const { style: e, ...t } = r;
   return /* @__PURE__ */ n(
     "input",
@@ -12,7 +12,7 @@ const T = ({ formProps: r }) => {
       }
     }
   );
-}, k = ({ formProps: r }) => {
+}, T = ({ formProps: r }) => {
   const { isSelect: e, style: t, ...i } = r;
   if (!e)
     return;
@@ -128,7 +128,7 @@ const T = ({ formProps: r }) => {
       formPropsArr: s,
       label: r,
       errors: t,
-      FormItem: a ? k : o ? R : T
+      FormItem: a ? T : o ? R : S
     }
   ) });
 }, h = {
@@ -140,7 +140,7 @@ const T = ({ formProps: r }) => {
     var e;
     return ((e = r.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : e[0]) || "";
   }
-}, M = (r) => x(
+}, E = (r) => x(
   () => r.split(h.regex).map((e, t) => h.isRegularBreak(e) ? /* @__PURE__ */ n("br", {}, t) : h.isSpecificBreak(e) ? /* @__PURE__ */ n(
     "br",
     {
@@ -152,7 +152,7 @@ const T = ({ formProps: r }) => {
 ), A = ({
   children: r
 }) => {
-  const e = M(r);
+  const e = E(r);
   return /* @__PURE__ */ n(g, { children: e });
 }, m = ({
   containerProps: r,
@@ -207,7 +207,7 @@ const T = ({ formProps: r }) => {
     ]),
     [c, e, s, t, i]
   );
-}, E = S((r, e) => {
+}, M = k((r, e) => {
   const { fill: t, style: i, ...s } = r;
   return /* @__PURE__ */ n(
     "video",
@@ -225,7 +225,7 @@ const T = ({ formProps: r }) => {
     }
   );
 });
-E.displayName = "Video";
+M.displayName = "Video";
 const w = (r, e) => {
   if (e < r)
     throw Error(
@@ -261,8 +261,8 @@ export {
   h as CustomBreakLineUtils,
   $ as FormField,
   F as SplitText,
-  E as Video,
-  M as useParsedBreakLine,
+  M as Video,
+  E as useParsedBreakLine,
   O as utils
 };
 //# sourceMappingURL=spice.js.map

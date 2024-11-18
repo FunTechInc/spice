@@ -3,7 +3,6 @@
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
 import { useFrame } from "@/packages/spice/src/client";
-import { useEffect, useState } from "react";
 
 const Description = () => {
    return (
