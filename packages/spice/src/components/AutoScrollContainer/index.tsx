@@ -11,9 +11,8 @@ export type AutoScrollContainerProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const AutoScrollContainer = ({
-   children,
    speed = 1,
-   style,
+   children,
    ...rest
 }: AutoScrollContainerProps) => {
    const wrapperRef = useRef<HTMLDivElement>(null);
@@ -63,11 +62,12 @@ export const AutoScrollContainer = ({
    return (
       <div
          ref={wrapperRef}
+         {...rest}
          style={{
             overflow: "hidden",
-            ...(style || {}),
-         }}
-         {...rest}>
+            width: "100%",
+            ...rest.style,
+         }}>
          <div
             style={{
                whiteSpace: "nowrap",
