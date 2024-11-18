@@ -1,6 +1,6 @@
 "use client";
 import { jsx as a, jsxs as v, Fragment as E } from "react/jsx-runtime";
-import { forwardRef as R, useRef as g, useCallback as S, useEffect as b, createContext as A, useState as w, useContext as I, useLayoutEffect as K, useMemo as y } from "react";
+import { forwardRef as R, useRef as g, useCallback as S, useEffect as m, createContext as A, useState as w, useContext as I, useLayoutEffect as K, useMemo as y } from "react";
 import T from "gsap";
 import P from "gsap/ScrollTrigger";
 const Y = ({ formProps: e }) => {
@@ -159,12 +159,12 @@ const Y = ({ formProps: e }) => {
       paddingRight: 0,
       scrollbarWidth: 0
     }), f = S(() => {
-      var d, h, m;
-      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
+      var d, h, p;
+      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = et(), B(!0, u.current)), c.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (p = (h = c.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || p.scrollTo(0, 0), t == null || t(c.current);
     }, [t, r, i]), l = S(async () => {
       n && await W(n(c.current)), i && (u.current.paddingRight = _(), B(!1, u.current)), c.current.close();
     }, [n, i]);
-    return b(() => {
+    return m(() => {
       const d = c.current.querySelectorAll(
         `.${M.close}`
       );
@@ -174,10 +174,10 @@ const Y = ({ formProps: e }) => {
         ), () => d.forEach(
           (h) => h.removeEventListener("click", l)
         );
-    }, [l]), b(() => {
+    }, [l]), m(() => {
       const d = (h) => {
-        var p;
-        ((p = c.current) == null ? void 0 : p.hasAttribute("open")) && h.key === "Escape" && l();
+        var b;
+        ((b = c.current) == null ? void 0 : b.hasAttribute("open")) && h.key === "Escape" && l();
       };
       return window.addEventListener("keydown", d), () => window.removeEventListener("keydown", d);
     }, [l]), /* @__PURE__ */ v(E, { children: [
@@ -280,7 +280,7 @@ const rt = {
       "Please set the value to something other than an empty string."
     );
   const c = g(!0), u = g(null), f = $(), l = H(), d = l.current === t && !l.isLeaving;
-  return b(() => {
+  return m(() => {
     if (c.current) {
       c.current = !1;
       return;
@@ -296,7 +296,7 @@ const rt = {
       current: h.next,
       next: ""
     }))))(), d && n && n(u.current);
-  }, [l, f, n, r, i, t, d]), b(() => {
+  }, [l, f, n, r, i, t, d]), m(() => {
     z({
       content: u.current,
       isOpen: l.current === t
@@ -378,7 +378,7 @@ const rt = {
   );
 }, ht = ({ target: e, onResize: t, debounce: n = 100 } = {}, r) => {
   const i = g(null), o = g(0), s = g(!0);
-  return b(() => {
+  return m(() => {
     const c = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? i.current;
     if (!c)
       return;
@@ -409,11 +409,11 @@ const rt = {
   const o = G(), [s, c] = w(
     () => !!o.defaultValue.find((h) => h === e)
   ), u = g(s);
-  b(() => {
+  m(() => {
     o.target === e && c(!s);
   }, [o.target, o.toggle]);
   const f = g(!0), l = g(null), d = g(null);
-  return b(() => {
+  return m(() => {
     if (f.current) {
       f.current = !1;
       return;
@@ -423,14 +423,14 @@ const rt = {
       target: l.current
     };
     s ? t(h) : n(h);
-  }, [s, t, n]), b(() => {
+  }, [s, t, n]), m(() => {
     z({ content: l.current, isOpen: s });
   }, [s]), ht(
     {
       target: d,
       onResize: (h) => {
-        const m = h.getBoundingClientRect().height;
-        s && (l.current.style.height = `${m}px`);
+        const p = h.getBoundingClientRect().height;
+        s && (l.current.style.height = `${p}px`);
       },
       debounce: 100
     },
@@ -462,20 +462,20 @@ const rt = {
   onLeave: i
 } = {}, o) => {
   const s = g(null), [c, u] = w(!1);
-  return b(() => {
+  return m(() => {
     const f = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? s.current;
     if (!f)
       return;
-    const l = (h, m) => {
-      h.forEach((p) => {
-        u(p.isIntersecting), p.isIntersecting ? (r && r(p), n && m.unobserve(p.target)) : p.isIntersecting || i && i(p);
+    const l = (h, p) => {
+      h.forEach((b) => {
+        u(b.isIntersecting), b.isIntersecting ? (r && r(b), n && p.unobserve(b.target)) : b.isIntersecting || i && i(b);
       });
     }, d = new IntersectionObserver(l, t);
     return d.observe(f), () => {
       d.unobserve(f);
     };
   }, o), { ref: s, isIntersecting: c };
-}, k = typeof window < "u" ? K : b;
+}, k = typeof window < "u" ? K : m;
 function pt(e) {
   const t = g(e);
   return k(() => void (t.current = e), [e]), t;
@@ -487,38 +487,38 @@ const V = (e, t, n) => {
     return T.ticker.add(i, t, n), () => T.ticker.remove(i);
   }, [t, n]);
 }, Pt = ({
-  children: e,
-  speed: t = 1,
-  style: n,
-  ...r
+  speed: e = 1,
+  children: t,
+  ...n
 }) => {
-  const i = g(null), o = g(null), s = g(null), { isIntersecting: c } = gt({
-    target: i,
+  const r = g(null), i = g(null), o = g(null), { isIntersecting: s } = gt({
+    target: r,
     once: !1
-  }), u = g(0);
+  }), c = g(0);
   return V(() => {
-    if (!c)
+    if (!s)
       return;
-    const f = i.current, l = o.current, d = s.current;
-    if (!f || !l || !d)
+    const u = r.current, f = i.current, l = o.current;
+    if (!u || !f || !l)
       return;
-    const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / l.clientWidth;
-    if (u.current += h * Math.abs(t) * m, u.current >= 1 && (u.current = 0), t < 0) {
-      const p = u.current * -100;
-      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p}%)`;
+    const d = T.ticker.deltaRatio() / 1e3, h = u.clientWidth / f.clientWidth;
+    if (c.current += d * Math.abs(e) * h, c.current >= 1 && (c.current = 0), e < 0) {
+      const p = c.current * -100;
+      f.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p}%)`;
     } else {
-      const p = u.current * 100;
-      l.style.transform = `translateX(${p}%)`, d.style.transform = `translateX(${p - 200}%)`;
+      const p = c.current * 100;
+      f.style.transform = `translateX(${p}%)`, l.style.transform = `translateX(${p - 200}%)`;
     }
   }), /* @__PURE__ */ a(
     "div",
     {
-      ref: i,
+      ref: r,
+      ...n,
       style: {
         overflow: "hidden",
-        ...n || {}
+        width: "100%",
+        ...n.style
       },
-      ...r,
       children: /* @__PURE__ */ v(
         "div",
         {
@@ -527,8 +527,8 @@ const V = (e, t, n) => {
             display: "flex"
           },
           children: [
-            /* @__PURE__ */ a("div", { ref: o, children: e }),
-            /* @__PURE__ */ a("div", { ref: s, children: e })
+            /* @__PURE__ */ a("div", { ref: i, children: t }),
+            /* @__PURE__ */ a("div", { ref: o, children: t })
           ]
         }
       )
@@ -641,7 +641,7 @@ const wt = R(
     ...c
   }, u) => {
     const [f, l] = w(t === 0), d = !!o;
-    return b(() => {
+    return m(() => {
       t !== 0 && setTimeout(() => l(!0), t);
     }, [t]), /* @__PURE__ */ a(
       "div",
@@ -762,7 +762,7 @@ const q = A(
       });
     }, t);
   }, [e, t]);
-  b(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
+  m(() => (r.current = window.innerWidth, window.addEventListener("resize", o), () => {
     window.removeEventListener("resize", o), clearTimeout(i.current);
   }), n);
 }, vt = `
@@ -794,7 +794,7 @@ Created by FunTech with 😘
     onResize: ({ winW: r }) => n(r),
     debounce: 100,
     dependencies: []
-  }), b(() => {
+  }), m(() => {
     document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
   }, [t, n]);
 }, Wt = () => {
@@ -806,7 +806,7 @@ Created by FunTech with 😘
     onResize: () => n(),
     debounce: 100,
     dependencies: []
-  }), b(() => n(), [n]), e;
+  }), m(() => n(), [n]), e;
 }, Ft = (e, t) => {
   const [n, r] = w(null), i = S(
     (o) => {
@@ -825,7 +825,7 @@ Created by FunTech with 😘
     onResize: ({ winW: o }) => i(o),
     debounce: 100,
     dependencies: [i]
-  }), b(() => i(window.innerWidth), [i]), n;
+  }), m(() => i(window.innerWidth), [i]), n;
 }, Nt = ({
   shareUrl: e,
   sharePath: t,
@@ -887,7 +887,7 @@ Created by FunTech with 😘
       }
     }),
     [n, o, t]
-  ), [d, h] = w(!1), m = y(
+  ), [d, h] = w(!1), p = y(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(e).then(() => {
@@ -902,7 +902,7 @@ Created by FunTech with 😘
     X: u,
     LINE: f,
     share: l,
-    copy: m,
+    copy: p,
     isCopied: d
   };
 }, xt = (e) => {
@@ -960,7 +960,7 @@ Created by FunTech with 😘
   };
 }, zt = (e) => {
   const [t, n] = w();
-  return b(() => {
+  return m(() => {
     e && e.current && n(e.current);
   }, [e]), t;
 }, O = (e, t) => !!(e != null && e.includes(t)), jt = (e, {
@@ -972,20 +972,20 @@ Created by FunTech with 😘
       if (!c.current)
         return 0;
       d = Math.max(d, 0);
-      const { progress: m } = c.current;
-      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, l);
-      const p = Math.pow(10, d);
-      return u.current = Math.round(u.current * p) / p, u.current < h ? 0 : 1 - u.current < h ? 1 : u.current;
+      const { progress: p } = c.current;
+      u.current === null && (u.current = p), u.current = T.utils.interpolate(u.current, p, l);
+      const b = Math.pow(10, d);
+      return u.current = Math.round(u.current * b) / b, u.current < h ? 0 : 1 - u.current < h ? 1 : u.current;
     },
     []
   );
   return k(() => {
-    const { onUpdate: l, onToggle: d, trigger: h, ...m } = e;
+    const { onUpdate: l, onToggle: d, trigger: h, ...p } = e;
     if (!h)
       return;
     T.registerPlugin(P);
-    const p = P.create({
-      ...m,
+    const b = P.create({
+      ...p,
       trigger: h,
       onToggle: (C) => {
         d == null || d(C), O(t, "isActive") && i(C.isActive);
@@ -994,7 +994,7 @@ Created by FunTech with 😘
         c.current = C, l == null || l(C), O(t, "direction") && s(C.direction);
       }
     });
-    return () => p.kill();
+    return () => b.kill();
   }, n), {
     isActive: r,
     direction: o,
