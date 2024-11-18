@@ -27,7 +27,7 @@ export const getPaginationRange = <T extends string>(
    totalCount: number,
    perPage: number,
    size: number = 5,
-   skip: T = "..." as T
+   ellipsis: T = "..." as T
 ): PagingItem<T>[] => {
    totalCount = Math.ceil(totalCount / perPage);
 
@@ -62,26 +62,26 @@ export const getPaginationRange = <T extends string>(
    }
 
    const offset = (size - 1) / 2;
-   const shouldAddDots = totalCount > size;
+   const shouldAddEllipsis = totalCount > size;
 
    const rangeConfig = {
       start: clamp(
          currentPage - offset,
          1,
-         shouldAddDots ? totalCount - size + 1 : 1
+         shouldAddEllipsis ? totalCount - size + 1 : 1
       ),
       end: clamp(currentPage + offset, size, totalCount),
    };
 
    const pages = getRange<T>(rangeConfig.start, rangeConfig.end);
 
-   if (shouldAddDots && pages[0] !== 1) {
+   if (shouldAddEllipsis && pages[0] !== 1) {
       pages[0] = 1;
-      pages[1] = skip;
+      pages[1] = ellipsis;
    }
-   if (shouldAddDots && pages[pages.length - 1] !== totalCount) {
+   if (shouldAddEllipsis && pages[pages.length - 1] !== totalCount) {
       pages[pages.length - 1] = totalCount;
-      pages[pages.length - 2] = skip;
+      pages[pages.length - 2] = ellipsis;
    }
    return pages;
 };
