@@ -1,6 +1,6 @@
 export * from "./components/FormField";
 export * from "./components/ModalButton";
-export * from "./components/AutoScrollContainer";
+export * from "./components/InfinityLoop";
 export * from "./components/SplitText";
 export * from "./components/Video";
 export * from "./components/Loader";

@@ -74,8 +74,8 @@ const componentList = [
       title: "ModalButton",
    },
    {
-      href: "/AutoScrollContainer",
-      title: "AutoScrollContainer",
+      href: "/InfinityLoop",
+      title: "InfinityLoop",
    },
    {
       href: "/SplitText",
