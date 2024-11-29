@@ -1,11 +1,9 @@
 /// <reference types="react" />
-type SelectOptions = {
-    defaultValue?: string;
-    defaultSelectedIndex?: number;
-    options: string[];
-};
 export type SelectProps = {
-    isSelect?: SelectOptions;
+    isSelect?: {
+        defaultSelectedIndex?: number;
+        options: string[];
+    };
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 export type TextareaProps = {
     isTextarea?: React.TextareaHTMLAttributes<HTMLTextAreaElement>;

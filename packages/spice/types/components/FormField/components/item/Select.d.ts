@@ -1,4 +1,4 @@
 import { SelectProps } from "../..";
 export declare const Select: ({ formProps }: {
     formProps: SelectProps;
-}) => import("react/jsx-runtime").JSX.Element | undefined;
+}) => import("react/jsx-runtime").JSX.Element | null;

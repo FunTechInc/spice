@@ -1,6 +1,5 @@
 "use client";
-import { useForm, SubmitHandler, useWatch, Control } from "react-hook-form";
-
+import { useForm, useWatch, Control } from "react-hook-form";
 import { MainView } from "@/app/_component/MainView";
 import { FormField } from "@/packages/spice/src/client";
 import s from "./style.module.scss";
@@ -69,8 +68,8 @@ const VALIDATION = {
    maxLength: "20文字以内で入力してください",
    required: "必須項目です",
    email: "メールアドレスの形式で入力してください",
-   select: "選択してください",
    tel: "数字とハイフンのみ入力してください",
+   select: "有効な選択肢を選んでください",
    defaultSelect: "選択してください",
 };
 
@@ -78,19 +77,14 @@ const Demo = () => {
    const {
       register,
       control,
-      handleSubmit,
       formState: { errors, isValid },
    } = useForm<TInputs>({ mode: "onChange" });
 
-   // const onSubmit: SubmitHandler<TInputs> = (data) => console.log(data);
-
    const allFieldsFilled = Object.keys(errors).length === 0 && isValid;
+   // console.log(errors, isValid);
 
    return (
-      <form
-         // onSubmit={handleSubmit(onSubmit)}
-         action="https://hyperform.jp/api/bcSznryS"
-         method="post">
+      <form action="https://hyperform.jp/api/bcSznryS" method="post">
          <FormField
             className={s.field}
             label="Watch input"
@@ -104,7 +98,7 @@ const Demo = () => {
          <WatchTest control={control} />
          <FormField
             className={s.field}
-            label="Mail"
+            label="Mail ※"
             formProps={{
                type: "email",
                id: "e-mail",
@@ -117,11 +111,11 @@ const Demo = () => {
                   },
                }),
             }}
-            errors={<Error error={errors?.email?.message || ""} />}
+            errors={<Error error={errors?.email?.message} />}
          />
          <FormField
             className={s.field}
-            label="Tel"
+            label="Tel ※"
             formProps={{
                type: "tel",
                id: "tel",
@@ -134,11 +128,11 @@ const Demo = () => {
                   },
                }),
             }}
-            errors={<Error error={errors?.tel?.message || ""} />}
+            errors={<Error error={errors?.tel?.message} />}
          />
          <FormField
             className={`${s.field} ${s.flex}`}
-            label="Name"
+            label="Name ※"
             formProps={[
                {
                   type: "text",
@@ -166,8 +160,8 @@ const Demo = () => {
                },
             ]}
             errors={[
-               <Error key={0} error={errors?.firstName?.message || ""} />,
-               <Error key={1} error={errors?.lastName?.message || ""} />,
+               <Error key={0} error={errors?.firstName?.message} />,
+               <Error key={1} error={errors?.lastName?.message} />,
             ]}
          />
          <FormField
@@ -192,12 +186,16 @@ const Demo = () => {
          />
          <FormField
             className={`${s.field} ${s.select}`}
-            label="Select Block"
+            label="Select Block ※"
             formProps={{
                id: "selectBlock",
                isSelect: {
-                  defaultValue: VALIDATION.defaultSelect,
-                  options: ["option1", "option2", "option3"],
+                  options: [
+                     VALIDATION.defaultSelect,
+                     "option2",
+                     "option1",
+                     "option3",
+                  ],
                },
                ...register("selectBlock", {
                   required: VALIDATION.required,
@@ -205,7 +203,7 @@ const Demo = () => {
                      value !== VALIDATION.defaultSelect || VALIDATION.select,
                }),
             }}
-            errors={<Error error={errors?.selectBlock?.message || ""} />}
+            errors={<Error error={errors?.selectBlock?.message} />}
          />
          <FormField
             className={`${s.field} ${s.select} ${s.flex}`}
@@ -244,7 +242,7 @@ const Demo = () => {
                   },
                }),
             }}
-            errors={<Error error={errors?.lengthWatch?.message || ""} />}
+            errors={<Error error={errors?.lengthWatch?.message} />}
          />
          <LengthWatch control={control} />
          <FormField

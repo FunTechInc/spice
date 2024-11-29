@@ -2,25 +2,8 @@ import { SelectProps } from "../..";
 
 export const Select = ({ formProps }: { formProps: SelectProps }) => {
    const { isSelect, style, ...rest } = formProps;
-   if (!isSelect) {
-      return;
-   }
-
-   const DefaultValue = () => {
-      const defaultValue = isSelect.defaultValue;
-      if (!defaultValue) {
-         return null;
-      }
-      return <option hidden>{defaultValue}</option>;
-   };
-
-   const getSelectedIndex = () => {
-      const i = isSelect.defaultSelectedIndex;
-      if (!i) {
-         return undefined;
-      }
-      return isSelect.options[i];
-   };
+   if (!isSelect) return null;
+   const { defaultSelectedIndex, options } = isSelect;
 
    return (
       <select
@@ -30,15 +13,12 @@ export const Select = ({ formProps }: { formProps: SelectProps }) => {
             fontSize: "16px",
             ...(style || {}),
          }}
-         defaultValue={getSelectedIndex()}>
-         <DefaultValue />
-         {isSelect.options.map((option: any) => {
-            return (
-               <option key={option} value={option}>
-                  {option}
-               </option>
-            );
-         })}
+         defaultValue={defaultSelectedIndex && options[defaultSelectedIndex]}>
+         {options.map((option, i) => (
+            <option key={i} value={option}>
+               {option}
+            </option>
+         ))}
       </select>
    );
 };

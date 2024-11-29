@@ -3,14 +3,8 @@ import { Select } from "./components/item/Select";
 import { FieldLayout } from "./components/FieldLayout";
 import { Textarea } from "./components/item/Textarea";
 
-type SelectOptions = {
-   defaultValue?: string;
-   defaultSelectedIndex?: number;
-   options: string[];
-};
-
 export type SelectProps = {
-   isSelect?: SelectOptions;
+   isSelect?: { defaultSelectedIndex?: number; options: string[] };
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
 export type TextareaProps = {
