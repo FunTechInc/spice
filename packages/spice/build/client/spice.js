@@ -1,7 +1,7 @@
 "use client";
-import { jsx as c, jsxs as v, Fragment as E } from "react/jsx-runtime";
-import { forwardRef as R, useRef as p, useCallback as y, useEffect as b, createContext as T, useState as w, useContext as A, useLayoutEffect as Y, useMemo as S } from "react";
-import I from "gsap";
+import { jsx as c, jsxs as y, Fragment as E } from "react/jsx-runtime";
+import { forwardRef as R, useRef as p, useCallback as v, useEffect as b, createContext as I, useState as w, useContext as A, useLayoutEffect as Y, useMemo as S } from "react";
+import T from "gsap";
 import P from "gsap/ScrollTrigger";
 const J = ({ formProps: e }) => {
   const { style: t, ...n } = e;
@@ -18,16 +18,9 @@ const J = ({ formProps: e }) => {
 }, Q = ({ formProps: e }) => {
   const { isSelect: t, style: n, ...r } = e;
   if (!t)
-    return;
-  const i = () => {
-    const s = t.defaultValue;
-    return s ? /* @__PURE__ */ c("option", { hidden: !0, children: s }) : null;
-  }, o = () => {
-    const s = t.defaultSelectedIndex;
-    if (s)
-      return t.options[s];
-  };
-  return /* @__PURE__ */ v(
+    return null;
+  const { defaultSelectedIndex: i, options: o } = t;
+  return /* @__PURE__ */ c(
     "select",
     {
       ...r,
@@ -36,11 +29,8 @@ const J = ({ formProps: e }) => {
         fontSize: "16px",
         ...n || {}
       },
-      defaultValue: o(),
-      children: [
-        /* @__PURE__ */ c(i, {}),
-        t.options.map((s) => /* @__PURE__ */ c("option", { value: s, children: s }, s))
-      ]
+      defaultValue: i && o[i],
+      children: o.map((a, s) => /* @__PURE__ */ c("option", { value: a, children: a }, s))
     }
   );
 }, U = {
@@ -61,57 +51,56 @@ const J = ({ formProps: e }) => {
   FormItem: r,
   errors: i
 }) => {
-  const o = ({ index: s }) => i ? Array.isArray(i) ? i[s] : i : null;
+  const o = ({ index: a }) => i ? Array.isArray(i) ? i[a] : i : null;
   if (e === "block")
-    return /* @__PURE__ */ v(E, { children: [
+    return /* @__PURE__ */ y(E, { children: [
       n && /* @__PURE__ */ c("label", { htmlFor: t[0].id, children: n }),
       /* @__PURE__ */ c(r, { formProps: t[0] }),
       /* @__PURE__ */ c(o, { index: 0 })
     ] });
   if (e === "flex")
-    return /* @__PURE__ */ v(E, { children: [
+    return /* @__PURE__ */ y(E, { children: [
       n && /* @__PURE__ */ c("label", { htmlFor: t[0].id, children: n }),
-      /* @__PURE__ */ v("ul", { children: [
-        /* @__PURE__ */ v("li", { children: [
+      /* @__PURE__ */ y("ul", { children: [
+        /* @__PURE__ */ y("li", { children: [
           /* @__PURE__ */ c(r, { formProps: t[0] }),
           /* @__PURE__ */ c(o, { index: 0 })
         ] }),
-        /* @__PURE__ */ v("li", { children: [
+        /* @__PURE__ */ y("li", { children: [
           /* @__PURE__ */ c(r, { formProps: t[1] }),
           /* @__PURE__ */ c(o, { index: 1 })
         ] })
       ] })
     ] });
   if (e === "radio-check") {
-    const s = t.map(
-      ({ id: a, value: u, style: h, optionLabel: l, ...d }) => /* @__PURE__ */ v("li", { children: [
+    const a = t.map(
+      ({ id: s, value: u, style: f, optionLabel: l, ...d }) => /* @__PURE__ */ y("li", { children: [
         /* @__PURE__ */ c(
           r,
           {
             formProps: {
-              id: a,
+              id: s,
               value: u,
               style: {
                 ...U,
-                ...h || {}
+                ...f || {}
               },
               ...d
             }
           }
         ),
-        /* @__PURE__ */ c("label", { htmlFor: a, children: l || u })
-      ] }, a)
+        /* @__PURE__ */ c("label", { htmlFor: s, children: l || u })
+      ] }, s)
     );
-    return /* @__PURE__ */ v(E, { children: [
+    return /* @__PURE__ */ y(E, { children: [
       n && /* @__PURE__ */ c("label", { children: n }),
-      /* @__PURE__ */ c("ul", { children: s }),
+      /* @__PURE__ */ c("ul", { children: a }),
       /* @__PURE__ */ c(o, { index: 0 })
     ] });
   }
 }, tt = ({ formProps: e }) => {
   const { isTextarea: t, ...n } = e;
-  if (t)
-    return /* @__PURE__ */ c("textarea", { ...n, ...t });
+  return t ? /* @__PURE__ */ c("textarea", { ...n, ...t }) : null;
 }, $t = ({
   label: e,
   formProps: t,
@@ -120,18 +109,18 @@ const J = ({ formProps: e }) => {
 }) => {
   if (n && Array.isArray(n) && n.length > 2)
     throw new Error("The length of error is up to 2.");
-  const i = Array.isArray(t) ? t : [t], { type: o, isSelect: s, isTextarea: a } = i[0], u = i.length;
+  const i = Array.isArray(t) ? t : [t], { type: o, isSelect: a, isTextarea: s } = i[0], u = i.length;
   if (!(o === "radio" || o === "checkbox") && u > 2)
     throw new Error("The length of formProps is up to 2.");
-  const h = ["radio", "checkbox"].includes(o || "") ? "radio-check" : u === 1 ? "block" : "flex";
+  const f = ["radio", "checkbox"].includes(o || "") ? "radio-check" : u === 1 ? "block" : "flex";
   return /* @__PURE__ */ c("fieldset", { ...r, children: /* @__PURE__ */ c(
     Z,
     {
-      layoutType: h,
+      layoutType: f,
       formPropsArr: i,
       label: e,
       errors: n,
-      FormItem: s ? Q : a ? tt : J
+      FormItem: a ? Q : s ? tt : J
     }
   ) });
 }, W = (e) => new Promise((t) => {
@@ -154,52 +143,52 @@ const J = ({ formProps: e }) => {
   const r = document.documentElement.style, i = document.body.style, o = e ? t + n : t - n;
   r.paddingRight = `${o}px`, r.scrollbarGutter = e ? "auto" : "", i.overflow = e ? "hidden" : "";
 }, rt = R(
-  ({ dialog: e, onOpen: t, onClose: n, focusTarget: r, scrollLock: i = !0, ...o }, s) => {
-    const a = p(null), u = p({
+  ({ dialog: e, onOpen: t, onClose: n, focusTarget: r, scrollLock: i = !0, ...o }, a) => {
+    const s = p(null), u = p({
       paddingRight: 0,
       scrollbarWidth: 0
-    }), h = y(() => {
-      var d, f, m;
-      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = nt(), B(!0, u.current)), a.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (m = (f = a.current) == null ? void 0 : f.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(a.current);
-    }, [t, r, i]), l = y(async () => {
-      n && await W(n(a.current)), i && (u.current.paddingRight = _(), B(!1, u.current)), a.current.close();
+    }), f = v(() => {
+      var d, h, m;
+      i && (u.current.paddingRight = _(), u.current.scrollbarWidth = nt(), B(!0, u.current)), s.current.showModal(), (d = r == null ? void 0 : r.current) == null || d.focus(), (m = (h = s.current) == null ? void 0 : h.getElementsByClassName(M.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(s.current);
+    }, [t, r, i]), l = v(async () => {
+      n && await W(n(s.current)), i && (u.current.paddingRight = _(), B(!1, u.current)), s.current.close();
     }, [n, i]);
     return b(() => {
-      const d = a.current.querySelectorAll(
+      const d = s.current.querySelectorAll(
         `.${M.close}`
       );
       if (d)
         return d.forEach(
-          (f) => f.addEventListener("click", l)
+          (h) => h.addEventListener("click", l)
         ), () => d.forEach(
-          (f) => f.removeEventListener("click", l)
+          (h) => h.removeEventListener("click", l)
         );
     }, [l]), b(() => {
-      const d = (f) => {
+      const d = (h) => {
         var g;
-        ((g = a.current) == null ? void 0 : g.hasAttribute("open")) && f.key === "Escape" && l();
+        ((g = s.current) == null ? void 0 : g.hasAttribute("open")) && h.key === "Escape" && l();
       };
       return window.addEventListener("keydown", d), () => window.removeEventListener("keydown", d);
-    }, [l]), /* @__PURE__ */ v(E, { children: [
+    }, [l]), /* @__PURE__ */ y(E, { children: [
       /* @__PURE__ */ c(
         "button",
         {
-          ref: s,
+          ref: a,
           ...o,
           onClick: (d) => {
-            var f;
-            h(), (f = o == null ? void 0 : o.onClick) == null || f.call(o, d);
+            var h;
+            f(), (h = o == null ? void 0 : o.onClick) == null || h.call(o, d);
           }
         }
       ),
       /* @__PURE__ */ c(
         "dialog",
         {
-          ref: a,
+          ref: s,
           ...e,
           onClick: (d) => {
-            var f;
-            d.target === a.current && l(), (f = e.onClick) == null || f.call(e, d);
+            var h;
+            d.target === s.current && l(), (h = e.onClick) == null || h.call(e, d);
           },
           style: {
             ...et,
@@ -217,7 +206,7 @@ const it = {
   prev: "",
   current: "",
   next: ""
-}, N = T(it), F = T(
+}, N = I(it), F = I(
   () => {
   }
 ), ot = ({ children: e, defaultValue: t }) => {
@@ -238,12 +227,12 @@ const it = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = $(), i = H(), o = y(() => {
-    i.current === t || i.isLeaving || r((s) => ({
-      ...s,
+  const r = $(), i = H(), o = v(() => {
+    i.current === t || i.isLeaving || r((a) => ({
+      ...a,
       isLeaving: !0,
       isAnimation: !0,
-      prev: s.current,
+      prev: a.current,
       next: t
     }));
   }, [r, i, t]);
@@ -273,30 +262,30 @@ const it = {
   onClose: r,
   onReset: i,
   style: o,
-  ...s
+  ...a
 }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const a = p(!0), u = p(null), h = $(), l = H(), d = l.current === t && !l.isLeaving;
+  const s = p(!0), u = p(null), f = $(), l = H(), d = l.current === t && !l.isLeaving;
   return b(() => {
-    if (a.current) {
-      a.current = !1;
+    if (s.current) {
+      s.current = !1;
       return;
     }
     if (!l.isAnimation) {
       d && i && i(u.current);
       return;
     }
-    l.prev === t && (async () => (r && await W(r(u.current)), h((f) => ({
-      ...f,
+    l.prev === t && (async () => (r && await W(r(u.current)), f((h) => ({
+      ...h,
       isLeaving: !1,
       prev: "",
-      current: f.next,
+      current: h.next,
       next: ""
     }))))(), d && n && n(u.current);
-  }, [l, h, n, r, i, t, d]), b(() => {
+  }, [l, f, n, r, i, t, d]), b(() => {
     z({
       content: u.current,
       isOpen: l.current === t
@@ -318,7 +307,7 @@ const it = {
       role: "tabpanel",
       id: `tab-${t}`,
       "aria-hidden": l.current !== t,
-      ...s,
+      ...a,
       children: e
     }
   );
@@ -343,7 +332,7 @@ const it = {
   target: "",
   toggle: !1,
   defaultValue: []
-}, j = T(ut), X = T(() => {
+}, j = I(ut), X = I(() => {
 }), dt = ({ children: e, defaultValue: t }) => {
   const [n, r] = w({
     target: "",
@@ -351,23 +340,23 @@ const it = {
     defaultValue: t
   });
   return /* @__PURE__ */ c(j.Provider, { value: n, children: /* @__PURE__ */ c(X.Provider, { value: r, children: e }) });
-}, G = () => A(j), lt = () => A(X), ft = ({ children: e, value: t, ...n }) => {
+}, G = () => A(j), lt = () => A(X), ht = ({ children: e, value: t, ...n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = G(), i = lt(), [o, s] = w(
-    () => !!r.defaultValue.find((a) => a === t)
+  const r = G(), i = lt(), [o, a] = w(
+    () => !!r.defaultValue.find((s) => s === t)
   );
   return /* @__PURE__ */ c(
     "button",
     {
       onClick: () => {
-        i((a) => ({
-          ...a,
+        i((s) => ({
+          ...s,
           toggle: o,
           target: t
-        })), s(!o);
+        })), a(!o);
       },
       "aria-controls": `content-${t}`,
       id: `button-${t}`,
@@ -376,23 +365,23 @@ const it = {
       children: e
     }
   );
-}, ht = ({ target: e, onResize: t, debounce: n = 100 } = {}, r) => {
-  const i = p(null), o = p(0), s = p(!0);
+}, ft = ({ target: e, onResize: t, debounce: n = 100 } = {}, r) => {
+  const i = p(null), o = p(0), a = p(!0);
   return b(() => {
-    const a = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? i.current;
-    if (!a)
+    const s = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? i.current;
+    if (!s)
       return;
-    const u = new ResizeObserver((h) => {
+    const u = new ResizeObserver((f) => {
       clearTimeout(o.current), o.current = setTimeout(() => {
-        if (s.current) {
-          s.current = !1;
+        if (a.current) {
+          a.current = !1;
           return;
         }
-        t == null || t(h[0].target);
+        t == null || t(f[0].target);
       }, n);
     });
-    return u.observe(a), () => {
-      u.unobserve(a), clearTimeout(o.current);
+    return u.observe(s), () => {
+      u.unobserve(s), clearTimeout(o.current);
     };
   }, r), i;
 }, pt = ({
@@ -406,35 +395,35 @@ const it = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const o = G(), [s, a] = w(
-    () => !!o.defaultValue.find((f) => f === e)
-  ), u = p(s);
+  const o = G(), [a, s] = w(
+    () => !!o.defaultValue.find((h) => h === e)
+  ), u = p(a);
   b(() => {
-    o.target === e && a(!s);
+    o.target === e && s(!a);
   }, [o.target, o.toggle]);
-  const h = p(!0), l = p(null), d = p(null);
+  const f = p(!0), l = p(null), d = p(null);
   return b(() => {
-    if (h.current) {
-      h.current = !1;
+    if (f.current) {
+      f.current = !1;
       return;
     }
-    const f = {
+    const h = {
       height: d.current.getBoundingClientRect().height,
       target: l.current
     };
-    s ? t(f) : n(f);
-  }, [s, t, n]), b(() => {
-    z({ content: l.current, isOpen: s });
-  }, [s]), ht(
+    a ? t(h) : n(h);
+  }, [a, t, n]), b(() => {
+    z({ content: l.current, isOpen: a });
+  }, [a]), ft(
     {
       target: d,
-      onResize: (f) => {
-        const m = f.getBoundingClientRect().height;
-        s && (l.current.style.height = `${m}px`);
+      onResize: (h) => {
+        const m = h.getBoundingClientRect().height;
+        a && (l.current.style.height = `${m}px`);
       },
       debounce: 100
     },
-    [s]
+    [a]
   ), /* @__PURE__ */ c(
     "div",
     {
@@ -445,13 +434,13 @@ const it = {
       },
       id: `content-${e}`,
       "aria-labelledby": `button-${e}`,
-      "aria-hidden": !s,
+      "aria-hidden": !a,
       children: /* @__PURE__ */ c("div", { ref: d, ...i, children: r })
     }
   );
 }, Pt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: ft,
+  Button: ht,
   Content: pt,
   Context: dt
 }, Symbol.toStringTag, { value: "Module" })), gt = ({
@@ -461,42 +450,42 @@ const it = {
   onEnter: r,
   onLeave: i
 } = {}, o) => {
-  const s = p(null), [a, u] = w(!1);
+  const a = p(null), [s, u] = w(!1);
   return b(() => {
-    const h = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? s.current;
-    if (!h)
+    const f = e instanceof Element ? e : (e == null ? void 0 : e.current) ?? a.current;
+    if (!f)
       return;
-    const l = (f, m) => {
-      f.forEach((g) => {
+    const l = (h, m) => {
+      h.forEach((g) => {
         u(g.isIntersecting), g.isIntersecting ? (r && r(g), n && m.unobserve(g.target)) : g.isIntersecting || i && i(g);
       });
     }, d = new IntersectionObserver(l, t);
-    return d.observe(h), () => {
-      d.unobserve(h);
+    return d.observe(f), () => {
+      d.unobserve(f);
     };
-  }, o), { ref: s, isIntersecting: a };
+  }, o), { ref: a, isIntersecting: s };
 }, k = typeof window < "u" ? Y : b;
 function mt(e) {
   const t = p(e);
   return k(() => void (t.current = e), [e]), t;
 }
-const V = (e, t, n) => {
+const q = (e, t, n) => {
   const r = mt(e);
   k(() => {
     const i = (...o) => r.current(...o);
-    return I.ticker.add(i, t, n), () => I.ticker.remove(i);
+    return T.ticker.add(i, t, n), () => T.ticker.remove(i);
   }, [t, n]);
-}, q = R(
+}, K = R(
   ({ active: e = !1, speed: t = 1, children: n, ...r }, i) => {
-    const o = p(null), s = p(null), a = p(null), u = p(0);
-    return V(() => {
+    const o = p(null), a = p(null), s = p(null), u = p(0);
+    return q(() => {
       if (!e)
         return;
-      const h = o.current, l = s.current, d = a.current;
-      if (!(h && l && d))
+      const f = o.current, l = a.current, d = s.current;
+      if (!(f && l && d))
         return;
-      const f = I.ticker.deltaRatio() / 1e3, m = h.clientWidth / l.clientWidth;
-      if (u.current += f * Math.abs(t) * m, u.current >= 1 && (u.current = 0), t < 0) {
+      const h = T.ticker.deltaRatio() / 1e3, m = f.clientWidth / l.clientWidth;
+      if (u.current += h * Math.abs(t) * m, u.current >= 1 && (u.current = 0), t < 0) {
         const g = u.current * -100;
         l.style.transform = `translateX(${g}%)`, d.style.transform = `translateX(${g}%)`;
       } else {
@@ -511,7 +500,7 @@ const V = (e, t, n) => {
           overflow: "hidden",
           width: "100%"
         },
-        children: /* @__PURE__ */ v(
+        children: /* @__PURE__ */ y(
           "div",
           {
             style: {
@@ -519,8 +508,8 @@ const V = (e, t, n) => {
               display: "flex"
             },
             children: [
-              /* @__PURE__ */ c("div", { ref: s, children: n }),
-              /* @__PURE__ */ c("div", { ref: a, children: n })
+              /* @__PURE__ */ c("div", { ref: a, children: n }),
+              /* @__PURE__ */ c("div", { ref: s, children: n })
             ]
           }
         )
@@ -528,12 +517,12 @@ const V = (e, t, n) => {
     ) });
   }
 );
-q.displayName = "InfinityLoop";
+K.displayName = "InfinityLoop";
 const Mt = (e) => {
   const { isIntersecting: t, ref: n } = gt({
     once: !1
   });
-  return /* @__PURE__ */ c(q, { ref: n, ...e, active: t });
+  return /* @__PURE__ */ c(K, { ref: n, ...e, active: t });
 }, x = {
   regex: /(\n|###br\.[^#]+###|###br###)/,
   isRegularBreak: (e) => e === `
@@ -569,20 +558,20 @@ const Mt = (e) => {
 }) => {
   const o = e === "chars" ? "" : " ";
   return S(
-    () => t.split(x.regex).flatMap((a, u) => x.isRegularBreak(a) ? [null, /* @__PURE__ */ c("br", {}, u)] : x.isSpecificBreak(a) ? [
+    () => t.split(x.regex).flatMap((s, u) => x.isRegularBreak(s) ? [null, /* @__PURE__ */ c("br", {}, u)] : x.isSpecificBreak(s) ? [
       null,
       /* @__PURE__ */ c(
         "br",
         {
-          className: x.getClassName(a)
+          className: x.getClassName(s)
         },
         u
       )
     ] : [
-      ...a.split(o).map((h, l) => {
+      ...s.split(o).map((f, l) => {
         if (n) {
           const d = n.find(
-            (f) => f.selector === h
+            (h) => h.selector === f
           );
           if (d)
             return /* @__PURE__ */ c(
@@ -591,7 +580,7 @@ const Mt = (e) => {
                 containerProps: r,
                 ...i,
                 ...d.attributes,
-                children: h
+                children: f
               },
               `${u}-${l}`
             );
@@ -601,7 +590,7 @@ const Mt = (e) => {
           {
             containerProps: r,
             ...i,
-            children: h === " " ? " " : h
+            children: f === " " ? " " : f
           },
           `${u}-${l}`
         );
@@ -637,10 +626,10 @@ const vt = R(
     skeleton: r,
     circular: i,
     children: o,
-    style: s,
-    ...a
+    style: a,
+    ...s
   }, u) => {
-    const [h, l] = w(t === 0), d = !!o;
+    const [f, l] = w(t === 0), d = !!o;
     return b(() => {
       t !== 0 && setTimeout(() => l(!0), t);
     }, [t]), /* @__PURE__ */ c(
@@ -654,10 +643,10 @@ const vt = R(
             maxWidth: "fit-content",
             height: "auto"
           } : {},
-          ...s
+          ...a
         },
-        ...a,
-        children: /* @__PURE__ */ v(
+        ...s,
+        children: /* @__PURE__ */ y(
           "div",
           {
             style: {
@@ -665,7 +654,7 @@ const vt = R(
               width: "100%",
               height: "100%",
               opacity: 0,
-              ...h ? {
+              ...f ? {
                 opacity: 1,
                 transitionProperty: "opacity",
                 transitionDuration: (n == null ? void 0 : n.transitionDuration) || "0.3s",
@@ -722,19 +711,19 @@ const vt = R(
   }
 );
 vt.displayName = "Loader";
-const K = T(
+const V = I(
   void 0
-), Ot = () => A(K), Dt = ({
+), Ot = () => A(V), Dt = ({
   active: e = !0,
   style: t,
   ...n
 }) => {
-  const r = p(null), { isMobile: i } = It(), o = e && i, [s, a] = w(
+  const r = p(null), { isMobile: i } = Tt(), o = e && i, [a, s] = w(
     void 0
   );
   return k(() => {
-    o && r.current ? a(r.current) : a(void 0);
-  }, [o]), /* @__PURE__ */ c(K.Provider, { value: s, children: /* @__PURE__ */ c(
+    o && r.current ? s(r.current) : s(void 0);
+  }, [o]), /* @__PURE__ */ c(V.Provider, { value: a, children: /* @__PURE__ */ c(
     "div",
     {
       ref: r,
@@ -753,7 +742,7 @@ const K = T(
   debounce: t = 100,
   dependencies: n = []
 }) => {
-  const r = p(0), i = p(0), o = y(() => {
+  const r = p(0), i = p(0), o = v(() => {
     clearTimeout(i.current), i.current = setTimeout(() => {
       e({
         winW: window.innerWidth,
@@ -784,7 +773,7 @@ Created by FunTech with 😘
   isFixViewportForSmall: e = !0,
   areYouFun: t = !1
 } = {}) => {
-  const n = y(
+  const n = v(
     (r) => {
       e && xt(r);
     },
@@ -798,7 +787,7 @@ Created by FunTech with 😘
     document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
   }, [t, n]);
 }, Nt = () => {
-  const [e, t] = w(null), n = y(() => {
+  const [e, t] = w(null), n = v(() => {
     const r = window.ontouchstart, i = navigator.maxTouchPoints;
     r !== void 0 && 0 < i ? t(!0) : t(!1);
   }, []);
@@ -808,7 +797,7 @@ Created by FunTech with 😘
     dependencies: []
   }), b(() => n(), [n]), e;
 }, Ft = (e, t) => {
-  const [n, r] = w(null), i = y(
+  const [n, r] = w(null), i = v(
     (o) => {
       switch (e) {
         case "max":
@@ -833,42 +822,42 @@ Created by FunTech with 😘
   width: r = 600,
   height: i = 800
 }) => {
-  const o = S(() => encodeURIComponent(e), [e]), s = S(
+  const o = S(() => encodeURIComponent(e), [e]), a = S(
     () => `height=${i},width=${r}`,
     [i, r]
-  ), a = S(
+  ), s = S(
     () => ({
       onClick: () => {
         window.open(
           `https://www.facebook.com/sharer.php?u=${o}&t=${n}`,
           "newwindow",
-          s
+          a
         );
       }
     }),
-    [o, n, s]
+    [o, n, a]
   ), u = S(
     () => ({
       onClick: () => {
         window.open(
           `https:////twitter.com/share?url=${o}&text=${n}`,
           "newwindow",
-          s
+          a
         );
       }
     }),
-    [o, s, n]
-  ), h = S(
+    [o, a, n]
+  ), f = S(
     () => ({
       onClick: () => {
         window.open(
           `https://social-plugins.line.me/lineit/share?url=${o}&text=${n}`,
           "newwindow",
-          s
+          a
         );
       }
     }),
-    [o, s, n]
+    [o, a, n]
   ), l = S(
     () => ({
       onClick: async () => {
@@ -887,20 +876,20 @@ Created by FunTech with 😘
       }
     }),
     [n, o, t]
-  ), [d, f] = w(!1), m = S(
+  ), [d, h] = w(!1), m = S(
     () => ({
       onClick: () => {
         navigator.clipboard.writeText(e).then(() => {
-          f(!0);
+          h(!0);
         });
       }
     }),
     [e]
   );
   return {
-    Facebook: a,
+    Facebook: s,
     X: u,
-    LINE: h,
+    LINE: f,
     share: l,
     copy: m,
     isCopied: d
@@ -923,7 +912,7 @@ Created by FunTech with 😘
     return "EdgeHTML";
   if (/Chrome\/\d+/i.test(e))
     return "Blink";
-}, It = (e) => {
+}, Tt = (e) => {
   const [t, n] = w({
     mobileOS: void 0,
     isMobile: void 0,
@@ -943,20 +932,20 @@ Created by FunTech with 😘
   }, []), t;
 }, zt = (e) => {
   const [t, n] = w(!1), r = p();
-  V(() => {
+  q(() => {
     t && r.current && e(r.current);
   });
-  const i = y((a) => {
-    r.current = a, n(!0);
-  }, []), o = y(() => {
+  const i = v((s) => {
+    r.current = s, n(!0);
+  }, []), o = v(() => {
     r.current = void 0, n(!1);
-  }, []), s = y((a) => {
-    r.current = a;
+  }, []), a = v((s) => {
+    r.current = s;
   }, []);
   return {
     onPointerEnter: i,
     onPointerLeave: o,
-    onPointerMove: s
+    onPointerMove: a
   };
 }, jt = (e) => {
   const [t, n] = w();
@@ -967,39 +956,39 @@ Created by FunTech with 😘
   reactive: t = [],
   dependencies: n = []
 } = {}) => {
-  const [r, i] = w(!1), [o, s] = w(!1), a = p(), u = p(null), h = y(
-    (l, d = 4, f = 1e-3) => {
-      if (!a.current)
+  const [r, i] = w(!1), [o, a] = w(!1), s = p(), u = p(null), f = v(
+    (l, d = 4, h = 1e-3) => {
+      if (!s.current)
         return 0;
       d = Math.max(d, 0);
-      const { progress: m } = a.current;
-      u.current === null && (u.current = m), u.current = I.utils.interpolate(u.current, m, l);
+      const { progress: m } = s.current;
+      u.current === null && (u.current = m), u.current = T.utils.interpolate(u.current, m, l);
       const g = Math.pow(10, d);
-      return u.current = Math.round(u.current * g) / g, u.current < f ? 0 : 1 - u.current < f ? 1 : u.current;
+      return u.current = Math.round(u.current * g) / g, u.current < h ? 0 : 1 - u.current < h ? 1 : u.current;
     },
     []
   );
   return k(() => {
-    const { onUpdate: l, onToggle: d, trigger: f, ...m } = e;
-    if (!f)
+    const { onUpdate: l, onToggle: d, trigger: h, ...m } = e;
+    if (!h)
       return;
-    I.registerPlugin(P);
+    T.registerPlugin(P);
     const g = P.create({
       ...m,
-      trigger: f,
+      trigger: h,
       onToggle: (C) => {
         d == null || d(C), D(t, "isActive") && i(C.isActive);
       },
       onUpdate: (C) => {
-        a.current = C, l == null || l(C), D(t, "direction") && s(C.direction);
+        s.current = C, l == null || l(C), D(t, "direction") && a(C.direction);
       }
     });
     return () => g.kill();
   }, n), {
     isActive: r,
     direction: o,
-    lerpProgress: h,
-    scrollTrigger: a
+    lerpProgress: f,
+    scrollTrigger: s
   };
 };
 export {
@@ -1007,7 +996,7 @@ export {
   _t as CustomBreakLineParser,
   x as CustomBreakLineUtils,
   $t as FormField,
-  q as InfinityLoop,
+  K as InfinityLoop,
   Mt as InfinityLoopOnView,
   vt as Loader,
   M as MODAL_CLASSNAME,
@@ -1016,15 +1005,15 @@ export {
   Dt as StableScroller,
   Lt as Tab,
   wt as Video,
-  It as useDeviceDetector,
-  V as useFrame,
+  Tt as useDeviceDetector,
+  q as useFrame,
   gt as useIntersectionObserver,
   Nt as useIsTouchDevice,
   k as useIsomorphicLayoutEffect,
   Ft as useMediaQuery,
   zt as useOnHovering,
   bt as useParsedBreakLine,
-  ht as useResizeObserver,
+  ft as useResizeObserver,
   Xt as useScrollTrigger,
   Ht as useShare,
   Ot as useStableScroller,
