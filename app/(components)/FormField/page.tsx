@@ -58,9 +58,8 @@ const LengthWatch = ({ control }: { control: Control<TInputs> }) => {
    return <p className={s.watchExample}>Watch Example: {txt.length}</p>;
 };
 
-const Error = ({ error }: { error?: string }) => {
-   return error ? <p className={s.error}>{error}</p> : null;
-};
+const Error = ({ error }: { error?: string }) =>
+   error ? <p className={s.error}>{error}</p> : null;
 
 const VALIDATION = {
    emailRegExp: /^[^\s]+@[^\s]+$/,
@@ -70,7 +69,7 @@ const VALIDATION = {
    email: "メールアドレスの形式で入力してください",
    tel: "数字とハイフンのみ入力してください",
    select: "有効な選択肢を選んでください",
-   defaultSelect: "選択してください",
+   defaultSelect: "- 選択してください -",
 };
 
 const Demo = () => {
@@ -81,7 +80,6 @@ const Demo = () => {
    } = useForm<TInputs>({ mode: "onChange" });
 
    const allFieldsFilled = Object.keys(errors).length === 0 && isValid;
-   // console.log(errors, isValid);
 
    return (
       <form action="https://hyperform.jp/api/bcSznryS" method="post">

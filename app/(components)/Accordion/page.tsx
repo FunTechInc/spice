@@ -5,6 +5,8 @@ import { MainView } from "@/app/_component/MainView";
 import { Accordion } from "@/packages/spice/src/client";
 import s from "./style.module.scss";
 import { gsap } from "gsap";
+import { useCallback } from "react";
+import { useGSAP } from "@gsap/react";
 
 const Description = () => {
    return (
@@ -33,21 +35,25 @@ const accordionList = [
    },
 ];
 
-const accordionEvent = (
-   props: {
-      target: HTMLElement;
-      height: number;
-   },
-   isOpen: boolean
-) => {
-   gsap.to(props.target, {
-      height: isOpen ? props.height : 0,
-      duration: 0.6,
-      ease: "power3.out",
-   });
-};
-
 const Demo = () => {
+   const { contextSafe } = useGSAP();
+   const handleAccordion = useCallback(
+      (
+         props: {
+            target: HTMLElement;
+            height: number;
+         },
+         isOpen: boolean
+      ) =>
+         contextSafe(() => {
+            gsap.to(props.target, {
+               height: isOpen ? props.height : 0,
+               duration: 0.6,
+               ease: "power3.out",
+            });
+         })(),
+      [contextSafe]
+   );
    return (
       <Accordion.Context defaultValue={["accordion-1"]}>
          {accordionList.map((list) => (
@@ -63,12 +69,8 @@ const Demo = () => {
                </Accordion.Button>
                <Accordion.Content
                   value={list.value}
-                  onOpen={(props) => {
-                     accordionEvent(props, true);
-                  }}
-                  onClose={(props) => {
-                     accordionEvent(props, false);
-                  }}>
+                  onOpen={(props) => handleAccordion(props, true)}
+                  onClose={(props) => handleAccordion(props, false)}>
                   <div className={s.content}>
                      <p>{list.contentTxt}</p>
                      <button>

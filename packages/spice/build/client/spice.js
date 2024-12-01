@@ -333,7 +333,7 @@ const it = {
   toggle: !1,
   defaultValue: []
 }, j = I(ut), X = I(() => {
-}), dt = ({ children: e, defaultValue: t }) => {
+}), dt = ({ children: e, defaultValue: t = [] }) => {
   const [n, r] = w({
     target: "",
     toggle: !1,
