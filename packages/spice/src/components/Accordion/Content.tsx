@@ -80,7 +80,7 @@ export const Content = ({
       <div
          ref={wrapperRef}
          style={{
-            overflow: "hidden",
+            overflowY: "clip",
             height: isOpenDefault.current ? "auto" : "0px",
          }}
          id={`content-${value}`}
