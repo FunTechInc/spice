@@ -26,10 +26,10 @@ const setAccordionStateContext = createContext<
 export type ContextProps = {
    children: React.ReactNode;
    /** Please set the value that you want to open by default. */
-   defaultValue: string[];
+   defaultValue?: string[];
 };
 
-export const Context = ({ children, defaultValue }: ContextProps) => {
+export const Context = ({ children, defaultValue = [] }: ContextProps) => {
    const [AccordionState, setAccordionState] = useState({
       target: "",
       toggle: false,

@@ -7,7 +7,7 @@ type AccordionState = {
 export type ContextProps = {
     children: React.ReactNode;
     /** Please set the value that you want to open by default. */
-    defaultValue: string[];
+    defaultValue?: string[];
 };
 export declare const Context: ({ children, defaultValue }: ContextProps) => import("react/jsx-runtime").JSX.Element;
 export declare const useAccordionState: () => AccordionState;
