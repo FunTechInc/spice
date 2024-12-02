@@ -15,7 +15,6 @@ export * from "./hooks/useIsTouchDevice";
 export * from "./hooks/useWindowResizeObserver";
 export * from "./hooks/useMediaQuery";
 export * from "./hooks/useShare";
-export * from "./hooks/useDeviceDetector";
 export * from "./hooks/useOnHovering";
 export * from "./hooks/useValidElement";
 export * from "./hooks/useScrollTrigger";
