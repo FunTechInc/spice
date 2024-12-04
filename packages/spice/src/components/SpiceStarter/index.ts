@@ -1,13 +1,13 @@
 "use client";
 
 import { useCallback, useEffect } from "react";
-import { useWindowResizeObserver } from "../useWindowResizeObserver";
+import { useWindowResizeObserver } from "../../hooks/useWindowResizeObserver";
 import { funtechConsole } from "./utils/funtech";
 import { fixViewportForSmall } from "./utils/fixViewportForSmall";
 
-type UseStarterProps = {
+type SpiceStarterProps = {
    /** If set to true, `width=360` will be set in `meta[name="viewport"]` , default : `true` */
-   isFixViewportForSmall?: boolean;
+   fixViewport?: boolean;
    /** If a string is set, it is concatenated with the default string. default : `false` */
    areYouFun?: boolean | string;
 };
@@ -15,17 +15,17 @@ type UseStarterProps = {
 /**
  * When page rendering is complete, data-set `spice-rendered` to the body tag.
  */
-export const useStarter = ({
-   isFixViewportForSmall = true,
+export const SpiceStarter = ({
+   fixViewport = true,
    areYouFun = false,
-}: UseStarterProps = {}) => {
+}: SpiceStarterProps = {}) => {
    const handleFixViewportForSmall = useCallback(
       (winW: number) => {
-         if (isFixViewportForSmall) {
+         if (fixViewport) {
             fixViewportForSmall(winW);
          }
       },
-      [isFixViewportForSmall]
+      [fixViewport]
    );
 
    useWindowResizeObserver({
@@ -41,4 +41,6 @@ export const useStarter = ({
          funtechConsole(areYouFun);
       }
    }, [areYouFun, handleFixViewportForSmall]);
+
+   return null;
 };

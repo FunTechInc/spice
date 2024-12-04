@@ -19,10 +19,6 @@ const hookList = [
       title: "useIntersectionObserver",
    },
    {
-      href: "/useStarter",
-      title: "useStarter",
-   },
-   {
       href: "/useWindowResizeObserver",
       title: "useWindowResizeObserver",
    },

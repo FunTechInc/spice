@@ -9,13 +9,13 @@ export * from "./components/Video";
 export * from "./components/Loader";
 export * from "./components/CustomBreakLineParser";
 export * from "./components/StableScroller";
+export * from "./components/SpiceStarter";
 
 // hooks
 export * from "./hooks/useIsomorphicLayoutEffect";
 export * from "./hooks/useFrame";
 export * from "./hooks/useResizeObserver";
 export * from "./hooks/useIntersectionObserver";
-export * from "./hooks/useStarter";
 export * from "./hooks/useIsTouchDevice";
 export * from "./hooks/useWindowResizeObserver";
 export * from "./hooks/useMediaQuery";
