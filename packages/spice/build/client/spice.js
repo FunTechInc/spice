@@ -123,7 +123,7 @@ const J = ({ formProps: e }) => {
       FormItem: a ? Q : c ? tt : J
     }
   ) });
-}, N = (e) => new Promise((t) => {
+}, F = (e) => new Promise((t) => {
   e instanceof Promise ? e.then(() => {
     t(null);
   }) : t(null);
@@ -151,7 +151,7 @@ const J = ({ formProps: e }) => {
       var l, h, m;
       i && (u.current.paddingRight = B(), u.current.scrollbarWidth = nt(), M(!0, u.current)), c.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(P.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
     }, [t, r, i]), d = v(async () => {
-      n && await N(n(c.current)), i && (u.current.paddingRight = B(), M(!1, u.current)), c.current.close();
+      n && await F(n(c.current)), i && (u.current.paddingRight = B(), M(!1, u.current)), c.current.close();
     }, [n, i]);
     return w(() => {
       const l = c.current.querySelectorAll(
@@ -206,7 +206,7 @@ const it = {
   prev: "",
   current: "",
   next: ""
-}, W = T(it), F = T(
+}, N = T(it), W = T(
   () => {
   }
 ), ot = ({ children: e, defaultValue: t }) => {
@@ -221,8 +221,8 @@ const it = {
     current: t,
     next: ""
   });
-  return /* @__PURE__ */ s(W.Provider, { value: n, children: /* @__PURE__ */ s(F.Provider, { value: r, children: e }) });
-}, H = () => $(W), A = () => $(F), st = ({ children: e, value: t, ...n }) => {
+  return /* @__PURE__ */ s(N.Provider, { value: n, children: /* @__PURE__ */ s(W.Provider, { value: r, children: e }) });
+}, H = () => $(N), A = () => $(W), st = ({ children: e, value: t, ...n }) => {
   if (t === "")
     throw new Error(
       "Please set the value to something other than an empty string."
@@ -278,7 +278,7 @@ const it = {
       l && i && i(u.current);
       return;
     }
-    d.prev === t && (async () => (r && await N(r(u.current)), f((h) => ({
+    d.prev === t && (async () => (r && await F(r(u.current)), f((h) => ({
       ...h,
       isLeaving: !1,
       prev: "",
@@ -770,7 +770,7 @@ Created by FunTech with 😘
   const n = e > 360 ? "width=device-width,initial-scale=1" : "width=360";
   t.getAttribute("content") !== n && t.setAttribute("content", n);
 }, Mt = ({
-  isFixViewportForSmall: e = !0,
+  fixViewport: e = !0,
   areYouFun: t = !1
 } = {}) => {
   const n = v(
@@ -779,13 +779,13 @@ Created by FunTech with 😘
     },
     [e]
   );
-  k({
+  return k({
     onResize: ({ winW: r }) => n(r),
     debounce: 100,
     dependencies: []
   }), w(() => {
     document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
-  }, [t, n]);
+  }, [t, n]), null;
 }, Dt = () => {
   const [e, t] = b(null), n = v(() => {
     const r = window.ontouchstart, i = navigator.maxTouchPoints;
@@ -815,7 +815,7 @@ Created by FunTech with 😘
     debounce: 100,
     dependencies: [i]
   }), w(() => i(window.innerWidth), [i]), n;
-}, Nt = ({
+}, Ft = ({
   shareUrl: e,
   sharePath: t,
   shareTitle: n = "",
@@ -894,7 +894,7 @@ Created by FunTech with 😘
     copy: m,
     isCopied: l
   };
-}, Wt = (e) => {
+}, Nt = (e) => {
   const [t, n] = b(!1), r = p();
   G(() => {
     t && r.current && e(r.current);
@@ -911,7 +911,7 @@ Created by FunTech with 😘
     onPointerLeave: o,
     onPointerMove: a
   };
-}, Ft = (e) => {
+}, Wt = (e) => {
   const [t, n] = b();
   return w(() => {
     e && e.current && n(e.current);
@@ -965,6 +965,7 @@ export {
   vt as Loader,
   P as MODAL_CLASSNAME,
   rt as ModalButton,
+  Mt as SpiceStarter,
   _t as SplitText,
   Bt as StableScroller,
   Rt as Tab,
@@ -974,14 +975,13 @@ export {
   Dt as useIsTouchDevice,
   L as useIsomorphicLayoutEffect,
   Ot as useMediaQuery,
-  Wt as useOnHovering,
+  Nt as useOnHovering,
   wt as useParsedBreakLine,
   ft as useResizeObserver,
   Ht as useScrollTrigger,
-  Nt as useShare,
+  Ft as useShare,
   Pt as useStableScroller,
-  Mt as useStarter,
-  Ft as useValidElement,
+  Wt as useValidElement,
   k as useWindowResizeObserver
 };
 //# sourceMappingURL=spice.js.map
