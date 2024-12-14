@@ -4,9 +4,9 @@ import { useCallback, useRef, useState } from "react";
 import { useFrame } from "../useFrame";
 
 export const useOnHovering = (
-   onHovering: React.PointerEventHandler
+   onHovering: React.PointerEventHandler,
+   onStart?: React.PointerEventHandler
 ): {
-   onPointerEnter: React.PointerEventHandler;
    onPointerLeave: React.PointerEventHandler;
    onPointerMove: React.PointerEventHandler;
 } => {
@@ -19,24 +19,22 @@ export const useOnHovering = (
       }
    });
 
-   const onPointerEnter = useCallback((e: React.PointerEvent) => {
-      pointerEvent.current = e;
-      setIsHovering(true);
-   }, []);
    const onPointerLeave = useCallback(() => {
       pointerEvent.current = undefined;
       setIsHovering(false);
    }, []);
    const onPointerMove = useCallback(
       (e: React.PointerEvent) => {
-         if (!isHovering) setIsHovering(true);
+         if (!isHovering) {
+            setIsHovering(true);
+            onStart?.(e);
+         }
          pointerEvent.current = e;
       },
-      [isHovering]
+      [isHovering, onStart]
    );
 
    return {
-      onPointerEnter,
       onPointerLeave,
       onPointerMove,
    };

@@ -1,6 +1,6 @@
 "use client";
-import { jsx as s, jsxs as y, Fragment as E } from "react/jsx-runtime";
-import { forwardRef as R, useRef as p, useCallback as v, useEffect as w, createContext as T, useState as b, useContext as $, useLayoutEffect as K, useMemo as S } from "react";
+import { jsx as s, jsxs as v, Fragment as E } from "react/jsx-runtime";
+import { forwardRef as R, useRef as p, useCallback as y, useEffect as w, createContext as T, useState as b, useContext as $, useLayoutEffect as K, useMemo as S } from "react";
 import I from "gsap";
 import _ from "gsap/ScrollTrigger";
 const J = ({ formProps: e }) => {
@@ -53,20 +53,20 @@ const J = ({ formProps: e }) => {
 }) => {
   const o = ({ index: a }) => i ? Array.isArray(i) ? i[a] : i : null;
   if (e === "block")
-    return /* @__PURE__ */ y(E, { children: [
+    return /* @__PURE__ */ v(E, { children: [
       n && /* @__PURE__ */ s("label", { htmlFor: t[0].id, children: n }),
       /* @__PURE__ */ s(r, { formProps: t[0] }),
       /* @__PURE__ */ s(o, { index: 0 })
     ] });
   if (e === "flex")
-    return /* @__PURE__ */ y(E, { children: [
+    return /* @__PURE__ */ v(E, { children: [
       n && /* @__PURE__ */ s("label", { htmlFor: t[0].id, children: n }),
-      /* @__PURE__ */ y("ul", { children: [
-        /* @__PURE__ */ y("li", { children: [
+      /* @__PURE__ */ v("ul", { children: [
+        /* @__PURE__ */ v("li", { children: [
           /* @__PURE__ */ s(r, { formProps: t[0] }),
           /* @__PURE__ */ s(o, { index: 0 })
         ] }),
-        /* @__PURE__ */ y("li", { children: [
+        /* @__PURE__ */ v("li", { children: [
           /* @__PURE__ */ s(r, { formProps: t[1] }),
           /* @__PURE__ */ s(o, { index: 1 })
         ] })
@@ -74,7 +74,7 @@ const J = ({ formProps: e }) => {
     ] });
   if (e === "radio-check") {
     const a = t.map(
-      ({ id: c, value: u, style: f, optionLabel: d, ...l }) => /* @__PURE__ */ y("li", { children: [
+      ({ id: c, value: u, style: f, optionLabel: d, ...l }) => /* @__PURE__ */ v("li", { children: [
         /* @__PURE__ */ s(
           r,
           {
@@ -92,7 +92,7 @@ const J = ({ formProps: e }) => {
         /* @__PURE__ */ s("label", { htmlFor: c, children: d || u })
       ] }, c)
     );
-    return /* @__PURE__ */ y(E, { children: [
+    return /* @__PURE__ */ v(E, { children: [
       n && /* @__PURE__ */ s("label", { children: n }),
       /* @__PURE__ */ s("ul", { children: a }),
       /* @__PURE__ */ s(o, { index: 0 })
@@ -136,10 +136,10 @@ const J = ({ formProps: e }) => {
   height: "100%",
   padding: "0",
   pointerEvents: "auto"
-}, P = {
+}, B = {
   close: "spice__modal_close",
   scrollArea: "js_modal_scroll_area"
-}, B = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, nt = () => window.innerWidth - document.documentElement.clientWidth, M = (e, { paddingRight: t, scrollbarWidth: n }) => {
+}, P = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, nt = () => window.innerWidth - document.documentElement.clientWidth, M = (e, { paddingRight: t, scrollbarWidth: n }) => {
   const r = document.documentElement.style, i = document.body.style, o = e ? t + n : t - n;
   r.paddingRight = `${o}px`, r.scrollbarGutter = e ? "auto" : "", i.overflow = e ? "hidden" : "";
 }, rt = R(
@@ -147,15 +147,15 @@ const J = ({ formProps: e }) => {
     const c = p(null), u = p({
       paddingRight: 0,
       scrollbarWidth: 0
-    }), f = v(() => {
+    }), f = y(() => {
       var l, h, m;
-      i && (u.current.paddingRight = B(), u.current.scrollbarWidth = nt(), M(!0, u.current)), c.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(P.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
-    }, [t, r, i]), d = v(async () => {
-      n && await F(n(c.current)), i && (u.current.paddingRight = B(), M(!1, u.current)), c.current.close();
+      i && (u.current.paddingRight = P(), u.current.scrollbarWidth = nt(), M(!0, u.current)), c.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = c.current) == null ? void 0 : h.getElementsByClassName(B.scrollArea)[0]) == null || m.scrollTo(0, 0), t == null || t(c.current);
+    }, [t, r, i]), d = y(async () => {
+      n && await F(n(c.current)), i && (u.current.paddingRight = P(), M(!1, u.current)), c.current.close();
     }, [n, i]);
     return w(() => {
       const l = c.current.querySelectorAll(
-        `.${P.close}`
+        `.${B.close}`
       );
       if (l)
         return l.forEach(
@@ -169,7 +169,7 @@ const J = ({ formProps: e }) => {
         ((g = c.current) == null ? void 0 : g.hasAttribute("open")) && h.key === "Escape" && d();
       };
       return window.addEventListener("keydown", l), () => window.removeEventListener("keydown", l);
-    }, [d]), /* @__PURE__ */ y(E, { children: [
+    }, [d]), /* @__PURE__ */ v(E, { children: [
       /* @__PURE__ */ s(
         "button",
         {
@@ -227,7 +227,7 @@ const it = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = A(), i = H(), o = v(() => {
+  const r = A(), i = H(), o = y(() => {
     i.current === t || i.isLeaving || r((a) => ({
       ...a,
       isLeaving: !0,
@@ -500,7 +500,7 @@ const G = (e, t, n) => {
           overflow: "hidden",
           width: "100%"
         },
-        children: /* @__PURE__ */ y(
+        children: /* @__PURE__ */ v(
           "div",
           {
             style: {
@@ -646,7 +646,7 @@ const vt = R(
           ...a
         },
         ...c,
-        children: /* @__PURE__ */ y(
+        children: /* @__PURE__ */ v(
           "div",
           {
             style: {
@@ -713,7 +713,7 @@ const vt = R(
 vt.displayName = "Loader";
 const Y = T(
   void 0
-), Pt = () => $(Y), Bt = ({
+), Bt = () => $(Y), Pt = ({
   active: e,
   style: t,
   ...n
@@ -742,7 +742,7 @@ const Y = T(
   debounce: t = 100,
   dependencies: n = []
 }) => {
-  const r = p(0), i = p(0), o = v(() => {
+  const r = p(0), i = p(0), o = y(() => {
     clearTimeout(i.current), i.current = setTimeout(() => {
       e({
         winW: window.innerWidth,
@@ -773,7 +773,7 @@ Created by FunTech with 😘
   fixViewport: e = !0,
   areYouFun: t = !1
 } = {}) => {
-  const n = v(
+  const n = y(
     (r) => {
       e && xt(r);
     },
@@ -787,7 +787,7 @@ Created by FunTech with 😘
     document.body.dataset.spiceRendered = "true", n(window.innerWidth), t && process.env.NODE_ENV !== "development" && St(t);
   }, [t, n]), null;
 }, Dt = () => {
-  const [e, t] = b(null), n = v(() => {
+  const [e, t] = b(null), n = y(() => {
     const r = window.ontouchstart, i = navigator.maxTouchPoints;
     r !== void 0 && 0 < i ? t(!0) : t(!1);
   }, []);
@@ -797,7 +797,7 @@ Created by FunTech with 😘
     dependencies: []
   }), w(() => n(), [n]), e;
 }, Ot = (e, t) => {
-  const [n, r] = b(null), i = v(
+  const [n, r] = b(null), i = y(
     (o) => {
       switch (e) {
         case "max":
@@ -894,23 +894,20 @@ Created by FunTech with 😘
     copy: m,
     isCopied: l
   };
-}, Nt = (e) => {
-  const [t, n] = b(!1), r = p();
+}, Nt = (e, t) => {
+  const [n, r] = b(!1), i = p();
   G(() => {
-    t && r.current && e(r.current);
+    n && i.current && e(i.current);
   });
-  const i = v((c) => {
-    r.current = c, n(!0);
-  }, []), o = v(() => {
-    r.current = void 0, n(!1);
-  }, []), a = v(
+  const o = y(() => {
+    i.current = void 0, r(!1);
+  }, []), a = y(
     (c) => {
-      t || n(!0), r.current = c;
+      n || (r(!0), t == null || t(c)), i.current = c;
     },
-    [t]
+    [n, t]
   );
   return {
-    onPointerEnter: i,
     onPointerLeave: o,
     onPointerMove: a
   };
@@ -923,7 +920,7 @@ Created by FunTech with 😘
   reactive: t = [],
   dependencies: n = []
 } = {}) => {
-  const [r, i] = b(!1), [o, a] = b(!1), c = p(), u = p(null), f = v(
+  const [r, i] = b(!1), [o, a] = b(!1), c = p(), u = p(null), f = y(
     (d, l = 4, h = 1e-3) => {
       if (!c.current)
         return 0;
@@ -966,11 +963,11 @@ export {
   V as InfinityLoop,
   At as InfinityLoopOnView,
   vt as Loader,
-  P as MODAL_CLASSNAME,
+  B as MODAL_CLASSNAME,
   rt as ModalButton,
   Mt as SpiceStarter,
   _t as SplitText,
-  Bt as StableScroller,
+  Pt as StableScroller,
   Rt as Tab,
   bt as Video,
   G as useFrame,
@@ -983,7 +980,7 @@ export {
   ft as useResizeObserver,
   Ht as useScrollTrigger,
   Ft as useShare,
-  Pt as useStableScroller,
+  Bt as useStableScroller,
   Wt as useValidElement,
   k as useWindowResizeObserver
 };
