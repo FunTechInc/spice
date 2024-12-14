@@ -1,5 +1,4 @@
-export declare const useOnHovering: (onHovering: React.PointerEventHandler) => {
-    onPointerEnter: React.PointerEventHandler;
+export declare const useOnHovering: (onHovering: React.PointerEventHandler, onStart?: React.PointerEventHandler) => {
     onPointerLeave: React.PointerEventHandler;
     onPointerMove: React.PointerEventHandler;
 };
