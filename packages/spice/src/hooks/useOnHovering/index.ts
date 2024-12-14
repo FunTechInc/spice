@@ -27,9 +27,13 @@ export const useOnHovering = (
       pointerEvent.current = undefined;
       setIsHovering(false);
    }, []);
-   const onPointerMove = useCallback((e: React.PointerEvent) => {
-      pointerEvent.current = e;
-   }, []);
+   const onPointerMove = useCallback(
+      (e: React.PointerEvent) => {
+         if (!isHovering) setIsHovering(true);
+         pointerEvent.current = e;
+      },
+      [isHovering]
+   );
 
    return {
       onPointerEnter,

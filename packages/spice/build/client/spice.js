@@ -903,9 +903,12 @@ Created by FunTech with 😘
     r.current = c, n(!0);
   }, []), o = v(() => {
     r.current = void 0, n(!1);
-  }, []), a = v((c) => {
-    r.current = c;
-  }, []);
+  }, []), a = v(
+    (c) => {
+      t || n(!0), r.current = c;
+    },
+    [t]
+  );
   return {
     onPointerEnter: i,
     onPointerLeave: o,
