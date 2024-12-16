@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 export type UseIntersectionObserverProps = {
    target?: React.RefObject<Element> | Element;
@@ -24,7 +25,7 @@ export const useIntersectionObserver = (
    const ref = useRef(null);
    const [isIntersecting, setIsIntersecting] = useState(false);
 
-   useEffect(() => {
+   useIsomorphicLayoutEffect(() => {
       const _target =
          target instanceof Element ? target : target?.current ?? ref.current;
       if (!_target) return;
@@ -50,7 +51,6 @@ export const useIntersectionObserver = (
       return () => {
          observer.unobserve(_target);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 
    return { ref, isIntersecting };

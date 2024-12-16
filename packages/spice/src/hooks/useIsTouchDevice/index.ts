@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { useWindowResizeObserver } from "../useWindowResizeObserver";
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 /**
  * @description It determines whether the device is a touch device or not. When the determination switches, the state is updated.
@@ -9,23 +9,11 @@ import { useWindowResizeObserver } from "../useWindowResizeObserver";
 export const useIsTouchDevice = () => {
    const [isTouchDevice, setIsTouchDevice] = useState<boolean | null>(null);
 
-   const updateState = useCallback(() => {
-      const touchEvent = window.ontouchstart;
-      const touchPoints = navigator.maxTouchPoints;
-      if (touchEvent !== undefined && 0 < touchPoints) {
-         setIsTouchDevice(true);
-      } else {
-         setIsTouchDevice(false);
-      }
+   useIsomorphicLayoutEffect(() => {
+      setIsTouchDevice(
+         window.ontouchstart !== undefined && 0 < navigator.maxTouchPoints
+      );
    }, []);
-
-   useWindowResizeObserver({
-      onResize: () => updateState(),
-      debounce: 100,
-      dependencies: [],
-   });
-
-   useEffect(() => updateState(), [updateState]);
 
    return isTouchDevice;
 };

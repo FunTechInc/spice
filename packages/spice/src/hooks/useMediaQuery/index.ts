@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useWindowResizeObserver } from "../useWindowResizeObserver";
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect";
 
 export const useMediaQuery = (
    mediaQueryType: "max" | "min",
@@ -31,7 +32,10 @@ export const useMediaQuery = (
       dependencies: [updateIsRange],
    });
 
-   useEffect(() => updateIsRange(window.innerWidth), [updateIsRange]);
+   useIsomorphicLayoutEffect(
+      () => updateIsRange(window.innerWidth),
+      [updateIsRange]
+   );
 
    return isRange;
 };
