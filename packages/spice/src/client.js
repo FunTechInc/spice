@@ -10,6 +10,9 @@ export * from "./components/Loader";
 export * from "./components/CustomBreakLineParser";
 export * from "./components/StableScroller";
 export * from "./components/SpiceStarter";
+export * from "./components/ParallaxThumbnail";
+export * from "./components/Parallax";
+export * from "./components/Float";
 
 // hooks
 export * from "./hooks/useIsomorphicLayoutEffect";
@@ -23,3 +26,6 @@ export * from "./hooks/useShare";
 export * from "./hooks/useOnHovering";
 export * from "./hooks/useValidElement";
 export * from "./hooks/useScrollTrigger";
+
+// utils
+export * as utils from "./utils";
