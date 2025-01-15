@@ -18,7 +18,7 @@ const Description = () => {
 const List = ({ index }: { index: number }) => {
    const pos = 120;
    const xPos = index % 2 === 0 ? pos : pos * -1;
-   const { ref, isIntersecting } = useIntersectionObserver({
+   const { ref, isIntersecting } = useIntersectionObserver<HTMLLIElement>({
       onEnter: useCallback(
          ({ target }: any) => {
             gsap.fromTo(

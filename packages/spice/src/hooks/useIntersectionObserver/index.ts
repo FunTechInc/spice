@@ -12,7 +12,7 @@ export type UseIntersectionObserverProps = {
    onLeave?: (entry: IntersectionObserverEntry) => void;
 };
 
-export const useIntersectionObserver = (
+export const useIntersectionObserver = <T extends Element>(
    {
       target,
       options,
@@ -22,7 +22,7 @@ export const useIntersectionObserver = (
    }: UseIntersectionObserverProps = {},
    dependencies?: React.DependencyList
 ) => {
-   const ref = useRef(null);
+   const ref = useRef<T>(null);
    const [isIntersecting, setIsIntersecting] = useState(false);
 
    useIsomorphicLayoutEffect(() => {

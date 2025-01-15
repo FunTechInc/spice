@@ -77,7 +77,7 @@ InfinityLoop.displayName = "InfinityLoop";
 export const InfinityLoopOnView = (
    props: Omit<InfinityLoopProps, "active">
 ) => {
-   const { isIntersecting, ref } = useIntersectionObserver({
+   const { isIntersecting, ref } = useIntersectionObserver<HTMLDivElement>({
       once: false,
    });
    return <InfinityLoop ref={ref} {...props} active={isIntersecting} />;
