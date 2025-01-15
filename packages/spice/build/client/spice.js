@@ -1,9 +1,9 @@
 "use client";
 import { jsx as c, jsxs as v, Fragment as O } from "react/jsx-runtime";
-import { forwardRef as B, useRef as p, useCallback as I, useEffect as b, createContext as T, useState as w, useContext as $, useLayoutEffect as J, useMemo as M } from "react";
+import { forwardRef as B, useRef as p, useCallback as I, useEffect as b, createContext as T, useState as w, useContext as $, useLayoutEffect as Z, useMemo as M } from "react";
 import y from "gsap";
 import L from "gsap/ScrollTrigger";
-const Z = ({ formProps: t }) => {
+const tt = ({ formProps: t }) => {
   const { style: e, ...n } = t;
   return /* @__PURE__ */ c(
     "input",
@@ -15,7 +15,7 @@ const Z = ({ formProps: t }) => {
       }
     }
   );
-}, tt = ({ formProps: t }) => {
+}, et = ({ formProps: t }) => {
   const { isSelect: e, style: n, ...r } = t;
   if (!e)
     return null;
@@ -33,7 +33,7 @@ const Z = ({ formProps: t }) => {
       children: o.map((u, a) => /* @__PURE__ */ c("option", { value: u, children: u }, a))
     }
   );
-}, et = {
+}, nt = {
   position: "absolute",
   whiteSpace: "nowrap",
   width: "1px",
@@ -44,7 +44,7 @@ const Z = ({ formProps: t }) => {
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   zIndex: "-99999"
-}, nt = ({
+}, rt = ({
   layoutType: t,
   formPropsArr: e,
   label: n,
@@ -82,7 +82,7 @@ const Z = ({ formProps: t }) => {
               id: a,
               value: s,
               style: {
-                ...et,
+                ...nt,
                 ...f || {}
               },
               ...l
@@ -98,7 +98,7 @@ const Z = ({ formProps: t }) => {
       /* @__PURE__ */ c(o, { index: 0 })
     ] });
   }
-}, rt = ({ formProps: t }) => {
+}, it = ({ formProps: t }) => {
   const { isTextarea: e, ...n } = t;
   return e ? /* @__PURE__ */ c("textarea", { ...n, ...e }) : null;
 }, _t = ({
@@ -114,20 +114,20 @@ const Z = ({ formProps: t }) => {
     throw new Error("The length of formProps is up to 2.");
   const f = ["radio", "checkbox"].includes(o || "") ? "radio-check" : s === 1 ? "block" : "flex";
   return /* @__PURE__ */ c("fieldset", { ...r, children: /* @__PURE__ */ c(
-    nt,
+    rt,
     {
       layoutType: f,
       formPropsArr: i,
       label: t,
       errors: n,
-      FormItem: u ? tt : a ? rt : Z
+      FormItem: u ? et : a ? it : tt
     }
   ) });
 }, j = (t) => new Promise((e) => {
   t instanceof Promise ? t.then(() => {
     e(null);
   }) : e(null);
-}), it = {
+}), ot = {
   border: "none",
   background: "none",
   maxWidth: "100%",
@@ -139,17 +139,17 @@ const Z = ({ formProps: t }) => {
 }, P = {
   close: "spice__modal_close",
   scrollArea: "js_modal_scroll_area"
-}, _ = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, ot = () => window.innerWidth - document.documentElement.clientWidth, F = (t, { paddingRight: e, scrollbarWidth: n }) => {
+}, _ = () => parseInt(getComputedStyle(document.documentElement).paddingRight, 10) || 0, st = () => window.innerWidth - document.documentElement.clientWidth, F = (t, { paddingRight: e, scrollbarWidth: n }) => {
   const r = document.documentElement.style, i = document.body.style, o = t ? e + n : e - n;
   r.paddingRight = `${o}px`, r.scrollbarGutter = t ? "auto" : "", i.overflow = t ? "hidden" : "";
-}, st = B(
+}, ct = B(
   ({ dialog: t, onOpen: e, onClose: n, focusTarget: r, scrollLock: i = !0, ...o }, u) => {
     const a = p(null), s = p({
       paddingRight: 0,
       scrollbarWidth: 0
     }), f = I(() => {
       var l, h, m;
-      i && (s.current.paddingRight = _(), s.current.scrollbarWidth = ot(), F(!0, s.current)), a.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = a.current) == null ? void 0 : h.getElementsByClassName(P.scrollArea)[0]) == null || m.scrollTo(0, 0), e == null || e(a.current);
+      i && (s.current.paddingRight = _(), s.current.scrollbarWidth = st(), F(!0, s.current)), a.current.showModal(), (l = r == null ? void 0 : r.current) == null || l.focus(), (m = (h = a.current) == null ? void 0 : h.getElementsByClassName(P.scrollArea)[0]) == null || m.scrollTo(0, 0), e == null || e(a.current);
     }, [e, r, i]), d = I(async () => {
       n && await j(n(a.current)), i && (s.current.paddingRight = _(), F(!1, s.current)), a.current.close();
     }, [n, i]);
@@ -191,7 +191,7 @@ const Z = ({ formProps: t }) => {
             l.target === a.current && d(), (h = t.onClick) == null || h.call(t, l);
           },
           style: {
-            ...it,
+            ...ot,
             ...t.style || {}
           }
         }
@@ -199,17 +199,17 @@ const Z = ({ formProps: t }) => {
     ] });
   }
 );
-st.displayName = "ModalButton";
-const ct = {
+ct.displayName = "ModalButton";
+const at = {
   isLeaving: !1,
   isAnimation: !0,
   prev: "",
   current: "",
   next: ""
-}, H = T(ct), Q = T(
+}, H = T(at), Q = T(
   () => {
   }
-), at = ({ children: t, defaultValue: e }) => {
+), ut = ({ children: t, defaultValue: e }) => {
   if (e === "")
     throw new Error(
       "Please set the value to something other than an empty string."
@@ -222,7 +222,7 @@ const ct = {
     next: ""
   });
   return /* @__PURE__ */ c(H.Provider, { value: n, children: /* @__PURE__ */ c(Q.Provider, { value: r, children: t }) });
-}, X = () => $(H), k = () => $(Q), ut = ({ children: t, value: e, ...n }) => {
+}, X = () => $(H), k = () => $(Q), lt = ({ children: t, value: e, ...n }) => {
   if (e === "")
     throw new Error(
       "Please set the value to something other than an empty string."
@@ -255,7 +255,7 @@ const ct = {
   n.forEach((i) => {
     i.setAttribute("tabindex", r);
   });
-}, lt = ({
+}, dt = ({
   children: t,
   value: e,
   onOpen: n,
@@ -311,7 +311,7 @@ const ct = {
       children: t
     }
   );
-}, dt = () => {
+}, ht = () => {
   const t = k();
   return (e, n) => {
     t((r) => ({
@@ -324,28 +324,28 @@ const ct = {
   };
 }, Ft = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: ut,
-  Content: lt,
-  Context: at,
-  useTabSwitch: dt
-}, Symbol.toStringTag, { value: "Module" })), ht = {
+  Button: lt,
+  Content: dt,
+  Context: ut,
+  useTabSwitch: ht
+}, Symbol.toStringTag, { value: "Module" })), ft = {
   target: "",
   toggle: !1,
   defaultValue: []
-}, z = T(ht), x = T(() => {
-}), ft = ({ children: t, defaultValue: e = [] }) => {
+}, z = T(ft), x = T(() => {
+}), pt = ({ children: t, defaultValue: e = [] }) => {
   const [n, r] = w({
     target: "",
     toggle: !1,
     defaultValue: e
   });
   return /* @__PURE__ */ c(z.Provider, { value: n, children: /* @__PURE__ */ c(x.Provider, { value: r, children: t }) });
-}, V = () => $(z), pt = () => $(x), gt = ({ children: t, value: e, ...n }) => {
+}, V = () => $(z), gt = () => $(x), mt = ({ children: t, value: e, ...n }) => {
   if (e === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = V(), i = pt(), [o, u] = w(
+  const r = V(), i = gt(), [o, u] = w(
     () => !!r.defaultValue.find((a) => a === e)
   );
   return /* @__PURE__ */ c(
@@ -365,7 +365,7 @@ const ct = {
       children: t
     }
   );
-}, S = typeof window < "u" ? J : b, mt = ({ target: t, onResize: e, debounce: n = 100 } = {}, r) => {
+}, S = typeof window < "u" ? Z : b, wt = ({ target: t, onResize: e, debounce: n = 100 } = {}, r) => {
   const i = p(null), o = p(0), u = p(!0);
   return S(() => {
     const a = t instanceof Element ? t : (t == null ? void 0 : t.current) ?? i.current;
@@ -384,7 +384,7 @@ const ct = {
       s.unobserve(a), clearTimeout(o.current);
     };
   }, r), i;
-}, wt = ({
+}, bt = ({
   value: t,
   onOpen: e,
   onClose: n,
@@ -414,7 +414,7 @@ const ct = {
     u ? e(h) : n(h);
   }, [u, e, n]), b(() => {
     q({ content: d.current, isOpen: u });
-  }, [u]), mt(
+  }, [u]), wt(
     {
       target: l,
       onResize: (h) => {
@@ -440,10 +440,10 @@ const ct = {
   );
 }, Dt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Button: gt,
-  Content: wt,
-  Context: ft
-}, Symbol.toStringTag, { value: "Module" })), bt = ({
+  Button: mt,
+  Content: bt,
+  Context: pt
+}, Symbol.toStringTag, { value: "Module" })), Y = ({
   target: t,
   options: e,
   once: n = !1,
@@ -475,7 +475,7 @@ const A = (t, e, n) => {
     const i = (...o) => r.current(...o);
     return y.ticker.add(i, e, n), () => y.ticker.remove(i);
   }, [e, n]);
-}, Y = B(
+}, G = B(
   ({ active: t = !1, speed: e = 1, children: n, ...r }, i) => {
     const o = p(null), u = p(null), a = p(null), s = p(0);
     return A(() => {
@@ -517,12 +517,12 @@ const A = (t, e, n) => {
     ) });
   }
 );
-Y.displayName = "InfinityLoop";
+G.displayName = "InfinityLoop";
 const Nt = (t) => {
-  const { isIntersecting: e, ref: n } = bt({
+  const { isIntersecting: e, ref: n } = Y({
     once: !1
   });
-  return /* @__PURE__ */ c(Y, { ref: n, ...t, active: e });
+  return /* @__PURE__ */ c(G, { ref: n, ...t, active: e });
 }, E = {
   regex: /(\n|###br\.[^#]+###|###br###)/,
   isRegularBreak: (t) => t === `
@@ -711,9 +711,9 @@ const Mt = B(
   }
 );
 Mt.displayName = "Loader";
-const G = T(
+const U = T(
   void 0
-), Ht = () => $(G), Qt = ({
+), Ht = () => $(U), Qt = ({
   active: t,
   style: e,
   ...n
@@ -723,7 +723,7 @@ const G = T(
   );
   return S(() => {
     t && r.current ? o(r.current) : o(void 0);
-  }, [t]), /* @__PURE__ */ c(G.Provider, { value: i, children: /* @__PURE__ */ c(
+  }, [t]), /* @__PURE__ */ c(U.Provider, { value: i, children: /* @__PURE__ */ c(
     "div",
     {
       ref: r,
@@ -737,7 +737,7 @@ const G = T(
       ...n
     }
   ) });
-}, U = ({
+}, K = ({
   onResize: t,
   debounce: e = 100,
   dependencies: n = []
@@ -779,7 +779,7 @@ Created by FunTech with 😘
     },
     [t]
   );
-  return U({
+  return K({
     onResize: ({ winW: r }) => n(r),
     debounce: 100,
     dependencies: []
@@ -854,10 +854,12 @@ Created by FunTech with 😘
   ease: n = (i) => i,
   ...r
 }) => {
-  const i = p(null), o = typeof e == "string" && y.utils.getUnit(e) || "px", u = parseFloat(e.toString()) || 0;
-  return A((a) => {
-    const s = (n((Math.sin(a * t) + 1) / 2) * 2 - 1) * u;
-    i.current.style.transform = `translateY(${s}${o})`;
+  const { ref: i, isIntersecting: o } = Y(), u = typeof e == "string" && y.utils.getUnit(e) || "px", a = parseFloat(e.toString()) || 0;
+  return A((s) => {
+    if (!o)
+      return;
+    const f = (n((Math.sin(s * t) + 1) / 2) * 2 - 1) * a;
+    i.current.style.transform = `translateY(${f}${u})`;
   }), /* @__PURE__ */ c("div", { ref: i, ...r });
 }, xt = () => {
   const [t, e] = w(null);
@@ -880,7 +882,7 @@ Created by FunTech with 😘
     },
     [t, e]
   );
-  return U({
+  return K({
     onResize: ({ winW: o }) => i(o),
     debounce: 100,
     dependencies: [i]
@@ -1027,14 +1029,14 @@ Created by FunTech with 😘
     lerpProgress: f,
     scrollTrigger: a
   };
-}, K = (t, e) => {
+}, J = (t, e) => {
   if (e < t)
     throw Error(
       `End number must be higher then start number: start ${t}, end ${t}`
     );
   const n = e - t + 1;
   return Array(n).fill(0).map((r, i) => i + t);
-}, W = (t, e, n) => Math.min(Math.max(t, e), n), Rt = (t, e) => K(1, Math.ceil(t / e)), Bt = (t, e, n, r = 5, i = "...") => {
+}, W = (t, e, n) => Math.min(Math.max(t, e), n), Rt = (t, e) => J(1, Math.ceil(t / e)), Bt = (t, e, n, r = 5, i = "...") => {
   if (e = Math.ceil(e / n), e < 1)
     return console.warn("Page count has negative value. Returning empty array."), [];
   t < 1 && (console.warn(
@@ -1050,7 +1052,7 @@ Created by FunTech with 😘
       u ? e - r + 1 : 1
     ),
     end: W(t + o, r, e)
-  }, s = K(a.start, a.end);
+  }, s = J(a.start, a.end);
   return u && s[0] !== 1 && (s[0] = 1, s[1] = i), u && s[s.length - 1] !== e && (s[s.length - 1] = e, s[s.length - 2] = i), s;
 }, R = Object.freeze({
   easeInSine(t) {
@@ -1159,11 +1161,11 @@ export {
   E as CustomBreakLineUtils,
   zt as Float,
   _t as FormField,
-  Y as InfinityLoop,
+  G as InfinityLoop,
   Nt as InfinityLoopOnView,
   Mt as Loader,
   P as MODAL_CLASSNAME,
-  st as ModalButton,
+  ct as ModalButton,
   Tt as Parallax,
   qt as ParallaxThumbnail,
   Xt as SpiceStarter,
@@ -1172,18 +1174,18 @@ export {
   Ft as Tab,
   St as Video,
   A as useFrame,
-  bt as useIntersectionObserver,
+  Y as useIntersectionObserver,
   xt as useIsTouchDevice,
   S as useIsomorphicLayoutEffect,
   Vt as useMediaQuery,
   Gt as useOnHovering,
   yt as useParsedBreakLine,
-  mt as useResizeObserver,
+  wt as useResizeObserver,
   Kt as useScrollTrigger,
   Yt as useShare,
   Ht as useStableScroller,
   Ut as useValidElement,
-  U as useWindowResizeObserver,
+  K as useWindowResizeObserver,
   Jt as utils
 };
 //# sourceMappingURL=spice.js.map

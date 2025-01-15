@@ -7,7 +7,7 @@ export type UseIntersectionObserverProps = {
     onEnter?: (entry: IntersectionObserverEntry) => void;
     onLeave?: (entry: IntersectionObserverEntry) => void;
 };
-export declare const useIntersectionObserver: ({ target, options, once, onEnter, onLeave, }?: UseIntersectionObserverProps, dependencies?: React.DependencyList) => {
-    ref: import("react").MutableRefObject<null>;
+export declare const useIntersectionObserver: <T extends Element>({ target, options, once, onEnter, onLeave, }?: UseIntersectionObserverProps, dependencies?: React.DependencyList) => {
+    ref: import("react").RefObject<T>;
     isIntersecting: boolean;
 };
