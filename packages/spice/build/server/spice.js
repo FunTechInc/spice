@@ -1,36 +1,36 @@
-import { jsx as t, jsxs as u, Fragment as g } from "react/jsx-runtime";
-import { useMemo as x, forwardRef as k } from "react";
-const T = ({ formProps: r }) => {
-  const { style: e, ...n } = r;
-  return /* @__PURE__ */ t(
+import { jsx as r, jsxs as d, Fragment as M } from "react/jsx-runtime";
+import { useMemo as b, forwardRef as y } from "react";
+const B = ({ formProps: e }) => {
+  const { style: t, ...n } = e;
+  return /* @__PURE__ */ r(
     "input",
     {
       ...n,
       style: {
         overflow: "hidden",
-        ...e
+        ...t
       }
     }
   );
-}, S = ({ formProps: r }) => {
-  const { isSelect: e, style: n, ...i } = r;
-  if (!e)
+}, k = ({ formProps: e }) => {
+  const { isSelect: t, style: n, ...a } = e;
+  if (!t)
     return null;
-  const { defaultSelectedIndex: s, options: a } = e;
-  return /* @__PURE__ */ t(
+  const { defaultSelectedIndex: s, options: c } = t;
+  return /* @__PURE__ */ r(
     "select",
     {
-      ...i,
+      ...a,
       style: {
         overflow: "hidden",
         fontSize: "16px",
         ...n || {}
       },
-      defaultValue: s && a[s],
-      children: a.map((o, c) => /* @__PURE__ */ t("option", { value: o, children: o }, c))
+      defaultValue: s && c[s],
+      children: c.map((o, u) => /* @__PURE__ */ r("option", { value: o, children: o }, u))
     }
   );
-}, B = {
+}, S = {
   position: "absolute",
   whiteSpace: "nowrap",
   width: "1px",
@@ -41,217 +41,313 @@ const T = ({ formProps: r }) => {
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   zIndex: "-99999"
-}, v = ({
-  layoutType: r,
-  formPropsArr: e,
+}, E = ({
+  layoutType: e,
+  formPropsArr: t,
   label: n,
-  FormItem: i,
+  FormItem: a,
   errors: s
 }) => {
-  const a = ({ index: o }) => s ? Array.isArray(s) ? s[o] : s : null;
-  if (r === "block")
-    return /* @__PURE__ */ u(g, { children: [
-      n && /* @__PURE__ */ t("label", { htmlFor: e[0].id, children: n }),
-      /* @__PURE__ */ t(i, { formProps: e[0] }),
-      /* @__PURE__ */ t(a, { index: 0 })
+  const c = ({ index: o }) => s ? Array.isArray(s) ? s[o] : s : null;
+  if (e === "block")
+    return /* @__PURE__ */ d(M, { children: [
+      n && /* @__PURE__ */ r("label", { htmlFor: t[0].id, children: n }),
+      /* @__PURE__ */ r(a, { formProps: t[0] }),
+      /* @__PURE__ */ r(c, { index: 0 })
     ] });
-  if (r === "flex")
-    return /* @__PURE__ */ u(g, { children: [
-      n && /* @__PURE__ */ t("label", { htmlFor: e[0].id, children: n }),
-      /* @__PURE__ */ u("ul", { children: [
-        /* @__PURE__ */ u("li", { children: [
-          /* @__PURE__ */ t(i, { formProps: e[0] }),
-          /* @__PURE__ */ t(a, { index: 0 })
+  if (e === "flex")
+    return /* @__PURE__ */ d(M, { children: [
+      n && /* @__PURE__ */ r("label", { htmlFor: t[0].id, children: n }),
+      /* @__PURE__ */ d("ul", { children: [
+        /* @__PURE__ */ d("li", { children: [
+          /* @__PURE__ */ r(a, { formProps: t[0] }),
+          /* @__PURE__ */ r(c, { index: 0 })
         ] }),
-        /* @__PURE__ */ u("li", { children: [
-          /* @__PURE__ */ t(i, { formProps: e[1] }),
-          /* @__PURE__ */ t(a, { index: 1 })
+        /* @__PURE__ */ d("li", { children: [
+          /* @__PURE__ */ r(a, { formProps: t[1] }),
+          /* @__PURE__ */ r(c, { index: 1 })
         ] })
       ] })
     ] });
-  if (r === "radio-check") {
-    const o = e.map(
-      ({ id: c, value: l, style: d, optionLabel: f, ...p }) => /* @__PURE__ */ u("li", { children: [
-        /* @__PURE__ */ t(
-          i,
+  if (e === "radio-check") {
+    const o = t.map(
+      ({ id: u, value: i, style: l, optionLabel: p, ...f }) => /* @__PURE__ */ d("li", { children: [
+        /* @__PURE__ */ r(
+          a,
           {
             formProps: {
-              id: c,
-              value: l,
+              id: u,
+              value: i,
               style: {
-                ...B,
-                ...d || {}
+                ...S,
+                ...l || {}
               },
-              ...p
+              ...f
             }
           }
         ),
-        /* @__PURE__ */ t("label", { htmlFor: c, children: f || l })
-      ] }, c)
+        /* @__PURE__ */ r("label", { htmlFor: u, children: p || i })
+      ] }, u)
     );
-    return /* @__PURE__ */ u(g, { children: [
-      n && /* @__PURE__ */ t("label", { children: n }),
-      /* @__PURE__ */ t("ul", { children: o }),
-      /* @__PURE__ */ t(a, { index: 0 })
+    return /* @__PURE__ */ d(M, { children: [
+      n && /* @__PURE__ */ r("label", { children: n }),
+      /* @__PURE__ */ r("ul", { children: o }),
+      /* @__PURE__ */ r(c, { index: 0 })
     ] });
   }
-}, R = ({ formProps: r }) => {
-  const { isTextarea: e, ...n } = r;
-  return e ? /* @__PURE__ */ t("textarea", { ...n, ...e }) : null;
-}, A = ({
-  label: r,
-  formProps: e,
+}, T = ({ formProps: e }) => {
+  const { isTextarea: t, ...n } = e;
+  return t ? /* @__PURE__ */ r("textarea", { ...n, ...t }) : null;
+}, N = ({
+  label: e,
+  formProps: t,
   errors: n,
-  ...i
+  ...a
 }) => {
   if (n && Array.isArray(n) && n.length > 2)
     throw new Error("The length of error is up to 2.");
-  const s = Array.isArray(e) ? e : [e], { type: a, isSelect: o, isTextarea: c } = s[0], l = s.length;
-  if (!(a === "radio" || a === "checkbox") && l > 2)
+  const s = Array.isArray(t) ? t : [t], { type: c, isSelect: o, isTextarea: u } = s[0], i = s.length;
+  if (!(c === "radio" || c === "checkbox") && i > 2)
     throw new Error("The length of formProps is up to 2.");
-  const d = ["radio", "checkbox"].includes(a || "") ? "radio-check" : l === 1 ? "block" : "flex";
-  return /* @__PURE__ */ t("fieldset", { ...i, children: /* @__PURE__ */ t(
-    v,
+  const l = ["radio", "checkbox"].includes(c || "") ? "radio-check" : i === 1 ? "block" : "flex";
+  return /* @__PURE__ */ r("fieldset", { ...a, children: /* @__PURE__ */ r(
+    E,
     {
-      layoutType: d,
+      layoutType: l,
       formPropsArr: s,
-      label: r,
+      label: e,
       errors: n,
-      FormItem: o ? S : c ? R : T
+      FormItem: o ? k : u ? T : B
     }
   ) });
 }, h = {
   regex: /(\n|###br\.[^#]+###|###br###)/,
-  isRegularBreak: (r) => r === `
-` || r === "###br###",
-  isSpecificBreak: (r) => r.match(/###br\.(.*?)###/),
-  getClassName: (r) => {
-    var e;
-    return ((e = r.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : e[0]) || "";
+  isRegularBreak: (e) => e === `
+` || e === "###br###",
+  isSpecificBreak: (e) => e.match(/###br\.(.*?)###/),
+  getClassName: (e) => {
+    var t;
+    return ((t = e.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : t[0]) || "";
   }
-}, E = (r) => x(
-  () => r.split(h.regex).map((e, n) => h.isRegularBreak(e) ? /* @__PURE__ */ t("br", {}, n) : h.isSpecificBreak(e) ? /* @__PURE__ */ t(
+}, v = (e) => b(
+  () => e.split(h.regex).map((t, n) => h.isRegularBreak(t) ? /* @__PURE__ */ r("br", {}, n) : h.isSpecificBreak(t) ? /* @__PURE__ */ r(
     "br",
     {
-      className: h.getClassName(e)
+      className: h.getClassName(t)
     },
     n
-  ) : e),
-  [r]
-), F = ({
-  children: r
+  ) : t),
+  [e]
+), $ = ({
+  children: e
 }) => {
-  const e = E(r);
-  return /* @__PURE__ */ t(g, { children: e });
-}, m = ({
-  containerProps: r,
-  ...e
-}) => r ? /* @__PURE__ */ t("span", { ...r, children: /* @__PURE__ */ t("span", { ...e }) }) : /* @__PURE__ */ t("span", { ...e }), O = ({
-  type: r = "chars",
-  children: e,
+  const t = v(e);
+  return /* @__PURE__ */ r(M, { children: t });
+}, g = ({
+  containerProps: e,
+  ...t
+}) => e ? /* @__PURE__ */ r("span", { ...e, children: /* @__PURE__ */ r("span", { ...t }) }) : /* @__PURE__ */ r("span", { ...t }), j = ({
+  type: e = "chars",
+  children: t,
   exception: n,
-  containerProps: i,
+  containerProps: a,
   ...s
 }) => {
-  const a = r === "chars" ? "" : " ";
-  return x(
-    () => e.split(h.regex).flatMap((c, l) => h.isRegularBreak(c) ? [null, /* @__PURE__ */ t("br", {}, l)] : h.isSpecificBreak(c) ? [
+  const c = e === "chars" ? "" : " ";
+  return b(
+    () => t.split(h.regex).flatMap((u, i) => h.isRegularBreak(u) ? [null, /* @__PURE__ */ r("br", {}, i)] : h.isSpecificBreak(u) ? [
       null,
-      /* @__PURE__ */ t(
+      /* @__PURE__ */ r(
         "br",
         {
-          className: h.getClassName(c)
+          className: h.getClassName(u)
         },
-        l
+        i
       )
     ] : [
-      ...c.split(a).map((d, f) => {
+      ...u.split(c).map((l, p) => {
         if (n) {
-          const p = n.find(
-            (y) => y.selector === d
+          const f = n.find(
+            (I) => I.selector === l
           );
-          if (p)
-            return /* @__PURE__ */ t(
-              m,
+          if (f)
+            return /* @__PURE__ */ r(
+              g,
               {
-                containerProps: i,
+                containerProps: a,
                 ...s,
-                ...p.attributes,
-                children: d
+                ...f.attributes,
+                children: l
               },
-              `${l}-${f}`
+              `${i}-${p}`
             );
         }
-        return /* @__PURE__ */ t(
-          m,
+        return /* @__PURE__ */ r(
+          g,
           {
-            containerProps: i,
+            containerProps: a,
             ...s,
-            children: d === " " ? " " : d
+            children: l === " " ? " " : l
           },
-          `${l}-${f}`
+          `${i}-${p}`
         );
       }),
       null
     ]),
-    [a, e, s, n, i]
+    [c, t, s, n, a]
   );
-}, M = k((r, e) => {
-  const { fill: n, style: i, ...s } = r;
-  return /* @__PURE__ */ t(
+}, C = y((e, t) => {
+  const { fill: n, style: a, ...s } = e;
+  return /* @__PURE__ */ r(
     "video",
     {
-      ref: e,
+      ref: t,
       style: n ? {
         position: "absolute",
         width: "100%",
         height: "100%",
         inset: 0,
         color: "transparent",
-        ...i
-      } : i,
+        ...a
+      } : a,
       ...s
     }
   );
 });
-M.displayName = "Video";
-const w = (r, e) => {
-  if (e < r)
+C.displayName = "Video";
+const O = (e, t) => {
+  if (t < e)
     throw Error(
-      `End number must be higher then start number: start ${r}, end ${r}`
+      `End number must be higher then start number: start ${e}, end ${e}`
     );
-  const n = e - r + 1;
-  return Array(n).fill(0).map((i, s) => s + r);
-}, b = (r, e, n) => Math.min(Math.max(r, e), n), L = (r, e) => w(1, Math.ceil(r / e)), _ = (r, e, n, i = 5, s = "...") => {
-  if (e = Math.ceil(e / n), e < 1)
+  const n = t - e + 1;
+  return Array(n).fill(0).map((a, s) => s + e);
+}, m = (e, t, n) => Math.min(Math.max(e, t), n), Q = (e, t) => O(1, Math.ceil(e / t)), R = (e, t, n, a = 5, s = "...") => {
+  if (t = Math.ceil(t / n), t < 1)
     return console.warn("Page count has negative value. Returning empty array."), [];
-  r < 1 && (console.warn(
+  e < 1 && (console.warn(
     "Current page has negative value. Current page will be set to 1"
-  ), r = 1), r > e && (console.warn(
+  ), e = 1), e > t && (console.warn(
     "Current page is higher than page count. Current page will be set to page count:",
-    e
-  ), r = e), i % 2 === 0 && (console.warn("The size must be odd. The size will be increased by 1"), i += 1), i < 5 && (console.warn("The minimum size is 5. The size will be increased to 5"), i = 5);
-  const a = (i - 1) / 2, o = e > i, c = {
-    start: b(
-      r - a,
+    t
+  ), e = t), a % 2 === 0 && (console.warn("The size must be odd. The size will be increased by 1"), a += 1), a < 5 && (console.warn("The minimum size is 5. The size will be increased to 5"), a = 5);
+  const c = (a - 1) / 2, o = t > a, u = {
+    start: m(
+      e - c,
       1,
-      o ? e - i + 1 : 1
+      o ? t - a + 1 : 1
     ),
-    end: b(r + a, i, e)
-  }, l = w(c.start, c.end);
-  return o && l[0] !== 1 && (l[0] = 1, l[1] = s), o && l[l.length - 1] !== e && (l[l.length - 1] = e, l[l.length - 2] = s), l;
-}, j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+    end: m(e + c, a, t)
+  }, i = O(u.start, u.end);
+  return o && i[0] !== 1 && (i[0] = 1, i[1] = s), o && i[i.length - 1] !== t && (i[i.length - 1] = t, i[i.length - 2] = s), i;
+}, w = Object.freeze({
+  easeInSine(e) {
+    return 1 - Math.cos(e * Math.PI / 2);
+  },
+  easeOutSine(e) {
+    return Math.sin(e * Math.PI / 2);
+  },
+  easeInOutSine(e) {
+    return -(Math.cos(Math.PI * e) - 1) / 2;
+  },
+  easeInQuad(e) {
+    return e * e;
+  },
+  easeOutQuad(e) {
+    return 1 - (1 - e) * (1 - e);
+  },
+  easeInOutQuad(e) {
+    return e < 0.5 ? 2 * e * e : 1 - Math.pow(-2 * e + 2, 2) / 2;
+  },
+  easeInCubic(e) {
+    return e * e * e;
+  },
+  easeOutCubic(e) {
+    return 1 - Math.pow(1 - e, 3);
+  },
+  easeInOutCubic(e) {
+    return e < 0.5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2;
+  },
+  easeInQuart(e) {
+    return e * e * e * e;
+  },
+  easeOutQuart(e) {
+    return 1 - Math.pow(1 - e, 4);
+  },
+  easeInOutQuart(e) {
+    return e < 0.5 ? 8 * e * e * e * e : 1 - Math.pow(-2 * e + 2, 4) / 2;
+  },
+  easeInQuint(e) {
+    return e * e * e * e * e;
+  },
+  easeOutQuint(e) {
+    return 1 - Math.pow(1 - e, 5);
+  },
+  easeInOutQuint(e) {
+    return e < 0.5 ? 16 * e * e * e * e * e : 1 - Math.pow(-2 * e + 2, 5) / 2;
+  },
+  easeInExpo(e) {
+    return e === 0 ? 0 : Math.pow(2, 10 * e - 10);
+  },
+  easeOutExpo(e) {
+    return e === 1 ? 1 : 1 - Math.pow(2, -10 * e);
+  },
+  easeInOutExpo(e) {
+    return e === 0 ? 0 : e === 1 ? 1 : e < 0.5 ? Math.pow(2, 20 * e - 10) / 2 : (2 - Math.pow(2, -20 * e + 10)) / 2;
+  },
+  easeInCirc(e) {
+    return 1 - Math.sqrt(1 - Math.pow(e, 2));
+  },
+  easeOutCirc(e) {
+    return Math.sqrt(1 - Math.pow(e - 1, 2));
+  },
+  easeInOutCirc(e) {
+    return e < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * e, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * e + 2, 2)) + 1) / 2;
+  },
+  easeInBack(e) {
+    return 2.70158 * e * e * e - 1.70158 * e * e;
+  },
+  easeOutBack(e) {
+    return 1 + 2.70158 * Math.pow(e - 1, 3) + 1.70158 * Math.pow(e - 1, 2);
+  },
+  easeInOutBack(e) {
+    const n = 2.5949095;
+    return e < 0.5 ? Math.pow(2 * e, 2) * ((n + 1) * 2 * e - n) / 2 : (Math.pow(2 * e - 2, 2) * ((n + 1) * (e * 2 - 2) + n) + 2) / 2;
+  },
+  easeInElastic(e) {
+    const t = 2 * Math.PI / 3;
+    return e === 0 ? 0 : e === 1 ? 1 : -Math.pow(2, 10 * e - 10) * Math.sin((e * 10 - 10.75) * t);
+  },
+  easeOutElastic(e) {
+    const t = 2 * Math.PI / 3;
+    return e === 0 ? 0 : e === 1 ? 1 : Math.pow(2, -10 * e) * Math.sin((e * 10 - 0.75) * t) + 1;
+  },
+  easeInOutElastic(e) {
+    const t = 2 * Math.PI / 4.5;
+    return e === 0 ? 0 : e === 1 ? 1 : e < 0.5 ? -(Math.pow(2, 20 * e - 10) * Math.sin((20 * e - 11.125) * t)) / 2 : Math.pow(2, -20 * e + 10) * Math.sin((20 * e - 11.125) * t) / 2 + 1;
+  },
+  easeInBounce(e) {
+    return 1 - w.easeOutBounce(1 - e);
+  },
+  easeOutBounce(e) {
+    return e < 1 / 2.75 ? 7.5625 * e * e : e < 2 / 2.75 ? 7.5625 * (e -= 1.5 / 2.75) * e + 0.75 : e < 2.5 / 2.75 ? 7.5625 * (e -= 2.25 / 2.75) * e + 0.9375 : 7.5625 * (e -= 2.625 / 2.75) * e + 0.984375;
+  },
+  easeInOutBounce(e) {
+    return e < 0.5 ? (1 - w.easeOutBounce(1 - 2 * e)) / 2 : (1 + w.easeOutBounce(2 * e - 1)) / 2;
+  }
+}), A = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  getPageRange: L,
-  getPaginationRange: _
+  Easing: w,
+  getPageRange: Q,
+  getPaginationRange: R
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  F as CustomBreakLineParser,
+  $ as CustomBreakLineParser,
   h as CustomBreakLineUtils,
-  A as FormField,
-  O as SplitText,
-  M as Video,
-  E as useParsedBreakLine,
-  j as utils
+  N as FormField,
+  j as SplitText,
+  C as Video,
+  v as useParsedBreakLine,
+  A as utils
 };
 //# sourceMappingURL=spice.js.map

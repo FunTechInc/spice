@@ -81,6 +81,14 @@ const componentList = [
       href: "/Loader",
       title: "Loader",
    },
+   {
+      href: "/ParallaxThumbnail",
+      title: "Parallax",
+   },
+   {
+      href: "/Float",
+      title: "Float",
+   },
 ];
 
 const utilsList = [
