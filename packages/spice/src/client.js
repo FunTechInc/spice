@@ -26,6 +26,7 @@ export * from "./hooks/useShare";
 export * from "./hooks/useOnHovering";
 export * from "./hooks/useValidElement";
 export * from "./hooks/useScrollTrigger";
+export * from "./hooks/useDeviceDetector";
 
 // utils
 export * as utils from "./utils";

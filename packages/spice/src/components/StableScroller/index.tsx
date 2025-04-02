@@ -1,7 +1,8 @@
 "use client";
 
-import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import { createContext, useContext, useRef, useState } from "react";
+import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
+import { useDeviceDetector } from "../../hooks/useDeviceDetector";
 
 const StableScrollerContext = createContext<HTMLDivElement | undefined>(
    undefined
@@ -10,15 +11,15 @@ const StableScrollerContext = createContext<HTMLDivElement | undefined>(
 export const useStableScroller = () => useContext(StableScrollerContext);
 
 /**
- * @param active - If the scroller should be active or not
  * - Components to stabilise the behaviour of the scroller in mobile browsers.
  * - It is possible to use `useStableScroller` to get the `HTMLDivElement` if it is in context
  */
 export const StableScroller = ({
-   active,
    style,
    ...rest
-}: { active?: boolean } & React.HTMLAttributes<HTMLDivElement>) => {
+}: React.HTMLAttributes<HTMLDivElement>) => {
+   const { isMobile } = useDeviceDetector();
+
    const ref = useRef<HTMLDivElement>(null);
 
    const [scroller, setScroller] = useState<HTMLDivElement | undefined>(
@@ -26,19 +27,19 @@ export const StableScroller = ({
    );
 
    useIsomorphicLayoutEffect(() => {
-      if (active && ref.current) {
+      if (isMobile && ref.current) {
          setScroller(ref.current);
       } else {
          setScroller(undefined);
       }
-   }, [active]);
+   }, [isMobile]);
 
    return (
       <StableScrollerContext.Provider value={scroller}>
          <div
             ref={ref}
             style={{
-               ...(active
+               ...(isMobile
                   ? {
                        height: "100svh",
                        overflowY: "auto",
