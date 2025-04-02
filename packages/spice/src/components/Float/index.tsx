@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import { useFrame, useIntersectionObserver } from "../../client";
 import gsap from "gsap";
 
