@@ -21,6 +21,7 @@ export * from "./hooks/useShare";
 export * from "./hooks/useOnHovering";
 export * from "./hooks/useValidElement";
 export * from "./hooks/useScrollTrigger";
+export * from "./hooks/useDeviceDetector";
 export * as Tab from "./components/Tab";
 export * as Accordion from "./components/Accordion";
 export * as utils from "./utils";
