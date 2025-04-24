@@ -1,54 +1,45 @@
-import { useMemo } from "react";
+import { useMemo, Fragment } from "react";
 
 type CustomBreakLineParserProps = {
-   children?: string;
+   children?: string | null;
 };
 
+const REGEX = /(\n|###br\.[^#]+###|###br###)/;
+const REGULAR_BREAKS = ["\n", "###br###"];
+const SPECIFIC_BREAK_REGEX = /###br\.(.*?)###/;
+
 export const CustomBreakLineUtils = {
-   regex: /(\n|###br\.[^#]+###|###br###)/,
-   isRegularBreak: (line: string) => line === "\n" || line === "###br###",
-   isSpecificBreak: (line: string) => line.match(/###br\.(.*?)###/),
+   regex: REGEX,
+   isRegularBreak: (line: string) => REGULAR_BREAKS.includes(line),
+   isSpecificBreak: (line: string) => SPECIFIC_BREAK_REGEX.test(line),
    getClassName: (line: string) =>
       line.match(/(?<=###br\.).+?(?=###)/)?.[0] || "",
 };
-
-/**
- * @returns {(string | JSX.Element)[]} - A React fragment containing the formatted string with line breaks represented as `<br>` elements.
- */
-const useParsedBreakLine = (string: string): (string | JSX.Element)[] =>
-   useMemo(
-      () =>
-         string.split(CustomBreakLineUtils.regex).map((line, index) => {
-            // \n or ###br### is a regular line break
-            if (CustomBreakLineUtils.isRegularBreak(line)) {
-               return <br key={index} />;
-            }
-            // ###br.className### is a line break with a specified class name
-            if (CustomBreakLineUtils.isSpecificBreak(line)) {
-               return (
-                  <br
-                     className={CustomBreakLineUtils.getClassName(line)}
-                     key={index}
-                  />
-               );
-            }
-            // Regular text
-            return line;
-         }),
-      [string]
-   );
 
 /**
  * Converts specific markers in a string into HTML line breaks for React components.
  * @param {string} children - The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class.
  * @returns {React.ReactElement} - The formatted string
  */
-const CustomBreakLineParser = ({
+export const CustomBreakLineParser = ({
    children,
 }: CustomBreakLineParserProps): React.ReactElement | null => {
-   const parsedText = useParsedBreakLine(children ?? "");
-   if (!children) return null;
+   const parsedText = useMemo(() => {
+      if (!children) return null;
+      return children.split(CustomBreakLineUtils.regex).map((line, index) => {
+         if (CustomBreakLineUtils.isRegularBreak(line)) {
+            return <br key={index} />;
+         }
+         if (CustomBreakLineUtils.isSpecificBreak(line)) {
+            return (
+               <br
+                  className={CustomBreakLineUtils.getClassName(line)}
+                  key={index}
+               />
+            );
+         }
+         return <Fragment key={index}>{line}</Fragment>;
+      });
+   }, [children]);
    return <>{parsedText}</>;
 };
-
-export { useParsedBreakLine, CustomBreakLineParser };

@@ -1,5 +1,5 @@
-import { jsx as r, jsxs as d, Fragment as M } from "react/jsx-runtime";
-import { useMemo as b, forwardRef as y } from "react";
+import { jsx as r, jsxs as d, Fragment as g } from "react/jsx-runtime";
+import { useMemo as b, Fragment as E, forwardRef as y } from "react";
 const B = ({ formProps: e }) => {
   const { style: t, ...n } = e;
   return /* @__PURE__ */ r(
@@ -12,7 +12,7 @@ const B = ({ formProps: e }) => {
       }
     }
   );
-}, k = ({ formProps: e }) => {
+}, S = ({ formProps: e }) => {
   const { isSelect: t, style: n, ...a } = e;
   if (!t)
     return null;
@@ -30,7 +30,7 @@ const B = ({ formProps: e }) => {
       children: c.map((o, u) => /* @__PURE__ */ r("option", { value: o, children: o }, u))
     }
   );
-}, S = {
+}, k = {
   position: "absolute",
   whiteSpace: "nowrap",
   width: "1px",
@@ -41,7 +41,7 @@ const B = ({ formProps: e }) => {
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   zIndex: "-99999"
-}, E = ({
+}, R = ({
   layoutType: e,
   formPropsArr: t,
   label: n,
@@ -50,13 +50,13 @@ const B = ({ formProps: e }) => {
 }) => {
   const c = ({ index: o }) => s ? Array.isArray(s) ? s[o] : s : null;
   if (e === "block")
-    return /* @__PURE__ */ d(M, { children: [
+    return /* @__PURE__ */ d(g, { children: [
       n && /* @__PURE__ */ r("label", { htmlFor: t[0].id, children: n }),
       /* @__PURE__ */ r(a, { formProps: t[0] }),
       /* @__PURE__ */ r(c, { index: 0 })
     ] });
   if (e === "flex")
-    return /* @__PURE__ */ d(M, { children: [
+    return /* @__PURE__ */ d(g, { children: [
       n && /* @__PURE__ */ r("label", { htmlFor: t[0].id, children: n }),
       /* @__PURE__ */ d("ul", { children: [
         /* @__PURE__ */ d("li", { children: [
@@ -79,7 +79,7 @@ const B = ({ formProps: e }) => {
               id: u,
               value: i,
               style: {
-                ...S,
+                ...k,
                 ...l || {}
               },
               ...f
@@ -89,7 +89,7 @@ const B = ({ formProps: e }) => {
         /* @__PURE__ */ r("label", { htmlFor: u, children: p || i })
       ] }, u)
     );
-    return /* @__PURE__ */ d(M, { children: [
+    return /* @__PURE__ */ d(g, { children: [
       n && /* @__PURE__ */ r("label", { children: n }),
       /* @__PURE__ */ r("ul", { children: o }),
       /* @__PURE__ */ r(c, { index: 0 })
@@ -111,42 +111,39 @@ const B = ({ formProps: e }) => {
     throw new Error("The length of formProps is up to 2.");
   const l = ["radio", "checkbox"].includes(c || "") ? "radio-check" : i === 1 ? "block" : "flex";
   return /* @__PURE__ */ r("fieldset", { ...a, children: /* @__PURE__ */ r(
-    E,
+    R,
     {
       layoutType: l,
       formPropsArr: s,
       label: e,
       errors: n,
-      FormItem: o ? k : u ? T : B
+      FormItem: o ? S : u ? T : B
     }
   ) });
-}, h = {
-  regex: /(\n|###br\.[^#]+###|###br###)/,
-  isRegularBreak: (e) => e === `
-` || e === "###br###",
-  isSpecificBreak: (e) => e.match(/###br\.(.*?)###/),
+}, C = /(\n|###br\.[^#]+###|###br###)/, _ = [`
+`, "###br###"], v = /###br\.(.*?)###/, h = {
+  regex: C,
+  isRegularBreak: (e) => _.includes(e),
+  isSpecificBreak: (e) => v.test(e),
   getClassName: (e) => {
     var t;
     return ((t = e.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : t[0]) || "";
   }
-}, v = (e) => b(
-  () => e.split(h.regex).map((t, n) => h.isRegularBreak(t) ? /* @__PURE__ */ r("br", {}, n) : h.isSpecificBreak(t) ? /* @__PURE__ */ r(
-    "br",
-    {
-      className: h.getClassName(t)
-    },
-    n
-  ) : t),
-  [e]
-), $ = ({
+}, j = ({
   children: e
 }) => {
-  const t = v(e ?? "");
-  return e ? /* @__PURE__ */ r(M, { children: t }) : null;
-}, g = ({
+  const t = b(() => e ? e.split(h.regex).map((n, a) => h.isRegularBreak(n) ? /* @__PURE__ */ r("br", {}, a) : h.isSpecificBreak(n) ? /* @__PURE__ */ r(
+    "br",
+    {
+      className: h.getClassName(n)
+    },
+    a
+  ) : /* @__PURE__ */ r(E, { children: n }, a)) : null, [e]);
+  return /* @__PURE__ */ r(g, { children: t });
+}, w = ({
   containerProps: e,
   ...t
-}) => e ? /* @__PURE__ */ r("span", { ...e, children: /* @__PURE__ */ r("span", { ...t }) }) : /* @__PURE__ */ r("span", { ...t }), j = ({
+}) => e ? /* @__PURE__ */ r("span", { ...e, children: /* @__PURE__ */ r("span", { ...t }) }) : /* @__PURE__ */ r("span", { ...t }), q = ({
   type: e = "chars",
   children: t,
   exception: n,
@@ -168,11 +165,11 @@ const B = ({ formProps: e }) => {
       ...u.split(c).map((l, p) => {
         if (n) {
           const f = n.find(
-            (I) => I.selector === l
+            (O) => O.selector === l
           );
           if (f)
             return /* @__PURE__ */ r(
-              g,
+              w,
               {
                 containerProps: a,
                 ...s,
@@ -183,7 +180,7 @@ const B = ({ formProps: e }) => {
             );
         }
         return /* @__PURE__ */ r(
-          g,
+          w,
           {
             containerProps: a,
             ...s,
@@ -196,7 +193,7 @@ const B = ({ formProps: e }) => {
     ]),
     [c, t, s, n, a]
   );
-}, C = y((e, t) => {
+}, Q = y((e, t) => {
   const { fill: n, style: a, ...s } = e;
   return /* @__PURE__ */ r(
     "video",
@@ -214,15 +211,15 @@ const B = ({ formProps: e }) => {
     }
   );
 });
-C.displayName = "Video";
-const O = (e, t) => {
+Q.displayName = "Video";
+const I = (e, t) => {
   if (t < e)
     throw Error(
       `End number must be higher then start number: start ${e}, end ${e}`
     );
   const n = t - e + 1;
   return Array(n).fill(0).map((a, s) => s + e);
-}, m = (e, t, n) => Math.min(Math.max(e, t), n), Q = (e, t) => O(1, Math.ceil(e / t)), R = (e, t, n, a = 5, s = "...") => {
+}, m = (e, t, n) => Math.min(Math.max(e, t), n), A = (e, t) => I(1, Math.ceil(e / t)), F = (e, t, n, a = 5, s = "...") => {
   if (t = Math.ceil(t / n), t < 1)
     return console.warn("Page count has negative value. Returning empty array."), [];
   e < 1 && (console.warn(
@@ -238,9 +235,9 @@ const O = (e, t) => {
       o ? t - a + 1 : 1
     ),
     end: m(e + c, a, t)
-  }, i = O(u.start, u.end);
+  }, i = I(u.start, u.end);
   return o && i[0] !== 1 && (i[0] = 1, i[1] = s), o && i[i.length - 1] !== t && (i[i.length - 1] = t, i[i.length - 2] = s), i;
-}, w = Object.freeze({
+}, M = Object.freeze({
   easeInSine(e) {
     return 1 - Math.cos(e * Math.PI / 2);
   },
@@ -327,27 +324,26 @@ const O = (e, t) => {
     return e === 0 ? 0 : e === 1 ? 1 : e < 0.5 ? -(Math.pow(2, 20 * e - 10) * Math.sin((20 * e - 11.125) * t)) / 2 : Math.pow(2, -20 * e + 10) * Math.sin((20 * e - 11.125) * t) / 2 + 1;
   },
   easeInBounce(e) {
-    return 1 - w.easeOutBounce(1 - e);
+    return 1 - M.easeOutBounce(1 - e);
   },
   easeOutBounce(e) {
     return e < 1 / 2.75 ? 7.5625 * e * e : e < 2 / 2.75 ? 7.5625 * (e -= 1.5 / 2.75) * e + 0.75 : e < 2.5 / 2.75 ? 7.5625 * (e -= 2.25 / 2.75) * e + 0.9375 : 7.5625 * (e -= 2.625 / 2.75) * e + 0.984375;
   },
   easeInOutBounce(e) {
-    return e < 0.5 ? (1 - w.easeOutBounce(1 - 2 * e)) / 2 : (1 + w.easeOutBounce(2 * e - 1)) / 2;
+    return e < 0.5 ? (1 - M.easeOutBounce(1 - 2 * e)) / 2 : (1 + M.easeOutBounce(2 * e - 1)) / 2;
   }
-}), A = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), P = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Easing: w,
-  getPageRange: Q,
-  getPaginationRange: R
+  Easing: M,
+  getPageRange: A,
+  getPaginationRange: F
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  $ as CustomBreakLineParser,
+  j as CustomBreakLineParser,
   h as CustomBreakLineUtils,
   N as FormField,
-  j as SplitText,
-  C as Video,
-  v as useParsedBreakLine,
-  A as utils
+  q as SplitText,
+  Q as Video,
+  P as utils
 };
 //# sourceMappingURL=spice.js.map
