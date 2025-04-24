@@ -141,8 +141,8 @@ const B = ({ formProps: e }) => {
 ), $ = ({
   children: e
 }) => {
-  const t = v(e);
-  return /* @__PURE__ */ r(M, { children: t });
+  const t = v(e ?? "");
+  return e ? /* @__PURE__ */ r(M, { children: t }) : null;
 }, g = ({
   containerProps: e,
   ...t

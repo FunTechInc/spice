@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 type CustomBreakLineParserProps = {
-   children: string;
+   children?: string;
 };
 
 export const CustomBreakLineUtils = {
@@ -45,8 +45,9 @@ const useParsedBreakLine = (string: string): (string | JSX.Element)[] =>
  */
 const CustomBreakLineParser = ({
    children,
-}: CustomBreakLineParserProps): React.ReactElement => {
-   const parsedText = useParsedBreakLine(children);
+}: CustomBreakLineParserProps): React.ReactElement | null => {
+   const parsedText = useParsedBreakLine(children ?? "");
+   if (!children) return null;
    return <>{parsedText}</>;
 };
 

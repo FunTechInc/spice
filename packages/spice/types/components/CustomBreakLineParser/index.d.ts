@@ -1,5 +1,5 @@
 type CustomBreakLineParserProps = {
-    children: string;
+    children?: string;
 };
 export declare const CustomBreakLineUtils: {
     regex: RegExp;
@@ -16,5 +16,5 @@ declare const useParsedBreakLine: (string: string) => (string | JSX.Element)[];
  * @param {string} children - The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class.
  * @returns {React.ReactElement} - The formatted string
  */
-declare const CustomBreakLineParser: ({ children, }: CustomBreakLineParserProps) => React.ReactElement;
+declare const CustomBreakLineParser: ({ children, }: CustomBreakLineParserProps) => React.ReactElement | null;
 export { useParsedBreakLine, CustomBreakLineParser };

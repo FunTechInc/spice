@@ -544,8 +544,8 @@ const Ht = (t) => {
 ), Qt = ({
   children: t
 }) => {
-  const e = yt(t);
-  return /* @__PURE__ */ c(O, { children: e });
+  const e = yt(t ?? "");
+  return t ? /* @__PURE__ */ c(O, { children: e }) : null;
 }, F = ({
   containerProps: t,
   ...e
