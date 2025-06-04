@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useRef } from "react";
+import { forwardRef, useRef, useLayoutEffect, useCallback } from "react";
 import gsap from "gsap";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { useFrame } from "../../hooks/useFrame";
@@ -8,47 +8,45 @@ import { useFrame } from "../../hooks/useFrame";
 export type InfinityLoopProps = {
    active?: boolean;
    /** Negative values will result in the opposite direction. default : `1` */
-   speed?: number;
+   speed?: number | React.RefObject<number>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const InfinityLoop = forwardRef<HTMLDivElement, InfinityLoopProps>(
    ({ active = false, speed = 1, children, ...rest }, ref) => {
       const wrapperRef = useRef<HTMLDivElement>(null);
-      const firstChildRef = useRef<HTMLDivElement>(null);
-      const secondChildRef = useRef<HTMLDivElement>(null);
+      const scrollerRef = useRef<HTMLDivElement>(null);
 
       const progress = useRef(0);
+      const childWidth = useRef(0);
+
+      // Update childWidth on mount and resize
+      useLayoutEffect(() => {
+         const updateWidth = () => {
+            if (scrollerRef.current) {
+               childWidth.current = scrollerRef.current.clientWidth / 2;
+            }
+         };
+         updateWidth();
+         window.addEventListener("resize", updateWidth);
+         return () => window.removeEventListener("resize", updateWidth);
+      }, []);
 
       useFrame(() => {
-         if (!active) {
-            return;
-         }
-
-         const wrapper = wrapperRef.current;
-         const firstChild = firstChildRef.current;
-         const secondChild = secondChildRef.current;
-
-         if (!(wrapper && firstChild && secondChild)) {
-            return;
-         }
+         if (!active) return;
+         const scroller = scrollerRef.current;
+         if (!scroller || childWidth.current === 0) return;
 
          const delta = gsap.ticker.deltaRatio() / 1000;
-         const ratio = wrapper.clientWidth / firstChild.clientWidth;
-         progress.current += delta * Math.abs(speed) * ratio;
+         const speedValue =
+            typeof speed === "number" ? speed : speed?.current ?? 1;
+         progress.current += delta * speedValue * childWidth.current;
 
-         if (progress.current >= 1) {
-            progress.current = 0;
-         }
+         // Always wrap progress between 0 and childWidth
+         progress.current =
+            ((progress.current % childWidth.current) + childWidth.current) %
+            childWidth.current;
 
-         if (speed < 0) {
-            const _progress = progress.current * -100;
-            firstChild.style.transform = `translateX(${_progress}%)`;
-            secondChild.style.transform = `translateX(${_progress}%)`;
-         } else {
-            const _progress = progress.current * 100;
-            firstChild.style.transform = `translateX(${_progress}%)`;
-            secondChild.style.transform = `translateX(${_progress - 200}%)`;
-         }
+         scroller.style.transform = `translateX(${-progress.current}px)`;
       });
 
       return (
@@ -60,12 +58,14 @@ export const InfinityLoop = forwardRef<HTMLDivElement, InfinityLoopProps>(
                   width: "100%",
                }}>
                <div
+                  ref={scrollerRef}
                   style={{
-                     whiteSpace: "nowrap",
                      display: "flex",
+                     width: "fit-content",
+                     willChange: "transform",
                   }}>
-                  <div ref={firstChildRef}>{children}</div>
-                  <div ref={secondChildRef}>{children}</div>
+                  {children}
+                  {children}
                </div>
             </div>
          </div>
