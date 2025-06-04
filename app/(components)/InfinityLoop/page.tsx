@@ -2,13 +2,29 @@
 
 import { CodeBlock } from "@/app/_component/CodeBlock";
 import { MainView } from "@/app/_component/MainView";
+import { useLenis } from "@/app/useLenis";
 import { InfinityLoopOnView } from "@/packages/spice/src/client";
+import { useEffect, useRef } from "react";
 
 const Demo = () => {
+   const lenis = useLenis((s) => s.lenis);
+   const speedRef = useRef(1);
+
+   useEffect(() => {
+      if (!lenis) return;
+
+      const onScroll = (lenis: { direction: number; velocity: number }) => {
+         speedRef.current = lenis.velocity + lenis.direction;
+      };
+
+      lenis.on("scroll", onScroll);
+      return () => lenis.off("scroll", onScroll);
+   }, [lenis]);
+
    return (
       <InfinityLoopOnView
-         style={{ backgroundColor: "yellow", width: "500px" }}
-         speed={-10}>
+         speed={speedRef}
+         style={{ backgroundColor: "yellow", width: "500px" }}>
          <p
             style={{
                fontSize: "120px",
