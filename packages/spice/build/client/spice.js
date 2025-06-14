@@ -101,7 +101,7 @@ const et = ({ formProps: t }) => {
 }, ot = ({ formProps: t }) => {
   const { isTextarea: e, ...n } = t;
   return e ? /* @__PURE__ */ u("textarea", { ...n, ...e }) : null;
-}, Ht = ({
+}, Qt = ({
   label: t,
   formProps: e,
   errors: n,
@@ -206,7 +206,7 @@ const ut = {
   prev: "",
   current: "",
   next: ""
-}, z = T(ut), G = T(
+}, Q = T(ut), z = T(
   () => {
   }
 ), lt = ({ children: t, defaultValue: e }) => {
@@ -221,13 +221,13 @@ const ut = {
     current: e,
     next: ""
   });
-  return /* @__PURE__ */ u(z.Provider, { value: n, children: /* @__PURE__ */ u(G.Provider, { value: r, children: t }) });
-}, Q = () => R(z), B = () => R(G), dt = ({ children: t, value: e, ...n }) => {
+  return /* @__PURE__ */ u(Q.Provider, { value: n, children: /* @__PURE__ */ u(z.Provider, { value: r, children: t }) });
+}, G = () => R(Q), B = () => R(z), dt = ({ children: t, value: e, ...n }) => {
   if (e === "")
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const r = B(), i = Q(), o = E(() => {
+  const r = B(), i = G(), o = E(() => {
     i.current === e || i.isLeaving || r((a) => ({
       ...a,
       isLeaving: !0,
@@ -268,7 +268,7 @@ const ut = {
     throw new Error(
       "Please set the value to something other than an empty string."
     );
-  const c = p(!0), s = p(null), h = B(), d = Q(), l = d.current === e && !d.isLeaving;
+  const c = p(!0), s = p(null), h = B(), d = G(), l = d.current === e && !d.isLeaving;
   return b(() => {
     if (c.current) {
       c.current = !1;
@@ -519,7 +519,7 @@ const L = (t, e, n) => {
   }
 );
 U.displayName = "InfinityLoop";
-const Qt = (t) => {
+const qt = (t) => {
   const { isIntersecting: e, ref: n } = V({
     once: !1
   });
@@ -533,7 +533,7 @@ const Qt = (t) => {
     var e;
     return ((e = t.match(new RegExp("(?<=###br\\.).+?(?=###)"))) == null ? void 0 : e[0]) || "";
   }
-}, qt = ({
+}, Xt = ({
   children: t
 }) => {
   const e = M(() => t ? t.split(I.regex).map((n, r) => I.isRegularBreak(n) ? /* @__PURE__ */ u("br", {}, r) : I.isSpecificBreak(n) ? /* @__PURE__ */ u(
@@ -547,7 +547,7 @@ const Qt = (t) => {
 }, D = ({
   containerProps: t,
   ...e
-}) => t ? /* @__PURE__ */ u("span", { ...t, children: /* @__PURE__ */ u("span", { ...e }) }) : /* @__PURE__ */ u("span", { ...e }), Xt = ({
+}) => t ? /* @__PURE__ */ u("span", { ...t, children: /* @__PURE__ */ u("span", { ...e }) }) : /* @__PURE__ */ u("span", { ...e }), xt = ({
   type: t = "chars",
   children: e,
   exception: n,
@@ -747,7 +747,7 @@ const Ot = (t) => {
   }, []), e;
 }, Y = T(
   void 0
-), xt = () => R(Y), Kt = ({
+), Kt = () => R(Y), Vt = ({
   style: t,
   ...e
 }) => {
@@ -802,7 +802,7 @@ Created by FunTech with 😘
     return;
   const n = t > 360 ? "width=device-width,initial-scale=1" : "width=360";
   e.getAttribute("content") !== n && e.setAttribute("content", n);
-}, Vt = ({
+}, Ut = ({
   fixViewport: t = !0,
   areYouFun: e = !1
 } = {}) => {
@@ -848,7 +848,7 @@ Created by FunTech with 😘
       }
     );
   }), () => o.current.revert()), [e]), /* @__PURE__ */ u("div", { ref: i, ...r });
-}, Pt = (t) => typeof t == "number" ? t : parseFloat(t) || 0, Ut = ({
+}, Pt = (t) => typeof t == "number" ? t : parseFloat(t) || 0, Yt = ({
   children: t,
   style: e,
   y: n = "8%",
@@ -881,7 +881,7 @@ Created by FunTech with 😘
       }
     )
   }
-), Yt = ({
+), Jt = ({
   speed: t = 1,
   range: e = "100px",
   ease: n = (i) => i,
@@ -894,14 +894,7 @@ Created by FunTech with 😘
     const h = (n((Math.sin(s * t) + 1) / 2) * 2 - 1) * c;
     i.current.style.transform = `translateY(${h}${a})`;
   }), /* @__PURE__ */ u("div", { ref: i, ...r });
-}, Jt = () => {
-  const [t, e] = m(null);
-  return v(() => {
-    e(
-      window.ontouchstart !== void 0 && 0 < navigator.maxTouchPoints
-    );
-  }, []), t;
-}, Zt = (t, e) => {
+}, _t = (t, e) => {
   const [n, r] = m(null), i = E(
     (o) => {
       switch (t) {
@@ -923,7 +916,14 @@ Created by FunTech with 😘
     () => i(window.innerWidth),
     [i]
   ), n;
-}, te = ({
+}, Zt = (t, e, n) => _t(t, e) ? n : null, te = () => {
+  const [t, e] = m(null);
+  return v(() => {
+    e(
+      window.ontouchstart !== void 0 && 0 < navigator.maxTouchPoints
+    );
+  }, []), t;
+}, ee = ({
   shareUrl: t,
   sharePath: e,
   shareTitle: n = "",
@@ -1002,7 +1002,7 @@ Created by FunTech with 😘
     copy: w,
     isCopied: l
   };
-}, ee = (t, e) => {
+}, ne = (t, e) => {
   const [n, r] = m(!1), i = p();
   L(() => {
     n && i.current && t(i.current);
@@ -1019,12 +1019,12 @@ Created by FunTech with 😘
     onPointerLeave: o,
     onPointerMove: a
   };
-}, ne = (t) => {
+}, re = (t) => {
   const [e, n] = m();
   return b(() => {
     t && t.current && n(t.current);
   }, [t]), e;
-}, W = (t, e) => !!(t != null && t.includes(e)), re = (t, {
+}, W = (t, e) => !!(t != null && t.includes(e)), ie = (t, {
   reactive: e = [],
   dependencies: n = []
 } = {}) => {
@@ -1069,7 +1069,7 @@ Created by FunTech with 😘
     );
   const n = e - t + 1;
   return Array(n).fill(0).map((r, i) => i + t);
-}, N = (t, e, n) => Math.min(Math.max(t, e), n), _t = (t, e) => Z(1, Math.ceil(t / e)), Ft = (t, e, n, r = 5, i = "...") => {
+}, N = (t, e, n) => Math.min(Math.max(t, e), n), Ft = (t, e) => Z(1, Math.ceil(t / e)), Dt = (t, e, n, r = 5, i = "...") => {
   if (e = Math.ceil(e / n), e < 1)
     return console.warn("Page count has negative value. Returning empty array."), [];
   t < 1 && (console.warn(
@@ -1182,43 +1182,44 @@ Created by FunTech with 😘
   easeInOutBounce(t) {
     return t < 0.5 ? (1 - A.easeOutBounce(1 - 2 * t)) / 2 : (1 + A.easeOutBounce(2 * t - 1)) / 2;
   }
-}), ie = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), oe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Easing: A,
-  getPageRange: _t,
-  getPaginationRange: Ft
+  getPageRange: Ft,
+  getPaginationRange: Dt
 }, Symbol.toStringTag, { value: "Module" }));
 export {
   Gt as Accordion,
-  qt as CustomBreakLineParser,
+  Xt as CustomBreakLineParser,
   I as CustomBreakLineUtils,
-  Yt as Float,
-  Ht as FormField,
+  Jt as Float,
+  Qt as FormField,
   U as InfinityLoop,
-  Qt as InfinityLoopOnView,
+  qt as InfinityLoopOnView,
   Ct as Loader,
   P as MODAL_CLASSNAME,
+  Zt as MediaQuery,
   at as ModalButton,
   Lt as Parallax,
-  Ut as ParallaxThumbnail,
-  Vt as SpiceStarter,
-  Xt as SplitText,
-  Kt as StableScroller,
+  Yt as ParallaxThumbnail,
+  Ut as SpiceStarter,
+  xt as SplitText,
+  Vt as StableScroller,
   zt as Tab,
   It as Video,
   Rt as useDeviceDetector,
   L as useFrame,
   V as useIntersectionObserver,
-  Jt as useIsTouchDevice,
+  te as useIsTouchDevice,
   v as useIsomorphicLayoutEffect,
-  Zt as useMediaQuery,
-  ee as useOnHovering,
+  _t as useMediaQuery,
+  ne as useOnHovering,
   bt as useResizeObserver,
-  re as useScrollTrigger,
-  te as useShare,
-  xt as useStableScroller,
-  ne as useValidElement,
+  ie as useScrollTrigger,
+  ee as useShare,
+  Kt as useStableScroller,
+  re as useValidElement,
   J as useWindowResizeObserver,
-  ie as utils
+  oe as utils
 };
 //# sourceMappingURL=spice.js.map
