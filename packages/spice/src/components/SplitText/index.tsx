@@ -1,5 +1,5 @@
 import { useMemo, ReactElement } from "react";
-import { CustomBreakLineUtils } from "../CustomBreakLineParser";
+import { CustomBreakLineUtils } from "@funtech-inc/spice";
 
 type SpanOmittedChildren = Omit<
    React.HTMLAttributes<HTMLSpanElement>,
@@ -20,6 +20,15 @@ export type SplitTextProps = {
       attributes?: SpanOmittedChildren;
    }[];
    containerProps?: SpanOmittedChildren;
+   /** Duplicate original content n times inside each SplitContainer */
+   clone?: number;
+   /**
+    * Attributes applied to each cloned span.
+    * Can be a static attribute object or a callback that returns attributes per clone index.
+    */
+   cloneContainerProps?:
+      | SpanOmittedChildren
+      | ((index: number) => SpanOmittedChildren);
    /** The input string to be parsed and formatted. Use `\n` or `###br###` for regular line breaks, and `###br.className###` for a line break with a specific class */
    children: string;
 } & SpanOmittedChildren;
@@ -51,7 +60,11 @@ const wrap = (
    key: string,
    containerProps: SpanOmittedChildren | undefined,
    rest: SpanOmittedChildren,
-   extraAttrs?: SpanOmittedChildren
+   extraAttrs: SpanOmittedChildren | undefined,
+   clone: number,
+   cloneContainerProps?:
+      | SpanOmittedChildren
+      | ((index: number) => SpanOmittedChildren)
 ): ReactElement => (
    <SplitContainer
       key={key}
@@ -59,6 +72,17 @@ const wrap = (
       {...rest}
       {...extraAttrs}>
       {content === " " ? "\u00A0" : content}
+      {Array.from({ length: clone }, (_, cIdx) => {
+         const dynamicProps =
+            typeof cloneContainerProps === "function"
+               ? cloneContainerProps(cIdx)
+               : cloneContainerProps;
+         return (
+            <span key={`${key}-clone-${cIdx}`} {...dynamicProps}>
+               {content === " " ? "\u00A0" : content}
+            </span>
+         );
+      })}
    </SplitContainer>
 );
 
@@ -67,12 +91,23 @@ interface ProcessParams {
    exception?: SplitTextProps["exception"];
    containerProps?: SpanOmittedChildren;
    rest: SpanOmittedChildren;
+   clone: number;
+   cloneContainerProps?:
+      | SpanOmittedChildren
+      | ((index: number) => SpanOmittedChildren);
 }
 
 const processLine = (
    line: string,
    lineIndex: number,
-   { type, exception, containerProps, rest }: ProcessParams
+   {
+      type,
+      exception,
+      containerProps,
+      rest,
+      clone,
+      cloneContainerProps,
+   }: ProcessParams
 ): (ReactElement | null)[] => {
    if (CustomBreakLineUtils.isRegularBreak(line)) {
       return [null, <br key={lineIndex} />];
@@ -89,7 +124,18 @@ const processLine = (
 
    switch (type) {
       case "lines": {
-         return [wrap(line, `l-${lineIndex}`, containerProps, rest), null];
+         return [
+            wrap(
+               line,
+               `l-${lineIndex}`,
+               containerProps,
+               rest,
+               undefined,
+               clone,
+               cloneContainerProps
+            ),
+            null,
+         ];
       }
 
       case "words":
@@ -106,7 +152,9 @@ const processLine = (
                   `l${lineIndex}-p${partIndex}`,
                   containerProps,
                   rest,
-                  getExceptionAttrs(exception, part)
+                  getExceptionAttrs(exception, part),
+                  clone,
+                  cloneContainerProps
                )
             );
 
@@ -116,7 +164,10 @@ const processLine = (
                      "\u00A0",
                      `l${lineIndex}-p${partIndex}-space`,
                      containerProps,
-                     rest
+                     rest,
+                     undefined,
+                     clone,
+                     cloneContainerProps
                   )
                );
             }
@@ -137,6 +188,8 @@ export const SplitText = ({
    children,
    exception,
    containerProps,
+   clone,
+   cloneContainerProps,
    ...rest
 }: SplitTextProps) => {
    const wrappedText = useMemo(() => {
@@ -146,9 +199,19 @@ export const SplitText = ({
             exception,
             containerProps,
             rest,
+            clone: clone ?? 0,
+            cloneContainerProps,
          })
       );
-   }, [children, type, exception, containerProps, rest]);
+   }, [
+      children,
+      type,
+      exception,
+      containerProps,
+      rest,
+      clone,
+      cloneContainerProps,
+   ]);
 
    return wrappedText;
 };
