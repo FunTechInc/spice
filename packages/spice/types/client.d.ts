@@ -10,6 +10,7 @@ export * from "./components/SpiceStarter";
 export * from "./components/ParallaxThumbnail";
 export * from "./components/Parallax";
 export * from "./components/Float";
+export * from "./components/MediaQuery";
 export * from "./hooks/useIsomorphicLayoutEffect";
 export * from "./hooks/useFrame";
 export * from "./hooks/useResizeObserver";

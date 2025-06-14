@@ -13,6 +13,7 @@ export * from "./components/SpiceStarter";
 export * from "./components/ParallaxThumbnail";
 export * from "./components/Parallax";
 export * from "./components/Float";
+export * from "./components/MediaQuery";
 
 // hooks
 export * from "./hooks/useIsomorphicLayoutEffect";
