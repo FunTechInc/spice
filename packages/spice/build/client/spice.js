@@ -916,7 +916,12 @@ Created by FunTech with 😘
     () => i(window.innerWidth),
     [i]
   ), n;
-}, Zt = (t, e, n) => _t(t, e) ? n : null, te = () => {
+}, Zt = ({
+  mediaQueryType: t,
+  breakpoint: e,
+  children: n,
+  fallback: r
+}) => _t(t, e) ? n : r ?? null, te = () => {
   const [t, e] = m(null);
   return v(() => {
     e(
