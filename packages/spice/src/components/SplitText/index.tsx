@@ -1,5 +1,5 @@
 import { useMemo, ReactElement } from "react";
-import { CustomBreakLineUtils } from "@funtech-inc/spice";
+import { CustomBreakLineUtils } from "../CustomBreakLineParser";
 
 type SpanOmittedChildren = Omit<
    React.HTMLAttributes<HTMLSpanElement>,
