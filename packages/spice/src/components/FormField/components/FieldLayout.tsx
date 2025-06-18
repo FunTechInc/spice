@@ -73,8 +73,9 @@ export const FieldLayout = ({
    if (layoutType === "radio-check") {
       const Options = formPropsArr.map(
          ({ id, value, style, optionLabel, ...rest }) => {
+            // ※親のpositionをrelativeにする
             return (
-               <li key={id}>
+               <li key={id} style={{ position: "relative" }}>
                   <FormItem
                      formProps={{
                         id,
