@@ -14,5 +14,6 @@ export const MediaQuery = ({
    fallback?: React.ReactNode | null;
 }) => {
    const isMatch = useMediaQuery(mediaQueryType, breakpoint);
+   if (isMatch === null) return null;
    return isMatch ? children : fallback ?? null;
 };
