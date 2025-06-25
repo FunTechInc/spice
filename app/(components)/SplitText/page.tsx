@@ -32,6 +32,42 @@ const Demo = () => {
             </SplitText>
          </p>
          <p>
+            <SplitText
+               containerProps={{
+                  className: "container",
+                  style: {
+                     backgroundColor: "lightblue",
+                     display: "inline-block",
+                  },
+               }}
+               style={{
+                  display: "inline-block",
+               }}
+               type="words"
+               exceptionChar={[
+                  {
+                     selector: "「",
+                     attributes: {
+                        style: {
+                           color: "red",
+                           fontWeight: "bold",
+                        },
+                     },
+                  },
+                  {
+                     selector: "げ",
+                     attributes: {
+                        style: {
+                           color: "yellow",
+                           fontWeight: "bold",
+                        },
+                     },
+                  },
+               ]}>
+               {`ほ「げ ほげ\nほ###br.hoge###げほ げほげ`}
+            </SplitText>
+         </p>
+         <p>
             <CustomBreakLineParser>
                {`ほ「げほげ\nほ###br.hoge###げほげほげ`}
             </CustomBreakLineParser>
